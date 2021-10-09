@@ -5,8 +5,5 @@ public class test01 {
 		System.out.println("공공연히");
 		
 		int i = 0;
-		
-		System.out.println("으하하 나는 예지");
-		
 	}
 }
