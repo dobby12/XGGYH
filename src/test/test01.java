@@ -12,5 +12,7 @@ public class test01 {
 		
 		System.out.println("제발 돼라 제발!!!");
 		
+		System.out.println("확인확인");
+		
 	}
 }
