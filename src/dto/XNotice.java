@@ -1,5 +1,7 @@
 package dto;
 
+import java.util.Date;
+
 public class XNotice {
 	
 	private int notice_no;
@@ -7,11 +9,11 @@ public class XNotice {
 	private int file_no;
 	private String notice_title;
 	private String notice_content;
-	private String notice_date;
+	private Date notice_date;
 	
 	@Override
 	public String toString() {
-		return "Xnotice [notice_no=" + notice_no + ", admin_id=" + admin_id + ", file_no=" + file_no + ", notice_title="
+		return "XNotice [notice_no=" + notice_no + ", admin_id=" + admin_id + ", file_no=" + file_no + ", notice_title="
 				+ notice_title + ", notice_content=" + notice_content + ", notice_date=" + notice_date + "]";
 	}
 
@@ -55,12 +57,15 @@ public class XNotice {
 		this.notice_content = notice_content;
 	}
 
-	public String getNotice_date() {
+	public Date getNotice_date() {
 		return notice_date;
 	}
 
-	public void setNotice_date(String notice_date) {
+	public void setNotice_date(Date notice_date) {
 		this.notice_date = notice_date;
 	}
+	
+	
+	
 
 }
