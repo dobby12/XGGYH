@@ -8,5 +8,7 @@ public class test01 {
 		
 		System.out.println("으하하 나는 예지");
 		
+		System.out.println("코드 내용 굿");
+		
 	}
 }
