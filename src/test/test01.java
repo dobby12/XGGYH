@@ -10,5 +10,7 @@ public class test01 {
 		
 		System.out.println("코드 내용 굿");
 		
+		System.out.println("제발 돼라 제발!!!");
+		
 	}
 }
