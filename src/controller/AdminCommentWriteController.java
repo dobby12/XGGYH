@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/admin/login")
-public class AdminLoginController extends HttpServlet {
+@WebServlet("/admin/ask/write")
+public class AdminCommentWriteController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	@Override
