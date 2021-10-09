@@ -14,5 +14,10 @@ public class test01 {
 		
 		System.out.println("확인확인");
 		
+		int[] m = {1,2,3,4};
+		for (int j = 0; j < m.length; j++) {
+			System.out.println("지태" + m[j]);
+		}
+		
 	}
 }
