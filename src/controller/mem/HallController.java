@@ -1,4 +1,4 @@
-package controller;
+package controller.mem;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;

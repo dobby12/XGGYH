@@ -1,4 +1,4 @@
-package controller;
+package controller.admin;
 
 import java.io.IOException;
 
@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/admin/ask/view")
-public class AdminAskListController extends HttpServlet {
+@WebServlet("/admin/ask/write")
+public class AdminCommentWriteController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	@Override

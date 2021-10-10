@@ -1,10 +1,10 @@
-package controller;
+package controller.admin;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 
-@WebServlet("/admin/review/view")
-public class AdminReviewListController extends HttpServlet {
+@WebServlet("/admin/review/detail")
+public class AdminReviewDetailController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 }
