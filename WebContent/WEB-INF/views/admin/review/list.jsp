@@ -24,13 +24,12 @@
 
 </tr>
 
-
 <tr>
 	<td>${review.review_no }</td>
 	<td>${review.show_no }</td>
 	<td>${review.file_no }</td>
 	<td>${review.mem_id }</td>
-	<td>${review.review_title }</td>
+	<td><a href="<%=request.getContextPath() %>/admin/review/detail?review_no=${review.review_no }">${review.review_title }</a></td>
 	<td>${review.review_content }</td>
 	<td>${review.review_date }</td>
 	<td>${review.review_score }</td>

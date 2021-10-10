@@ -29,12 +29,12 @@ public class AdminReviewDetailController extends HttpServlet {
 		
 		//조회결과 전달
 		req.setAttribute("viewReview", viewReview);
-		
+	
 		//닉네임 전달
-		req.setAttribute("mem_nick", adminReviewService.getNick(viewReview));
+		req.setAttribute("memnick", adminReviewService.getNick(viewReview));
 		
 		//공연 제목 전달
-		req.setAttribute("show_title", adminReviewService.getTitle(viewReview));
+		req.setAttribute("showtitle", adminReviewService.getTitle(viewReview));
 		
 		req.getRequestDispatcher("/WEB-INF/views/admin/review/detail.jsp").forward(req, resp);
 		
