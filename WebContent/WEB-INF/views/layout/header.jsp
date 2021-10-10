@@ -92,6 +92,5 @@ ul.nav > li > a:hover {
 	<li><a href="#">연극</a></li>
 	<li><a href="#">내가 찜한 콘텐츠</a></li>
 	<li><a href="#">리뷰 게시판</a></li>
-	<li><a href="#">내가 찜한 콘텐츠</a></li>
 </ul>
 </div>

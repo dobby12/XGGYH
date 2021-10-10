@@ -42,7 +42,7 @@ table {
 <tr>
 	<td><%= list.get(i).getAsk_no() %></td>
 	<td><%= list.get(i).getMem_id() %></td>
-	<td><a href="/XGGYH/admin/ask/detail?ask_no=<%=list.get(i).getAsk_no() %>">
+	<td><a href="<%=request.getContextPath() %>/admin/ask/detail?ask_no=<%=list.get(i).getAsk_no() %>">
 			<%= list.get(i).getAsk_title() %>
 		</a>
 	</td>
