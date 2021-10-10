@@ -75,7 +75,7 @@ public class MemberDaoImpl implements MemberDao {
 	public int insert(Connection conn, XMem member) {
 		//쿼리작성
 		String sql = "";
-		sql += "INSERT INTO member ( mem_id, mem_pw, mem_nick, mem_mail, mail_state, genre_no )";
+		sql += "INSERT INTO XMEM ( mem_id, mem_pw, mem_nick, mem_mail, mail_state, genre_no )";
 		sql += " VALUES( ?, ?, ?, ?, ?, ? )";
 		
 		int res = 0;

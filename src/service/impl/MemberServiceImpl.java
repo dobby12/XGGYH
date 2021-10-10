@@ -65,6 +65,7 @@ public class MemberServiceImpl implements MemberService {
 		member.setGenre_no(Integer.parseInt(req.getParameter("genreno")));
 //		member.setMem_date(Integer.parseInt(req.getParameter("memdate")));
 		
+		System.out.println("###TEST### 멤버서비스임플 getJoinMember()의 member : " + member);
 		return member;
 		
 	}

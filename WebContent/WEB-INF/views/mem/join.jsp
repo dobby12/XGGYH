@@ -12,7 +12,7 @@
 
 //관심사 체크박스 하나만 선택
 function checkOnlyOne(element) {
-	const checkboxes = document.getElementsByName("chek");
+	const checkboxes = document.getElementsByName("genreno");
 	checkboxes.forEach((cb) => {cb.checked = false;
 	})
 	element.checked = true;
@@ -62,7 +62,7 @@ form {
 <h3>회원가입</h3>
 <hr>
 
-<form action="/member/join" method="post" class="form-horizontal">
+<form action="<%=request.getContextPath() %>/join" method="post" class="form-horizontal">
 	<div class="form-group">
 		<label for="userid" class="control-label">아이디</label>
 		<input type="text" id="userid" name="userid" class="form-control"/>
@@ -108,16 +108,16 @@ form {
 	<label>관심사</label>
 	<table style = none>
 		<tr>
-		<td><label><input type="checkbox" class="control-label" name="chek" value="1" onclick='checkOnlyOne(this)'>코미디</label></td>
-		<td><label><input type="checkbox" class="control-label" name="chek" value="2" onclick='checkOnlyOne(this)'>호러</label></td>
-		<td><label><input type="checkbox" class="control-label" name="chek" value="3" onclick='checkOnlyOne(this)'>가족</label></td>
-		<td><label><input type="checkbox" class="control-label" name="chek" value="4" onclick='checkOnlyOne(this)'>로맨스</label></td>
+		<td><label><input type="checkbox" class="control-label" name="genreno" value="1" onclick='checkOnlyOne(this)'>코미디</label></td>
+		<td><label><input type="checkbox" class="control-label" name="genreno" value="2" onclick='checkOnlyOne(this)'>호러</label></td>
+		<td><label><input type="checkbox" class="control-label" name="genreno" value="3" onclick='checkOnlyOne(this)'>가족</label></td>
+		<td><label><input type="checkbox" class="control-label" name="genreno" value="4" onclick='checkOnlyOne(this)'>로맨스</label></td>
 		</tr>
 		<tr>
-		<td><label><input type="checkbox" class="control-label" name="chek" value="5" onclick='checkOnlyOne(this)'>스포츠</label></td>
-		<td><label><input type="checkbox" class="control-label" name="chek" value="6" onclick='checkOnlyOne(this)'>드라마</label></td>
-		<td><label><input type="checkbox" class="control-label" name="chek" value="7" onclick='checkOnlyOne(this)'>어드벤처</label></td>
-		<td><label><input type="checkbox" class="control-label" name="chek" value="8" onclick='checkOnlyOne(this)'>미스테리</label></td>
+		<td><label><input type="checkbox" class="control-label" name="genreno" value="5" onclick='checkOnlyOne(this)'>스포츠</label></td>
+		<td><label><input type="checkbox" class="control-label" name="genreno" value="6" onclick='checkOnlyOne(this)'>드라마</label></td>
+		<td><label><input type="checkbox" class="control-label" name="genreno" value="7" onclick='checkOnlyOne(this)'>어드벤처</label></td>
+		<td><label><input type="checkbox" class="control-label" name="genreno" value="8" onclick='checkOnlyOne(this)'>미스테리</label></td>
 		</tr>
 	</table>
 	</div>
