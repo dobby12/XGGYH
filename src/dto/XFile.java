@@ -4,13 +4,13 @@ public class XFile {
 	
 	private int file_no;
 	private String file_origin_name;
-	private String file_store_name;
+	private String file_stored_name;
 	private String file_size;
 	
 	@Override
 	public String toString() {
-		return "XFile [file_no=" + file_no + ", file_origin_name=" + file_origin_name + ", file_store_name="
-				+ file_store_name + ", file_size=" + file_size + "]";
+		return "XFile [file_no=" + file_no + ", file_origin_name=" + file_origin_name + ", file_stored_name="
+				+ file_stored_name + ", file_size=" + file_size + "]";
 	}
 
 	public int getFile_no() {
@@ -29,12 +29,12 @@ public class XFile {
 		this.file_origin_name = file_origin_name;
 	}
 
-	public String getFile_store_name() {
-		return file_store_name;
+	public String getFile_stored_name() {
+		return file_stored_name;
 	}
 
-	public void setFile_store_name(String file_store_name) {
-		this.file_store_name = file_store_name;
+	public void setFile_stored_name(String file_stored_name) {
+		this.file_stored_name = file_stored_name;
 	}
 
 	public String getFile_size() {
@@ -44,6 +44,5 @@ public class XFile {
 	public void setFile_size(String file_size) {
 		this.file_size = file_size;
 	}
-	
 	
 }
