@@ -43,5 +43,43 @@ public class AdminReviewServiceImpl implements AdminReviewService {
 		//게시글 전체 조회 처리 - paging있음!
 		return adminReviewDao.selectReviewAll(JDBCTemplate.getConnection(), paging);
 	}
+	
+	@Override
+	public XReview getReviewno(HttpServletRequest req) {
+
+		XReview reviewno  = new XReview();
+
+		//review_no 전달파라미터 검증 - null, ""
+		String param = req.getParameter("review_no");
+		if(param!=null && !"".equals(param)) {
+
+			reviewno.setReview_no((Integer.parseInt(param)));
+		}
+
+		//결과 객체 반환
+		return reviewno;
+	}
+	
+	@Override
+	public XReview getReviewDetail(XReview reviewno) {
+		
+		//게시글 조회
+		XReview review = adminReviewDao.selectReviewbyReviewno(JDBCTemplate.getConnection(), reviewno);
+		
+		return review;
+	}
+	
+	@Override
+	public String getNick(XReview viewReview) {
+		
+		return adminReviewDao.selectNickByMemid(JDBCTemplate.getConnection(), viewReview);
+	}
+	
+	@Override
+	public String getTitle(XReview viewReview) {
+	
+		return adminReviewDao.selectShowTitleByShowno(JDBCTemplate.getConnection(), viewReview);
+	}
+	
 
 }

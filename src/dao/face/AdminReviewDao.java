@@ -25,4 +25,31 @@ public interface AdminReviewDao {
 	 */
 	public List<XReview> selectReviewAll(Connection conn, Paging paging);
 
+	/**
+	 * 특정 리뷰 조회
+	 * 
+	 * @param connection
+	 * @param reviewno
+	 * @return
+	 */
+	public XReview selectReviewbyReviewno(Connection conn, XReview reviewno);
+	
+	/**
+	 * id를 이용해서 nick을 조회한다
+	 * 
+	 * @param conn
+	 * @param viewReview - 조회할 id를 가진 객체
+	 * @return - 작성자 닉네임
+	 */
+	public String selectNickByMemid(Connection conn, XReview viewReview);
+
+	/**
+	 * showno를 이용해서 show_title을 조회한다
+	 * 
+	 * @param conn
+	 * @param viewReview - 조회할 showno를 가진 객체
+	 * @return - 공연 이름
+	 */
+	public String selectShowTitleByShowno(Connection conn, XReview viewReview);
+
 }

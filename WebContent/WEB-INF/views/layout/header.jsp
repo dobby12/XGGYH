@@ -18,6 +18,10 @@
 
 <style type="text/css">
 
+#header {
+	background: #f2f2f2;
+}
+
 /* 메인 메뉴 - 1depth */
 ul.nav {
 	/* ul태그의 기본 리스트스타일 없애기 */
@@ -40,7 +44,7 @@ ul.nav > li {
 	line-height: 40px;
 	
 	/* 테두리를 이용한 메뉴 항목 구분선 만들기 */
-	border-right: 1px solid #fff;
+	border-right: 1px solid #f2f2f2;
 }
 
 /* 메인 메뉴의 항목 텍스트 */
@@ -67,7 +71,8 @@ ul.nav > li > a {
 }
 
 ul.nav > li > a:hover {
-	text-decoration:none; color:#E3ACAA;
+	text-decoration:none; color:#D96459;
+	background-color: #f2f2f2;
 }
 
 
@@ -78,6 +83,7 @@ ul.nav > li > a:hover {
 </head>
 <body>
 
+<div id="header">
 <ul class="nav">
 	<li><a href="#">로고영역</a>
 	<li><a href="#">뮤지컬</a></li>
@@ -85,4 +91,7 @@ ul.nav > li > a:hover {
 	<li><a href="#">콘서트</a></li>
 	<li><a href="#">연극</a></li>
 	<li><a href="#">내가 찜한 콘텐츠</a></li>
+	<li><a href="#">리뷰 게시판</a></li>
+	<li><a href="#">내가 찜한 콘텐츠</a></li>
 </ul>
+</div>
