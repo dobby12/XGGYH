@@ -13,13 +13,12 @@ public class XReview {
 	private Date review_date;
 	private int review_score;
 	private int review_hit;
-	
+
 	@Override
 	public String toString() {
 		return "XReview [review_no=" + review_no + ", show_no=" + show_no + ", file_no=" + file_no + ", mem_id="
 				+ mem_id + ", review_title=" + review_title + ", review_content=" + review_content + ", review_date="
-				+ review_date + ", review_score=" + review_score + ", review_hit=" + review_hit + ", getClass()="
-				+ getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString() + "]";
+				+ review_date + ", review_score=" + review_score + ", review_hit=" + review_hit + "]";
 	}
 
 	public int getReview_no() {
