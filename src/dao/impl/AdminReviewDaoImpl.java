@@ -69,11 +69,11 @@ public class AdminReviewDaoImpl implements AdminReviewDao {
 				XReview review = new XReview();
 				
 				review.setReview_no(rs.getInt("review_no"));
-				review.setShow_no(rs.getInt("review_no"));
-				review.setFile_no(rs.getInt("review_no"));
-				review.setMem_id(rs.getString("review_no"));
-				review.setReivew_title(rs.getString("review_title"));
-				review.setReivew_content(rs.getString("review_content"));
+				review.setShow_no(rs.getInt("show_no"));
+				review.setFile_no(rs.getInt("file_no"));
+				review.setMem_id(rs.getString("mem_id"));
+				review.setReview_title(rs.getString("review_title"));
+				review.setReview_content(rs.getString("review_content"));
 				review.setReview_date(rs.getDate("review_date"));
 				review.setReview_score(rs.getInt("review_score"));
 				review.setReview_hit(rs.getInt("review_hit"));

@@ -35,7 +35,10 @@ public class AdminReviewListController extends HttpServlet {
 		
 		req.setAttribute("paging", paging);
 		
-		req.getRequestDispatcher("/WEB-INF/views/admin/list.jsp").forward(req, resp);
+		req.getRequestDispatcher("/WEB-INF/views/admin/review/list.jsp").forward(req, resp);
+		
+		
+		System.out.println(reviewList);
 		
 	}
 	
