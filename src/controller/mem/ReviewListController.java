@@ -14,7 +14,7 @@ import service.face.ReviewService;
 import service.impl.ReviewSerivceImpl;
 import util.Paging;
 
-@WebServlet("/review")
+@WebServlet("/review/list")
 public class ReviewListController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
@@ -26,7 +26,7 @@ public class ReviewListController extends HttpServlet {
 		
 		//Paging객체생성
 		Paging paging = reviewService.getPaging(req);
-		System.out.println("BoardListController [GET] - " + paging);
+		System.out.println("ReviewListController [GET] - " + paging);
 		
 		//게시글조회
 		List<XReview> reviewList = reviewService.getList(paging);

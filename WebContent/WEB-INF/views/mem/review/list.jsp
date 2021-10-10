@@ -43,7 +43,7 @@
 
 <c:forEach items="${reviewList }" var="reivewList">
 <tr>
-	<td>${reviewList.showno}</td>
+	<td>${reviewList.showtitle}</td>
 	<td>
 		<a href="/review/detail?reviewno=${reviewList.reviewno }">
 		${reviewList.reviewtitle }
@@ -62,6 +62,8 @@
 </div>
 
 </div>
+
+<c:import url="/WEB-INF/views/layout/reviewpaging.jsp" />
 
 </body>
 </html>
