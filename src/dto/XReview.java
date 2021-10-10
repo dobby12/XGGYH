@@ -8,8 +8,8 @@ public class XReview {
 	private int show_no;
 	private int file_no;
 	private String mem_id;
-	private String reivew_title;
-	private String reivew_content;
+	private String review_title;
+	private String review_content;
 	private Date review_date;
 	private int review_score;
 	private int review_hit;
@@ -17,8 +17,9 @@ public class XReview {
 	@Override
 	public String toString() {
 		return "XReview [review_no=" + review_no + ", show_no=" + show_no + ", file_no=" + file_no + ", mem_id="
-				+ mem_id + ", reivew_title=" + reivew_title + ", reivew_content=" + reivew_content + ", review_date="
-				+ review_date + ", review_score=" + review_score + ", review_hit=" + review_hit + "]";
+				+ mem_id + ", review_title=" + review_title + ", review_content=" + review_content + ", review_date="
+				+ review_date + ", review_score=" + review_score + ", review_hit=" + review_hit + ", getClass()="
+				+ getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString() + "]";
 	}
 
 	public int getReview_no() {
@@ -53,20 +54,20 @@ public class XReview {
 		this.mem_id = mem_id;
 	}
 
-	public String getReivew_title() {
-		return reivew_title;
+	public String getReview_title() {
+		return review_title;
 	}
 
-	public void setReivew_title(String reivew_title) {
-		this.reivew_title = reivew_title;
+	public void setReview_title(String review_title) {
+		this.review_title = review_title;
 	}
 
-	public String getReivew_content() {
-		return reivew_content;
+	public String getReview_content() {
+		return review_content;
 	}
 
-	public void setReivew_content(String reivew_content) {
-		this.reivew_content = reivew_content;
+	public void setReview_content(String review_content) {
+		this.review_content = review_content;
 	}
 
 	public Date getReview_date() {
@@ -92,9 +93,5 @@ public class XReview {
 	public void setReview_hit(int review_hit) {
 		this.review_hit = review_hit;
 	}
-	
-	
-	
-	
 	
 }
