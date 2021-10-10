@@ -51,7 +51,7 @@ table {
 </table>
 
 </div>
-<c:import url="/WEB-INF/views/layout/paging.jsp" />
+<c:import url="/WEB-INF/views/layout/adminReviewPaging.jsp" />
 
 </body>
 </html>
