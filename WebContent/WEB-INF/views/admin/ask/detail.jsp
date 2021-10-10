@@ -47,15 +47,15 @@ td {
 </tr>
 
 <tr>
-	<td style="background-color: #ccc; width: 12.5%">AskNo.</td>
+	<td style="background-color: #ccc; width: 12.5%">문의번호</td>
 	<td style="width: 5%">${xask.ask_no }</td>
-	<td style="background-color: #ccc; width: 15%">NICKNAME</td>
+	<td style="background-color: #ccc; width: 15%">닉네임</td>
 	<td style="width: 10%">${nick }</td>
-	<td style="background-color: #ccc; width: 12.5%">ASK KIND</td>
+	<td style="background-color: #ccc; width: 12.5%">문의유형</td>
 	<td style="width: 10%">${xask.ask_kind }</td>
-	<td style="background-color: #ccc; width: 7.5%">ASK STATE</td>
+	<td style="background-color: #ccc; width: 7.5%">답변여부</td>
 	<td style="width: 5%">${xask.ask_state }</td>
-	<td style="background-color: #ccc; width: 7.5%">DATE</td>
+	<td style="background-color: #ccc; width: 7.5%">작성일</td>
 	<td style="width: 15%">${xask.ask_date }</td>
 </tr>
 
