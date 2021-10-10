@@ -10,18 +10,46 @@
 
 <script type="text/javascript">
 
-//관심사 체크박스 하나만 선택
-function checkOnlyOne(element) {
-	const checkboxes = document.getElementsByName("genreno");
-	checkboxes.forEach((cb) => {cb.checked = false;
-	})
-	element.checked = true;
-}
+	//관심사 체크박스 하나만 선택
+	function checkOnlyOne(element) {
+		const checkboxes = document.getElementsByName("genreno");
+		checkboxes.forEach((cb) => {cb.checked = false;
+		})
+		element.checked = true;
+	}
 
-</script>
-
-<script type="text/javascript">
 $(document).ready(function() {
+	
+	$('#btnidck').click(register.idCheck);
+
+	var register = {
+		isIDCheck: false,
+		idCheck: function(){
+		//console.log(this); //이벤트가 발생한 객체
+		// console.log(register);		
+	    
+		var $memid = $('#memid');
+	    
+		//빈값 체크
+		if(!$memid.val()){
+			$memid.nextAll('span').html('아이디를 입력하세요').css('color', 'red');
+			return;
+		}else{
+			$memid.isIDCheck = true;
+			$memid.nextAll('span').html('');
+			alert('중복체크를 했습니다.');
+		}
+	    
+		},
+		send: function(){
+	  	if(!register.isIDCheck){
+	    	alert('아이디 중복체크를 하세요.');
+	      return;
+	    }
+	    
+	    alert('가입되었습니다.');
+	  }
+	}
 	
 	//가입 버튼 클릭 시 form submit
 	$("#btnJoin").click(function() {
@@ -52,26 +80,29 @@ form {
 <form action="<%=request.getContextPath() %>/join" method="post" class="form-horizontal">
 	<div class="form-group">
 		<label for="memid" class="control-label">아이디</label>
-		<input type="text" id="memid" name="memid" class="form-control"/>
+		<input type="text" id="memid" name="memid" placeholder="아이디" class="form-control" oninput="confirmId()" onclick="firstIDMsg()"/>
 	</div>
+		<div id="alarmID"></div>
+	<div class="check_font" id="id_check"></div>
 	<div class="form-group">
 		<label for="mempw" class="control-label">비밀번호</label>
-		<input type="text" id="mempw" name="mempw" class="form-control"/>
+		<input type="text" id="mempw" name="mempw" placeholder="비밀번호" class="form-control"/>
 	</div>
+	<div id="alarmPW"></div>
 	<div class="form-group">
-		<label for="mempw2" class="control-label">비밀번호 확인</label>
-		<input type="text" id="mempw2" name="mempw2" class="form-control"/>
-		<span id="alert-success" style="display: none;">비밀번호가 일치합니다.</span>
-		<span id="alert-danger" style="display: none; color: #d92742; font-weight: bold; ">비밀번호가 일치하지 않습니다.</span>
+		<label for="confirmpw" class="control-label">비밀번호 확인</label>
+		<input type="text" id="confirmpw" name="confirmpw" placeholder="비밀번호 확인" class="form-control"/>
 	</div>
 	<div class="form-group">
 		<label for="memnick" class="control-label">닉네임</label>
-		<input type="text" id="memnick" name="memnick" class="form-control"/>
+		<input type="text" id="memnick" name="memnick" placeholder="닉네임" class="form-control" oninput="confirmNK()" onclick="firstNKMsg()"/>
 	</div>
+	<div id="alarmNK"></div>
  	<div class="form-group">
  		<label for="memmail" class="control-label">이메일</label>
-		<input type="text" id="memmail" name="memmail" class="form-control"/>
+		<input type="text" id="memmail" name="memmail" placeholder="이메일" class="form-control" oninput="confirmEM()" onclick="firstEMMsg()"/>
 	</div>
+	<div id="alarmEM"></div>
 	<div class="form-group">
 		<label for="memstate" class="control-label">이메일수신여부</label>
 		<label><input type="radio" placeholder="이메일수신여부" name="memstate" value="y">수신</label>

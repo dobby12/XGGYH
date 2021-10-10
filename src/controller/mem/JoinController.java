@@ -24,7 +24,7 @@ public class JoinController extends HttpServlet {
 		System.out.println("[TEST] JoinController doGet()");
 		
 		//VIEW 지정 - forward
-		req.getRequestDispatcher("/WEB-INF/views/mem/join.jsp").forward(req, resp);
+		req.getRequestDispatcher("/WEB-INF/views/mem/join/join.jsp").forward(req, resp);
 		
 	}
 	
@@ -42,7 +42,7 @@ public class JoinController extends HttpServlet {
 		memberService.join(param);
 		
 		// 메인으로 리다이렉션
-		resp.sendRedirect("/main");
+		resp.sendRedirect("/WEB-INF/views/mem/join/joinpro.jsp");
 		
 	}
 
