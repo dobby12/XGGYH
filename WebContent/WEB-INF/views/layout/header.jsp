@@ -67,7 +67,9 @@ ul.nav > li > a {
 }
 
 ul.nav > li > a:hover {
-	text-decoration:none; color:#E3ACAA;
+	text-decoration:none; color:#63876E;
+	background-color: white;
+	
 }
 
 
