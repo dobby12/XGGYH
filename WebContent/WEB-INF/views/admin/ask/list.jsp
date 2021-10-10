@@ -15,6 +15,7 @@
 
 table {
 	text-align: center;
+	font-family: D2Coding;
 }
 
 </style>
