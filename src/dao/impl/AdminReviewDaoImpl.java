@@ -90,4 +90,102 @@ public class AdminReviewDaoImpl implements AdminReviewDao {
 		return reviewList;
 	}
 
+	@Override
+	public XReview selectReviewbyReviewno(Connection conn, XReview reviewno) {
+		
+		String sql = "";
+		sql += "SELECT * FROM Xreview";
+		sql += " WHERE review_no = ?";
+		
+		XReview viewReview = null;
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, reviewno.getReview_no());
+			
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				viewReview = new XReview();
+				
+				viewReview.setReview_no(rs.getInt("review_no"));
+				viewReview.setShow_no(rs.getInt("show_no"));
+				viewReview.setFile_no(rs.getInt("file_no"));
+				viewReview.setMem_id(rs.getString("mem_id"));
+				viewReview.setReview_title(rs.getString("review_title"));
+				viewReview.setReview_content(rs.getString("review_content"));
+				viewReview.setReview_date(rs.getDate("review_date"));
+				viewReview.setReview_score(rs.getInt("review_score"));
+				viewReview.setReview_hit(rs.getInt("review_hit"));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+		}
+		
+		return viewReview;
+	}
+
+	@Override
+	public String selectNickByMemid(Connection conn, XReview viewReview) {
+		
+		String sql = "";
+		sql += "SELECT mem_nick FROM Xmem";
+		sql += " WHERE mem_id = ?";
+		
+		String mem_nick = null;
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, viewReview.getMem_id());
+			
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				mem_nick = rs.getString("mem_nick");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+		}
+		 
+		return mem_nick;
+	}
+	
+	@Override
+	public String selectShowTitleByShowno(Connection conn, XReview viewReview) {
+		
+		String sql = "";
+		sql += "SELECT show_title FROM XShow";
+		sql += " WHERE show_no = ?";
+		
+		String show_title = null;
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, viewReview.getShow_no());
+			
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				show_title = rs.getString("show_title");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+		}
+		
+		return show_title;
+	}
+	
+	
 }
