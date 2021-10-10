@@ -45,4 +45,38 @@ public class MemberServiceImpl implements MemberService {
 		System.out.println("###TEST###MemberServiceImpl getMem()");
 		return memberDao.selectMemByMemid(JDBCTemplate.getConnection(), mem);
 	}
+
+	@Override
+	public XMem getJoinMember(HttpServletRequest req) {
+		
+		try {
+			req.setCharacterEncoding("UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		
+		XMem member = new XMem();
+		
+		member.setMem_id(req.getParameter("memid"));
+		member.setMem_pw(req.getParameter("mempw"));
+		member.setMem_nick(req.getParameter("memnick"));
+		member.setMem_mail(req.getParameter("memmail"));
+		member.setMail_state(req.getParameter("memstate"));
+		member.setGenre_no(Integer.parseInt(req.getParameter("genreno")));
+//		member.setMem_date(Integer.parseInt(req.getParameter("memdate")));
+		
+		return member;
+		
+	}
+
+	@Override
+	public void join(XMem member) {
+		Connection conn = JDBCTemplate.getConnection();
+		
+		if( memberDao.insert(conn, member) > 0 ) {
+			JDBCTemplate.commit(conn);
+		} else {
+			JDBCTemplate.rollback(conn);
+		}
+	}
 }

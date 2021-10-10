@@ -22,4 +22,11 @@ public interface MemberDao {
 	 */
 	public XMem selectMemByMemid(Connection connection, XMem mem);
 
+	/**
+	 * 회원가입정보 삽입하기
+	 * 
+	 * @param member - 회원가입 정보 객체
+	 */
+	public int insert(Connection conn, XMem member);
+
 }

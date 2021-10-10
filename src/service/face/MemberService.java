@@ -27,6 +27,20 @@ public interface MemberService {
 	 * @return DB에 저장되어 있던 정보를 담은 XMem객체
 	 */
 	public XMem getMem(XMem mem);
-
 	
+	/**
+	 * 회원가입 정보 추출하기
+	 * 
+	 * @param req - 요청정보 객체
+	 * @return XMem - 추출한 회원가입 정보
+	 */
+	public XMem getJoinMember(HttpServletRequest req);
+
+	/**
+	 * 회원가입 처리
+	 * 
+	 * @param param - 회원가입 정보 객체
+	 */
+	public void join(XMem param);
+
 }

@@ -71,4 +71,36 @@ public class MemberDaoImpl implements MemberDao {
 		return res;
 	}
 
+	@Override
+	public int insert(Connection conn, XMem member) {
+		//쿼리작성
+		String sql = "";
+		sql += "INSERT INTO member ( mem_id, mem_pw, mem_nick, mem_mail, mail_state, genre_no )";
+		sql += " VALUES( ?, ?, ?, ?, ?, ? )";
+		
+		int res = 0;
+		
+		try {
+			//DB작업
+			ps = conn.prepareStatement(sql);
+			
+			ps.setString(1, member.getMem_id());
+			ps.setString(2, member.getMem_pw());
+			ps.setString(3, member.getMem_nick());
+			ps.setString(4, member.getMem_mail());
+			ps.setString(5, member.getMail_state());
+			ps.setInt(6, member.getGenre_no());
+			
+			res = ps.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			//DB객체 닫기
+			JDBCTemplate.close(ps);
+		}
+		
+		return res;
+	}
+
 }
