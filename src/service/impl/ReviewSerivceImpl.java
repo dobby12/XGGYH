@@ -16,9 +16,9 @@ public class ReviewSerivceImpl implements ReviewService {
 	private ReviewDao reviewDao = new ReviewDaoImpl();
 
 	@Override
-	public List<XReview> getList(Paging paging) {
+	public List<XReview> getList(Paging reviewpaging) {
 		
-		return reviewDao.selectAll(JDBCTemplate.getConnection(), paging);
+		return reviewDao.selectAll(JDBCTemplate.getConnection(), reviewpaging);
 	}
 
 	@Override
@@ -34,9 +34,9 @@ public class ReviewSerivceImpl implements ReviewService {
 		
 		int totalCount = reviewDao.selectCntAll(JDBCTemplate.getConnection());
 		
-		Paging paging = new Paging(totalCount, curPage);
+		Paging reviewpaging = new Paging(totalCount, curPage);
 		
-		return paging;
+		return reviewpaging;
 	}
 
 	@Override

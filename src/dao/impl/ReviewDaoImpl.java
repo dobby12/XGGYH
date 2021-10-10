@@ -22,7 +22,7 @@ public class ReviewDaoImpl implements ReviewDao{
 		
 				String sql = "";
 				sql += "SELECT * FROM xreview";
-				sql += " ORDER BY reviewNo DESC";
+				sql += " ORDER BY review_no DESC";
 				
 				List<XReview> reviewList = new ArrayList<>();
 				
@@ -34,15 +34,15 @@ public class ReviewDaoImpl implements ReviewDao{
 					while(rs.next()) {
 						XReview r = new XReview();
 
-						r.setReview_no( rs.getInt("reviewno") );
-						r.setShow_no( rs.getInt("showno") );
-						r.setFile_no( rs.getInt("fileno") );
-						r.setMem_id( rs.getString("memid") );
-						r.setReview_title( rs.getString("reviewtitle") );
-						r.setReview_content( rs.getString("reviewcontent") );
-						r.setReview_date( rs.getDate("reviewdate") );
-						r.setReview_score( rs.getInt("reviewscore") );
-						r.setReview_hit( rs.getInt("reviewhit") );
+						r.setReview_no( rs.getInt("review_no") );
+						r.setShow_no( rs.getInt("show_no") );
+						r.setFile_no( rs.getInt("file_no") );
+						r.setMem_id( rs.getString("mem_id") );
+						r.setReview_title( rs.getString("review_title") );
+						r.setReview_content( rs.getString("review_content") );
+						r.setReview_date( rs.getDate("review_date") );
+						r.setReview_score( rs.getInt("review_score") );
+						r.setReview_hit( rs.getInt("review_hit") );
 						
 						reviewList.add(r);
 					}

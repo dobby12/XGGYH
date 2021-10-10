@@ -43,15 +43,15 @@
 
 <c:forEach items="${reviewList }" var="reivewList">
 <tr>
-	<td>${reviewList.showtitle}</td>
+	<td>${reviewList.show_no }</td>
 	<td>
-		<a href="/review/detail?reviewno=${reviewList.reviewno }">
-		${reviewList.reviewtitle }
+		<a href="/review/detail?reviewno=${reviewList.review_no }">
+		${reviewList.review_title }
 		</a>
 	</td>
-	<td>${reviewList.memid }</td>
-	<td>${reviewList.reviewhit }</td>
-	<td>${reviewList.reviewdate }</td>
+	<td>${reviewList.mem_id }</td>
+	<td>${reviewList.review_hit }</td>
+	<td>${reviewList.review_date }</td>
 </tr>
 </c:forEach>
 

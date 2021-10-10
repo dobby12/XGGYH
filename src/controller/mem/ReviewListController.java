@@ -22,20 +22,20 @@ public class ReviewListController extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("/review [GET]");
+		System.out.println("/review/list [GET]");
 		
 		//Paging객체생성
-		Paging paging = reviewService.getPaging(req);
-		System.out.println("ReviewListController [GET] - " + paging);
+		Paging reviewpaging = reviewService.getPaging(req);
+		System.out.println("ReviewListController [GET] - " + reviewpaging);
 		
 		//게시글조회
-		List<XReview> reviewList = reviewService.getList(paging);
+		List<XReview> reviewList = reviewService.getList(reviewpaging);
 		
 		//조회결과전달
 		req.setAttribute("reviewList", reviewList);
 		
 		//페이징전달
-		req.setAttribute("paging", paging);
+		req.setAttribute("paging", reviewpaging);
 		
 		req.getRequestDispatcher("/WEB-INF/views/mem/review/list.jsp").forward(req, resp);
 		

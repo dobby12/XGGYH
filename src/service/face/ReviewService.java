@@ -15,7 +15,7 @@ public interface ReviewService {
 	 * @param paging - 페이징 정보 객체
 	 * @return List<Review> - 리뷰 전체 조회 결과 리스트
 	 */
-	public List<XReview> getList(Paging paging);
+	public List<XReview> getList(Paging reviewpaging);
 
 	/**
 	 * 페이징 객체 생성

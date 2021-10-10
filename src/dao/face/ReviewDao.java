@@ -15,7 +15,7 @@ public interface ReviewDao {
 	 * @param paging - 페이징 정보 객체
 	 * @return List<XReview> - XReview테이블 전체 조회 결과 리스트
 	 */
-	public List<XReview> selectAll(Connection conn, Paging paging);
+	public List<XReview> selectAll(Connection conn, Paging reviewpaging);
 
 	/**
 	 * 총 게시글 수 조회
