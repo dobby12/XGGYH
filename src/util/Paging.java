@@ -1,4 +1,4 @@
-package web.util;
+package util;
 
 public class Paging {
 	private int curPage;	//현재 페이지 번호
