@@ -55,26 +55,25 @@ public class MemberServiceImpl implements MemberService {
 			e.printStackTrace();
 		}
 		
-		XMem member = new XMem();
+		XMem mem = new XMem();
 		
-		member.setMem_id(req.getParameter("memid"));
-		member.setMem_pw(req.getParameter("mempw"));
-		member.setMem_nick(req.getParameter("memnick"));
-		member.setMem_mail(req.getParameter("memmail"));
-		member.setMail_state(req.getParameter("memstate"));
-		member.setGenre_no(Integer.parseInt(req.getParameter("genreno")));
-//		member.setMem_date(Integer.parseInt(req.getParameter("memdate")));
+		mem.setMem_id(req.getParameter("memid"));
+		mem.setMem_pw(req.getParameter("mempw"));
+		mem.setMem_nick(req.getParameter("memnick"));
+		mem.setMem_mail(req.getParameter("memmail"));
+		mem.setMail_state(req.getParameter("memstate"));
+		mem.setGenre_no(Integer.parseInt(req.getParameter("genreno")));
 		
-		System.out.println("###TEST### 멤버서비스임플 getJoinMember()의 member : " + member);
-		return member;
+		System.out.println("###TEST### 멤버서비스임플 getJoinMember()의 member : " + mem);
+		return mem;
 		
 	}
 
 	@Override
-	public void join(XMem member) {
+	public void join(XMem mem) {
 		Connection conn = JDBCTemplate.getConnection();
 		
-		if( memberDao.insert(conn, member) > 0 ) {
+		if( memberDao.insert(conn, mem) > 0 ) {
 			JDBCTemplate.commit(conn);
 		} else {
 			JDBCTemplate.rollback(conn);

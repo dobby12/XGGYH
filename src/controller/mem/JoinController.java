@@ -32,7 +32,6 @@ public class JoinController extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		System.out.println("[TEST] JoinController doPost()");
 		
-		System.out.println(req.getParameter("genreno"));
 		// 요청파라미터 처리
 		XMem param = memberService.getJoinMember(req);
 	

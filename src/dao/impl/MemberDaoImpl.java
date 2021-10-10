@@ -72,10 +72,10 @@ public class MemberDaoImpl implements MemberDao {
 	}
 
 	@Override
-	public int insert(Connection conn, XMem member) {
+	public int insert(Connection conn, XMem mem) {
 		//쿼리작성
 		String sql = "";
-		sql += "INSERT INTO XMEM ( mem_id, mem_pw, mem_nick, mem_mail, mail_state, genre_no )";
+		sql += "INSERT INTO XMem ( mem_id, mem_pw, mem_nick, mem_mail, mail_state, genre_no )";
 		sql += " VALUES( ?, ?, ?, ?, ?, ? )";
 		
 		int res = 0;
@@ -84,12 +84,12 @@ public class MemberDaoImpl implements MemberDao {
 			//DB작업
 			ps = conn.prepareStatement(sql);
 			
-			ps.setString(1, member.getMem_id());
-			ps.setString(2, member.getMem_pw());
-			ps.setString(3, member.getMem_nick());
-			ps.setString(4, member.getMem_mail());
-			ps.setString(5, member.getMail_state());
-			ps.setInt(6, member.getGenre_no());
+			ps.setString(1, mem.getMem_id());
+			ps.setString(2, mem.getMem_pw());
+			ps.setString(3, mem.getMem_nick());
+			ps.setString(4, mem.getMem_mail());
+			ps.setString(5, mem.getMail_state());
+			ps.setInt(6, mem.getGenre_no());
 			
 			res = ps.executeUpdate();
 			
