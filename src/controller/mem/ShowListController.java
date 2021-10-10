@@ -17,6 +17,7 @@ public class ShowListController extends HttpServlet {
 	
 	@Override
 		protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+			//요청 보내기
+			req.getRequestDispatcher("/WEB-INF/views/mem/show/list.jsp").forward(req, resp);
 		}
 }
