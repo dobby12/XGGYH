@@ -32,6 +32,30 @@
 	<button>LOGIN</button>
 </form>
 
+<hr>
+
+<a href="javascript:kakaoLogin();">KAKAO</a>
+<script src="http://developers.kakao.com/sdk/js/kakao.js"></script>
+<script>
+window.Kakao.init("8b6ff5cc45fa05d18d5d5a27810f38f8");
+function kakaoLogin() {
+	window.Kakao.Auth.login({
+		scope:'profile_nickname, account_email',
+		success: function(authObj){
+			console.log(authObj);
+			window.Kakao.API.request({
+				url:'/v2/user/me',
+				success: res => {
+					const kakao_account = res.kakao_account;
+					console.log(kakao_account);
+				}
+			});
+		}
+	});
+}
+</script>
+
+
 <!------------------------------------------------------>
 </body>
 </html>
