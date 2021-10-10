@@ -1,6 +1,7 @@
 package controller.mem;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -29,11 +30,19 @@ public class LoginController extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		System.out.println("###TEST### LoginController doPost()"); 
 		
-		//form action으로 전달된 request를 XMem객체로 반환
-		XMem member = memberService.loginMem(req);
-		
-		//요청된 세션을 HttpSession객체로 반환
+		XMem mem = memberService.getLoginMem(req);
+		System.out.println("###TEST### mem : " + mem);
 		HttpSession session = req.getSession();
+		
+		if(memberService.loginMem(mem)) {
+			session.setAttribute("login", true);
+			session.setAttribute("memid", memberService.getMem(mem).getMem_id());
+			session.setAttribute("memnick", memberService.getMem(mem).getMem_nick());
+			req.getRequestDispatcher("/WEB-INF/views/mem/main.jsp").forward(req, resp);
+		} else {
+			session.setAttribute("loginfail", true);
+			req.getRequestDispatcher("/WEB-INF/views/mem/login.jsp").forward(req, resp);
+		}
 		
 	}
 }
