@@ -5,41 +5,52 @@
 
 <c:import url="/WEB-INF/views/layout/header.jsp" />
 
-<h1>게시글 목록</h1>
+<style type="text/css">
+
+table {
+	text-align: center;
+}
+
+</style>
+
+<div class="container">
+
+<h2>게시글 목록</h2>
 <hr>
 
-<table>
-<c:forEach items="${reviewList }" var="review">
+<table class="table table-hover table-condensed">
 
+<thead>
 <tr>
-	<td>리뷰 번호</td>
-	<td>공연 번호</td>
-	<td>파일 번호</td>
-	<td>작성자</td>
-	<td>제목</td>
-	<td>내용</td>
-	<td>작성 날짜</td>
-	<td>평점</td>
-	<td>조회수</td>
-
+	<th style="text-align: center; width: 8%">리뷰 번호</th>
+	<th style="text-align: center; width: 8%">공연 번호</th>
+	<th style="text-align: center; width: 10%">작성자</th>
+	<th style="text-align: center; width: 51%">제목</th>
+	<th style="text-align: center; width: 10%">작성 날짜</th>
+	<th style="text-align: center; width: 5%">평점</th>
+	<th style="text-align: center; width: 8%">조회수</th>
 </tr>
+</thead>
 
+<c:forEach items="${reviewList }" var="review">
+</tbody>
 <tr>
+
 	<td>${review.review_no }</td>
 	<td>${review.show_no }</td>
-	<td>${review.file_no }</td>
 	<td>${review.mem_id }</td>
 	<td><a href="<%=request.getContextPath() %>/admin/review/detail?review_no=${review.review_no }">${review.review_title }</a></td>
-	<td>${review.review_content }</td>
 	<td>${review.review_date }</td>
 	<td>${review.review_score }</td>
 	<td>${review.review_hit }</td>
 </tr>
+</tbody>
 </c:forEach>
 
 
 </table>
 
+</div>
 <c:import url="/WEB-INF/views/layout/paging.jsp" />
 
 </body>

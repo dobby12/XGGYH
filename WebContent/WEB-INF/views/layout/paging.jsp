@@ -87,7 +87,7 @@
 	<li><a href="/board/list?curPage=${paging.startPage + paging.pageCount }"> &gt; </a></li>
 </c:when>
 <c:when test="${paging.endPage eq paging.totalPage }">
-	<li class="disalbled"><a>&gt;</a>
+	<li class="disabled"><a>&gt;</a>
 </c:when>
 </c:choose>
 
