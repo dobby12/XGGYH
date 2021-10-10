@@ -40,7 +40,7 @@
 
 </table>
 
-
+<c:import url="/WEB-INF/views/layout/paging.jsp" />
 
 </body>
 </html>

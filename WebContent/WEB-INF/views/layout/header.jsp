@@ -17,6 +17,13 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
 <style type="text/css">
+a {
+	color: black;
+}
+
+a:hover {
+	color: #D96459;
+}
 
 #header {
 	background: #f2f2f2;
@@ -92,6 +99,5 @@ ul.nav > li > a:hover {
 	<li><a href="#">연극</a></li>
 	<li><a href="#">내가 찜한 콘텐츠</a></li>
 	<li><a href="#">리뷰 게시판</a></li>
-	<li><a href="#">내가 찜한 콘텐츠</a></li>
 </ul>
 </div>

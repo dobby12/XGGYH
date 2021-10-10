@@ -1,6 +1,10 @@
-<%@ page import="dto.XReview"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<c:import url="/WEB-INF/views/layout/header.jsp" />
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,7 +32,6 @@
 
 <tr>
 <td class="info">조회수</td><td>${viewReview.review_hit }</td>
-
 </tr>
 
 <tr>
@@ -49,7 +52,6 @@
 
 </table>
 
-
-
 </body>
 </html>
+

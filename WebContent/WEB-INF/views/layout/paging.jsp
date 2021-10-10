@@ -3,6 +3,38 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+<style>
+.pagination > li > a
+{
+    background-color: white;
+    color: #D96459;
+}
+
+.pagination > li > a:focus,
+.pagination > li > a:hover,
+.pagination > li > span:focus,
+.pagination > li > span:hover
+{
+    color: #5a5a5a;
+    background-color: #f2f2f2;
+    border-color: #ddd;
+}
+
+.pagination > .active > a
+{
+    color: white;
+    background-color: #D96459 !Important;
+    border: solid 1px #D96459 !Important;
+}
+
+.pagination > .active > a:hover
+{
+    background-color: #F2A099 !Important;
+    border: solid 1px;
+    border-color: #F2A099 !Important;
+}
+</style>
+
 <div class="text-center">
 
 <ul class="pagination pagination-sm">
