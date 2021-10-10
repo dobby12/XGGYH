@@ -23,7 +23,7 @@
 
 <style type="text/css">
 
-body {
+body, ul.nav > li > a  {
 	font-family: 'IBM Plex Sans KR', sans-serif;
 }
 
@@ -75,7 +75,6 @@ ul.nav > li > a {
 	/* 글자 스타일 지정 */
 	font-size: 15px; /* 크기 */
 	font-weight: bold; /* 굵게 */
-	font-family: "맑은 고딕"; /* 글꼴 */
 	
 	/* 내부여백 */
 	/* 	-> a태그의 내부여백은 링크 클릭 가능한 영역 */
