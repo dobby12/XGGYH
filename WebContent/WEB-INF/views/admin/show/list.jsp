@@ -42,7 +42,7 @@ table {
 <tr>
 	<td><%= list.get(i).getShowNo() %></td>
 	<td><%= list.get(i).getAdminId() %></td>
-	<td><a href="<%=request.getContextPath() %>/admin/ask/detail?askNo=<%=list.get(i).getShowNo() %>">
+	<td><a href="<%=request.getContextPath() %>/admin/show/detail?askNo=<%=list.get(i).getShowNo() %>">
 			<%= list.get(i).getShowTitle() %>
 		</a>
 	</td>
