@@ -50,7 +50,7 @@
 <!-- 이전 페이징 리스트로 이동 -->
 <c:choose>
 <c:when test="${paging.startPage ne 1 }">
-	<li><a href="${linkUrl }?curPage=${paging.startPage - paging.pageCount }"> &lt; </a></li>
+	<li><a href="<%=request.getContextPath() %>${linkUrl }?curPage=${paging.startPage - paging.pageCount }"> &lt; </a></li>
 </c:when>
 <c:when test="${paging.startPage eq 1 }">
 	<li class="disabled"><a>&lt;</a>
@@ -60,23 +60,23 @@
 
 <!-- 이전 페이지로 가기 -->
 <c:if test="${paging.curPage > 1 }">
-	<li><a href="${linkUrl }?curPage=${paging.curPage - 1 }">&larr;</a></li>
+	<li><a href="<%=request.getContextPath() %>${linkUrl }?curPage=${paging.curPage - 1 }">&larr;</a></li>
 </c:if>
 
 <!-- 페이징 리스트 -->
 <c:forEach begin="${paging.startPage }" end="${paging.endPage }" var="i">
 <c:if test="${paging.curPage eq i }">
-	<li class="active" class="disabled"><a href="${linkUrl }?curPage=${i }">${i }</a></li>
+	<li class="active"><a href="<%=request.getContextPath() %>${linkUrl }?curPage=${i }">${i }</a></li>
 </c:if>
 <c:if test="${paging.curPage ne i }">
-	<li><a href="${linkUrl }?curPage=${i }">${i }</a></li>
+	<li><a href="<%=request.getContextPath() %>${linkUrl }?curPage=${i }">${i }</a></li>
 </c:if>
-</c:forEach>	
+</c:forEach>
 
 
 <!-- 다음 페이지로 가기 -->
 <c:if test="${paging.curPage < paging.totalPage }">
-	<li><a href="${linkUrl }?curPage=${paging.curPage + 1 }">&rarr;</a></li>
+	<li><a href="<%=request.getContextPath() %>${linkUrl }?curPage=${paging.curPage + 1 }">&rarr;</a></li>
 </c:if>
 
 
@@ -84,7 +84,7 @@
 <!-- 다음 페이징 리스트로 이동 -->
 <c:choose>
 <c:when test="${paging.endPage ne paging.totalPage }">
-	<li><a href="${linkUrl }?curPage=${paging.startPage + paging.pageCount }"> &gt; </a></li>
+	<li><a href="<%=request.getContextPath() %>${linkUrl }?curPage=${paging.startPage + paging.pageCount }"> &gt; </a></li>
 </c:when>
 <c:when test="${paging.endPage eq paging.totalPage }">
 	<li class="disabled"><a>&gt;</a>
@@ -94,7 +94,7 @@
 
 <!-- 마지막 페이지로 -->
 <c:if test="${paging.curPage ne paging.totalPage }">
-	<li><a href="${linkUrl }?curPage=${paging.totalPage }">마지막 페이지로 &raquo;</a></li>
+	<li><a href="<%=request.getContextPath() %>${linkUrl }?curPage=${paging.totalPage }">마지막 페이지로 &raquo;</a></li>
 </c:if>
 
 
