@@ -188,4 +188,109 @@ public class AdminAskDaoImpl implements AdminAskDao {
 		return res;
 	}
 
+	@Override
+	public XComment selectCommentByAskNo(Connection conn, XAsk xaskno) {
+		
+		String sql ="";
+		sql += "SELECT comment_no, admin_id, comment_content";
+		sql += " FROM XComment WHERE ask_no = ?";
+		
+		//조회된 결과를 저장할 객체
+		XComment com = new XComment();
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, xaskno.getAskNo() );
+			
+			rs = ps.executeQuery();
+			
+			while( rs.next() ) {
+				
+				com.setCommentNo(rs.getInt("comment_no"));
+				com.setAdminId(rs.getString("admin_id"));
+				com.setCommentContent(rs.getString("comment_content"));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+		}
+		
+		return com;
+	}
+
+	@Override
+	public void deleteCommentByAskNo(Connection conn, XAsk xaskno) {
+		
+		String sql = "";
+		sql += "DELETE xcomment WHERE ask_no = ?";
+		
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			
+			ps.setInt(1, xaskno.getAskNo());
+			
+			rs = ps.executeQuery();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(ps);
+		}
+		
+
+		
+		
+	}
+
+	@Override
+	public int updateAskStateToN(Connection conn, XAsk xask) {
+		
+		String sql = "";
+		sql += "UPDATE xask SET ask_state = 'n'";
+		sql += " WHERE ask_no = ?";
+		
+		int res = 0;
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, xask.getAskNo());
+			
+			res = ps.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(ps);
+		}
+		
+		return res;
+	}
+
+	@Override
+	public int updateAskStateToY(Connection conn, XAsk xask) {
+		String sql = "";
+		sql += "UPDATE xask SET ask_state = 'y'";
+		sql += " WHERE ask_no = ?";
+		
+		int res = 0;
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, xask.getAskNo());
+			
+			res = ps.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(ps);
+		}
+		
+		return res;
+	}
+
 }

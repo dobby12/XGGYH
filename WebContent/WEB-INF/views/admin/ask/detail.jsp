@@ -9,39 +9,10 @@
 %>
 
 <c:import url="/WEB-INF/views/layout/adminheader.jsp" />
+
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 <script type="text/javascript" src="/resources/js/httpRequest.js"></script>
 <script type="text/javascript">
-
-
-window.onload = function(){
-	btnAction.onclick = function(){
-		console.log("btnAction called")
-		
-		sendRequest("POST", "/admin/comment/write", "", callback);
-	}
-}
-
-function callback(){
-	if(httpRequest.readyState == 4){
-		if(httpRequest.status == 200){
-			
-			console.log("정상적인 AJAX 요청/응답 성공")
-			
-			printData();
-			
-		} else {
-			console.log("AJAX 요청/응답 실패")
-		}
-	}
-}
-
-function printData(){
-	console.log("printData() called")
-	
-	//ajax 응답으로 받은 html 코드를 #result에 반영하기
-	result.innerHTML = httpRequest.responseText;
-}
 
 
 
@@ -59,6 +30,18 @@ td {
 	height: 30px;
 
 }
+
+#answer {
+	width: 1000px;
+	padding: 10px;
+	text-align: center;
+	vertical-align: middle;
+	overflow: auto; /* 자동 스크롤 */
+	
+	border: 1px solid #ccc;
+	border-collapse: collapse;
+}
+
 
 </style>
 
@@ -89,38 +72,65 @@ td {
 </tr>
 
 </table>
-<div id="answer" class="container"></div>
-
-<c:if test="${login }"> <!-- 관리자 권한 설정 어떻게 하지.. -->
-<br>
-<div class="container" style="width: 1000px; text-align: center;">
-<form method="post" action="<%=request.getContextPath() %>/admin/ask/write?askNo=${xask.askNo }">
-<input type="hidden" name="adminId" value="${adminid }" />
-	<textarea id="comment" name="comment" style="width: 950px; height: 100px; padding: 10px;"placeholder="문의의 답변을 입력하세요."></textarea>
 
 
-<br><br>
+<div id="answer" class="container">
+<c:if test="${xask.askState == 'y'}">
+<table class="table table-condensed">
+<tr>	
+	<!-- 아이디 -->
+	<td colspan="2" class="ans" width="150px;">관리자 아이디 : ${xcomment.adminId }</td>
+	
+	<!-- 본문 -->
+	<td colspan="2" width="700px;">
+		<div class="ans" style="background-color: #F2F2F2; height:70px; padding: 10px;">${xcomment.commentContent }</div>
+	</td>
+	
+	<!-- 구현 못함 ㅠ -->
+	<c:if test="${login }">
+		<td style="width: 100px;" class="ans">
+			<a href="<%=request.getContextPath() %>/admin/comment/update?commentno=${xcomment.commentNo }"><button class="btn btn-info">수정하기</button></a>
+			<a href="<%=request.getContextPath() %>/admin/comment/delete?askNo=${xask.askNo }"><button class="btn btn-default">삭제하기</button></a>			
+		</td>
+		
+	</c:if>
+</tr>
 
-	<a href="<%=request.getContextPath() %>/admin/ask/list"><button id="btnList" class="btn btn-default">목록으로</button></a>
-	<button type="submit" id="btnAnswer" class="btn btn-info">답변하기</button>
 
-</form>
-
-</div>
-</c:if>
-
-<c:if test="${empty login }">
-
-<div class="container" style="text-align: center;">
-<strong>잘못된 접근입니다. 관리자 로그인이 필요합니다.</strong>
-<br><br>
+</table>
 <a href="<%=request.getContextPath() %>/admin/ask/list"><button id="btnList" class="btn btn-default">목록으로</button></a>
-<a href="<%=request.getContextPath() %>/admin"><button id="btnLogin" class="btn btn-info">로그인</button></a>
-
-
-</div>
-
 </c:if>
+
+<c:if test="${xask.askState == 'n' }">
+	<c:if test="${login }"> <!-- 관리자 권한 설정 어떻게 하지.. -->
+	
+	<br>
+	<form method="post" action="<%=request.getContextPath() %>/admin/ask/write?askNo=${xask.askNo }">
+	<input type="hidden" name="adminId" value="${adminid }" />
+	<input type="hidden" name="askNo" value="${xask.askNo }" />
+	
+		<textarea id="comment" name="comment" style="width: 950px; height: 100px; padding: 10px;"placeholder="문의의 답변을 입력하세요."></textarea>
+	
+	
+		<br><br>
+	
+		<a href="<%=request.getContextPath() %>/admin/ask/list"><button type="button" class="btn btn-default">목록으로</button></a>
+		<button type="submit" id="btnAnswer" class="btn btn-info">답변하기</button>
+	
+	</form>
+	
+	</c:if>
+	
+	<c:if test="${empty login }">
+	
+	<strong>잘못된 접근입니다. 관리자 로그인이 필요합니다.</strong>
+	<br><br>
+	<a href="<%=request.getContextPath() %>/admin"><button id="btnLogin" class="btn btn-info">로그인</button></a>
+	
+	</c:if>
+	
+</c:if>
+</div>
 </div>
 
 </body>

@@ -21,7 +21,7 @@ table {
 
 <div class="container">
 
-<h2>문의 목록</h2>
+<h2>공연 목록</h2>
 
 <hr>
 

@@ -101,4 +101,70 @@ public class AdminAskServiceImpl implements AdminAskService {
 		return comment;
 	}
 
+	@Override
+	public XComment getComment(XAsk xaskno) {
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		XComment comment= adminAskDao.selectCommentByAskNo(conn, xaskno);
+		
+		return comment;
+		
+	}
+
+	@Override
+	public int getAskNoInt(HttpServletRequest req) {
+		int ask_no = 0;
+		
+		//ask_no 전달 파라미터 검증 - !null, !""
+		String param = req.getParameter("askNo");
+		
+		if(param!=null && !"".equals(param)) {
+			 ask_no = Integer.parseInt(param);
+		}
+		
+		return ask_no;
+	}
+
+	@Override
+	public void deleteComment(XAsk xaskno) {
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		adminAskDao.deleteCommentByAskNo(conn, xaskno);
+		
+		JDBCTemplate.commit(conn);			
+			
+		
+	}
+
+	@Override
+	public void updateAskStatetoN(XAsk xask) {
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		int res = adminAskDao.updateAskStateToN(conn, xask);
+		
+		if( res > 0) {
+			JDBCTemplate.commit(conn);
+		} else {
+			JDBCTemplate.rollback(conn);			
+		}
+		
+		
+	}
+
+	@Override
+	public void updateAskStatetoY(XAsk xask) {
+		Connection conn = JDBCTemplate.getConnection();
+		
+		int res = adminAskDao.updateAskStateToY(conn, xask);
+		
+		if( res > 0) {
+			JDBCTemplate.commit(conn);
+		} else {
+			JDBCTemplate.rollback(conn);			
+		}
+	}
+
 }

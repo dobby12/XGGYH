@@ -1,6 +1,7 @@
 package controller.admin;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import dto.XAdmin;
 import dto.XAsk;
+import dto.XComment;
 import service.face.AdminAskService;
 import service.face.AdminService;
 import service.impl.AdminAskServiceImpl;
@@ -29,13 +31,27 @@ public class AdminAskDetailController extends HttpServlet {
 		XAsk xaskno = adminAskService.getAskNo(req);
 		
 		XAsk xask = adminAskService.getAskDetail(xaskno);
-	
+//		System.out.println(xask);
+		
+		XComment xcomment = adminAskService.getComment(xaskno);
+//		System.out.println(xcomment);
+		
+		
+		if(xcomment.getCommentNo() == 0) {
+			adminAskService.updateAskStatetoN(xask);
+			
+		} else if (xcomment.getCommentNo() != 0) {
+			
+			adminAskService.updateAskStatetoY(xask);
+		}
+
 		XAdmin admin = adminService.getLoginAdmin(req);
 		HttpSession session = req.getSession();
 		
 		req.setAttribute("xask", xask);
 		req.setAttribute("xaskno", xaskno);
 		req.setAttribute("nick", adminAskService.getNick(xask));
+		req.setAttribute("xcomment", xcomment);
 		
 		if(adminService.loginAdmin(admin)) {
 			session.setAttribute("login", true);

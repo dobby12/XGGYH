@@ -22,11 +22,12 @@ public class AdminCommentWriteController extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
+//		System.out.println("/");
+		
 		XComment comment = adminAskService.setCommentWrite( req );
 		
 		req.setAttribute("comment", comment);
-		
-		req.getRequestDispatcher("/WEB-INF/views/admin/ask/comment.jsp").forward(req, resp);
+
 		
 	}
 

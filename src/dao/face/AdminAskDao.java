@@ -52,5 +52,37 @@ public interface AdminAskDao {
 	 */
 	public int insertComment(Connection conn, XComment comment);
 
+	/**
+	 * 댓글 정보 조회
+	 * 
+	 * @param conn - DB 연결 객체
+	 * @param xaskno - 전달된 ask_no
+	 * @return XComment
+	 */
+	public XComment selectCommentByAskNo(Connection conn, XAsk xaskno);
+
+	/**
+	 * 댓글 정보 삭제
+	 * 
+	 * @param conn - DB 연결 객체
+	 * @param xaskno - 전달된 ask_no
+	 */
+	public void deleteCommentByAskNo(Connection conn, XAsk xaskno);
+
+	/**
+	 * 
+	 * @param conn
+	 * @param xcomment
+	 * @return
+	 */
+	public int updateAskStateToN(Connection conn, XAsk xask);
+
+	/**
+	 * 
+	 * @param conn
+	 * @return
+	 */
+	public int updateAskStateToY(Connection conn, XAsk xask);
+
 
 }

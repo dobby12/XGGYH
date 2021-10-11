@@ -60,5 +60,40 @@ public interface AdminAskService {
 	 */
 	public XComment setCommentWrite(HttpServletRequest req);
 
+	/**
+	 * ask_no을 통해서 해당 ask_no에 맞는 댓글 조회
+	 * @param xaskno - ask_no
+	 * @return List<XComment>
+	 */
+	public XComment getComment(XAsk xaskno);
+
+	/**
+	 * ask_no int로 가져오기
+	 * 
+	 * @param req - 요청 객체
+	 * @return int ask_no
+	 */
+	public int getAskNoInt(HttpServletRequest req);
+
+	/**
+	 * ask_no로 댓글 삭제하기
+	 * 
+	 * @param xaskno - int형 ask_no
+	 */
+	public void deleteComment(XAsk xaskno);
+
+	/**
+	 * 
+	 * 
+	 * @param xaskno - 해당 ask_no의 comment
+	 */
+	public void updateAskStatetoY(XAsk xask);
+
+	/**
+	 * 
+	 * @param xcomment
+	 */
+	public void updateAskStatetoN(XAsk xask);
+
 
 }
