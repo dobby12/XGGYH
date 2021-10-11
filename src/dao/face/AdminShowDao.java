@@ -1,12 +1,10 @@
 package dao.face;
 
 import java.sql.Connection;
+import java.util.List;
 
 import dto.XFile;
 import dto.XShow;
-
-import java.util.List;
-
 import util.Paging;
 
 public interface AdminShowDao {
