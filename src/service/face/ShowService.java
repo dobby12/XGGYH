@@ -32,4 +32,41 @@ public interface ShowService {
 	 * @return 페이징 계산이 완료된 Paging 객체
 	 */
 	public Paging getPaging(HttpServletRequest req);
+	
+	/**
+	 * 요청파라미터 얻기
+	 * 
+	 * @param req - 요청정보객체
+	 * @return XShow - 전달파라미터 ShowNo를 포함한 객체
+	 */
+	public XShow getShowNo(HttpServletRequest req);
+
+	/**
+	 * 주어진 showNo를 이용하여 게시글을 조회한다
+	 * 
+	 * @param showNo - showNo를 가지고 있는 객체
+	 * @return XShow - 조회된 게시글
+	 */
+	public XShow viewShowInfo(XShow showNo);
+	
+	/**
+	 * showInfo의 kindNo를 통해 XKIND 테이블의 kind_name을 조회하고 반환
+	 * @param showInfo - kindNo를 가지고 있는 객체
+	 * @return - 공연장 이름
+	 */
+	public String getKindName(XShow showInfo);
+	
+	/**
+	 * showInfo의 genreNo를 통해 XGENRE 테이블의 genre_name을 조회하고 반환
+	 * @param showInfo - genreNo를 가지고 있는 객체
+	 * @return - 공연장 이름
+	 */
+	public String getGenreName(XShow showInfo);
+	
+	/**
+	 * showInfo의 hallNo를 통해 XHALL 테이블의 hall_name을 조회하고 반환
+	 * @param showInfo - hallNo를 가지고 있는 객체
+	 * @return - 공연장 이름
+	 */
+	public String getHallName(XShow showInfo);
 }

@@ -1,5 +1,6 @@
 package service.impl;
 
+import java.sql.Connection;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -45,5 +46,44 @@ public class ShowServiceImpl implements ShowService {
 		Paging paging = new Paging(totalCount, curPage, listCount);
 		
 		return paging;
+	}
+
+	@Override
+	public XShow getShowNo(HttpServletRequest req) {
+		//ShowNo를 저장할 객체 생성
+		XShow showNo = new XShow();
+		
+		String param = req.getParameter("showNo");
+		if(param!=null && !"".equals(param)) {
+
+			showNo.setShowNo( Integer.parseInt(param) );
+		}
+		
+		return showNo;
+	}
+
+	@Override
+	public XShow viewShowInfo(XShow showNo) {
+		Connection conn = JDBCTemplate.getConnection();
+		
+		//게시글 조회
+		XShow showInfo = showDao.selectShowByShowno(conn, showNo);
+		
+		return showInfo;
+	}
+
+	@Override
+	public String getKindName(XShow showInfo) {
+		return showDao.selectKindNameByKindNo(JDBCTemplate.getConnection(), showInfo);
+	}
+
+	@Override
+	public String getGenreName(XShow showInfo) {
+		return showDao.selectGenreNameByGenreNo(JDBCTemplate.getConnection(), showInfo);
+	}
+
+	@Override
+	public String getHallName(XShow showInfo) {
+		return showDao.selectHallNameByHallNo(JDBCTemplate.getConnection(), showInfo);
 	}
 }
