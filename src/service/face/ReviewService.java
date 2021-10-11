@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import dto.XFile;
 import dto.XReview;
 import util.Paging;
 
@@ -42,7 +43,7 @@ public interface ReviewService {
 	 * @param req - 요청정보객체
 	 * @return XReview - 전달파라미터 review_no를 포함한 객체
 	 */
-	public XReview getReview_no(HttpServletRequest req);
+	public XReview getReviewNo(HttpServletRequest req);
 
 	/**
 	 * 주어진 review_no를 이용하여 게시글을 조회한다
@@ -59,7 +60,7 @@ public interface ReviewService {
 	 * @param viewReview - 조회할 게시글 정보
 	 * @return String - 게시글 작성자의 닉네임
 	 */
-	public String getMem_nick(XReview viewReview);
+	public String getMemNick(XReview viewReview);
 	
 	/**
 	 * 게시글 작성
@@ -76,7 +77,7 @@ public interface ReviewService {
 	 * 첨부파일 정보 조회
 	 * 
 	 * @param viewReview - 첨부파일과 연결된 게시글번호를 포함한 DTO객체
-	 * @return ReviewFile - 첨부파일 정보 DTO객체
+	 * @return XFile - 첨부파일 정보 DTO객체
 	 */
 	public XFile viewFile(XReview viewReview);
 

@@ -39,20 +39,20 @@ public class ShowDaoImpl implements ShowDao {
 				XShow showInfo = new XShow();
 				
 				//행 하나씩 가져오기
-				showInfo.setShow_no(rs.getInt("show_no"));
-				showInfo.setFile_no(rs.getInt("file_no"));
-				showInfo.setAdmin_id(rs.getString("admin_id"));
-				showInfo.setKind_no(rs.getInt("kind_no"));
-				showInfo.setGenre_no(rs.getInt("genre_no"));
-				showInfo.setHall_no(rs.getInt("hall_no"));
-				showInfo.setShow_title(rs.getString("show_title"));
-				showInfo.setShow_content(rs.getString("show_content"));
-				showInfo.setShow_date(rs.getDate("show_date"));
-				showInfo.setShow_age(rs.getString("show_age"));
-				showInfo.setShow_director(rs.getString("show_director"));
-				showInfo.setShow_actor(rs.getString("show_actor"));
-				showInfo.setShow_start(rs.getDate("show_start"));
-				showInfo.setShow_end(rs.getDate("show_end"));
+				showInfo.setShowNo(rs.getInt("show_no"));
+				showInfo.setFileNo(rs.getInt("file_no"));
+				showInfo.setAdminId(rs.getString("admin_id"));
+				showInfo.setKindNo(rs.getInt("kind_no"));
+				showInfo.setGenreNo(rs.getInt("genre_no"));
+				showInfo.setHallNo(rs.getInt("hall_no"));
+				showInfo.setShowTitle(rs.getString("show_title"));
+				showInfo.setShowContent(rs.getString("show_content"));
+				showInfo.setShowDate(rs.getDate("show_date"));
+				showInfo.setShowAge(rs.getString("show_age"));
+				showInfo.setShowDirector(rs.getString("show_director"));
+				showInfo.setShowActor(rs.getString("show_actor"));
+				showInfo.setShowStart(rs.getDate("show_start"));
+				showInfo.setShowEnd(rs.getDate("show_end"));
 				
 				showList.add(showInfo);
 			}

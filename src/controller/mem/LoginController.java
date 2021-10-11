@@ -36,8 +36,8 @@ public class LoginController extends HttpServlet {
 		
 		if(memberService.loginMem(mem)) {
 			session.setAttribute("login", true);
-			session.setAttribute("memid", memberService.getMem(mem).getMem_id());
-			session.setAttribute("memnick", memberService.getMem(mem).getMem_nick());
+			session.setAttribute("memid", memberService.getMem(mem).getMemId());
+			session.setAttribute("memnick", memberService.getMem(mem).getMemNick());
 			req.getRequestDispatcher("/WEB-INF/views/mem/main.jsp").forward(req, resp);
 		} else {
 			session.setAttribute("loginfail", true);

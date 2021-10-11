@@ -41,14 +41,14 @@ public interface ReviewDao {
 	 * @param review_no - 조회할 review_no를 가진 객체
 	 * @return XReview - 조회된 결과 객체
 	 */
-	public XReview selectReviewByReview_no(Connection conn, XReview review_no);
+	public XReview selectReviewByReviewNo(Connection conn, XReview reviewNo);
 
 	/**
 	 * 조회된 게시글의 조회수 증가시키기
 	 * 
 	 * @param review_no - 조회된 게시글 번호를 가진 객체
 	 */
-	public int updateReview_hit(Connection conn, XReview review_no);
+	public int updateReviewHit(Connection conn, XReview reviewNo);
 
 	/**
 	 * id를 이용해 nick을 조회한다
@@ -56,7 +56,7 @@ public interface ReviewDao {
 	 * @param viewReview - 조회할 id를 가진 객체
 	 * @return String - 작성자 닉네임
 	 */
-	public String selectNickByMem_id(Connection conn, XReview viewReview);
+	public String selectNickByMemId(Connection conn, XReview viewReview);
 	
 	/**
 	 * 게시글 입력
@@ -73,7 +73,7 @@ public interface ReviewDao {
 	 * @param conn - DB연결 객체
 	 * @return 다음 게시글 번호
 	 */
-	public int selectNextReview_no(Connection conn);
+	public int selectNextReviewNo(Connection conn);
 
 	/**
 	 * 첨부파일 입력
