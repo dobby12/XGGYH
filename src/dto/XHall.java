@@ -2,75 +2,62 @@ package dto;
 
 public class XHall {
 	
-	private int hall_no;
-	private String hall_name;
-	private String hall_address;
-	private String hall_call;
-	private String hall_link;
-	private String hall_location;
-	private String hall_navigation;
+	private int hallNo;
+	private String hallName;
+	private String hallAddress;
+	private String hallCall;
+	private String hallLink;
+	private String hallLocation;
+	private String hallNavigation;
 	
 	@Override
 	public String toString() {
-		return "Xhall [hall_no=" + hall_no + ", hall_name=" + hall_name + ", hall_address=" + hall_address
-				+ ", hall_call=" + hall_call + ", hall_link=" + hall_link + ", hall_location=" + hall_location
-				+ ", hall_navigation=" + hall_navigation + "]";
+		return "XHall [hallNo=" + hallNo + ", hallName=" + hallName + ", hallAddress=" + hallAddress + ", hallCall="
+				+ hallCall + ", hallLink=" + hallLink + ", hallLocation=" + hallLocation + ", hallNavigation="
+				+ hallNavigation + "]";
 	}
-
-	public int getHall_no() {
-		return hall_no;
+	
+	public int getHallNo() {
+		return hallNo;
 	}
-
-	public void setHall_no(int hall_no) {
-		this.hall_no = hall_no;
+	public void setHallNo(int hallNo) {
+		this.hallNo = hallNo;
 	}
-
-	public String getHall_name() {
-		return hall_name;
+	public String getHallName() {
+		return hallName;
 	}
-
-	public void setHall_name(String hall_name) {
-		this.hall_name = hall_name;
+	public void setHallName(String hallName) {
+		this.hallName = hallName;
 	}
-
-	public String getHall_address() {
-		return hall_address;
+	public String getHallAddress() {
+		return hallAddress;
 	}
-
-	public void setHall_address(String hall_address) {
-		this.hall_address = hall_address;
+	public void setHallAddress(String hallAddress) {
+		this.hallAddress = hallAddress;
 	}
-
-	public String getHall_call() {
-		return hall_call;
+	public String getHallCall() {
+		return hallCall;
 	}
-
-	public void setHall_call(String hall_call) {
-		this.hall_call = hall_call;
+	public void setHallCall(String hallCall) {
+		this.hallCall = hallCall;
 	}
-
-	public String getHall_link() {
-		return hall_link;
+	public String getHallLink() {
+		return hallLink;
 	}
-
-	public void setHall_link(String hall_link) {
-		this.hall_link = hall_link;
+	public void setHallLink(String hallLink) {
+		this.hallLink = hallLink;
 	}
-
-	public String getHall_location() {
-		return hall_location;
+	public String getHallLocation() {
+		return hallLocation;
 	}
-
-	public void setHall_location(String hall_location) {
-		this.hall_location = hall_location;
+	public void setHallLocation(String hallLocation) {
+		this.hallLocation = hallLocation;
 	}
-
-	public String getHall_navigation() {
-		return hall_navigation;
+	public String getHallNavigation() {
+		return hallNavigation;
 	}
-
-	public void setHall_navigation(String hall_navigation) {
-		this.hall_navigation = hall_navigation;
-	}
-
+	public void setHallNavigation(String hallNavigation) {
+		this.hallNavigation = hallNavigation;
+	}	
+	
 }

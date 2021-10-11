@@ -1,29 +1,24 @@
 package dto;
 
 public class XKind {
-	
-	private int kind_no;
-	private String kind_name;
+	private int kindNo;
+	private String kindName;
 	
 	@Override
 	public String toString() {
-		return "XKind [kind_no=" + kind_no + ", kind_name=" + kind_name + "]";
+		return "XKind [kindNo=" + kindNo + ", kindName=" + kindName + "]";
 	}
-
-	public int getKind_no() {
-		return kind_no;
+	
+	public int getKindNo() {
+		return kindNo;
 	}
-
-	public void setKind_no(int kind_no) {
-		this.kind_no = kind_no;
+	public void setKindNo(int kindNo) {
+		this.kindNo = kindNo;
 	}
-
-	public String getKind_name() {
-		return kind_name;
+	public String getKindName() {
+		return kindName;
 	}
-
-	public void setKind_name(String kind_name) {
-		this.kind_name = kind_name;
+	public void setKindName(String kindName) {
+		this.kindName = kindName;
 	}
-
 }

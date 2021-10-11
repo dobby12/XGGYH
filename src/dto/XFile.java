@@ -3,46 +3,38 @@ package dto;
 public class XFile {
 	
 	private int file_no;
-	private String file_origin_name;
-	private String file_stored_name;
-	private String file_size;
+	private String fileOriginName;
+	private String fileStoredName;
+	private String fileSize;
 	
 	@Override
 	public String toString() {
-		return "XFile [file_no=" + file_no + ", file_origin_name=" + file_origin_name + ", file_stored_name="
-				+ file_stored_name + ", file_size=" + file_size + "]";
+		return "XFile [file_no=" + file_no + ", fileOriginName=" + fileOriginName + ", fileStoredName=" + fileStoredName
+				+ ", fileSize=" + fileSize + "]";
 	}
-
+	
 	public int getFile_no() {
 		return file_no;
 	}
-
 	public void setFile_no(int file_no) {
 		this.file_no = file_no;
 	}
-
-	public String getFile_origin_name() {
-		return file_origin_name;
+	public String getFileOriginName() {
+		return fileOriginName;
 	}
-
-	public void setFile_origin_name(String file_origin_name) {
-		this.file_origin_name = file_origin_name;
+	public void setFileOriginName(String fileOriginName) {
+		this.fileOriginName = fileOriginName;
 	}
-
-	public String getFile_stored_name() {
-		return file_stored_name;
+	public String getFileStoredName() {
+		return fileStoredName;
 	}
-
-	public void setFile_stored_name(String file_stored_name) {
-		this.file_stored_name = file_stored_name;
+	public void setFileStoredName(String fileStoredName) {
+		this.fileStoredName = fileStoredName;
 	}
-
-	public String getFile_size() {
-		return file_size;
+	public String getFileSize() {
+		return fileSize;
 	}
-
-	public void setFile_size(String file_size) {
-		this.file_size = file_size;
+	public void setFileSize(String fileSize) {
+		this.fileSize = fileSize;
 	}
-	
 }
