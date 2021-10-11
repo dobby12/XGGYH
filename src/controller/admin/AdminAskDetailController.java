@@ -26,7 +26,7 @@ public class AdminAskDetailController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		XAsk xaskno = adminAskService.getAsk_no(req);
+		XAsk xaskno = adminAskService.getAskNo(req);
 		
 		XAsk xask = adminAskService.getAskDetail(xaskno);
 	
@@ -39,9 +39,9 @@ public class AdminAskDetailController extends HttpServlet {
 		
 		if(adminService.loginAdmin(admin)) {
 			session.setAttribute("login", true);
-			session.setAttribute("adminid", adminService.getAdmin(admin).getAdmin_id());
-			session.setAttribute("adminname", adminService.getAdmin(admin).getAdmin_name());
-			session.setAttribute("adminauthority", adminService.getAdmin(admin).getAdmin_authority());
+			session.setAttribute("adminid", adminService.getAdmin(admin).getAdminId());
+			session.setAttribute("adminname", adminService.getAdmin(admin).getAdminName());
+			session.setAttribute("adminauthority", adminService.getAdmin(admin).getAdminAuthority());
 		} else {
 			session.setAttribute("loginfail", true);
 		}

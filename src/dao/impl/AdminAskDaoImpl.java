@@ -72,12 +72,12 @@ public class AdminAskDaoImpl implements AdminAskDao {
 			while( rs.next() ) {
 				XAsk xask = new XAsk();
 				
-				xask.setAsk_no( rs.getInt("ask_no"));
-				xask.setMem_id( rs.getString("mem_id"));
-				xask.setAsk_title( rs.getString("ask_title"));
-				xask.setAsk_date( rs.getDate("ask_date"));
-				xask.setAsk_kind( rs.getString("ask_kind"));
-				xask.setAsk_state( rs.getString("ask_state"));
+				xask.setAskNo( rs.getInt("ask_no"));
+				xask.setMemId( rs.getString("mem_id"));
+				xask.setAskTitle( rs.getString("ask_title"));
+				xask.setAskDate( rs.getDate("ask_date"));
+				xask.setAskKind( rs.getString("ask_kind"));
+				xask.setAskState( rs.getString("ask_state"));
 				
 				askList.add(xask);
 				
@@ -106,18 +106,18 @@ public class AdminAskDaoImpl implements AdminAskDao {
 		
 		try {
 			ps = conn.prepareStatement(sql);
-			ps.setInt(1, xaskno.getAsk_no() );
+			ps.setInt(1, xaskno.getAskNo() );
 			
 			rs = ps.executeQuery();
 			
 			while( rs.next() ) {
-				result.setAsk_no( rs.getInt("ask_no") );
-				result.setMem_id( rs.getString("mem_id") );
-				result.setAsk_title( rs.getString("ask_title") );
-				result.setAsk_content( rs.getString("ask_content") );
-				result.setAsk_date( rs.getDate("ask_date") );
-				result.setAsk_kind( rs.getString("ask_kind") );
-				result.setAsk_state( rs.getString("ask_state") );
+				result.setAskNo( rs.getInt("ask_no") );
+				result.setMemId( rs.getString("mem_id") );
+				result.setAskTitle( rs.getString("ask_title") );
+				result.setAskContent( rs.getString("ask_content") );
+				result.setAskDate( rs.getDate("ask_date") );
+				result.setAskKind( rs.getString("ask_kind") );
+				result.setAskState( rs.getString("ask_state") );
 			}
 			
 		} catch (SQLException e) {
@@ -131,7 +131,7 @@ public class AdminAskDaoImpl implements AdminAskDao {
 	}
 
 	@Override
-	public String getNickByMem_id(Connection conn, XAsk xask) {
+	public String getNickByMemId(Connection conn, XAsk xask) {
 		
 		String sql = "";
 		sql += "SELECT mem_nick FROM xmem";
@@ -142,7 +142,7 @@ public class AdminAskDaoImpl implements AdminAskDao {
 		try {
 			ps = conn.prepareStatement(sql);
 			
-			ps.setString(1, xask.getMem_id());
+			ps.setString(1, xask.getMemId());
 			
 			rs = ps.executeQuery();
 			
@@ -172,9 +172,9 @@ public class AdminAskDaoImpl implements AdminAskDao {
 		try {
 			ps = conn.prepareStatement(sql);
 			
-			ps.setInt(1, comment.getAsk_no());
-			ps.setString(2, comment.getAdmin_id());
-			ps.setString(3, comment.getComment_content());
+			ps.setInt(1, comment.getAskNo());
+			ps.setString(2, comment.getAdminId());
+			ps.setString(3, comment.getCommentContent());
 			
 			res = ps.executeUpdate();
 			

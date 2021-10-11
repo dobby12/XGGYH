@@ -40,15 +40,15 @@ table {
 <tbody>
 <% for(int i=0 ; i<list.size(); i++) { %>
 <tr>
-	<td><%= list.get(i).getAsk_no() %></td>
-	<td><%= list.get(i).getMem_id() %></td>
-	<td><a href="<%=request.getContextPath() %>/admin/ask/detail?ask_no=<%=list.get(i).getAsk_no() %>">
-			<%= list.get(i).getAsk_title() %>
+	<td><%= list.get(i).getAskNo() %></td>
+	<td><%= list.get(i).getMemId() %></td>
+	<td><a href="<%=request.getContextPath() %>/admin/ask/detail?askNo=<%=list.get(i).getAskNo() %>">
+			<%= list.get(i).getAskTitle() %>
 		</a>
 	</td>
-	<td><%= list.get(i).getAsk_kind() %></td>
-	<td><%= list.get(i).getAsk_date() %></td>
-	<td><%= list.get(i).getAsk_state() %></td>
+	<td><%= list.get(i).getAskKind() %></td>
+	<td><%= list.get(i).getAskDate() %></td>
+	<td><%= list.get(i).getAskState() %></td>
 </tr>
 <%} %>
 </tbody>

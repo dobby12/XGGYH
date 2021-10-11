@@ -20,8 +20,8 @@ public class AdminServiceImpl implements AdminService {
 //			e.printStackTrace();
 //		}
 		XAdmin admin = new XAdmin();
-		admin.setAdmin_id(req.getParameter("adminid"));
-		admin.setAdmin_pw(req.getParameter("adminpw"));
+		admin.setAdminId(req.getParameter("adminid"));
+		admin.setAdminPw(req.getParameter("adminpw"));
 		return admin;
 	}
 

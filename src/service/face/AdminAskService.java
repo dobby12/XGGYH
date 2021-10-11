@@ -29,7 +29,13 @@ public interface AdminAskService {
 	 */
 	public List<XAsk> getAskList(Paging paging);
 
-	public XAsk getAsk_no(HttpServletRequest req);
+	/**
+	 * 문의 askNo 구함
+	 * 
+	 * @param req - 요청 정보 객체
+	 * @return XAsk
+	 */
+	public XAsk getAskNo(HttpServletRequest req);
 
 	/**
 	 * 선택한 ask_no에 맞는 게시글 상세 조회

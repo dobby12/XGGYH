@@ -40,7 +40,7 @@ public interface AdminAskDao {
 	 * @param xask - 조회할 id를 가진 객체
 	 * @return String - 작성자 닉네임
 	 */
-	public String getNickByMem_id(Connection conn, XAsk xask);
+	public String getNickByMemId(Connection conn, XAsk xask);
 
 	/**
 	 * 댓글 정보 저장

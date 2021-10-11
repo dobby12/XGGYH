@@ -48,15 +48,15 @@ public class AdminAskServiceImpl implements AdminAskService {
 	}
 
 	@Override
-	public XAsk getAsk_no(HttpServletRequest req) {
+	public XAsk getAskNo(HttpServletRequest req) {
 		
 		XAsk ask_no = new XAsk();
 		
 		//ask_no 전달 파라미터 검증 - !null, !""
-		String param = req.getParameter("ask_no");
+		String param = req.getParameter("askNo");
 		
 		if(param!=null && !"".equals(param)) {
-			ask_no.setAsk_no( Integer.parseInt(param) );
+			ask_no.setAskNo( Integer.parseInt(param) );
 		}
 		
 		return ask_no;
@@ -77,7 +77,7 @@ public class AdminAskServiceImpl implements AdminAskService {
 		
 		Connection conn = JDBCTemplate.getConnection();
 		
-		return adminAskDao.getNickByMem_id( conn, xask );
+		return adminAskDao.getNickByMemId( conn, xask );
 	}
 
 	@Override
@@ -85,10 +85,10 @@ public class AdminAskServiceImpl implements AdminAskService {
 		
 		XComment comment = new XComment();
 		
-		comment.setAsk_no(Integer.parseInt(req.getParameter("ask_no")));
-		comment.setComment_content(req.getParameter("comment"));
+		comment.setAskNo(Integer.parseInt(req.getParameter("askNo")));
+		comment.setCommentContent(req.getParameter("comment"));
 		
-		comment.setAdmin_id( req.getParameter("admin_id") );
+		comment.setAdminId( req.getParameter("adminId") );
 		
 		Connection conn = JDBCTemplate.getConnection();
 		
