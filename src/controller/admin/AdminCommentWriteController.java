@@ -13,7 +13,7 @@ import dto.XComment;
 import service.face.AdminAskService;
 import service.impl.AdminAskServiceImpl;
 
-@WebServlet("/admin/ask/write")
+@WebServlet("/admin/comment/write")
 public class AdminCommentWriteController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	

@@ -8,50 +8,10 @@
 	XAsk xask = (XAsk) request.getAttribute("xask");
 %>
 
-<c:import url="/WEB-INF/views/layout/header.jsp" />
+<c:import url="/WEB-INF/views/layout/adminheader.jsp" />
 
 <script type="text/javascript" src="/resources/js/httpRequest.js"></script>
 <script type="text/javascript">
-
-$(document).ready(function(){
-	
-	//목록 버튼 동작
-	$("#btnList").click(function(){
-		history.go(-1);
-	});
-
-});
-
-
-window.onload = function(){
-	btnAnswer.onclick = function(){
-		console.log("btnAnswer called")
-		
-		sendRequest("POST", "/admin/comment/write", "", callback);
-		
-	}
-}
-
-function callback(){
-	if(httpRequest.readyState == 4){
-		if(httpRequest.status == 200){
-			
-			console.log("정상적인 AJAX 요청/응답 성공")
-			
-			printData();
-			
-		} else {
-			console.log("AJAX 요청/응답 실패")
-		}
-	}
-}
-
-function printData(){
-	console.log("printData() called")
-	
-	//ajax 응답으로 받은 html 코드를 #result에 반영하기
-	answer.innerHTML = httpRequest.responseText;
-}
 
 
 </script>
@@ -98,7 +58,7 @@ td {
 </tr>
 
 </table>
-<div id="answer"></div>
+<div id="answer" class="container"></div>
 
 <c:if test="${login }"> <!-- 관리자 권한 설정 어떻게 하지.. -->
 <br>
@@ -110,7 +70,7 @@ td {
 
 <br><br>
 
-	<button id="btnList" class="btn btn-default">목록으로</button>
+	<a href="<%=request.getContextPath() %>/admin/ask/list"><button id="btnList" class="btn btn-default">목록으로</button></a>
 	<button type="submit" id="btnAnswer" class="btn btn-info">답변하기</button>
 
 </form>
@@ -123,7 +83,7 @@ td {
 <div class="container" style="text-align: center;">
 <strong>잘못된 접근입니다. 관리자 로그인이 필요합니다.</strong>
 <br><br>
-<button id="btnList" class="btn btn-default">목록으로</button>
+<a href="<%=request.getContextPath() %>/admin/ask/list"><button id="btnList" class="btn btn-default">목록으로</button></a>
 <a href="<%=request.getContextPath() %>/admin"><button id="btnLogin" class="btn btn-info">로그인</button></a>
 
 

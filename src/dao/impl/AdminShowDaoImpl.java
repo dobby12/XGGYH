@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-<<<<<<< HEAD
 
 import common.JDBCTemplate;
 import dao.face.AdminShowDao;
@@ -74,14 +73,7 @@ public class AdminShowDaoImpl implements AdminShowDao {
 		try {
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, viewShow.getKindNo());
-=======
-import java.util.ArrayList;
-import java.util.List;
 
-import common.JDBCTemplate;
-import dao.face.AdminShowDao;
-import dto.XShow;
-import util.Paging;
 
 public class AdminShowDaoImpl implements AdminShowDao {
 
@@ -255,5 +247,5 @@ public class AdminShowDaoImpl implements AdminShowDao {
 		
 >>>>>>> 798766a036f2eb4433e3b36870f4c615d8b3812c
 	}
-
+	
 }

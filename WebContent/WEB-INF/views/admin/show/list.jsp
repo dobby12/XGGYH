@@ -9,7 +9,7 @@
 	List<XShow> list = (List) request.getAttribute("list");
 %>
 
-<c:import url="/WEB-INF/views/layout/header.jsp"></c:import>
+<c:import url="/WEB-INF/views/layout/adminheader.jsp"></c:import>
 
 <style type="text/css">
 

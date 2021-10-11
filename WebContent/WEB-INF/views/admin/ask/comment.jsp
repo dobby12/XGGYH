@@ -3,7 +3,6 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<div class="container">
 <table class="table">
 	<tr>
 		<td style="width: 25%">문의 번호</td>
@@ -16,5 +15,3 @@
 	</tr>
 	
 </table>
-
-</div>
