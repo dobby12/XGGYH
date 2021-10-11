@@ -7,7 +7,6 @@
 
 <!-- jQuery 2.2.4 -->
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-
 <script type="text/javascript">
 
 //유효성 검사
@@ -22,13 +21,19 @@ function checked() {
 	
 	if (memid.value == "") {
 		alert("아이디를 입력하세요.");
-		memnick.focus();
+		memid.focus();
 		return false;
 	}
 	
 	if (mempw.value == "") {
 		alert("비밀번호를 입력하세요.");
 		mempw.focus();
+		return false;
+	}
+	
+	if (mempw.value != mempw2.value) {
+		alert("비밀번호가 일치하지 않습니다.")
+		mempw2.focus();
 		return false;
 	}
 	
@@ -98,8 +103,6 @@ form {
 	<div class="form-group">
 		<label for="mempw2" class="control-label">비밀번호 확인</label>
 		<input type="text" id="mempw2" name="mempw2" class="form-control"/>
-		<span id="alert-success" style="display: none;">비밀번호가 일치합니다.</span>
-		<span id="alert-danger" style="display: none; color: #d92742; font-weight: bold; ">비밀번호가 일치하지 않습니다.</span>
 	</div>
 	<div class="form-group">
 		<label for="memnick" class="control-label">닉네임</label>
