@@ -17,7 +17,6 @@ import service.impl.ReviewServiceImpl;
 public class ReviewDetailController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	//BoardService 객체 생성
 	private ReviewService reviewService = new ReviewServiceImpl();
 	
 	@Override
@@ -31,7 +30,7 @@ public class ReviewDetailController extends HttpServlet {
 		req.setAttribute("viewReview", viewReview);
 
 		
-		req.setAttribute("mem_nick", reviewService.getMemNick(viewReview));
+		req.setAttribute("memNick", reviewService.getMemNick(viewReview));
 		
 		
 		XFile xFile = reviewService.viewFile(viewReview);

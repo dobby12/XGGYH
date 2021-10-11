@@ -15,30 +15,26 @@ import util.Paging;
 
 public class ReviewDaoImpl implements ReviewDao {
 	
-	private PreparedStatement ps = null; //SQL수행 객체
-	private ResultSet rs = null; //SQL조회 결과 객체
+	private PreparedStatement ps = null;
+	private ResultSet rs = null;
 	
 	@Override
 	public List<XReview> selectAll(Connection conn) {
 		
-		//SQL 작성
 		String sql = "";
 		sql += "SELECT * FROM xreview";
 		sql += " ORDER BY review_no DESC";
 		
-		//결과 저장할 List
 		List<XReview> reviewList = new ArrayList<>();
 		
 		try {
-			ps = conn.prepareStatement(sql); //SQL수행 객체
+			ps = conn.prepareStatement(sql);
 			
-			rs = ps.executeQuery(); //SQL 수행 및 결과집합 저장
+			rs = ps.executeQuery();
 			
-			//조회 결과 처리
 			while(rs.next()) {
-				XReview r = new XReview(); //결과값 저장 객체
+				XReview r = new XReview();
 				
-				//결과값 한 행 처리
 				r.setReviewNo( rs.getInt("review_no") );
 				r.setShowNo( rs.getInt("show_no") );
 				r.setFileNo( rs.getInt("file_no") );
@@ -49,26 +45,22 @@ public class ReviewDaoImpl implements ReviewDao {
 				r.setReviewScore( rs.getInt("review_score") );
 				r.setReviewHit( rs.getInt("review_hit") );
 				
-				//리스트에 결과값 저장
 				reviewList.add(r);
 			}
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			//DB객체 닫기
 			JDBCTemplate.close(rs);
 			JDBCTemplate.close(ps);
 		}
 		
-		//최종 결과 반환
 		return reviewList;
 	}
 	
 	@Override
 	public List<XReview> selectAll(Connection conn, Paging paging) {
 		
-		//SQL작성
 		String sql = "";
 		sql += "SELECT * FROM (";
 		sql += "	SELECT rownum rnum, X.* FROM (";
@@ -81,7 +73,6 @@ public class ReviewDaoImpl implements ReviewDao {
 		sql += " ) XREVIEW";
 		sql += " WHERE rnum BETWEEN ? AND ?";
 
-		//결과 저장할 List
 		List<XReview> reviewList = new ArrayList<>(); 
 		
 		try {
@@ -104,7 +95,6 @@ public class ReviewDaoImpl implements ReviewDao {
 				review.setReviewScore( rs.getInt("review_score") );
 				review.setReviewHit( rs.getInt("review_hit") );
 
-				//리스트에 결과값 저장
 				reviewList.add(review);
 			}
 			
@@ -156,14 +146,14 @@ public class ReviewDaoImpl implements ReviewDao {
 		XReview viewReview = null;
 		
 		try {
-			ps = conn.prepareStatement(sql); //SQL수행 객체
+			ps = conn.prepareStatement(sql);
 			
-			ps.setInt(1, reviewNo.getReviewNo()); //조회할 게시글 번호 적용
+			ps.setInt(1, reviewNo.getReviewNo());
 			
-			rs = ps.executeQuery(); //SQL 수행 및 결과집합 저장
+			rs = ps.executeQuery();
 			
 			while(rs.next()) {
-				viewReview = new XReview(); //결과값 저장 객체
+				viewReview = new XReview();
 				
 				viewReview.setReviewNo( rs.getInt("review_no") );
 				viewReview.setShowNo( rs.getInt("show_no") );
@@ -190,7 +180,6 @@ public class ReviewDaoImpl implements ReviewDao {
 	@Override
 	public int updateReviewHit(Connection conn, XReview reviewNo) {
 		
-		//SQL 작성
 		String sql = "";
 		sql += "UPDATE xreview";
 		sql += " SET review_hit = review_hit + 1";
@@ -199,11 +188,11 @@ public class ReviewDaoImpl implements ReviewDao {
 		int res = 0;
 		
 		try {
-			ps = conn.prepareStatement(sql); //SQL수행 객체
+			ps = conn.prepareStatement(sql);
 			
-			ps.setInt(1, reviewNo.getReviewNo()); //조회할 게시글 번호 적용
+			ps.setInt(1, reviewNo.getReviewNo());
 			
-			res = ps.executeUpdate(); //SQL 수행
+			res = ps.executeUpdate();
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -224,10 +213,10 @@ public class ReviewDaoImpl implements ReviewDao {
 		String mem_nick = null;
 		
 		try {
-			ps = conn.prepareStatement(sql); //SQL수행 객체
-			ps.setString(1, viewReview.getMemId()); //조회할 id 적용
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, viewReview.getMemId());
 			
-			rs = ps.executeQuery(); //SQL 수행 및 결과집합 저장
+			rs = ps.executeQuery();
 			
 			while(rs.next()) {
 				mem_nick = rs.getString("mem_nick");
@@ -247,7 +236,6 @@ public class ReviewDaoImpl implements ReviewDao {
 	@Override
 	public int insert(Connection conn, XReview review) {
 		
-		//다음 게시글 번호 조회 쿼리
 		String sql = "";
 		sql += "INSERT INTO board(REVIEW_NO, SHOW_NO, FILE_NO, MEM_ID, REVIEW_TITLE, REVIEW_CONTENT, REVIEW_DATE, REVIEW_SCORE, REVIEW_HIT)";
 		sql += " VALUES (?, ?, ?, ?, ?, ?, ?, 0)";
@@ -255,7 +243,6 @@ public class ReviewDaoImpl implements ReviewDao {
 		int res = 0;
 		
 		try {
-			//DB작업
 			ps = conn.prepareStatement(sql);
 			
 			ps.setInt(1, review.getReviewNo());
@@ -284,8 +271,7 @@ public class ReviewDaoImpl implements ReviewDao {
 		String sql = "";
 		sql += "SELECT xreview_seq.nextval FROM dual";
 		
-		//결과 저장 변수
-		int nextReview_no = 0;
+		int nextReviewNo = 0;
 		
 		try {
 			ps = conn.prepareStatement(sql);
@@ -293,7 +279,7 @@ public class ReviewDaoImpl implements ReviewDao {
 			rs = ps.executeQuery();
 			
 			while(rs.next()) {
-				nextReview_no = rs.getInt(1);
+				nextReviewNo = rs.getInt(1);
 			}
 			
 		} catch (SQLException e) {
@@ -303,7 +289,7 @@ public class ReviewDaoImpl implements ReviewDao {
 			JDBCTemplate.close(ps);
 		}
 		
-		return nextReview_no;
+		return nextReviewNo;
 	}
 	
 	@Override
@@ -373,20 +359,17 @@ public class ReviewDaoImpl implements ReviewDao {
 	@Override
 	public int update(Connection conn, XReview review) {
 		
-		//다음 게시글 번호 조회 쿼리
 		String sql = "";
 		sql += "UPDATE xreview";
 		sql += " SET review_title = ?,";
 		sql += " 	review_content = ?";
 		sql += " WHERE review_no = ?";
 		
-		//DB 객체
 		PreparedStatement ps = null; 
 		
 		int res = -1;
 		
 		try {
-			//DB작업
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, review.getReviewTitle());
 			ps.setString(2, review.getReviewContent());
@@ -407,18 +390,15 @@ public class ReviewDaoImpl implements ReviewDao {
 	@Override
 	public int delete(Connection conn, XReview review) {
 		
-		//다음 게시글 번호 조회 쿼리
 		String sql = "";
 		sql += "DELETE xreview";
 		sql += " WHERE review_no = ?";
 		
-		//DB 객체
 		PreparedStatement ps = null; 
 		
 		int res = -1;
 		
 		try {
-			//DB작업
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, review.getReviewNo());
 
@@ -437,18 +417,15 @@ public class ReviewDaoImpl implements ReviewDao {
 	@Override
 	public int deleteFile(Connection conn, XReview review) {
 		
-		//다음 게시글 번호 조회 쿼리
 		String sql = "";
 		sql += "DELETE xfile";
 		sql += " WHERE file_no = ?";
 		
-		//DB 객체
 		PreparedStatement ps = null; 
 		
 		int res = -1;
 		
 		try {
-			//DB작업
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, review.getReviewNo());
 

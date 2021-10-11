@@ -16,7 +16,6 @@ import service.impl.ReviewServiceImpl;
 public class ReviewDeleteController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	//BoardService 객체 생성
 	private ReviewService reviewService = new ReviewServiceImpl();
 	
 	@Override
@@ -26,7 +25,6 @@ public class ReviewDeleteController extends HttpServlet {
 		
 		reviewService.delete(review);
 		
-		//목록으로 리다이렉트
 		resp.sendRedirect("/review/list");	
 
 	}

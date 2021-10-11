@@ -190,13 +190,13 @@ public class ReviewServiceImpl implements ReviewService {
 		
 		Connection conn = JDBCTemplate.getConnection();
 		
-		int review_no = reviewDao.selectNextReviewNo(conn);
+		int reviewNo = reviewDao.selectNextReviewNo(conn);
 		
 		if(review != null) {
 			
-			review.setMemId( (String)req.getSession().getAttribute("mem_id") );
+			review.setMemId( (String)req.getSession().getAttribute("memId") );
 
-			review.setReviewNo(review_no); //PK
+			review.setReviewNo(reviewNo); //PK
 			
 			if(review.getReviewTitle()==null || "".equals(review.getReviewTitle())) {
 				review.setReviewTitle("(제목없음)");
@@ -210,7 +210,7 @@ public class ReviewServiceImpl implements ReviewService {
 		}
 		
 		if(reviewFile != null) {
-			reviewFile.setFileNo(review_no); //게시글 번호 입력 (FK)
+			reviewFile.setFileNo(reviewNo); //(FK)
 			
 			if( reviewDao.insertFile(conn, reviewFile) > 0 ) {
 				JDBCTemplate.commit(conn);

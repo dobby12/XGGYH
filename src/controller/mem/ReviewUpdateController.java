@@ -17,29 +17,22 @@ import service.impl.ReviewServiceImpl;
 public class ReviewUpdateController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	//BoardService 객체 생성
 	private ReviewService reviewService = new ReviewServiceImpl();
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		//전달파라미터 얻기 - boardno
 		XReview reviewNo = reviewService.getReviewNo(req);
 
-		//상세보기 결과 조회
 		XReview updateReview = reviewService.view(reviewNo);
 		
-		//닉네임 전달
 		req.setAttribute("mem_nick", reviewService.getMemNick(updateReview));
 	
-		//조회결과 MODEL값 전달
 		req.setAttribute("updateReivew", updateReview);
 
-		//첨부파일 정보 VIEW에 전달
 		XFile xFile = reviewService.viewFile(updateReview);
 		req.setAttribute("xFile", xFile);
 
-		//VIEW 지정 및 응답 - forward
 		req.getRequestDispatcher("/WEB-INF/views/board/update.jsp").forward(req, resp);		
 
 	}
