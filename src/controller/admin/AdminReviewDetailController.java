@@ -32,10 +32,10 @@ public class AdminReviewDetailController extends HttpServlet {
 		req.setAttribute("viewReview", viewReview);
 	
 		//닉네임 전달
-		req.setAttribute("memnick", adminReviewService.getNick(viewReview));
+		req.setAttribute("memNick", adminReviewService.getNick(viewReview));
 		
 		//공연 제목 전달
-		req.setAttribute("showtitle", adminReviewService.getTitle(viewReview));
+		req.setAttribute("showTitle", adminReviewService.getTitle(viewReview));
 		
 		//첨부파일 정보 조회
 		XFile reviewFile = adminReviewService.getFile(viewReview);

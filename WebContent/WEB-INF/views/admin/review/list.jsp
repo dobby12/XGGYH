@@ -23,11 +23,9 @@ table {
 <thead>
 <tr>
 	<th style="text-align: center; width: 8%">리뷰 번호</th>
-	<th style="text-align: center; width: 8%">공연 번호</th>
-	<th style="text-align: center; width: 51%">제목</th>
-	<th style="text-align: center; width: 10%">작성자</th>
-	<th style="text-align: center; width: 10%">작성 날짜</th>
-	<th style="text-align: center; width: 5%">평점</th>
+	<th style="text-align: center; width: 59%">제목</th>
+	<th style="text-align: center; width: 13%">작성자</th>
+	<th style="text-align: center; width: 12%">작성 날짜</th>
 	<th style="text-align: center; width: 8%">조회수</th>
 </tr>
 </thead>
@@ -36,13 +34,11 @@ table {
 </tbody>
 <tr>
 
-	<td>${review.review_no }</td>
-	<td>${review.show_no }</td>
-	<td><a href="<%=request.getContextPath() %>/admin/review/detail?review_no=${review.review_no }">${review.review_title }</a></td>
-	<td>${review.mem_id }</td>
-	<td>${review.review_date }</td>
-	<td>${review.review_score }</td>
-	<td>${review.review_hit }</td>
+	<td>${review.reviewNo }</td>
+	<td><a href="<%=request.getContextPath() %>/admin/review/detail?reviewno=${review.reviewNo }">${review.reviewTitle }</a></td>
+	<td>${review.memId }</td>
+	<td>${review.reviewDate }</td>
+	<td>${review.reviewHit }</td>
 </tr>
 </tbody>
 </c:forEach>
@@ -51,7 +47,7 @@ table {
 </table>
 
 </div>
-<c:import url="/WEB-INF/views/layout/adminReviewPaging.jsp" />
+<c:import url="/WEB-INF/views/layout/paging.jsp" />
 
 </body>
 </html>

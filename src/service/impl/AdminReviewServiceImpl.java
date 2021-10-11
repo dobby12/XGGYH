@@ -52,10 +52,10 @@ public class AdminReviewServiceImpl implements AdminReviewService {
 		XReview reviewno  = new XReview();
 
 		//review_no 전달파라미터 검증 - null, ""
-		String param = req.getParameter("review_no");
-		if(param!=null && !"".equals(param)) {
+		String param = req.getParameter("reviewno");
+		if(param != null && !"".equals(param)) {
 
-			reviewno.setReview_no((Integer.parseInt(param)));
+			reviewno.setReviewNo((Integer.parseInt(param)));
 		}
 
 		//결과 객체 반환

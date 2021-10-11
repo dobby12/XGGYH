@@ -69,15 +69,15 @@ public class AdminReviewDaoImpl implements AdminReviewDao {
 			while(rs.next()) {
 				XReview review = new XReview();
 				
-				review.setReview_no(rs.getInt("review_no"));
-				review.setShow_no(rs.getInt("show_no"));
-				review.setFile_no(rs.getInt("file_no"));
-				review.setMem_id(rs.getString("mem_id"));
-				review.setReview_title(rs.getString("review_title"));
-				review.setReview_content(rs.getString("review_content"));
-				review.setReview_date(rs.getDate("review_date"));
-				review.setReview_score(rs.getInt("review_score"));
-				review.setReview_hit(rs.getInt("review_hit"));
+				review.setReviewNo(rs.getInt("review_no"));
+				review.setShowNo(rs.getInt("show_no"));
+				review.setFileNo(rs.getInt("file_no"));
+				review.setMemId(rs.getString("mem_id"));
+				review.setReviewTitle(rs.getString("review_title"));
+				review.setReviewContent(rs.getString("review_content"));
+				review.setReviewDate(rs.getDate("review_date"));
+				review.setReviewScore(rs.getInt("review_score"));
+				review.setReviewHit(rs.getInt("review_hit"));
 				
 				reviewList.add(review);
 			}
@@ -102,22 +102,22 @@ public class AdminReviewDaoImpl implements AdminReviewDao {
 		
 		try {
 			ps = conn.prepareStatement(sql);
-			ps.setInt(1, reviewno.getReview_no());
+			ps.setInt(1, reviewno.getReviewNo());
 			
 			rs = ps.executeQuery();
 			
 			while(rs.next()) {
 				viewReview = new XReview();
 				
-				viewReview.setReview_no(rs.getInt("review_no"));
-				viewReview.setShow_no(rs.getInt("show_no"));
-				viewReview.setFile_no(rs.getInt("file_no"));
-				viewReview.setMem_id(rs.getString("mem_id"));
-				viewReview.setReview_title(rs.getString("review_title"));
-				viewReview.setReview_content(rs.getString("review_content"));
-				viewReview.setReview_date(rs.getDate("review_date"));
-				viewReview.setReview_score(rs.getInt("review_score"));
-				viewReview.setReview_hit(rs.getInt("review_hit"));
+				viewReview.setReviewNo(rs.getInt("review_no"));
+				viewReview.setShowNo(rs.getInt("show_no"));
+				viewReview.setFileNo(rs.getInt("file_no"));
+				viewReview.setMemId(rs.getString("mem_id"));
+				viewReview.setReviewTitle(rs.getString("review_title"));
+				viewReview.setReviewContent(rs.getString("review_content"));
+				viewReview.setReviewDate(rs.getDate("review_date"));
+				viewReview.setReviewScore(rs.getInt("review_score"));
+				viewReview.setReviewHit(rs.getInt("review_hit"));
 			}
 			
 		} catch (SQLException e) {
@@ -141,7 +141,7 @@ public class AdminReviewDaoImpl implements AdminReviewDao {
 		
 		try {
 			ps = conn.prepareStatement(sql);
-			ps.setString(1, viewReview.getMem_id());
+			ps.setString(1, viewReview.getMemId());
 			
 			rs = ps.executeQuery();
 			
@@ -170,7 +170,7 @@ public class AdminReviewDaoImpl implements AdminReviewDao {
 		
 		try {
 			ps = conn.prepareStatement(sql);
-			ps.setInt(1, viewReview.getShow_no());
+			ps.setInt(1, viewReview.getShowNo());
 			
 			rs = ps.executeQuery();
 			
@@ -200,17 +200,17 @@ public class AdminReviewDaoImpl implements AdminReviewDao {
 		try {
 			ps = conn.prepareStatement(sql);
 			
-			ps.setInt(1, viewReview.getFile_no());
+			ps.setInt(1, viewReview.getFileNo());
 			
 			rs = ps.executeQuery();
 			
 			while(rs.next()) {
 				reviewFile = new XFile();
 				
-				reviewFile.setFile_no(rs.getInt("file_no"));
-				reviewFile.setFile_origin_name(rs.getString("file_origin_name"));
-				reviewFile.setFile_stored_name(rs.getString("file_stored_name"));
-				reviewFile.setFile_size(rs.getString("file_size"));
+				reviewFile.setFileNo(rs.getInt("file_no"));
+				reviewFile.setFileOriginName(rs.getString("file_origin_name"));
+				reviewFile.setFileStoredName(rs.getString("file_stored_name"));
+				reviewFile.setFileSize(rs.getString("file_size"));
 				
 			}
 		} catch (SQLException e) {
@@ -234,7 +234,7 @@ public class AdminReviewDaoImpl implements AdminReviewDao {
 		
 		try {
 			ps = conn.prepareStatement(sql);
-			ps.setInt(1, reviewno.getReview_no());
+			ps.setInt(1, reviewno.getReviewNo());
 			
 			res = ps.executeUpdate();
 			
@@ -248,7 +248,6 @@ public class AdminReviewDaoImpl implements AdminReviewDao {
 		
 	}
 	
-	
 	@Override
 	public int deleteReviewFile(Connection conn, XReview reviewno) {
 		
@@ -260,7 +259,7 @@ public class AdminReviewDaoImpl implements AdminReviewDao {
 		
 		try {
 			ps = conn.prepareStatement(sql);
-			ps.setInt(1, reviewno.getFile_no());
+			ps.setInt(1, reviewno.getFileNo());
 			
 			res = ps.executeUpdate();
 			

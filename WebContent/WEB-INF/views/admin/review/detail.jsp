@@ -12,49 +12,49 @@
 
 <table class="table table-bordered">
 <tr>
-<td class="info">글번호</td><td colspan="3">${viewReview.review_no }</td>
+<td class="info">글번호</td><td colspan="3">${viewReview.reviewNo }</td>
 </tr>
 
 <tr>
-<td class="info">제목</td><td colspan="3">${viewReview.review_title }</td>
+<td class="info">제목</td><td colspan="3">${viewReview.reviewTitle }</td>
 </tr>
 
 <tr>
-<td class="info">아이디</td><td>${viewReview.mem_id }</td>
-<td class="info">닉네임</td><td>${memnick }</td>
+<td class="info">아이디</td><td>${viewReview.memId }</td>
+<td class="info">닉네임</td><td>${memNick }</td>
 </tr>
 
 <tr>
-<td class="info">조회수</td><td>${viewReview.review_hit }</td>
+<td class="info">조회수</td><td>${viewReview.reviewHit }</td>
 </tr>
 
 <tr>
-<td class="info">작성일</td><td colspan="3">${viewReview.review_date }</td>
+<td class="info">작성일</td><td colspan="3">${viewReview.reviewDate }</td>
 </tr>
 
 <tr>
-<td class="info">공연 제목</td><td colspan="3">${showtitle }</td>
+<td class="info">공연 제목</td><td colspan="3">${showTitle }</td>
 </tr>
 
 <tr>
-<td class="info">별점</td><td colspan="3">${viewReview.review_score }</td>
+<td class="info">별점</td><td colspan="3">${viewReview.reviewScore }</td>
 </tr>
 
 <tr><td class="info"  colspan="4">본문</td></tr>
 
-<tr><td colspan="4">${viewReview.review_content }</td></tr>
+<tr><td colspan="4">${viewReview.reviewContent }</td></tr>
 
 </table>
 
 <!-- 첨부파일 -->
 <div>
 <c:if test="${not empty reviewFile }">
-첨부파일 : ${reviewFile.file_origin_name }
+첨부파일 : ${reviewFile.fileOriginName }
 </c:if>
 </div>
 
 <div class="button">
-	<a href="<%=request.getContextPath() %>/admin/review/delete?review_no=${viewReview.review_no }"><button id="btnDelete">삭제</button></a>
+	<a href="<%=request.getContextPath() %>/admin/review/delete?reviewno=${viewReview.reviewNo }"><button id="btnDelete">삭제</button></a>
 </div>
 
 
