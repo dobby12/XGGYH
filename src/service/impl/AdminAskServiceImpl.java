@@ -9,6 +9,7 @@ import common.JDBCTemplate;
 import dao.face.AdminAskDao;
 import dao.impl.AdminAskDaoImpl;
 import dto.XAsk;
+import dto.XComment;
 import service.face.AdminAskService;
 import util.Paging;
 
@@ -77,6 +78,27 @@ public class AdminAskServiceImpl implements AdminAskService {
 		Connection conn = JDBCTemplate.getConnection();
 		
 		return adminAskDao.getNickByMem_id( conn, xask );
+	}
+
+	@Override
+	public XComment setCommentWrite(HttpServletRequest req) {
+		
+		XComment comment = new XComment();
+		
+		comment.setAsk_no(Integer.parseInt(req.getParameter("ask_no")));
+		comment.setComment_content(req.getParameter("comment"));
+		
+		comment.setAdmin_id( req.getParameter("admin_id") );
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		if( adminAskDao.insertComment(conn, comment) > 0 ) {
+			JDBCTemplate.commit(conn);
+		} else {
+			JDBCTemplate.commit(conn);
+		}
+		
+		return comment;
 	}
 
 }

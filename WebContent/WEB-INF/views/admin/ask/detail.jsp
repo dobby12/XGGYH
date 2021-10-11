@@ -16,9 +16,9 @@ $(document).ready(function(){
 	
 	//목록 버튼 동작
 	$("#btnList").click(function(){
-		$(location).attr("href", "/XGGYH/admin/ask/list");
-	})
-});
+		history.go(-1);
+	});
+
 
 </script>
 
@@ -60,21 +60,43 @@ td {
 </tr>
 
 <tr>
-	<td colspan="10" style="height: 500px; border: 1px solid #ccc;">${xask.ask_content }</td>
+	<td colspan="10" style="height: 300px; border: 1px solid #ccc;">${xask.ask_content }</td>
 </tr>
 
 </table>
 
+<c:if test="${login }"> <!-- 관리자 권한 설정 어떻게 하지.. -->
+<div id="answer"></div>
 <br>
-<div class="text-center">
+<div class="container" style="width: 1000px; text-align: center;">
+<form method="post" action="<%=request.getContextPath() %>/admin/ask/write?ask_no=${xask.ask_no }">
+<input type="hidden" name="admin_id" value="${adminid }" />
+	<textarea id="comment" name="comment" style="width: 950px; height: 100px; padding: 10px;"placeholder="문의의 답변을 입력하세요."></textarea>
+
+
+<br><br>
+
 	<button id="btnList" class="btn btn-default">목록으로</button>
-	<button id="btnUpdate" class="btn btn-info">답변하기</button>
+	<button type="submit" id="btnAnswer" class="btn btn-info">답변하기</button>
+
+</form>
+
+</div>
+</c:if>
+
+<c:if test="${empty login }">
+
+<div class="container" style="text-align: center;">
+<strong>잘못된 접근입니다. 관리자 로그인이 필요합니다.</strong>
+<br><br>
+<button id="btnList" class="btn btn-default">목록으로</button>
+<a href="<%=request.getContextPath() %>/admin"><button id="btnLogin" class="btn btn-info">로그인</button></a>
+
+
 </div>
 
-
+</c:if>
 </div>
-
-
 
 </body>
 </html>

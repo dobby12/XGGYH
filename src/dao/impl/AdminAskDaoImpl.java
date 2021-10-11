@@ -10,6 +10,7 @@ import java.util.List;
 import common.JDBCTemplate;
 import dao.face.AdminAskDao;
 import dto.XAsk;
+import dto.XComment;
 import util.Paging;
 
 public class AdminAskDaoImpl implements AdminAskDao {
@@ -157,6 +158,34 @@ public class AdminAskDaoImpl implements AdminAskDao {
 		}
 		
 		return nick;
+	}
+
+	@Override
+	public int insertComment(Connection conn, XComment comment) {
+		
+		String sql = "";
+		sql += "INSERT INTO xcomment( comment_no, ask_no, admin_id, comment_content";
+		sql += " VALUES ( xcomment_seq.nextval, ?, ?, ?);";
+		
+		int res = 0;
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			
+			ps.setInt(1, comment.getAsk_no());
+			ps.setString(2, comment.getAdmin_id());
+			ps.setString(3, comment.getComment_content());
+			
+			res = ps.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(ps);
+		}
+		
+		
+		return res;
 	}
 
 }

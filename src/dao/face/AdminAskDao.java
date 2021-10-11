@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.util.List;
 
 import dto.XAsk;
+import dto.XComment;
 import util.Paging;
 
 public interface AdminAskDao {
@@ -40,6 +41,15 @@ public interface AdminAskDao {
 	 * @return String - 작성자 닉네임
 	 */
 	public String getNickByMem_id(Connection conn, XAsk xask);
+
+	/**
+	 * 댓글 정보 저장
+	 * 
+	 * @param conn - DB 연결 객체
+	 * @param comment - 전달된 댓글 정보
+	 * @return - 1 or 0
+	 */
+	public int insertComment(Connection conn, XComment comment);
 
 
 }

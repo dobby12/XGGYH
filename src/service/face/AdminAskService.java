@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import dto.XAsk;
+import dto.XComment;
 import util.Paging;
 
 public interface AdminAskService {
@@ -45,6 +46,13 @@ public interface AdminAskService {
 	 * @return - 게시글 작성자의 닉네임
 	 */
 	public String getNick(XAsk xask);
+
+	/**
+	 * ask_no을 통해서 해당 ask_no에 맞는 문의에 댓글 작성
+	 * 
+	 * @param req - 요청 객체
+	 */
+	public XComment setCommentWrite(HttpServletRequest req);
 
 
 }

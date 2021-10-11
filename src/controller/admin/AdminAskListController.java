@@ -31,6 +31,8 @@ public class AdminAskListController extends HttpServlet {
 		req.setAttribute("list", list);
 		
 		req.setAttribute("paging", paging);
+		
+		req.setAttribute("linkUrl", "/admin/ask/list");
 	
 		req.getRequestDispatcher("/WEB-INF/views/admin/ask/list.jsp").forward(req, resp);
 		
