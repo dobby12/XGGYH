@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dto.XAsk;
+import dto.XShow;
 import service.face.AdminShowService;
 import service.impl.AdminShowServiceImpl;
 import util.Paging;
@@ -26,7 +26,7 @@ public class AdminShowListController extends HttpServlet {
 
 		Paging paging = adminShowService.getPaging(req);
 		
-		List<XAsk> list = adminShowService.getShowList(paging);
+		List<XShow> list = adminShowService.getShowList(paging);
 		
 		req.setAttribute("list", list);
 		
