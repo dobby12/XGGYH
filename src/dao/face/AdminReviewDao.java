@@ -70,5 +70,14 @@ public interface AdminReviewDao {
 	 * @return - 조회할 첨부파일 객체
 	 */
 	public XFile selectFile(Connection connection, XReview viewReview);
+	
+	/**
+	 * 게시글 파일 삭제
+	 * 
+	 * @param conn
+	 * @param reviewno
+	 * @return
+	 */
+	public int deleteReviewFile(Connection conn, XReview reviewno);
 
 }

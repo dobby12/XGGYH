@@ -5,6 +5,7 @@
 
 <c:import url="/WEB-INF/views/layout/header.jsp" />
 
+<div class="container">
 
 <h1>게시글 상세보기</h1>
 <hr>
@@ -53,9 +54,11 @@
 </div>
 
 <div class="button">
-	<a href="<%=request.getContextPath() %>/admin/board/delete?boardno=${viewReview.review_no }"><button id="btnDelete">삭제</button></a>
+	<a href="<%=request.getContextPath() %>/admin/review/delete?review_no=${viewReview.review_no }"><button id="btnDelete">삭제</button></a>
 </div>
 
+
+</div>
 </body>
 </html>
 

@@ -93,6 +93,12 @@ public class AdminReviewServiceImpl implements AdminReviewService {
 		
 		Connection conn = JDBCTemplate.getConnection();
 		
+		if(adminReviewDao.deleteReviewFile(conn, reviewno) > 0) {
+			JDBCTemplate.commit(conn);
+		} else {
+			JDBCTemplate.rollback(conn);
+		}
+		
 		if(adminReviewDao.deleteReview(conn, reviewno) > 0 ) {
 			JDBCTemplate.commit(conn);
 		} else { 

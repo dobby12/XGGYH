@@ -189,28 +189,6 @@ public class AdminReviewDaoImpl implements AdminReviewDao {
 	}
 	
 	@Override
-	public int deleteReview(Connection conn, XReview reviewno) {
-		
-		String sql = "";
-		sql += "DELETE review";
-		sql += " WHERE review_no = ?";
-		
-		int res = -1;
-		
-		try {
-			ps = conn.prepareStatement(sql);
-			ps.setInt(1, reviewno.getReview_no());
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			JDBCTemplate.close(ps);
-		}
-		
-		return res;
-		
-	}
-	
-	@Override
 	public XFile selectFile(Connection conn, XReview viewReview) {
 		
 		String sql = "";
@@ -241,8 +219,58 @@ public class AdminReviewDaoImpl implements AdminReviewDao {
 			JDBCTemplate.close(rs);
 			JDBCTemplate.close(ps);
 		}
-
+		
 		return reviewFile;
 	}
 	
+	@Override
+	public int deleteReview(Connection conn, XReview reviewno) {
+		
+		String sql = "";
+		sql += "DELETE xreview";
+		sql += " WHERE review_no = ?";
+		
+		int res = -1;
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, reviewno.getReview_no());
+			
+			res = ps.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(ps);
+		}
+		
+		return res;
+		
+	}
+	
+	
+	@Override
+	public int deleteReviewFile(Connection conn, XReview reviewno) {
+		
+		String sql = "";
+		sql += "DELETE xfile";
+		sql += " WHERE file_no = ?";
+		
+		int res = -1;
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, reviewno.getFile_no());
+			
+			res = ps.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(ps);
+		}
+		
+		return res;
+	}
+
 }
