@@ -17,6 +17,32 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
+<style>
+.main_list {
+    width: 1100px;
+    margin: 0 auto;
+}
+
+.list_start {
+    text-align: center;
+}
+
+.list_detail {
+    display: inline-block;
+    width: 300px;
+    height: 350px;
+	border: 1px solid;
+    margin-bottom: 40px;
+    margin-right: 20px;
+    margin-left: 20px;
+    text-align: center;
+}
+
+.paging_start{
+	text-align: center;
+}
+  </style>
+
 </head>
 <body>
 
@@ -24,51 +50,20 @@
 
 <div class="container">
 
-<h1>공연 정보 게시판</h1>
+<h1>공연 정보 게시판(전체 리스트)</h1>
 <hr>
 
-<table class="table table-hover table-condensed">
+<div class="main_list">
+		<div class="list_start">
+			<c:forEach items="${showList }" var="showList">
+			<div class="list_detail"><p>${showList.showTitle }
+			<br> ${showList.showDirector }</p></div>
+			</c:forEach>
+		</div>
+</div>
 
-<thead>
-<tr>
-	<th style="text-align: center; width: 5%">공연 번호</th>
-	<th style="text-align: center; width: 5%">작성자</th>
-	<th style="text-align: center; width: 10%">카테고리</th>
-	<th style="text-align: center; width: 10%">장르</th>
-	<th style="text-align: center; width: 15%">공연장</th>
-	<th style="text-align: center; width: 20%">공연 제목</th>
-	<th style="text-align: center; width: 30%">내용</th>
-	<th style="text-align: center; width: 10%">작성일</th>
-	<th style="text-align: center; width: 30%">연령 제한</th>
-	<th style="text-align: center; width: 10%">감독</th>
-	<th style="text-align: center; width: 30%">출연 배우</th>
-	<th style="text-align: center; width: 10%">공연 시작</th>
-	<th style="text-align: center; width: 10%">공연 종료</th>
-</tr>
-</thead>
 
-<c:forEach items="${showList}" var="show">
-</tbody>
-<tr>
-
-	<td>${show.show_no }</td>
-	<td>${show.admin_id }</td>
-	<td>${show.kind_no }</td>
-	<td>${show.genre_no }</td>
-	<td>${show.hall_no }</td>
-	<td><a href="<%=request.getContextPath() %>/show/detail">${show.show_title }</a></td>
-	<td>${show.show_content }</td>
-	<td>${show.show_date }</td>
-	<td>${show.show_age }</td>
-	<td>${show.show_director }</td>
-	<td>${show.show_actor }</td>
-	<td>${show.show_start }</td>
-	<td>${show.show_end }</td>
-
-</tr>
-</tbody>
-</c:forEach>
-</table>
+<c:import url="/WEB-INF/views/layout/paging.jsp" />
 
 </div>
 

@@ -28,27 +28,27 @@ table {
 <table class="table table-hover table-condensed">
 <thead>
 <tr>
-	<th style="text-align: center; width: 7.5%">번호</th>
-	<th style="text-align: center; width: 15%">작성자</th>
-	<th style="text-align: center; width: 50%">제목</th>
-	<th style="text-align: center; width: 7.5%">문의종류</th>
-	<th style="text-align: center; width: 12.5%">작성일</th>
-	<th style="text-align: center; width: 7.5%">답변여부</th>
+	<th style="text-align: center; width: 7.5%">공연번호</th>
+	<th style="text-align: center; width: 15%">관리자</th>
+	<th style="text-align: center; width: 47.5%">제목</th>
+	<th style="text-align: center; width: 10%">작성일</th>
+	<th style="text-align: center; width: 10%">시작일</th>
+	<th style="text-align: center; width: 10%">종료일</th>
 </tr>
 </thead>
 
 <tbody>
 <% for(int i=0 ; i<list.size(); i++) { %>
 <tr>
-	<td><%= list.get(i).getAskNo() %></td>
-	<td><%= list.get(i).getMemId() %></td>
-	<td><a href="<%=request.getContextPath() %>/admin/ask/detail?askNo=<%=list.get(i).getAskNo() %>">
-			<%= list.get(i).getAskTitle() %>
+	<td><%= list.get(i).getShowNo() %></td>
+	<td><%= list.get(i).getAdminId() %></td>
+	<td><a href="<%=request.getContextPath() %>/admin/show/detail?askNo=<%=list.get(i).getShowNo() %>">
+			<%= list.get(i).getShowTitle() %>
 		</a>
 	</td>
-	<td><%= list.get(i).getAskKind() %></td>
-	<td><%= list.get(i).getAskDate() %></td>
-	<td><%= list.get(i).getAskState() %></td>
+	<td><%= list.get(i).getShowDate() %></td>
+	<td><%= list.get(i).getShowStart() %></td>
+	<td><%= list.get(i).getShowEnd() %></td>
 </tr>
 <%} %>
 </tbody>
