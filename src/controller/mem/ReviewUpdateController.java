@@ -26,14 +26,14 @@ public class ReviewUpdateController extends HttpServlet {
 
 		XReview updateReview = reviewService.view(reviewNo);
 		
-		req.setAttribute("mem_nick", reviewService.getMemNick(updateReview));
+		req.setAttribute("memNick", reviewService.getMemNick(updateReview));
 	
 		req.setAttribute("updateReivew", updateReview);
 
 		XFile xFile = reviewService.viewFile(updateReview);
 		req.setAttribute("xFile", xFile);
 
-		req.getRequestDispatcher("/WEB-INF/views/board/update.jsp").forward(req, resp);		
+		req.getRequestDispatcher("/WEB-INF/views/review/update.jsp").forward(req, resp);		
 
 	}
 	
@@ -42,7 +42,7 @@ public class ReviewUpdateController extends HttpServlet {
 		
 		reviewService.update(req);
 		
-		resp.sendRedirect("/board/list");
+		resp.sendRedirect("/review");
 		
 	}
 }

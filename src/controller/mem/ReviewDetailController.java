@@ -22,23 +22,21 @@ public class ReviewDetailController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		XReview review_no = reviewService.getReviewNo(req);
+		XReview reviewNo = reviewService.getReviewNo(req);
 
 		
-		XReview viewReview = reviewService.view(review_no);
+		XReview viewReview = reviewService.view(reviewNo);
 		
 		req.setAttribute("viewReview", viewReview);
 
-		
 		req.setAttribute("memNick", reviewService.getMemNick(viewReview));
 		
+		req.setAttribute("showTitle", reviewService.getShowTitle(viewReview));
 		
-		XFile xFile = reviewService.viewFile(viewReview);
+		XFile reviewFile = reviewService.viewFile(viewReview);
 		
-		req.setAttribute("xFile", xFile);
+		req.setAttribute("reviewFile", reviewFile);
 		
-		
-		req.getRequestDispatcher("/WEB-INF/views/review/detail.jsp").forward(req, resp);		
+		req.getRequestDispatcher("/WEB-INF/views/mem/review/detail.jsp").forward(req, resp);		
 	}
-	
 }

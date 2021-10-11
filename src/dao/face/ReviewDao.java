@@ -59,6 +59,15 @@ public interface ReviewDao {
 	public String selectNickByMemId(Connection conn, XReview viewReview);
 	
 	/**
+	 * showNo를 이용해서 showTitle을 조회한다
+	 * 
+	 * @param conn
+	 * @param viewReview - 조회할 showNo를 가진 객체
+	 * @return 공연 제목
+	 */
+	public String selectShowTitleByShowNo(Connection conn, XReview viewReview);
+	
+	/**
 	 * 게시글 입력
 	 * 
 	 * @param review - 삽입될 게시글 내용
@@ -113,6 +122,7 @@ public interface ReviewDao {
 	 * @param review - 삭제할 게시글번호를 담은 객체
 	 */
 	public int deleteFile(Connection conn, XReview review);
+
 
 }
 

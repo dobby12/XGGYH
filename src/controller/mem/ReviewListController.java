@@ -32,6 +32,8 @@ public class ReviewListController extends HttpServlet {
 		
 		req.setAttribute("paging", paging);
 		
+		req.setAttribute("linkUrl", "/mem/review/list");
+		
 		req.getRequestDispatcher("/WEB-INF/views/mem/review/list.jsp").forward(req, resp);		
 		
 	}

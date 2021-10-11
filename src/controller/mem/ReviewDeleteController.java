@@ -25,7 +25,7 @@ public class ReviewDeleteController extends HttpServlet {
 		
 		reviewService.delete(review);
 		
-		resp.sendRedirect("/review/list");	
+		resp.sendRedirect("/review");	
 
 	}
 	

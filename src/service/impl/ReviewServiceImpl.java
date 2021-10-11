@@ -92,6 +92,11 @@ public class ReviewServiceImpl implements ReviewService {
 	public String getMemNick(XReview viewReview) {
 		return reviewDao.selectNickByMemId(JDBCTemplate.getConnection(), viewReview);
 	}
+	
+	@Override
+	public String getShowTitle(XReview viewReview) {
+		return reviewDao.selectShowTitleByShowNo(JDBCTemplate.getConnection(), viewReview);
+	}
 
 	@Override
 	public void write(HttpServletRequest req) {
@@ -358,4 +363,5 @@ public class ReviewServiceImpl implements ReviewService {
 			JDBCTemplate.rollback(conn);
 		}
 	}
+
 }
