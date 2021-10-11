@@ -164,7 +164,7 @@ public class AdminAskDaoImpl implements AdminAskDao {
 	public int insertComment(Connection conn, XComment comment) {
 		
 		String sql = "";
-		sql += "INSERT INTO xcomment( comment_no, ask_no, admin_id, comment_content";
+		sql += "INSERT INTO xcomment( comment_no, ask_no, admin_id, comment_content)";
 		sql += " VALUES ( xcomment_seq.nextval, ?, ?, ?);";
 		
 		int res = 0;
