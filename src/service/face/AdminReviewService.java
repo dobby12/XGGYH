@@ -58,7 +58,7 @@ public interface AdminReviewService {
 	 * Review 객체의 show_no를 통해 show_title조회
 	 * 
 	 * @param viewReview
-	 * @return - 리뷰 대상 공연
+	 * @return show_title
 	 */
 	public String getTitle(XReview viewReview);
 

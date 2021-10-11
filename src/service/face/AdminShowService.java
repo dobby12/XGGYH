@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import dto.XFile;
 import dto.XShow;
 import util.Paging;
 
@@ -27,6 +28,54 @@ public interface AdminShowService {
 	 * @return 공연 정보 리스트 반환
 	 */
 	public List<XShow> getShowList(Paging paging);
+
+	/**
+	 * 요청파라미터로 Show번호 구하고, 객체 반환
+	 * 
+	 * @param req - 요청정보 객체
+	 * @return - Show객체
+	 */
+	public XShow getShowno(HttpServletRequest req);
+	
+	/**
+	 * showno 객체 
+	 * 
+	 * @param showno
+	 * @return XShow - 조회된 게시글
+	 */
+	public XShow getShowDetail(XShow showno);
+
+	/**
+	 * Show객체의 genre_no를 통해 genre_name을 조회
+	 * 
+	 * @param viewShow
+	 * @return genre_name
+	 */
+	public String getGenre(XShow viewShow);
+
+	/**
+	 * Show객체의 kind_no를 통해 kind_name을 조회
+	 * 
+	 * @param viewShow
+	 * @return genre_name
+	 */
+	public String getKind(XShow viewShow);
+
+	/**
+	 * Show객체의 hall_no를 통해 hall_name을 조회
+	 * 
+	 * @param viewShow
+	 * @return hall_name
+	 */
+	public String getHallname(XShow viewShow);
+
+	/**
+	 * 첨부파일 정보 조회
+	 * 
+	 * @param viewShow - 파일 번호를 가지고 있는 공연 객체
+	 * @return showFile - 첨부파일 정보 객체
+	 */
+	public XFile getFile(XShow viewShow);
 
 
 }

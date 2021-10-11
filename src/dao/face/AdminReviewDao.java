@@ -31,7 +31,7 @@ public interface AdminReviewDao {
 	 * 
 	 * @param connection
 	 * @param reviewno
-	 * @return
+	 * @return 리뷰 객체
 	 */
 	public XReview selectReviewbyReviewno(Connection conn, XReview reviewno);
 	
@@ -45,7 +45,7 @@ public interface AdminReviewDao {
 	public String selectNickByMemid(Connection conn, XReview viewReview);
 
 	/**
-	 * showno를 이용해서 show_title을 조회한다
+	 * show_no를 이용해서 show_title을 조회한다
 	 * 
 	 * @param conn
 	 * @param viewReview - 조회할 showno를 가진 객체
@@ -69,7 +69,7 @@ public interface AdminReviewDao {
 	 * @param viewReview - 첨부파일을 조회할 리뷰 객체
 	 * @return - 조회할 첨부파일 객체
 	 */
-	public XFile selectFile(Connection connection, XReview viewReview);
+	public XFile selectFile(Connection conn, XReview viewReview);
 	
 	/**
 	 * 게시글 파일 삭제
