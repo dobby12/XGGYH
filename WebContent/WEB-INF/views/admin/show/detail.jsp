@@ -31,7 +31,7 @@
 <td class="info">공연 설명</td><td>${viewShow.showContent }</td>
 </tr>
 <tr>
-<td class="info">공연장</td><td>${showHall}</td>
+<td class="info">공연장</td><td>${showHall }</td>
 </tr>
 <tr>
 <td class="info">관람등급</td><td>${viewShow.showAge }</td>

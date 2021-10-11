@@ -150,4 +150,131 @@ public class ShowDaoImpl implements ShowDao {
 
 		return count;
 	}
+
+	@Override
+	public XShow selectShowByShowno(Connection conn, XShow showNo) {
+		String sql = "";
+		sql += "SELECT * FROM XShow";
+		sql += " WHERE show_no = ?";
+
+		XShow showInfo = null;
+
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, showNo.getShowNo());
+
+			rs = ps.executeQuery();
+
+			while (rs.next()) {
+				showInfo = new XShow();
+
+				showInfo.setShowNo(rs.getInt("show_no"));
+				showInfo.setFileNo(rs.getInt("file_no"));
+				showInfo.setAdminId(rs.getString("admin_id"));
+				showInfo.setKindNo(rs.getInt("kind_no"));
+				showInfo.setGenreNo(rs.getInt("genre_no"));
+				showInfo.setHallNo(rs.getInt("hall_no"));
+				showInfo.setShowTitle(rs.getString("show_title"));
+				showInfo.setShowContent(rs.getString("show_content"));
+				showInfo.setShowDate(rs.getDate("show_date"));
+				showInfo.setShowAge(rs.getString("show_age"));
+				showInfo.setShowDirector(rs.getString("show_director"));
+				showInfo.setShowActor(rs.getString("show_actor"));
+				showInfo.setShowStart(rs.getDate("show_start"));
+				showInfo.setShowEnd(rs.getDate("show_end"));
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+		}
+
+		return showInfo;
+	}
+
+	@Override
+	public String selectKindNameByKindNo(Connection conn, XShow showInfo) {
+		String sql = "";
+		sql += "SELECT * FROM XKIND";
+		sql += " WHERE kind_no = ?";
+		
+		String kindName = "";
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, showInfo.getKindNo());
+
+			rs = ps.executeQuery();
+
+			while (rs.next()) {
+				kindName = rs.getString("kind_name");
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+		}
+		
+		return kindName;
+	}
+
+	@Override
+	public String selectGenreNameByGenreNo(Connection conn, XShow showInfo) {
+		String sql = "";
+		sql += "SELECT * FROM XGENRE";
+		sql += " WHERE genre_no = ?";
+		
+		String genreName = "";
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, showInfo.getGenreNo());
+
+			rs = ps.executeQuery();
+
+			while (rs.next()) {
+				genreName = rs.getString("genre_name");
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+		}
+		
+		return genreName;
+	}
+
+	@Override
+	public String selectHallNameByHallNo(Connection conn, XShow showInfo) {
+		String sql = "";
+		sql += "SELECT * FROM XHALL";
+		sql += " WHERE hall_no = ?";
+		
+		String hallName = "";
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, showInfo.getHallNo());
+
+			rs = ps.executeQuery();
+
+			while (rs.next()) {
+				hallName = rs.getString("hall_name");
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+		}
+		
+		return hallName;
+	}
 }

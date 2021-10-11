@@ -17,7 +17,7 @@ import util.Paging;
 /**
  * Servlet implementation class ShowListController
  */
-@WebServlet("/show/list")
+@WebServlet("/show")
 public class ShowListController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
@@ -43,7 +43,7 @@ public class ShowListController extends HttpServlet {
 		req.setAttribute("paging", paging);
 		
 		// /show/list 라는 url을 "linkUrl" 이라는 이름을 가진 요소로 설정 (페이징을 위해 넣은 객체)
-		req.setAttribute("linkUrl", "/show/list");
+		req.setAttribute("linkUrl", "/show");
 		
 		//요청 보내기
 		req.getRequestDispatcher("/WEB-INF/views/mem/show/list.jsp").forward(req, resp);

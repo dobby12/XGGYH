@@ -63,7 +63,7 @@ public class ReviewServiceImpl implements ReviewService {
 		
 		XReview reviewNo = new XReview();
 		
-		String param = req.getParameter("review_no");
+		String param = req.getParameter("reviewno");
 		if(param!=null && !"".equals(param)) {
 			
 			reviewNo.setReviewNo( Integer.parseInt(param) );
@@ -91,6 +91,11 @@ public class ReviewServiceImpl implements ReviewService {
 	@Override
 	public String getMemNick(XReview viewReview) {
 		return reviewDao.selectNickByMemId(JDBCTemplate.getConnection(), viewReview);
+	}
+	
+	@Override
+	public String getShowTitle(XReview viewReview) {
+		return reviewDao.selectShowTitleByShowNo(JDBCTemplate.getConnection(), viewReview);
 	}
 
 	@Override
@@ -358,4 +363,5 @@ public class ReviewServiceImpl implements ReviewService {
 			JDBCTemplate.rollback(conn);
 		}
 	}
+
 }

@@ -55,12 +55,20 @@ public interface ReviewService {
 	public XReview view(XReview review_no);
 	
 	/**
-	 * Board 객체의 id 를 이용한 닉네임 조회
+	 * XReview 객체의 id 를 이용한 닉네임 조회
 	 * 
 	 * @param viewReview - 조회할 게시글 정보
 	 * @return String - 게시글 작성자의 닉네임
 	 */
 	public String getMemNick(XReview viewReview);
+	
+	/**
+	 * XReview테이블 show_no를 통해 show_title 조회
+	 * 
+	 * @param viewReview
+	 * @return - 공연제목
+	 */
+	public String getShowTitle(XReview viewReview);
 	
 	/**
 	 * 게시글 작성
@@ -94,6 +102,7 @@ public interface ReviewService {
 	 * @param review - 삭제할 게시글 번호를 가진 객체
 	 */
 	public void delete(XReview review);
+
 
 }
 

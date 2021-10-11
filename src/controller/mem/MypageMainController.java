@@ -8,25 +8,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dto.XReview;
-import service.face.ReviewService;
-import service.impl.ReviewServiceImpl;
-
-@WebServlet("/review/delete")
-public class ReviewDeleteController extends HttpServlet {
+@WebServlet("/mypage")
+public class MypageMainController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	private ReviewService reviewService = new ReviewServiceImpl();
-	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-		XReview review= reviewService.getReviewNo(req);
+		System.out.println("[TEST] /mypage GET");
 		
-		reviewService.delete(review);
-		
-		resp.sendRedirect("/review");	
-
+		req.getRequestDispatcher("/WEB-INF/views/mem/mypage/main.jsp").forward(req, resp);
 	}
-	
 }

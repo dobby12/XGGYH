@@ -35,15 +35,15 @@ public class ReviewDaoImpl implements ReviewDao {
 			while(rs.next()) {
 				XReview r = new XReview();
 				
-				r.setReviewNo( rs.getInt("review_no") );
-				r.setShowNo( rs.getInt("show_no") );
-				r.setFileNo( rs.getInt("file_no") );
-				r.setMemId( rs.getString("Mem_id") );
-				r.setReviewTitle( rs.getString("review_title") );
-				r.setReviewContent( rs.getString("review_content") );
-				r.setReviewDate( rs.getDate("review_date") );
-				r.setReviewScore( rs.getInt("review_score") );
-				r.setReviewHit( rs.getInt("review_hit") );
+				r.setReviewNo( rs.getInt("reviewNo") );
+				r.setShowNo( rs.getInt("showNo") );
+				r.setFileNo( rs.getInt("fileNo") );
+				r.setMemId( rs.getString("MemId") );
+				r.setReviewTitle( rs.getString("reviewTitle") );
+				r.setReviewContent( rs.getString("reviewContent") );
+				r.setReviewDate( rs.getDate("reviewDate") );
+				r.setReviewScore( rs.getInt("reviewScore") );
+				r.setReviewHit( rs.getInt("reviewHit") );
 				
 				reviewList.add(r);
 			}
@@ -207,10 +207,10 @@ public class ReviewDaoImpl implements ReviewDao {
 	public String selectNickByMemId(Connection conn, XReview viewReview) {
 		
 		String sql = "";
-		sql += "SELECT mem_nick FROM mem";
+		sql += "SELECT mem_nick FROM xmem";
 		sql += " WHERE mem_id = ?";
 		
-		String mem_nick = null;
+		String memNick = null;
 		
 		try {
 			ps = conn.prepareStatement(sql);
@@ -219,7 +219,7 @@ public class ReviewDaoImpl implements ReviewDao {
 			rs = ps.executeQuery();
 			
 			while(rs.next()) {
-				mem_nick = rs.getString("mem_nick");
+				memNick = rs.getString("mem_nick");
 			}
 			
 		} catch (SQLException e) {
@@ -229,15 +229,44 @@ public class ReviewDaoImpl implements ReviewDao {
 			JDBCTemplate.close(ps);
 		}
 		
-		return mem_nick;
-		
+		return memNick;
 	}
+	
+	@Override
+	public String selectShowTitleByShowNo(Connection conn, XReview viewReview) {
+		
+		String sql = "";
+		sql += "SELECT show_title FROM xshow";
+		sql += " WHERE show_no = ?";
+		
+		String showTitle = null;
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, viewReview.getShowNo());
+			
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				showTitle = rs.getString("show_title");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+		}
+		
+		return showTitle;
+	}
+	
 	
 	@Override
 	public int insert(Connection conn, XReview review) {
 		
 		String sql = "";
-		sql += "INSERT INTO board(REVIEW_NO, SHOW_NO, FILE_NO, MEM_ID, REVIEW_TITLE, REVIEW_CONTENT, REVIEW_DATE, REVIEW_SCORE, REVIEW_HIT)";
+		sql += "INSERT INTO xreview(REVIEW_NO, SHOW_NO, FILE_NO, MEM_ID, REVIEW_TITLE, REVIEW_CONTENT, REVIEW_DATE, REVIEW_SCORE, REVIEW_HIT)";
 		sql += " VALUES (?, ?, ?, ?, ?, ?, ?, 0)";
 		
 		int res = 0;
@@ -328,7 +357,7 @@ public class ReviewDaoImpl implements ReviewDao {
 		sql += " WHERE file_no = ?";
 		sql += " ORDER BY file_no";
 
-		XFile xFile = null;
+		XFile reviewFile = null;
 		
 		try {
 			ps = conn.prepareStatement(sql);
@@ -338,12 +367,12 @@ public class ReviewDaoImpl implements ReviewDao {
 			rs = ps.executeQuery();
 			
 			while(rs.next()) {
-				xFile = new XFile();
+				reviewFile = new XFile();
 				
-				xFile.setFileNo( rs.getInt("file_no") );
-				xFile.setFileOriginName( rs.getString("file_origin_name") );
-				xFile.setFileStoredName( rs.getString("file_stored_name") );
-				xFile.setFileSize( rs.getString("file_size") );
+				reviewFile.setFileNo( rs.getInt("file_no") );
+				reviewFile.setFileOriginName( rs.getString("file_origin_name") );
+				reviewFile.setFileStoredName( rs.getString("file_stored_name") );
+				reviewFile.setFileSize( rs.getString("file_size") );
 			}
 			
 		} catch (SQLException e) {
@@ -353,7 +382,7 @@ public class ReviewDaoImpl implements ReviewDao {
 			JDBCTemplate.close(ps);
 		}
 				
-		return xFile;
+		return reviewFile;
 	}
 	
 	@Override
@@ -440,5 +469,6 @@ public class ReviewDaoImpl implements ReviewDao {
 		
 		return res;
 	}
+
 
 }

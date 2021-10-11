@@ -41,7 +41,17 @@
 .paging_start{
 	text-align: center;
 }
-  </style>
+
+.photoEx {
+	width: 250px;
+    height: 280px;
+    border: 1px solid;
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 25px;
+}
+
+</style>
 
 </head>
 <body>
@@ -56,8 +66,11 @@
 <div class="main_list">
 		<div class="list_start">
 			<c:forEach items="${showList }" var="showList">
-			<div class="list_detail"><p>${showList.showTitle }
-			<br> ${showList.showDirector }</p></div>
+			<div class="list_detail">
+			<div class="photoEx">사진 들어갈 자리</div>
+			<a href="<%=request.getContextPath() %>/show/detail?showNo=${showList.showNo }"> 
+			<p>${showList.showTitle} <br> ${showList.showDirector }</p> </a>
+			</div>
 			</c:forEach>
 		</div>
 </div>

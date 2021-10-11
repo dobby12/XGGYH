@@ -22,24 +22,26 @@ table {
 
 <thead>
 <tr>	
-	<th style="text-align: center; width: 7%">　　　</th>
 	<th style="text-align: center; width: 15%">회원 아이디</th>
 	<th style="text-align: center; width: 15%">회원 닉네임</th>
-	<th style="text-align: center; width: 25%">회원 메일 주소</th>
+	<th style="text-align: center; width: 20%">회원 메일 주소</th>
 	<th style="text-align: center; width: 10%">메일 수신 여부</th>
-	<th style="text-align: center; width: 20%">가입 날짜</th>
+	<th style="text-align: center; width: 15%">가입 날짜</th>
+	<th style="text-align: center; width: 15%">　　　</th>
+	<th style="text-align: center; width: 7%">　　　</th>
 </tr>
 </thead>
 
 <c:forEach items="${memList }" var="memList">
 </tbody>
 <tr>
-	<td><a href="<%=request.getContextPath() %>/admin/mem/delete?memid=${memList.memId }"><button>삭제</button></a></td>	
 	<td>${memList.memId }</td>
 	<td>${memList.memNick }</td>
 	<td>${memList.memMail }</td>
 	<td>${memList.mailState }</td>
 	<td>${memList.memDate }</td>
+	<td><a href="#"><button>작성한 리뷰 보기</button></a></td>	
+	<td><a href="<%=request.getContextPath() %>/admin/mem/delete?memid=${memList.memId }"><button>삭제</button></a></td>	
 </tr>
 </tbody>
 </c:forEach>
