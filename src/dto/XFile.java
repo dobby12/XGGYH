@@ -2,22 +2,22 @@ package dto;
 
 public class XFile {
 	
-	private int file_no;
+	private int fileNo;
 	private String fileOriginName;
 	private String fileStoredName;
 	private String fileSize;
 	
 	@Override
 	public String toString() {
-		return "XFile [file_no=" + file_no + ", fileOriginName=" + fileOriginName + ", fileStoredName=" + fileStoredName
+		return "XFile [fileNo=" + fileNo + ", fileOriginName=" + fileOriginName + ", fileStoredName=" + fileStoredName
 				+ ", fileSize=" + fileSize + "]";
 	}
 	
-	public int getFile_no() {
-		return file_no;
+	public int getFileNo() {
+		return fileNo;
 	}
-	public void setFile_no(int file_no) {
-		this.file_no = file_no;
+	public void setFileNo(int fileNo) {
+		this.fileNo = fileNo;
 	}
 	public String getFileOriginName() {
 		return fileOriginName;
