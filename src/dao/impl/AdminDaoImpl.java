@@ -23,8 +23,8 @@ public class AdminDaoImpl implements AdminDao {
 		
 		try {
 			ps = connection.prepareStatement(sql);
-			ps.setString(1, admin.getAdmin_id());
-			ps.setString(2, admin.getAdmin_pw());
+			ps.setString(1, admin.getAdminId());
+			ps.setString(2, admin.getAdminPw());
 			rs = ps.executeQuery();
 			while(rs.next()) {
 				count = rs.getInt(1);
@@ -49,13 +49,13 @@ public class AdminDaoImpl implements AdminDao {
 		
 		try {
 			ps = connection.prepareStatement(sql);
-			ps.setString(1, admin.getAdmin_id());
+			ps.setString(1, admin.getAdminId());
 			rs = ps.executeQuery();
 			while(rs.next()) {
 				res = new XAdmin();
-				res.setAdmin_id(rs.getString("admin_id"));
-				res.setAdmin_name(rs.getString("admin_name"));
-				res.setAdmin_authority(rs.getString("admin_authority"));
+				res.setAdminId(rs.getString("admin_id"));
+				res.setAdminName(rs.getString("admin_name"));
+				res.setAdminAuthority(rs.getString("admin_authority"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

@@ -25,8 +25,8 @@ public class MemberServiceImpl implements MemberService {
 //			e.printStackTrace();
 //		}
 		XMem member = new XMem();
-		member.setMem_id(req.getParameter("memid"));
-		member.setMem_pw(req.getParameter("mempw"));
+		member.setMemId(req.getParameter("memid"));
+		member.setMemPw(req.getParameter("mempw"));
 		return member;
 	}
 
@@ -57,12 +57,12 @@ public class MemberServiceImpl implements MemberService {
 		
 		XMem mem = new XMem();
 		
-		mem.setMem_id(req.getParameter("memid"));
-		mem.setMem_pw(req.getParameter("mempw"));
-		mem.setMem_nick(req.getParameter("memnick"));
-		mem.setMem_mail(req.getParameter("memmail"));
-		mem.setMail_state(req.getParameter("memstate"));
-		mem.setGenre_no(Integer.parseInt(req.getParameter("genreno")));
+		mem.setMemId(req.getParameter("memid"));
+		mem.setMemPw(req.getParameter("mempw"));
+		mem.setMemNick(req.getParameter("memnick"));
+		mem.setMemMail(req.getParameter("memmail"));
+		mem.setMailState(req.getParameter("memstate"));
+		mem.setGenreNo(Integer.parseInt(req.getParameter("genreno")));
 		
 		System.out.println("###TEST### 멤버서비스임플 getJoinMember()의 member : " + mem);
 		return mem;

@@ -26,8 +26,8 @@ public class MemberDaoImpl implements MemberDao {
 		
 		try {
 			ps = connection.prepareStatement(sql);
-			ps.setString(1, mem.getMem_id());
-			ps.setString(2, mem.getMem_pw());
+			ps.setString(1, mem.getMemId());
+			ps.setString(2, mem.getMemPw());
 			rs = ps.executeQuery();
 			while(rs.next()) {
 				count = rs.getInt(1);
@@ -54,12 +54,12 @@ public class MemberDaoImpl implements MemberDao {
 		
 		try {
 			ps = connection.prepareStatement(sql);
-			ps.setString(1, mem.getMem_id());
+			ps.setString(1, mem.getMemId());
 			rs = ps.executeQuery();
 			while(rs.next()) {
 				res = new XMem();
-				res.setMem_id(rs.getString("mem_id"));
-				res.setMem_nick(rs.getString("mem_nick"));
+				res.setMemId(rs.getString("mem_id"));
+				res.setMemNick(rs.getString("mem_nick"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -84,12 +84,12 @@ public class MemberDaoImpl implements MemberDao {
 			//DB작업
 			ps = conn.prepareStatement(sql);
 			
-			ps.setString(1, mem.getMem_id());
-			ps.setString(2, mem.getMem_pw());
-			ps.setString(3, mem.getMem_nick());
-			ps.setString(4, mem.getMem_mail());
-			ps.setString(5, mem.getMail_state());
-			ps.setInt(6, mem.getGenre_no());
+			ps.setString(1, mem.getMemId());
+			ps.setString(2, mem.getMemPw());
+			ps.setString(3, mem.getMemNick());
+			ps.setString(4, mem.getMemMail());
+			ps.setString(5, mem.getMailState());
+			ps.setInt(6, mem.getGenreNo());
 			
 			res = ps.executeUpdate();
 			
