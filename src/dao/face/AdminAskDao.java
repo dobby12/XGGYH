@@ -10,9 +10,10 @@ import util.Paging;
 public interface AdminAskDao {
 
 	/**
+	 * 페이지 수 구하기
 	 * 
-	 * @param connection
-	 * @return
+	 * @param connection - DB 정보 객체
+	 * @return int
 	 */
 	public int selectCntAll(Connection conn);
 
