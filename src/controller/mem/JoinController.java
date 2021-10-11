@@ -34,15 +34,14 @@ public class JoinController extends HttpServlet {
 		
 		// 요청파라미터 처리
 		XMem param = memberService.getJoinMember(req);
-	
-		
+
 		System.out.println(param);
 		
 		// 회원가입
 		memberService.join(param);
 		
 		// 메인으로 리다이렉션
-		resp.sendRedirect("/WEB-INF/views/mem/join/joinpro.jsp");
+		resp.sendRedirect("/main");
 		
 	}
 
