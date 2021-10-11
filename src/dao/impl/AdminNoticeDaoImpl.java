@@ -1,7 +1,147 @@
 package dao.impl;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import common.JDBCTemplate;
 import dao.face.AdminNoticeDao;
+import dto.XFile;
+import dto.XNotice;
 
 public class AdminNoticeDaoImpl implements AdminNoticeDao {
+
+	PreparedStatement ps = null;
+	ResultSet rs = null;
+	
+	@Override
+	public List<XNotice> selectNoticeAll(Connection connection) {
+
+		String sql = "SELECT NOTICE_NO, ADMIN_ID, FILE_NO, NOTICE_TITLE, NOTICE_CONTENT, NOTICE_DATE FROM XNOTICE ORDER BY NOTICE_NO DESC";
+		
+		List<XNotice> list = new ArrayList<>();
+		
+		try {
+			ps = connection.prepareStatement(sql);
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				XNotice notice = new XNotice();
+				notice.setNoticeNo(rs.getInt("notice_no"));
+				notice.setAdminId(rs.getString("admin_id"));
+				notice.setFileNo(rs.getInt("file_no"));
+				notice.setNoticeTitle(rs.getString("notice_title"));
+				notice.setNoticeContent(rs.getString("notice_content"));
+				notice.setNoticeDate(rs.getDate("notice_date"));
+				list.add(notice);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+		}
+				
+		return list;
+	}
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	@Override
+	public XNotice selectNoticeByNoticeno(Connection connection, int noticeno) {
+		
+		String sql = "SELECT NOTICE_NO, ADMIN_ID, FILE_NO, NOTICE_TITLE, NOTICE_CONTENT, NOTICE_DATE FROM XNOTICE WHERE NOTICE_NO=?";
+		XNotice res = null;
+
+		try {
+			ps = connection.prepareStatement(sql);
+			ps.setInt(1, noticeno);
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				res = new XNotice();
+				res.setNoticeNo(rs.getInt("notice_no"));
+				res.setAdminId(rs.getString("admin_id"));
+				res.setFileNo(rs.getInt("file_no"));
+				res.setNoticeTitle(rs.getString("notice_title"));
+				res.setNoticeContent(rs.getString("notice_content"));
+				res.setNoticeDate(rs.getDate("notice_date"));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+		}
+		
+		return res;
+	}
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+	
+	
+
+	@Override
+	public XFile selectFileByFileno(Connection connection, int noticeno) {
+
+		String sql = "SELECT FILE_NO, FILE_ORIGIN_NAME, FILE_STORED_NAME, FILE_SIZE FROM XFILE WHERE FILE_NO=(SELECT FILE_NO FROM XNOTICE WHERE NOTICE_NO=?)";
+		XFile res = null;
+		
+		try {
+			ps = connection.prepareStatement(sql);
+			ps.setInt(1, noticeno);
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				res = new XFile();
+				res.setFileNo(rs.getInt("file_no"));
+				res.setFileOriginName(rs.getString("file_origin_name"));
+				res.setFileStoredName(rs.getString("file_stored_name"));
+				res.setFileSize(rs.getString("file_size"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+		}
+		
+		return res;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 }
