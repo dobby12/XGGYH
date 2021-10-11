@@ -17,7 +17,7 @@ public class MemberDaoImpl implements MemberDao {
 	@Override
 	public int selectCntMemByMemidMempw(Connection connection, XMem mem) {
 		System.out.println("###TEST### MemberDaoImpl selectCntMemByMemidMempw()");
-		System.out.println("id : " + mem.getMem_id() +", pw : "+ mem.getMem_pw());
+//		System.out.println("id : " + mem.getMem_id() +", pw : "+ mem.getMem_pw());
 		
 		
 		int count = 0;	//성공 시 1로 반환될 결과 변수
@@ -39,7 +39,7 @@ public class MemberDaoImpl implements MemberDao {
 			JDBCTemplate.close(ps);
 		}
 		
-		System.out.println("count : " +count);
+//		System.out.println("count : " +count);
 		
 		return count;
 	}

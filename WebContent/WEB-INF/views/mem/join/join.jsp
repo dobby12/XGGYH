@@ -5,7 +5,7 @@
 
 <c:import url="/WEB-INF/views/layout/header.jsp" />
 
-<!-- jQuery 2.2.4 -->
+<!-- jQuery 2.2.4 지태 -->
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 
 <script type="text/javascript">
