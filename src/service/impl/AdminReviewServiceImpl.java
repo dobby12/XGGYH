@@ -1,5 +1,6 @@
 package service.impl;
 
+import java.sql.Connection;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -7,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import common.JDBCTemplate;
 import dao.face.AdminReviewDao;
 import dao.impl.AdminReviewDaoImpl;
+import dto.XFile;
 import dto.XReview;
 import service.face.AdminReviewService;
 import util.Paging;
@@ -79,6 +81,23 @@ public class AdminReviewServiceImpl implements AdminReviewService {
 	public String getTitle(XReview viewReview) {
 	
 		return adminReviewDao.selectShowTitleByShowno(JDBCTemplate.getConnection(), viewReview);
+	}
+	
+	@Override
+	public XFile getFile(XReview viewReview) {		
+		return adminReviewDao.selectFile(JDBCTemplate.getConnection(), viewReview);
+	}
+
+	@Override
+	public void setReviewDelete(XReview reviewno) {
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		if(adminReviewDao.deleteReview(conn, reviewno) > 0 ) {
+			JDBCTemplate.commit(conn);
+		} else { 
+			JDBCTemplate.rollback(conn);
+		}
 	}
 	
 

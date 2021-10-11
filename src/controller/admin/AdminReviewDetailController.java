@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dto.XFile;
 import dto.XReview;
 import service.face.AdminReviewService;
 import service.impl.AdminReviewServiceImpl;
@@ -35,6 +36,12 @@ public class AdminReviewDetailController extends HttpServlet {
 		
 		//공연 제목 전달
 		req.setAttribute("showtitle", adminReviewService.getTitle(viewReview));
+		
+		//첨부파일 정보 조회
+		XFile reviewFile = adminReviewService.getFile(viewReview);
+		
+		//첨부파일 정보 model값 전달
+		req.setAttribute("reviewFile", reviewFile);
 		
 		req.getRequestDispatcher("/WEB-INF/views/admin/review/detail.jsp").forward(req, resp);
 		

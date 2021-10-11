@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import dto.XFile;
 import dto.XReview;
 import util.Paging;
 
@@ -60,5 +61,20 @@ public interface AdminReviewService {
 	 * @return - 리뷰 대상 공연
 	 */
 	public String getTitle(XReview viewReview);
+
+	/**
+	 * 게시글 삭제
+	 * 
+	 * @param reviewno - 요청 정보 객체
+	 */
+	public void setReviewDelete(XReview reviewno);
+	
+	/**
+	 * 첨부파일 정보 조회
+	 * 
+	 * @param viewReview - 파일 번호를 가지고 있는 리뷰 객체
+	 * @return reviewFile - 첨부파일 정보 DTO객체
+	 */
+	public XFile getFile(XReview viewReview);
 
 }

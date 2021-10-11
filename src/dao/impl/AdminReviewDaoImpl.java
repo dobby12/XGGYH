@@ -9,6 +9,7 @@ import java.util.List;
 
 import common.JDBCTemplate;
 import dao.face.AdminReviewDao;
+import dto.XFile;
 import dto.XReview;
 import util.Paging;
 
@@ -187,5 +188,61 @@ public class AdminReviewDaoImpl implements AdminReviewDao {
 		return show_title;
 	}
 	
+	@Override
+	public int deleteReview(Connection conn, XReview reviewno) {
+		
+		String sql = "";
+		sql += "DELETE review";
+		sql += " WHERE review_no = ?";
+		
+		int res = -1;
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, reviewno.getReview_no());
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(ps);
+		}
+		
+		return res;
+		
+	}
+	
+	@Override
+	public XFile selectFile(Connection conn, XReview viewReview) {
+		
+		String sql = "";
+		sql += "SELECT * FROM XFile";
+		sql += " WHERE file_no = ?";
+		
+		XFile reviewFile = null;
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			
+			ps.setInt(1, viewReview.getFile_no());
+			
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				reviewFile = new XFile();
+				
+				reviewFile.setFile_no(rs.getInt("file_no"));
+				reviewFile.setFile_origin_name(rs.getString("file_origin_name"));
+				reviewFile.setFile_stored_name(rs.getString("file_stored_name"));
+				reviewFile.setFile_size(rs.getString("file_size"));
+				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+		}
+
+		return reviewFile;
+	}
 	
 }

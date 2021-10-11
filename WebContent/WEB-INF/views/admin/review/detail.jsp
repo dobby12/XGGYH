@@ -5,13 +5,6 @@
 
 <c:import url="/WEB-INF/views/layout/header.jsp" />
 
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
 
 <h1>게시글 상세보기</h1>
 <hr>
@@ -51,6 +44,17 @@
 <tr><td colspan="4">${viewReview.review_content }</td></tr>
 
 </table>
+
+<!-- 첨부파일 -->
+<div>
+<c:if test="${not empty reviewFile }">
+첨부파일 : ${reviewFile.file_origin_name }
+</c:if>
+</div>
+
+<div class="button">
+	<a href="<%=request.getContextPath() %>/admin/board/delete?boardno=${viewReview.review_no }"><button id="btnDelete">삭제</button></a>
+</div>
 
 </body>
 </html>

@@ -3,6 +3,7 @@ package dao.face;
 import java.sql.Connection;
 import java.util.List;
 
+import dto.XFile;
 import dto.XReview;
 import util.Paging;
 
@@ -51,5 +52,23 @@ public interface AdminReviewDao {
 	 * @return - 공연 이름
 	 */
 	public String selectShowTitleByShowno(Connection conn, XReview viewReview);
+	
+	/**
+	 * 리뷰글 삭제
+	 * 
+	 * @param conn
+	 * @param reviewno
+	 * @return
+	 */
+	public int deleteReview(Connection conn, XReview reviewno);
+	
+	/**
+	 * 첨부파일 조회
+	 * 
+	 * @param connection - DB연결 객체
+	 * @param viewReview - 첨부파일을 조회할 리뷰 객체
+	 * @return - 조회할 첨부파일 객체
+	 */
+	public XFile selectFile(Connection connection, XReview viewReview);
 
 }
