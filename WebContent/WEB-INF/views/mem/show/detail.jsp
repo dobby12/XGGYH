@@ -62,7 +62,10 @@
 			작성자(관리자 아이디) : ${showDetail.adminId} <br> 
 			카테고리 : ${showKindName} <br> 
 			장르 : ${showGenreName} <br>
-			공연장 : ${showHallName} <br>
+			
+			공연장 : <a href="<%=request.getContextPath() %>/hall/detail?hallNo=${showDetail.hallNo }"> 
+			${showHallName} </a> <br>
+			
 			작성일 : ${showDetail.showDate} <br>
 			연령 제한 : ${showDetail.showAge} <br> 
 			감독 : ${showDetail.showDirector} <br> 
