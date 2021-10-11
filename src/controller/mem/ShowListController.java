@@ -33,6 +33,9 @@ public class ShowListController extends HttpServlet {
 		//XShow 테이블의 전체 정보를 가진 showList 객체를 "showList"라는 이름을 가진 요소로 설정
 		req.setAttribute("showList", showList);
 		
+		// /show/list 라는 url을 "linkUrl" 이라는 이름을 가진 요소로 설정
+		req.setAttribute("linkUrl", "/show/list");
+		
 		//요청 보내기
 		req.getRequestDispatcher("/WEB-INF/views/mem/show/list.jsp").forward(req, resp);
 	}
