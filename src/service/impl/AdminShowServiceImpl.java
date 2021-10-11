@@ -8,11 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import common.JDBCTemplate;
 import dao.face.AdminShowDao;
 import dao.impl.AdminShowDaoImpl;
-<<<<<<< HEAD
 import dto.XFile;
-=======
-import dto.XAsk;
->>>>>>> 798766a036f2eb4433e3b36870f4c615d8b3812c
 import dto.XShow;
 import service.face.AdminShowService;
 import util.Paging;
@@ -93,6 +89,5 @@ public class AdminShowServiceImpl implements AdminShowService {
 	
 		return adminShowDao.selectFile(JDBCTemplate.getConnection(), viewShow);
 	}
-	
-	
+
 }
