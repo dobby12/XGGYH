@@ -39,15 +39,15 @@ public class ReviewDaoImpl implements ReviewDao {
 				XReview r = new XReview(); //결과값 저장 객체
 				
 				//결과값 한 행 처리
-				r.setReview_no( rs.getInt("review_no") );
-				r.setShow_no( rs.getInt("show_no") );
-				r.setFile_no( rs.getInt("file_no") );
-				r.setMem_id( rs.getString("Mem_id") );
-				r.setReview_title( rs.getString("review_title") );
-				r.setReview_content( rs.getString("review_content") );
-				r.setReview_date( rs.getDate("review_date") );
-				r.setReview_score( rs.getInt("review_score") );
-				r.setReview_hit( rs.getInt("review_hit") );
+				r.setReviewNo( rs.getInt("review_no") );
+				r.setShowNo( rs.getInt("show_no") );
+				r.setFileNo( rs.getInt("file_no") );
+				r.setMemId( rs.getString("Mem_id") );
+				r.setReviewTitle( rs.getString("review_title") );
+				r.setReviewContent( rs.getString("review_content") );
+				r.setReviewDate( rs.getDate("review_date") );
+				r.setReviewScore( rs.getInt("review_score") );
+				r.setReviewHit( rs.getInt("review_hit") );
 				
 				//리스트에 결과값 저장
 				reviewList.add(r);
@@ -94,15 +94,15 @@ public class ReviewDaoImpl implements ReviewDao {
 			while(rs.next()) {
 				XReview review = new XReview();
 				
-				review.setReview_no( rs.getInt("review_no") );
-				review.setShow_no( rs.getInt("show_no") );
-				review.setFile_no( rs.getInt("file_no") );
-				review.setMem_id( rs.getString("Mem_id") );
-				review.setReview_title( rs.getString("review_title") );
-				review.setReview_content( rs.getString("review_content") );
-				review.setReview_date( rs.getDate("review_date") );
-				review.setReview_score( rs.getInt("review_score") );
-				review.setReview_hit( rs.getInt("review_hit") );
+				review.setReviewNo( rs.getInt("review_no") );
+				review.setShowNo( rs.getInt("show_no") );
+				review.setFileNo( rs.getInt("file_no") );
+				review.setMemId( rs.getString("Mem_id") );
+				review.setReviewTitle( rs.getString("review_title") );
+				review.setReviewContent( rs.getString("review_content") );
+				review.setReviewDate( rs.getDate("review_date") );
+				review.setReviewScore( rs.getInt("review_score") );
+				review.setReviewHit( rs.getInt("review_hit") );
 
 				//리스트에 결과값 저장
 				reviewList.add(review);
@@ -147,7 +147,7 @@ public class ReviewDaoImpl implements ReviewDao {
 	}
 	
 	@Override
-	public XReview selectReviewByReview_no(Connection conn, XReview review_no) {
+	public XReview selectReviewByReviewNo(Connection conn, XReview reviewNo) {
 			
 		String sql = "";
 		sql += "SELECT * FROM xreview";
@@ -158,22 +158,22 @@ public class ReviewDaoImpl implements ReviewDao {
 		try {
 			ps = conn.prepareStatement(sql); //SQL수행 객체
 			
-			ps.setInt(1, review_no.getReview_no()); //조회할 게시글 번호 적용
+			ps.setInt(1, reviewNo.getReviewNo()); //조회할 게시글 번호 적용
 			
 			rs = ps.executeQuery(); //SQL 수행 및 결과집합 저장
 			
 			while(rs.next()) {
 				viewReview = new XReview(); //결과값 저장 객체
 				
-				viewReview.setReview_no( rs.getInt("review_no") );
-				viewReview.setShow_no( rs.getInt("show_no") );
-				viewReview.setFile_no( rs.getInt("file_no") );
-				viewReview.setMem_id( rs.getString("Mem_id") );
-				viewReview.setReview_title( rs.getString("review_title") );
-				viewReview.setReview_content( rs.getString("review_content") );
-				viewReview.setReview_date( rs.getDate("review_date") );
-				viewReview.setReview_score( rs.getInt("review_score") );
-				viewReview.setReview_hit( rs.getInt("review_hit") );
+				viewReview.setReviewNo( rs.getInt("review_no") );
+				viewReview.setShowNo( rs.getInt("show_no") );
+				viewReview.setFileNo( rs.getInt("file_no") );
+				viewReview.setMemId( rs.getString("Mem_id") );
+				viewReview.setReviewTitle( rs.getString("review_title") );
+				viewReview.setReviewContent( rs.getString("review_content") );
+				viewReview.setReviewDate( rs.getDate("review_date") );
+				viewReview.setReviewScore( rs.getInt("review_score") );
+				viewReview.setReviewHit( rs.getInt("review_hit") );
 				
 			}
 			
@@ -188,7 +188,7 @@ public class ReviewDaoImpl implements ReviewDao {
 	}
 
 	@Override
-	public int updateReview_hit(Connection conn, XReview review_no) {
+	public int updateReviewHit(Connection conn, XReview reviewNo) {
 		
 		//SQL 작성
 		String sql = "";
@@ -201,7 +201,7 @@ public class ReviewDaoImpl implements ReviewDao {
 		try {
 			ps = conn.prepareStatement(sql); //SQL수행 객체
 			
-			ps.setInt(1, review_no.getReview_no()); //조회할 게시글 번호 적용
+			ps.setInt(1, reviewNo.getReviewNo()); //조회할 게시글 번호 적용
 			
 			res = ps.executeUpdate(); //SQL 수행
 			
@@ -215,7 +215,7 @@ public class ReviewDaoImpl implements ReviewDao {
 	}
 	
 	@Override
-	public String selectNickByMem_id(Connection conn, XReview viewReview) {
+	public String selectNickByMemId(Connection conn, XReview viewReview) {
 		
 		String sql = "";
 		sql += "SELECT mem_nick FROM mem";
@@ -225,7 +225,7 @@ public class ReviewDaoImpl implements ReviewDao {
 		
 		try {
 			ps = conn.prepareStatement(sql); //SQL수행 객체
-			ps.setString(1, viewReview.getMem_id()); //조회할 id 적용
+			ps.setString(1, viewReview.getMemId()); //조회할 id 적용
 			
 			rs = ps.executeQuery(); //SQL 수행 및 결과집합 저장
 			
@@ -258,14 +258,14 @@ public class ReviewDaoImpl implements ReviewDao {
 			//DB작업
 			ps = conn.prepareStatement(sql);
 			
-			ps.setInt(1, review.getReview_no());
-			ps.setInt(2, review.getShow_no());
-			ps.setInt(3, review.getFile_no());
-			ps.setString(4, review.getMem_id());
-			ps.setString(5, review.getReview_title());
-			ps.setString(6, review.getReview_content());
-			ps.setInt(7, review.getReview_score());
-			ps.setInt(8, review.getReview_hit());
+			ps.setInt(1, review.getReviewNo());
+			ps.setInt(2, review.getShowNo());
+			ps.setInt(3, review.getFileNo());
+			ps.setString(4, review.getMemId());
+			ps.setString(5, review.getReviewTitle());
+			ps.setString(6, review.getReviewContent());
+			ps.setInt(7, review.getReviewScore());
+			ps.setInt(8, review.getReviewHit());
 
 			res = ps.executeUpdate();
 			
@@ -279,7 +279,7 @@ public class ReviewDaoImpl implements ReviewDao {
 	}
 
 	@Override
-	public int selectNextReview_no(Connection conn) {
+	public int selectNextReviewNo(Connection conn) {
 		
 		String sql = "";
 		sql += "SELECT xreview_seq.nextval FROM dual";
@@ -318,10 +318,10 @@ public class ReviewDaoImpl implements ReviewDao {
 		try {
 			ps = conn.prepareStatement(sql);
 			
-			ps.setInt(1, xFile.getFile_no());
-			ps.setString(2, xFile.getFile_origin_name());
-			ps.setString(3, xFile.getFile_stored_name());
-			ps.setString(4, xFile.getFile_size());
+			ps.setInt(1, xFile.getFileNo());
+			ps.setString(2, xFile.getFileOriginName());
+			ps.setString(3, xFile.getFileStoredName());
+			ps.setString(4, xFile.getFileSize());
 			
 			res = ps.executeUpdate();
 			
@@ -347,17 +347,17 @@ public class ReviewDaoImpl implements ReviewDao {
 		try {
 			ps = conn.prepareStatement(sql);
 			
-			ps.setInt(1, viewReview.getReview_no());
+			ps.setInt(1, viewReview.getReviewNo());
 			
 			rs = ps.executeQuery();
 			
 			while(rs.next()) {
 				xFile = new XFile();
 				
-				xFile.setFile_no( rs.getInt("file_no") );
-				xFile.setFile_origin_name( rs.getString("file_origin_name") );
-				xFile.setFile_stored_name( rs.getString("file_stored_name") );
-				xFile.setFile_size( rs.getString("file_size") );
+				xFile.setFileNo( rs.getInt("file_no") );
+				xFile.setFileOriginName( rs.getString("file_origin_name") );
+				xFile.setFileStoredName( rs.getString("file_stored_name") );
+				xFile.setFileSize( rs.getString("file_size") );
 			}
 			
 		} catch (SQLException e) {
@@ -388,9 +388,9 @@ public class ReviewDaoImpl implements ReviewDao {
 		try {
 			//DB작업
 			ps = conn.prepareStatement(sql);
-			ps.setString(1, review.getReview_title());
-			ps.setString(2, review.getReview_content());
-			ps.setInt(3, review.getReview_no());
+			ps.setString(1, review.getReviewTitle());
+			ps.setString(2, review.getReviewContent());
+			ps.setInt(3, review.getReviewNo());
 
 			res = ps.executeUpdate();
 			
@@ -420,7 +420,7 @@ public class ReviewDaoImpl implements ReviewDao {
 		try {
 			//DB작업
 			ps = conn.prepareStatement(sql);
-			ps.setInt(1, review.getReview_no());
+			ps.setInt(1, review.getReviewNo());
 
 			res = ps.executeUpdate();
 			
@@ -450,7 +450,7 @@ public class ReviewDaoImpl implements ReviewDao {
 		try {
 			//DB작업
 			ps = conn.prepareStatement(sql);
-			ps.setInt(1, review.getReview_no());
+			ps.setInt(1, review.getReviewNo());
 
 			res = ps.executeUpdate();
 			

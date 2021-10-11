@@ -8,11 +8,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dto.XReview;
 import service.face.ReviewService;
 import service.impl.ReviewServiceImpl;
 
 @WebServlet("/review/delete")
-public class ReviewDelectController extends HttpServlet {
+public class ReviewDeleteController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	//BoardService 객체 생성
@@ -21,12 +22,12 @@ public class ReviewDelectController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		Board board = boardService.getBoardno(req);
+		XReview review= reviewService.getReviewNo(req);
 		
-		boardService.delete(board);
+		reviewService.delete(review);
 		
 		//목록으로 리다이렉트
-		resp.sendRedirect("/board/list");	
+		resp.sendRedirect("/review/list");	
 
 	}
 	

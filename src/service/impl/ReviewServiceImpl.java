@@ -59,38 +59,38 @@ public class ReviewServiceImpl implements ReviewService {
 	}
 
 	@Override
-	public XReview getReview_no(HttpServletRequest req) {
+	public XReview getReviewNo(HttpServletRequest req) {
 		
-		XReview review_no = new XReview();
+		XReview reviewNo = new XReview();
 		
 		String param = req.getParameter("review_no");
 		if(param!=null && !"".equals(param)) {
 			
-			review_no.setReview_no( Integer.parseInt(param) );
+			reviewNo.setReviewNo( Integer.parseInt(param) );
 		}
 		
-		return review_no;
+		return reviewNo;
 	}
 
 	@Override
-	public XReview view(XReview review_no) {
+	public XReview view(XReview reviewNo) {
 
 		Connection conn = JDBCTemplate.getConnection();
 
-		if( reviewDao.updateReview_hit(conn, review_no) == 1 ) {
+		if( reviewDao.updateReviewHit(conn, reviewNo) == 1 ) {
 			JDBCTemplate.commit(conn);
 		} else {
 			JDBCTemplate.rollback(conn);
 		}
 		
-		XReview review = reviewDao.selectReviewByReview_no(conn, review_no); 
+		XReview review = reviewDao.selectReviewByReviewNo(conn, reviewNo); 
 		
 		return review;
 	}
 
 	@Override
-	public String getMem_nick(XReview viewReview) {
-		return reviewDao.selectNickByMem_id(JDBCTemplate.getConnection(), viewReview);
+	public String getMemNick(XReview viewReview) {
+		return reviewDao.selectNickByMemId(JDBCTemplate.getConnection(), viewReview);
 	}
 
 	@Override
@@ -152,9 +152,9 @@ public class ReviewServiceImpl implements ReviewService {
 				}
 
 				if( "review_title".equals(key) ) {
-					review.setReview_title( value );
+					review.setReviewTitle( value );
 				} else if( "review_content".equals(key) ) {
-					review.setReview_content( value );
+					review.setReviewContent( value );
 				}
 				
 			} //if( item.isFormField() ) end
@@ -179,10 +179,10 @@ public class ReviewServiceImpl implements ReviewService {
 					e.printStackTrace();
 				}
 				
-				XFile = new XFile();
-				XFile.setFile_origin_name(origin);
-				XFile.setFile_stored_name(stored);
-				XFile.setFile_size( (int)item.getSize() );
+				reviewFile = new XFile();
+				
+				reviewFile.setFileOriginName(origin);
+				reviewFile.setFileStoredName(stored);
 				
 			} //if( !item.isFormField() ) end
 		} //while( iter.hasNext() ) end
@@ -190,16 +190,16 @@ public class ReviewServiceImpl implements ReviewService {
 		
 		Connection conn = JDBCTemplate.getConnection();
 		
-		int review_no = reviewDao.selectNextReview_no(conn);
+		int review_no = reviewDao.selectNextReviewNo(conn);
 		
 		if(review != null) {
 			
-			review.setMem_id( (String)req.getSession().getAttribute("mem_id") );
+			review.setMemId( (String)req.getSession().getAttribute("mem_id") );
 
-			review.setReview_no(review_no); //PK
+			review.setReviewNo(review_no); //PK
 			
-			if(review.getReview_title()==null || "".equals(review.getReview_title())) {
-				review.setReview_title("(제목없음)");
+			if(review.getReviewTitle()==null || "".equals(review.getReviewTitle())) {
+				review.setReviewTitle("(제목없음)");
 			}
 			
 			if( reviewDao.insert(conn, review) > 0 ) {
@@ -210,7 +210,7 @@ public class ReviewServiceImpl implements ReviewService {
 		}
 		
 		if(reviewFile != null) {
-			reviewFile.setReview_no(review_no); //게시글 번호 입력 (FK)
+			reviewFile.setFileNo(review_no); //게시글 번호 입력 (FK)
 			
 			if( reviewDao.insertFile(conn, reviewFile) > 0 ) {
 				JDBCTemplate.commit(conn);
@@ -281,12 +281,12 @@ public class ReviewServiceImpl implements ReviewService {
 					e1.printStackTrace();
 				}
 
-				if( "review_no".equals(key) ) {
-					review.setReview_no( Integer.parseInt(value) );
-				} else if( "review_title".equals(key) ) {
-					review.setReview_title( value );
-				} else if( "review_content".equals(key) ) {
-					review.setReview_content( value );
+				if( "reviewNo".equals(key) ) {
+					review.setReviewNo( Integer.parseInt(value) );
+				} else if( "reviewTitle".equals(key) ) {
+					review.setReviewTitle( value );
+				} else if( "reviewContent".equals(key) ) {
+					review.setReviewContent( value );
 				}
 				
 			} //if( item.isFormField() ) end
@@ -300,7 +300,7 @@ public class ReviewServiceImpl implements ReviewService {
 				File upFolder = new File(req.getServletContext().getRealPath("upload"));
 				upFolder.mkdir();
 				
-				String origin = item.getName()
+				String origin = item.getName();
 				String stored = origin + "_" + uid;
 				File up = new File(upFolder, stored);
 				
@@ -311,10 +311,9 @@ public class ReviewServiceImpl implements ReviewService {
 					e.printStackTrace();
 				}
 
-				reviewFile = new ReviewFile();
-				reviewFile.setOriginname(origin);
-				reviewFile.setStoredname(stored);
-				reviewFile.setFilesize( (int)item.getSize() );
+				reviewFile = new XFile();
+				reviewFile.setFileOriginName(origin);
+				reviewFile.setFileStoredName(stored);
 				
 			} //if( !item.isFormField() ) end
 		} //while( iter.hasNext() ) end
@@ -333,7 +332,7 @@ public class ReviewServiceImpl implements ReviewService {
 		}
 		
 		if(reviewFile != null) {
-			reviewFile.setReview_no(review.getReview_no()); //게시글 번호 입력 (FK)
+			reviewFile.setFileNo(review.getFileNo()); //게시글 번호 입력 (FK)
 			
 			if( reviewDao.insertFile(conn, reviewFile) > 0 ) {
 				JDBCTemplate.commit(conn);

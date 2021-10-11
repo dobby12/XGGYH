@@ -24,13 +24,13 @@ public class ReviewUpdateController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		//전달파라미터 얻기 - boardno
-		XReview review_no = reviewService.getReview_no(req);
+		XReview reviewNo = reviewService.getReviewNo(req);
 
 		//상세보기 결과 조회
-		XReview updateReview = reviewService.view(Review_no);
+		XReview updateReview = reviewService.view(reviewNo);
 		
 		//닉네임 전달
-		req.setAttribute("mem_nick", reviewService.getMem_nick(updateReview));
+		req.setAttribute("mem_nick", reviewService.getMemNick(updateReview));
 	
 		//조회결과 MODEL값 전달
 		req.setAttribute("updateReivew", updateReview);

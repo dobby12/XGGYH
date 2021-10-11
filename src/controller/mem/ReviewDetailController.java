@@ -23,7 +23,7 @@ public class ReviewDetailController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		XReview review_no = reviewService.getReview_no(req);
+		XReview review_no = reviewService.getReviewNo(req);
 
 		
 		XReview viewReview = reviewService.view(review_no);
@@ -31,7 +31,7 @@ public class ReviewDetailController extends HttpServlet {
 		req.setAttribute("viewReview", viewReview);
 
 		
-		req.setAttribute("mem_nick", reviewService.getMem_nick(viewReview));
+		req.setAttribute("mem_nick", reviewService.getMemNick(viewReview));
 		
 		
 		XFile xFile = reviewService.viewFile(viewReview);

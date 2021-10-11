@@ -29,7 +29,7 @@ public class ReviewListController extends HttpServlet {
 		System.out.println("ReviewListController [GET] - " + paging);
 		
 		//게시글 전체 조회
-		List<XReview> boardList = reviewService.getList(paging);
+		List<XReview> reviewList = reviewService.getList(paging);
 		
 		//조회결과 MODEL값 전달
 		req.setAttribute("reviewList", reviewList);
