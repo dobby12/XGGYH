@@ -9,9 +9,40 @@
 %>
 
 <c:import url="/WEB-INF/views/layout/adminheader.jsp" />
-
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 <script type="text/javascript" src="/resources/js/httpRequest.js"></script>
 <script type="text/javascript">
+
+
+window.onload = function(){
+	btnAction.onclick = function(){
+		console.log("btnAction called")
+		
+		sendRequest("POST", "/admin/comment/write", "", callback);
+	}
+}
+
+function callback(){
+	if(httpRequest.readyState == 4){
+		if(httpRequest.status == 200){
+			
+			console.log("정상적인 AJAX 요청/응답 성공")
+			
+			printData();
+			
+		} else {
+			console.log("AJAX 요청/응답 실패")
+		}
+	}
+}
+
+function printData(){
+	console.log("printData() called")
+	
+	//ajax 응답으로 받은 html 코드를 #result에 반영하기
+	result.innerHTML = httpRequest.responseText;
+}
+
 
 
 </script>
