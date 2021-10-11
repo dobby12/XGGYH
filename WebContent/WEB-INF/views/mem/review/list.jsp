@@ -45,7 +45,7 @@
 <tr>
 	<td>${reviewList.show_no }</td>
 	<td>
-		<a href="/review/detail?reviewno=${reviewList.review_no }">
+		<a href="/review/detail?review_no=${reviewList.review_no }">
 		${reviewList.review_title }
 		</a>
 	</td>
