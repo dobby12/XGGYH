@@ -56,7 +56,7 @@
 	<td>${show.kind_no }</td>
 	<td>${show.genre_no }</td>
 	<td>${show.hall_no }</td>
-	<td>${show.show_title }</td>
+	<td><a href="<%=request.getContextPath() %>/show/detail">${show.show_title }</a></td>
 	<td>${show.show_content }</td>
 	<td>${show.show_date }</td>
 	<td>${show.show_age }</td>
