@@ -51,7 +51,7 @@ $(document).ready(function() {
 </tr>
 
 <tr>
-<td class="info">작성일</td><td colspan="3">${viewReview.writeDate }</td>
+<td class="info">작성일</td><td colspan="3">${viewReview.reviewDate }</td>
 </tr>
 
 <tr>

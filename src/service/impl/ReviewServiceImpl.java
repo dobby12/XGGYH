@@ -63,7 +63,7 @@ public class ReviewServiceImpl implements ReviewService {
 		
 		XReview reviewNo = new XReview();
 		
-		String param = req.getParameter("review_no");
+		String param = req.getParameter("reviewno");
 		if(param!=null && !"".equals(param)) {
 			
 			reviewNo.setReviewNo( Integer.parseInt(param) );
