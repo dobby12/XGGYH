@@ -9,18 +9,18 @@
 $(document).ready(function() {
 	//목록버튼 동작
 	$("#btnList").click(function() {
-		$(location).attr("href", "/XGGYH/review");
+		$(location).attr("href", "<%=request.getContextPath() %>/review/list");
 	});
 	
 	//수정버튼 동작
 	$("#btnUpdate").click(function() {
-		$(location).attr("href", "/XGGYH/review/update?reviewno=${viewReview.reviewNo }");
+		$(location).attr("href", "<%=request.getContextPath() %>/review/update?reviewno=${viewReview.reviewNo }");
 	});
 
 	//삭제버튼 동작
 	$("#btnDelete").click(function() {
 		if( confirm("게시글을 삭제하시겠습니까?") ) {
-			$(location).attr("href", "/XGGYG/review/delete?reviewno=${viewReview.reviewNo }");
+			$(location).attr("href", "<%=request.getContextPath() %>/review/delete?reviewno=${viewReview.reviewNo }");
 		}
 	});
 });

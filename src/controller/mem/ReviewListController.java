@@ -14,7 +14,7 @@ import service.face.ReviewService;
 import service.impl.ReviewServiceImpl;
 import util.Paging;
 
-@WebServlet("/review")
+@WebServlet("/review/list")
 public class ReviewListController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -32,7 +32,7 @@ public class ReviewListController extends HttpServlet {
 		
 		req.setAttribute("paging", paging);
 		
-		req.setAttribute("linkUrl", "/mem/review/list");
+		req.setAttribute("linkUrl", "/review/list");
 		
 		req.getRequestDispatcher("/WEB-INF/views/mem/review/list.jsp").forward(req, resp);		
 		

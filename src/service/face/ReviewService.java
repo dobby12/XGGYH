@@ -101,7 +101,7 @@ public interface ReviewService {
 	 * 
 	 * @param review - 삭제할 게시글 번호를 가진 객체
 	 */
-	public void delete(XReview review);
+	public void delete(XReview reviewno);
 
 
 }

@@ -20,13 +20,13 @@ public class ReviewWriteController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-//		if( req.getSession().getAttribute("login") == null
-//				|| !(boolean)req.getSession().getAttribute("login") ) {
-//			
-//			resp.sendRedirect("/XGGYH");
-//			
-//			return;
-//		}
+		if( req.getSession().getAttribute("login") == null
+				|| !(boolean)req.getSession().getAttribute("login") ) {
+			
+			resp.sendRedirect("/");
+			
+			return;
+		}
 		req.getRequestDispatcher("/WEB-INF/views/mem/review/write.jsp").forward(req, resp);
 	}
 	
@@ -35,6 +35,6 @@ public class ReviewWriteController extends HttpServlet {
 		
 		reviewService.write(req);
 		
-		resp.sendRedirect("/review");
+		resp.sendRedirect("/review/list");
 	}
 }

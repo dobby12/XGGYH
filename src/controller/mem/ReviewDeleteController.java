@@ -20,13 +20,12 @@ public class ReviewDeleteController extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-		XReview review= reviewService.getReviewNo(req);
+		System.out.println("/review/delete [GET]");
 		
-		reviewService.delete(review);
+		XReview reviewno= reviewService.getReviewNo(req);
 		
-		resp.sendRedirect("/review");	
-
+		reviewService.delete(reviewno);
+		
+		resp.sendRedirect("/review/list");	
 	}
-	
 }

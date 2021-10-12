@@ -9,13 +9,19 @@
 $(document).ready(function() {
 	
 	$("#btnWrite").click(function() {
-		location.href="/XGGYH/review/write";
+		location.href="<%=request.getContextPath() %>/review/write";
 	});
 	
 });
 </script>
 
-<div class="container">
+<style>
+th, div {
+	text-align: center;
+}
+</style>
+
+<div class="container" >
 
 <h1>리뷰 게시판</h1>
 <hr>
@@ -42,7 +48,7 @@ $(document).ready(function() {
 </c:forEach>
 </table>
 
-<div id="btnBox" class="pull-left">
+<div id="btnBox" class="pull-right">
 	<button id="btnWrite" >리뷰작성</button>
 </div>
 

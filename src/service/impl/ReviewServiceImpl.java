@@ -156,9 +156,9 @@ public class ReviewServiceImpl implements ReviewService {
 					e1.printStackTrace();
 				}
 
-				if( "review_title".equals(key) ) {
+				if( "reviewTitle".equals(key) ) {
 					review.setReviewTitle( value );
-				} else if( "review_content".equals(key) ) {
+				} else if( "reviewContent".equals(key) ) {
 					review.setReviewContent( value );
 				}
 				
@@ -185,9 +185,9 @@ public class ReviewServiceImpl implements ReviewService {
 				}
 				
 				reviewFile = new XFile();
-				
 				reviewFile.setFileOriginName(origin);
 				reviewFile.setFileStoredName(stored);
+				reviewFile.setFileSize( Long.toString(item.getSize()) );
 				
 			} //if( !item.isFormField() ) end
 		} //while( iter.hasNext() ) end
@@ -319,6 +319,8 @@ public class ReviewServiceImpl implements ReviewService {
 				reviewFile = new XFile();
 				reviewFile.setFileOriginName(origin);
 				reviewFile.setFileStoredName(stored);
+				reviewFile.setFileSize( Long.toString(item.getSize()) );
+
 				
 			} //if( !item.isFormField() ) end
 		} //while( iter.hasNext() ) end
@@ -348,16 +350,16 @@ public class ReviewServiceImpl implements ReviewService {
 	}
 	
 	@Override
-	public void delete(XReview review) {
+	public void delete(XReview reviewno) {
 		Connection conn = JDBCTemplate.getConnection();
 		
-		if( reviewDao.deleteFile(conn, review) > 0 ) {
+		if( reviewDao.deleteFile(conn, reviewno) > 0 ) {
 			JDBCTemplate.commit(conn);
 		} else {
 			JDBCTemplate.rollback(conn);
 		}
 		
-		if( reviewDao.delete(conn, review) > 0 ) {
+		if( reviewDao.delete(conn, reviewno) > 0 ) {
 			JDBCTemplate.commit(conn);
 		} else {
 			JDBCTemplate.rollback(conn);

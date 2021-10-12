@@ -5,24 +5,10 @@
 
 <c:import url="/WEB-INF/views/layout/header.jsp" />
 
-<script type="text/javascript" src="/resources/se2/js/service/HuskyEZCreator.js" charset="utf-8"></script>
-
-<script type="text/javascript">
-function submitContents(elClickedObj) {
-	
-	oEditors.getById["content"].exec("UPDATE_CONTENTS_FIELD", []);
-	
-	try {
-		elClickedObj.form.submit();
-	} catch(e) {}
-}
-</script>
-
 <script type="text/javascript">
 $(document).ready(function() {
 	
 	$("#btnWrite").click(function() {
-		submitContents( $("#btnWrite") )
 		$("form").submit();
 	});
 	
@@ -45,13 +31,13 @@ $(document).ready(function() {
 <hr>
 
 <div>
-<form action="/XGGYH/review/write" method="post" enctype="multipart/form-data">
+<form action="/review/write" method="post" enctype="multipart/form-data">
 
 <table class="table table-bordered">
 <tr><td class="info">아이디</td><td>${memId }</td></tr>
 <tr><td class="info">닉네임</td><td>${memNick }</td></tr>
 <tr><td class="info">제목</td><td><input type="text" name="title" style="width:100%"/></td></tr>
-<tr><td class="info">본문</td></tr>
+<tr><td class="info" colspan="12">본문</td></tr>
 <tr><td colspan="2"><textarea id="content" name="content"></textarea></td></tr>
 </table>
 
@@ -66,16 +52,6 @@ $(document).ready(function() {
 </div>
 
 </div>
-
-<script type="text/javascript">
-var oEditors = [];
-nhn.husky.EZCreator.createInIFrame({
-	oAppRef: oEditors,
-	elPlaceHolder: "reviewContent",
-	sSkinURI: "/resources/se2/SmartEditor2Skin.html",
-	fCreator: "createSEditor2"
-});
-</script>
 
 </body>
 </html>
