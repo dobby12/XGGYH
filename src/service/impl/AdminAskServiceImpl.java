@@ -81,21 +81,22 @@ public class AdminAskServiceImpl implements AdminAskService {
 	}
 
 	@Override
-	public XComment setCommentWrite(HttpServletRequest req) {
+	public XComment setCommentWrite(HttpServletRequest req, XAsk xaskno) {
 		
 		XComment comment = new XComment();
 		
 		comment.setAskNo(Integer.parseInt(req.getParameter("askNo")));
 		comment.setCommentContent(req.getParameter("comment"));
-		
 		comment.setAdminId( req.getParameter("adminId") );
 		
 		Connection conn = JDBCTemplate.getConnection();
 		
 		if( adminAskDao.insertComment(conn, comment) > 0 ) {
+			int res = adminAskDao.updateAskStateToY(conn, xaskno);
+			
 			JDBCTemplate.commit(conn);
 		} else {
-			JDBCTemplate.commit(conn);
+			JDBCTemplate.rollback(conn);
 		}
 		
 		return comment;

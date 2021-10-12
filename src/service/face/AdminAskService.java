@@ -57,8 +57,9 @@ public interface AdminAskService {
 	 * ask_no을 통해서 해당 ask_no에 맞는 문의에 댓글 작성
 	 * 
 	 * @param req - 요청 객체
+	 * @param xaskno - 문의 번호
 	 */
-	public XComment setCommentWrite(HttpServletRequest req);
+	public XComment setCommentWrite(HttpServletRequest req, XAsk xaskno);
 
 	/**
 	 * ask_no을 통해서 해당 ask_no에 맞는 댓글 조회

@@ -1,6 +1,5 @@
 <%@page import="dto.XAsk"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
@@ -23,6 +22,16 @@ $(document).ready(function(){
 			location.href = "<%=request.getContextPath() %>/admin/comment/delete?askNo=${xask.askNo }";
 		}
 		
+	})
+	
+	$("#btnAnswer").click(function(){
+		
+		var answer = confirm("댓글을 작성하시겠습니까?")
+		
+		if( answer = true ){
+			
+			$("form").submit();
+		}
 	})
 })
 
@@ -110,7 +119,7 @@ td {
 <c:if test="${xask.askState == 'n' }">
 	
 	<br>
-	<form method="post" action="<%=request.getContextPath() %>/admin/ask/write?askNo=${xask.askNo }">
+	<form method="post" action="<%=request.getContextPath() %>/admin/comment/write?askNo=${xask.askNo }">
 	<input type="hidden" name="adminId" value="${adminid }" />
 	<input type="hidden" name="askNo" value="${xask.askNo }" />
 	
@@ -120,7 +129,7 @@ td {
 		<br><br>
 	
 		<a href="<%=request.getContextPath() %>/admin/ask/list"><button type="button" class="btn btn-default">목록으로</button></a>
-		<button type="submit" id="btnAnswer" class="btn btn-info">답변하기</button>
+		<button type="button" id="btnAnswer" class="btn btn-info">답변하기</button>
 	
 	</form>
 	
