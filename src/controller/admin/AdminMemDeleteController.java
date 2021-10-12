@@ -26,7 +26,7 @@ public class AdminMemDeleteController extends HttpServlet {
 		
 		adminMemberService.setMemDelete(memid);
 		
-		resp.sendRedirect("/XGGYH/admin/mem/list");
+		resp.sendRedirect("/admin/mem/list");
 		
 	}
 	

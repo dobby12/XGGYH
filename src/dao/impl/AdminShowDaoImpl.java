@@ -248,5 +248,54 @@ public class AdminShowDaoImpl implements AdminShowDao {
 		return showFile;
 
 	}
+	
+	@Override
+	public int deleteShow(Connection conn, XShow showno) {
+
+		String sql = "";
+		sql += "DELETE xshow";
+		sql += " WHERE showno_no = ?";
+		
+		int res = -1;
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, showno.getShowNo());
+			
+			res = ps.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(ps);
+		}
+		
+		return res;
+		
+	}
+	
+	@Override
+	public int deleteShowFile(Connection conn, XShow showno) {
+		
+		String sql = "";
+		sql += "DELETE xfile";
+		sql += " WHERE file_no = ?";
+		
+		int res = -1;
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, showno.getFileNo());
+			
+			res = ps.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(ps);
+		}
+		
+		return res;
+	}
 
 }

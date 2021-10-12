@@ -76,6 +76,13 @@ public interface AdminShowService {
 	 * @return showFile - 첨부파일 정보 객체
 	 */
 	public XFile getFile(XShow viewShow);
+	
+	/**
+	 * 공연정보 삭제 
+	 * 
+	 * @param showno - 공연번호를 가진 공연 객체
+	 */
+	public void setShowDelete(XShow showno);
 
 
 }

@@ -89,5 +89,24 @@ public class AdminShowServiceImpl implements AdminShowService {
 	
 		return adminShowDao.selectFile(JDBCTemplate.getConnection(), viewShow);
 	}
+	
+	@Override
+	public void setShowDelete(XShow showno) {
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		if(adminShowDao.deleteShowFile(conn, showno) > 0) {
+			JDBCTemplate.commit(conn);
+		} else {
+			JDBCTemplate.rollback(conn);
+		}
+		
+		if(adminShowDao.deleteShow(conn, showno) > 0 ) {
+			JDBCTemplate.commit(conn);
+		} else { 
+			JDBCTemplate.rollback(conn);
+		}
+		
+	}
 
 }

@@ -70,5 +70,23 @@ public interface AdminShowDao {
 	 * @return List<XShow> - XShow 테이블 전체 조회
 	 */
 	public List<XShow> selectShowAll(Connection conn, Paging paging);
+	
+	/**
+	 * 공연 정보 파일 삭제
+	 * 
+	 * @param conn
+	 * @param showno
+	 * @return
+	 */
+	public int deleteShowFile(Connection conn, XShow showno);
+
+	/**
+	 * 공연 정보 글 삭제
+	 * 
+	 * @param conn
+	 * @param showno
+	 * @return
+	 */
+	public int deleteShow(Connection conn, XShow showno);
 
 }

@@ -57,6 +57,10 @@
 </c:if>
 </div>
 
+<div class="button">
+	<a href="<%=request.getContextPath() %>/admin/review/delete?showno=${viewShow.showNo }"><button id="btnDelete">삭제</button></a>
+</div>
+
 
 
 </div>

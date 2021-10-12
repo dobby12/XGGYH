@@ -20,13 +20,13 @@ public class AdminReviewDeleteController extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("/board/delete [GET]");
+		System.out.println("admin/review/delete [GET]");
 		
 		XReview reviewno = adminReviewService.getReviewno(req);
 		
 		adminReviewService.setReviewDelete(reviewno);
 		
-		resp.sendRedirect("/XGGYH/admin/review/list");
+		resp.sendRedirect("/admin/review/list");
 	}
 	
 
