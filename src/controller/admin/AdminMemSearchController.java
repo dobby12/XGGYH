@@ -21,8 +21,7 @@ public class AdminMemSearchController extends HttpServlet {
 	private AdminMemberService adminMemberService = new AdminMemberServiceImpl();
 	
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("/admin/mem/search [GET]");
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {		
 		
 		Paging paging = adminMemberService.getPaging(req);
 		System.out.println("AdminMemberListController [GET] - " + paging);
@@ -36,6 +35,8 @@ public class AdminMemSearchController extends HttpServlet {
 		req.setAttribute("searchMemList", searchMemList);
 		
 		req.setAttribute("paging", paging);
+		
+		req.setAttribute("linkUrl", "/admin/mem/search");
 		
 		req.getRequestDispatcher("/WEB-INF/views/admin/mem/search.jsp").forward(req, resp);
 		
