@@ -51,7 +51,7 @@ public class AdminMemberDaoImpl implements AdminMemberDao {
 		sql +=	"	SELECT rownum rnum, XM.* FROM (";
 		sql +=	"		SELECT mem_id, genre_no, mem_pw, mem_nick, mem_mail, mail_state, mem_date";
 		sql +=	"			FROM xmem";
-		sql +=	"			ORDER BY mem_date"; 
+		sql +=	"			ORDER BY mem_date DESC"; 
 		sql +=	"		) XM"; 
 		sql +=	"	)XMEM";
 		sql +=	" WHERE rnum BETWEEN ? AND ?";

@@ -55,7 +55,6 @@ table {
 <form action="<%=request.getContextPath() %>/admin/mem/search" method="get">
 <div>
 	<select id="searchtype" name="searchtype">
-		<option value="">검색조건</option>
 		<option value="memid">회원 아이디</option> 
 		<option value="memnick">회원 닉네임</option>
 	</select>
