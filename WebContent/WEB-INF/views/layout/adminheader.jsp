@@ -104,5 +104,7 @@ ul.nav > li > a:hover {
 	<li><a href="<%=request.getContextPath() %>/admin/review/list">리뷰 관리</a></li>
 	<li><a href="<%=request.getContextPath() %>/admin/show/list">공연 관리</a></li>
 <%-- 	<li><a href="<%=request.getContextPath() %>/admin/mail">메일 관리</a></li> --%>
+
+	<li><a href="<%=request.getContextPath() %>/admin">로그인</a>
 </ul>
 </div>
