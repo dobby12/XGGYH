@@ -34,11 +34,13 @@ $(document).ready(function() {
 <form action="/review/write" method="post" enctype="multipart/form-data">
 
 <table class="table table-bordered">
-<tr><td class="info">아이디</td><td>${memId }</td></tr>
-<tr><td class="info">닉네임</td><td>${memNick }</td></tr>
-<tr><td class="info">제목</td><td><input type="text" name="title" style="width:100%"/></td></tr>
+<tr><td class="info">아이디</td><td>${memid }</td></tr>
+<tr><td class="info">닉네임</td><td>${memnick }</td></tr>
+<tr><td class="info">공연이름</td><td><input type="text" name="showTitle" style="width:98%"/></td></tr>
+<tr><td class="info">별점</td><td><input type="text" name="reviewScore" style="width:98%"/></td></tr>
+<tr><td class="info">제목</td><td><input type="text" name="reviewTitle" style="width:98%"/></td></tr>
 <tr><td class="info" colspan="12">본문</td></tr>
-<tr><td colspan="2"><textarea id="content" name="content"></textarea></td></tr>
+<tr><td colspan="2"><textarea name="reviewContent"></textarea></td></tr>
 </table>
 
 첨부파일 <input type="file" name="file" />
