@@ -10,6 +10,7 @@ import java.util.List;
 import common.JDBCTemplate;
 import dao.face.AdminReviewDao;
 import dto.XFile;
+import dto.XMem;
 import dto.XReview;
 import util.Paging;
 
@@ -272,4 +273,54 @@ public class AdminReviewDaoImpl implements AdminReviewDao {
 		return res;
 	}
 
+	@Override
+	public List<XReview> selectReviewByMemid(Connection conn, Paging paging, XMem reviewMem) {
+		
+		String sql = "";
+		sql += "SELECT * FROM ("; 
+		sql +=		"	SELECT rownum rnum, XR.* FROM (";
+		sql +=		"		SELECT review_no, show_no, file_no, mem_id, review_title, review_content, review_date, review_score, review_hit ";
+		sql +=		"			FROM xreview";
+		sql +=		"				WHERE mem_id = ?";
+		sql +=		"			ORDER BY review_no DESC"; 
+		sql +=		"		) XR"; 
+		sql +=		"	)XREVIEW";
+		sql +=		" WHERE rnum BETWEEN ? AND ?";
+		
+		List<XReview> memReviewList = new ArrayList<XReview>();
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			
+			ps.setString(1, reviewMem.getMemId());
+			ps.setInt(2, paging.getStartNo());
+			ps.setInt(3, paging.getEndNo());
+			
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				XReview review = new XReview();
+				
+				review.setReviewNo(rs.getInt("review_no"));
+				review.setShowNo(rs.getInt("show_no"));
+				review.setFileNo(rs.getInt("file_no"));
+				review.setMemId(rs.getString("mem_id"));
+				review.setReviewTitle(rs.getString("review_title"));
+				review.setReviewContent(rs.getString("review_content"));
+				review.setReviewDate(rs.getDate("review_date"));
+				review.setReviewScore(rs.getInt("review_score"));
+				review.setReviewHit(rs.getInt("review_hit"));
+				
+				memReviewList.add(review);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+		}
+		
+		return memReviewList;
+		
+	}
 }

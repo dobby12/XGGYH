@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.util.List;
 
 import dto.XFile;
+import dto.XMem;
 import dto.XReview;
 import util.Paging;
 
@@ -79,5 +80,16 @@ public interface AdminReviewDao {
 	 * @return
 	 */
 	public int deleteReviewFile(Connection conn, XReview reviewno);
+
+	/**
+	 * 
+	 * @param conn
+	 * @param paging - 페이징
+	 * @param reviewMem - memId를 가진 객체
+	 * @return
+	 */
+	public List<XReview> selectReviewByMemid(Connection conn, Paging paging, XMem reviewMem);
+
+
 
 }

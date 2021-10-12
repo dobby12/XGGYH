@@ -9,6 +9,7 @@ import common.JDBCTemplate;
 import dao.face.AdminReviewDao;
 import dao.impl.AdminReviewDaoImpl;
 import dto.XFile;
+import dto.XMem;
 import dto.XReview;
 import service.face.AdminReviewService;
 import util.Paging;
@@ -106,5 +107,9 @@ public class AdminReviewServiceImpl implements AdminReviewService {
 		}
 	}
 	
+	@Override
+	public List<XReview> getReviewListByMem(Paging paging, XMem reviewMem) {
+		return adminReviewDao.selectReviewByMemid(JDBCTemplate.getConnection(), paging, reviewMem);
+	}
 
 }

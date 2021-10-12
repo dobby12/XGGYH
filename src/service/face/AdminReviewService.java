@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import dto.XFile;
+import dto.XMem;
 import dto.XReview;
 import util.Paging;
 
@@ -76,5 +77,15 @@ public interface AdminReviewService {
 	 * @return reviewFile - 첨부파일 정보 DTO객체
 	 */
 	public XFile getFile(XReview viewReview);
+
+	/**
+	 * member객체로 member_id를 구하고, 회원이 작성한 리뷰 리스트 반환
+	 * 
+	 * @param paging - 페이징 정보 객체
+	 * @param reviewMem - member_id를 가진 리뷰 객체
+	 * @return List<XReview> - 리뷰게시판 조회 리스트
+	 */
+	public List<XReview> getReviewListByMem(Paging paging, XMem reviewMem);
+
 
 }

@@ -1,6 +1,7 @@
 package controller.admin;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,21 +9,41 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import service.face.ReviewService;
-import service.impl.ReviewServiceImpl;
+import dto.XMem;
+import dto.XReview;
+import service.face.AdminMemberService;
+import service.face.AdminReviewService;
+import service.impl.AdminMemberServiceImpl;
+import service.impl.AdminReviewServiceImpl;
 import util.Paging;
 
 @WebServlet("/admin/mem/review")
 public class AdminMemReviewListController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	private ReviewService reviewService = new ReviewServiceImpl();
+	private AdminReviewService adminReviewService = new AdminReviewServiceImpl();
+	private AdminMemberService adminMemberService = new AdminMemberServiceImpl();
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		Paging paging = reviewService.getPaging(req);
+		Paging paging = adminReviewService.getPaging(req);
 		
+		//요청정보로 member객체 받아오기
+		XMem reviewMem = adminMemberService.getMemId(req);
+		
+		//멤버가 작성한 리스트 객체
+		List<XReview> memReviewList = adminReviewService.getReviewListByMem(paging, reviewMem);
+		
+		req.setAttribute("memReviewList", memReviewList);
+		
+		req.setAttribute("paging", paging);
+		
+		req.setAttribute("linkUrl", "/admin/mem/review");
+		
+		System.out.println(memReviewList);
+		
+		req.getRequestDispatcher("/WEB-INF/views/admin/mem/review.jsp").forward(req, resp);
 		
 	
 	}

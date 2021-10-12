@@ -32,16 +32,16 @@ table {
 </tr>
 </thead>
 
-<c:forEach items="${memList }" var="memList">
+<c:forEach items="${memList }" var="mem">
 </tbody>
 <tr>
-	<td>${memList.memId }</td>
-	<td>${memList.memNick }</td>
-	<td>${memList.memMail }</td>
-	<td>${memList.mailState }</td>
-	<td>${memList.memDate }</td>
-	<td><a href="#"><button>작성한 리뷰 보기</button></a></td>	
-	<td><a href="<%=request.getContextPath() %>/admin/mem/delete?memid=${memList.memId }"><button>삭제</button></a></td>	
+	<td>${memL.memId }</td>
+	<td>${mem.memNick }</td>
+	<td>${mem.memMail }</td>
+	<td>${mem.mailState }</td>
+	<td>${mem.memDate }</td>
+	<td><a href="<%=request.getContextPath() %>/admin/mem/review?memid=${mem.memId }"><button>작성한 리뷰 보기</button></a></td>	
+	<td><a href="<%=request.getContextPath() %>/admin/mem/delete?memid=${mem.memId }"><button>삭제</button></a></td>	
 </tr>
 </tbody>
 </c:forEach>
