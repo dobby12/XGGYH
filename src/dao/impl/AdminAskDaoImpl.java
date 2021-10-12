@@ -289,4 +289,29 @@ public class AdminAskDaoImpl implements AdminAskDao {
 		return res;
 	}
 
+	@Override
+	public int updateComment(Connection conn, XComment comment) {
+		String sql = "";
+		sql += "UPDATE xcomment SET admin_id = ?, comment_content = ?";
+		sql += " WHERE comment_no = ?";
+		
+		int res = 0;
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, comment.getAdminId());
+			ps.setString(2, comment.getCommentContent());
+			ps.setInt(3, comment.getCommentNo());
+			
+			res = ps.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(ps);
+		}
+		
+		return res;
+	}
+
 }

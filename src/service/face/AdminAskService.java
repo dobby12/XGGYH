@@ -97,5 +97,22 @@ public interface AdminAskService {
 	 */
 	public void updateAskStatetoN(XAsk xask);
 
+	/**
+	 * comment_no 구함
+	 * 
+	 * @param req - 요청 정보 객체
+	 * @return int
+	 */
+	public int getCommentNo(HttpServletRequest req);
+
+	/**
+	 * comment_no을 통해 해당 comment 수정
+	 * 
+	 * @param req - 요청 정보 객체
+	 * @param commentno - comment_no
+	 * @return XComment
+	 */
+	public XComment setCommentUpdate(HttpServletRequest req, int commentno);
+
 
 }
