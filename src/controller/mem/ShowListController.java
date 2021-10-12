@@ -42,6 +42,7 @@ public class ShowListController extends HttpServlet {
 		}
 		else
 		{
+			//showService에서 XShow 테이블의 정보를 가진 리스트를 받아옴. 이거는 공연 종류로 가져옴
 			showList = showService.getShowList(paging, kindNo);
 		}
 		
@@ -50,6 +51,9 @@ public class ShowListController extends HttpServlet {
 		
 		//페이징 정보 MODEL값 전달
 		req.setAttribute("paging", paging);
+		
+		//종류 정보 MODEL값 전달
+		req.setAttribute("kindNo", kindNo);
 		
 		// /show/list 라는 url을 "linkUrl" 이라는 이름을 가진 요소로 설정 (페이징을 위해 넣은 객체)
 		req.setAttribute("linkUrl", "/show");
