@@ -95,15 +95,11 @@ td {
 	<td colspan="2" width="700px;">
 		<div class="ans" style="background-color: #F2F2F2; height:70px; padding: 10px;">${xcomment.commentContent }</div>
 	</td>
-	
-	<!-- 구현 못함 ㅠ -->
-	<c:if test="${login }">
+
 		<td style="width: 100px;" class="ans">
 			<a href="<%=request.getContextPath() %>/admin/comment/update?commentno=${xcomment.commentNo }"><button class="btn btn-info">수정하기</button></a>
 			<button id="btnDelete" class="btn btn-default">삭제하기</button>			
 		</td>
-		
-	</c:if>
 </tr>
 
 
@@ -112,7 +108,6 @@ td {
 </c:if>
 
 <c:if test="${xask.askState == 'n' }">
-	<c:if test="${login }"> <!-- 관리자 권한 설정 어떻게 하지.. -->
 	
 	<br>
 	<form method="post" action="<%=request.getContextPath() %>/admin/ask/write?askNo=${xask.askNo }">
@@ -128,16 +123,6 @@ td {
 		<button type="submit" id="btnAnswer" class="btn btn-info">답변하기</button>
 	
 	</form>
-	
-	</c:if>
-	
-	<c:if test="${empty login }">
-	
-	<strong>잘못된 접근입니다. 관리자 로그인이 필요합니다.</strong>
-	<br><br>
-	<a href="<%=request.getContextPath() %>/admin"><button id="btnLogin" class="btn btn-info">로그인</button></a>
-	
-	</c:if>
 	
 </c:if>
 </div>

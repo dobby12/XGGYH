@@ -232,15 +232,13 @@ public class AdminAskDaoImpl implements AdminAskDao {
 			
 			ps.setInt(1, xaskno.getAskNo());
 			
-			rs = ps.executeQuery();
+			ps.executeUpdate();
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			JDBCTemplate.close(rs);
 			JDBCTemplate.close(ps);
 		}
-
 		
 	}
 
