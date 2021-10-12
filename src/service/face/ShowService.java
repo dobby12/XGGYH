@@ -63,13 +63,13 @@ public interface ShowService {
 	 * @return XShow - 조회된 게시글
 	 */
 	public XShow viewShowInfo(XShow showNo);
-	
+
 	/**
-	 * showInfo의 kindNo를 통해 XKIND 테이블의 kind_name을 조회하고 반환
-	 * @param showInfo - kindNo를 가지고 있는 객체
-	 * @return - 공연장 이름
+	 * kindNo를 통해 XKIND 테이블의 kind_name을 조회하고 반환 
+	 * @param kindNo - 현재 보고있는 페이지의 kind_no
+	 * @return - 현재 보고 있는 페이지의 종류
 	 */
-	public String getKindName(XShow showInfo);
+	public String getkindName(int kindNo);
 	
 	/**
 	 * showInfo의 genreNo를 통해 XGENRE 테이블의 genre_name을 조회하고 반환

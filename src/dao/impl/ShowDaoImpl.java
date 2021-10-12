@@ -251,9 +251,9 @@ public class ShowDaoImpl implements ShowDao {
 
 		return showInfo;
 	}
-
+	
 	@Override
-	public String selectKindNameByKindNo(Connection conn, XShow showInfo) {
+	public String selectKindNameByKindNo(Connection conn, int kindNo) {
 		String sql = "";
 		sql += "SELECT * FROM XKIND";
 		sql += " WHERE kind_no = ?";
@@ -262,7 +262,7 @@ public class ShowDaoImpl implements ShowDao {
 		
 		try {
 			ps = conn.prepareStatement(sql);
-			ps.setInt(1, showInfo.getKindNo());
+			ps.setInt(1, kindNo);
 
 			rs = ps.executeQuery();
 

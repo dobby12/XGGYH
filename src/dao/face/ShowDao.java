@@ -52,14 +52,14 @@ public interface ShowDao {
 	public XShow selectShowByShowno(Connection conn, XShow showNo);
 
 	/**
-	 * showInfo의 KindNo를 통해 KindName을 조회
+	 * KindNo를 통해 KindName을 조회 : 나중에 이걸로 통일할거 같음
 	 * 
 	 * @param conn
-	 * @param showInfo - 현재 상세보기 하고 있는 게시물의 KindNo를 가진 객체
+	 * @param kindNo - 공연장 번호
 	 * @return 공연 종류 이름
 	 */
-	public String selectKindNameByKindNo(Connection conn, XShow showInfo);
-
+	public String selectKindNameByKindNo(Connection conn, int kindNo);
+	
 	/**
 	 * showInfo의 GenreNo를 통해 GenreName을 조회
 	 * 

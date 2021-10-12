@@ -90,10 +90,10 @@ public class ShowServiceImpl implements ShowService {
 
 		return showInfo;
 	}
-
+	
 	@Override
-	public String getKindName(XShow showInfo) {
-		return showDao.selectKindNameByKindNo(JDBCTemplate.getConnection(), showInfo);
+	public String getkindName(int kindNo) {
+		return showDao.selectKindNameByKindNo(JDBCTemplate.getConnection(), kindNo);
 	}
 
 	@Override

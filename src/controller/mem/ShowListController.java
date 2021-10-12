@@ -33,17 +33,21 @@ public class ShowListController extends HttpServlet {
 		
 		int kindNo = showService.getKindNo(req);
 		
+		String kindName = showService.getkindName(kindNo);
+		
 		List<XShow> showList = null;
 		
 		if(kindNo == 0)
 		{
 			//showService에서 XShow 테이블의 정보를 가진 리스트를 받아옴
 			showList = showService.getShowList(paging);
+			req.setAttribute("kindName", "전체 페이지");
 		}
 		else
 		{
 			//showService에서 XShow 테이블의 정보를 가진 리스트를 받아옴. 이거는 공연 종류로 가져옴
 			showList = showService.getShowList(paging, kindNo);
+			req.setAttribute("kindName", kindName);
 		}
 		
 		//XShow 테이블의 전체 정보를 가진 showList 객체를 "showList"라는 이름을 가진 요소로 설정

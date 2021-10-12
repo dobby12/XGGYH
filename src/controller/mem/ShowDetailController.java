@@ -27,7 +27,7 @@ public class ShowDetailController extends HttpServlet {
 		XShow showNo = showService.getShowNo(req);
 		XShow showDetail = showService.viewShowInfo(showNo);
 		
-		String kindName = showService.getKindName(showDetail);
+		String kindName = showService.getkindName(showDetail.getKindNo());
 		String genreName = showService.getGenreName(showDetail);
 		String hallName = showService.getHallName(showDetail);
 		

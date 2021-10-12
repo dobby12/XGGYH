@@ -345,10 +345,7 @@ public class ReviewServiceImpl implements ReviewService {
 					review.setReviewScore( Integer.parseInt(value) );
 				} else if( "reviewHit".equals(key) ) {
 					review.setReviewHit( 0 );
-				} else if( "showNo".equals(key) ) {
-					show.setShowNo( Integer.parseInt(value) );
-				}
-				
+				} 
 			} //if( item.isFormField() ) end
 			
 			
