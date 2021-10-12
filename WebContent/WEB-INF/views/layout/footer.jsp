@@ -2,7 +2,9 @@
     pageEncoding="UTF-8"%>
 
 <div id="footer">
-	<small> - - - - 공공연히 footer영역 - - - - </small>
+
+<img id="logo_footer" src="/resources/file/logo_square.png" />
+
 </div>
 
 </body>
