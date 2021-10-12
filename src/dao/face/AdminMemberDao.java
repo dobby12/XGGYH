@@ -41,7 +41,7 @@ public interface AdminMemberDao {
 	 * @param keyword
 	 * @return 멤버 객체
 	 */
-	public List<XMem> selectMemSearchByMemid(Connection conn, String keyword);
+	public List<XMem> selectMemSearchByMemid(Connection conn, String keyword, Paging paging);
 
 	/**
 	 * 멤버 닉네임으로 검색
@@ -50,5 +50,5 @@ public interface AdminMemberDao {
 	 * @param keyword
 	 * @return 멤버 객체
 	 */
-	public List<XMem> selectMemSearchByMemnick(Connection conn, String keyword);
+	public List<XMem> selectMemSearchByMemnick(Connection conn, String keyword, Paging paging);
 }
