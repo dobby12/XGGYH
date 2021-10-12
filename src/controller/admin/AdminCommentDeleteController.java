@@ -30,6 +30,6 @@ public class AdminCommentDeleteController extends HttpServlet {
 		
 		adminAskService.deleteComment(xaskno);
 		
-		resp.sendRedirect(req.getContextPath() + "/admin/ask/list");
+		resp.sendRedirect(req.getContextPath() + "/admin/ask/detail?askNo=" + req.getParameter("askNo"));
 	}
 }

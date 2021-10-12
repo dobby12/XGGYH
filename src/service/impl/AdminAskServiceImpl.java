@@ -131,11 +131,14 @@ public class AdminAskServiceImpl implements AdminAskService {
 		
 		Connection conn = JDBCTemplate.getConnection();
 		
+		//댓글 삭제 
 		adminAskDao.deleteCommentByAskNo(conn, xaskno);
 		
-		JDBCTemplate.commit(conn);			
-			
+		//댓글 상태 변환
+		int res = adminAskDao.updateAskStateToN(conn, xaskno);
 		
+		JDBCTemplate.commit(conn);						
+
 	}
 
 	@Override
