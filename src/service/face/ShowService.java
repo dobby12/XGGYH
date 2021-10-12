@@ -23,6 +23,13 @@ public interface ShowService {
 	public List<XShow> getShowList(Paging paging);
 	
 	/**
+	 * 공연 정보 (XShow 테이블) 전체 조회
+	 * 페이징 처리 추가 
+	 * @return List<XShow> - 공연 정보가 전체 조회 된 리스트
+	 */
+	public List<XShow> getShowList(Paging paging, int kindNo);
+	
+	/**
 	 * 페이징 객체 생성
 	 * 
 	 * 요청파라미터 curPage를 구한다
@@ -40,6 +47,14 @@ public interface ShowService {
 	 * @return XShow - 전달파라미터 ShowNo를 포함한 객체
 	 */
 	public XShow getShowNo(HttpServletRequest req);
+	
+	/**
+	 * 요청파라미터 얻기
+	 * 
+	 * @param req - 요청정보객체
+	 * @return XShow - 전달파라미터 kindNo를 포함한 객체
+	 */
+	public int getKindNo(HttpServletRequest req);
 
 	/**
 	 * 주어진 showNo를 이용하여 게시글을 조회한다

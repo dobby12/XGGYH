@@ -102,10 +102,11 @@ ul.nav > li > a:hover {
 <div id="header">
 <ul class="nav">
 	<li><a href="#">로고영역</a>
-	<li><a href="#">뮤지컬</a></li>
-	<li><a href="#">오페라</a></li>
-	<li><a href="#">콘서트</a></li>
-	<li><a href="#">연극</a></li>
+	<li><a href="<%=request.getContextPath() %>/show">공연정보</a></li>
+	<li><a href="<%=request.getContextPath() %>/show?kindNo=1">뮤지컬</a></li>
+	<li><a href="<%=request.getContextPath() %>/show?kindNo=4">오페라</a></li>
+	<li><a href="<%=request.getContextPath() %>/show?kindNo=3">콘서트</a></li>
+	<li><a href="<%=request.getContextPath() %>/show?kindNo=2">연극</a></li>
 	<li><a href="#">내가 찜한 콘텐츠</a></li>
 	<li><a href="#">리뷰 게시판</a></li>
 </ul>

@@ -51,6 +51,15 @@
     margin-top: 25px;
 }
 
+.poster {
+    width: 250px;
+    height: 280px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    border:1px solid black;
+}
+
 </style>
 
 </head>
@@ -67,7 +76,7 @@
 		<div class="list_start">
 			<c:forEach items="${showList }" var="showList">
 			<div class="list_detail">
-			<div class="photoEx">사진 들어갈 자리</div>
+			<div class="photoEx"><img class="poster" src='http://drive.google.com/uc?export=view&id=1UCDamPPObCPN9BY8Iz2WjsgiY8m80K2b' /><br></div>
 			<a href="<%=request.getContextPath() %>/show/detail?showNo=${showList.showNo }"> 
 			<p>${showList.showTitle} <br> ${showList.showDirector }</p> </a>
 			</div>
