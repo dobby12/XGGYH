@@ -46,16 +46,8 @@ public class AdminNoticeServiceImpl implements AdminNoticeService {
 	@Override
 	public void setNotice(HttpServletRequest req) {
 		
-//		HttpSession session = req.getSession();
-//		String title = req.getParameter("title");
-//		String content = req.getParameter("content");
-//		String id = (String)session.getAttribute("adminid");
-//		System.out.println(title);
-//		System.out.println(content);
-//		System.out.println(id);
-		
-		XNotice notice = null;
-		XFile noticeFile = null;
+		XNotice notice = null;	//@@@삽입하려는 게시판 객체로 바꾸기 ex) XReview review = null;
+		XFile file = null;
 		
 		boolean isMultipart = false;
 		isMultipart = ServletFileUpload.isMultipartContent(req);
@@ -63,7 +55,7 @@ public class AdminNoticeServiceImpl implements AdminNoticeService {
 			System.out.println("!!!ERROR!!! AdminNoticeWriteController에 Post방식으로 전달된 parameter가 multipart/form-data형식이 아닙니다.");
 			return;
 		}
-		notice = new XNotice();
+		notice = new XNotice();	//@@@위에 맞춰서 수정 ex) = new XReview();
 		//--------------------------------------------------
 
 		//디스크 기반 아이템 팩토리
@@ -110,10 +102,10 @@ public class AdminNoticeServiceImpl implements AdminNoticeService {
 					e.printStackTrace();
 				}
 				
-				if("title".equals(key)) {
-					notice.setNoticeTitle(value);
-				} else if("content".equals(key)) {
-					notice.setNoticeContent(value);
+				if("title".equals(key)) {			//@@@"title"로 전달받은 게 맞으면 수정할 필요 없음
+					notice.setNoticeTitle(value);	//@@@ex) review.setReviewTitle(value);
+				} else if("content".equals(key)) {	//@@@"content"로 전달받은 게 맞으면 수정할 필요 없음
+					notice.setNoticeContent(value);	//@@@ex) review.setReviewContent(value);
 				}
 			}
 
@@ -142,10 +134,10 @@ public class AdminNoticeServiceImpl implements AdminNoticeService {
 				}
 				
 				//업로드된 파일의 정보 저장
-				noticeFile = new XFile();
-				noticeFile.setFileOriginName(origin);
-				noticeFile.setFileStoredName(stored);
-				noticeFile.setFileSize(Long.toString(item.getSize()));	//@@@ DB, DTO 만들 때 varchar2, String으로 해놔서 임시
+				file = new XFile();
+				file.setFileOriginName(origin);
+				file.setFileStoredName(stored);
+				file.setFileSize(Long.toString(item.getSize()));	//@@ DB를 varchar2로 만들었기 때문에 Long.toString() 사용함
 				
 			}
 			
@@ -154,14 +146,16 @@ public class AdminNoticeServiceImpl implements AdminNoticeService {
 		Connection conn = JDBCTemplate.getConnection();
 
 		//게시글 번호 생성
-		int noticeno = adminNoticeDao.selectNextNoticeno(conn);
+		int no = adminNoticeDao.selectNextNoticeno(conn);	//@@@삽입하려는 게시판에 맞게 변수명과 dao메소드 생성
+																//dao메소드는 DUAL테이블에서 게시판번호를 table_seq.nextval을 이용해서 만들어 오는 기능
+																//모르겠으면 지태한테 문의 or AdminNoticeDaoImpl.java에 있는 selectNextNoticeno(conn) 확인
 
-		//첨부파일 정보가 있을 경우
-		if(noticeFile != null) {
+		//첨부파일 정보가 있을 경우 (아래의 게시글 처리보다 위에 있어야만 합니다! PK, FK 관계 때문에)
+		if(file != null) {
 			int fileno = fileDao.selectNextFileno(conn);
-			noticeFile.setFileNo(fileno);
-			notice.setFileNo(fileno);
-			if(fileDao.insertFile(conn, noticeFile) > 0) {
+			file.setFileNo(fileno);
+			notice.setFileNo(fileno);	//@@@삽입하려는 게시판에 맞게 ex) review.setFileNo(fileno);
+			if(fileDao.insertFile(conn, file) > 0) {
 				JDBCTemplate.commit(conn);
 			} else {
 				JDBCTemplate.rollback(conn);
@@ -170,12 +164,13 @@ public class AdminNoticeServiceImpl implements AdminNoticeService {
 		
 		//게시글 정보가 있을 경우 (있겠지만 혹시나)
 		if(notice!=null) {
-			notice.setAdminId((String)req.getSession().getAttribute("adminid"));
-			notice.setNoticeNo(noticeno);
-			if(notice.getNoticeTitle()==null||"".equals(notice.getNoticeTitle())) {
-				notice.setNoticeTitle("(제목 없음)");
+			notice.setAdminId((String)req.getSession().getAttribute("adminid"));	//@@@현재 로그인되어 있는 adminid를 불러와서 이 게시판의 작성자에 입력시키는 코드
+																					//사용자 입장일 경우 adminid 대신 memid를 입력하고 setMemId로 변경
+			notice.setNoticeNo(no);	//@@@위에서 만든 게시글번호 no를 삽입 ex)review.setReviewNo(no);  
+			if(notice.getNoticeTitle()==null||"".equals(notice.getNoticeTitle())) {	//@@@각 게시판에 맞게 수정 필요
+				notice.setNoticeTitle("(제목 없음)");	//@@@각 게시판에 맞게
 			}
-			if(adminNoticeDao.insertNotice(conn, notice)>0) {
+			if(adminNoticeDao.insertNotice(conn, notice)>0) {	//@@@각 게시판에 맞게 dao 메소드 생성
 				JDBCTemplate.commit(conn);
 			} else {
 				JDBCTemplate.rollback(conn);
