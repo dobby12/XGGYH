@@ -18,7 +18,7 @@ public class AdminLogoutController extends HttpServlet {
 		System.out.println("###TEST### AdminLogoutController doGet()"); 
 		HttpSession session = req.getSession();
 		session.invalidate();
-		resp.sendRedirect("/XGGYH/admin");	//로그아웃 시 메인페이지로 이동	@@@수정 꼭 
+		resp.sendRedirect("/admin");	//로그아웃 시 메인페이지로 이동	@@@수정 꼭 
 	}
 	
 }

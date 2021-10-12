@@ -30,7 +30,7 @@ public class AdminNoticeWriteController extends HttpServlet {
 			req.getRequestDispatcher("/WEB-INF/views/admin/notice/write.jsp").forward(req, resp);
 			return;
 		}
-		resp.sendRedirect("/XGGYH/admin");	//@@@보낼 url 어디?
+		resp.sendRedirect("/admin");
 	}
 	
 	@Override
@@ -39,7 +39,8 @@ public class AdminNoticeWriteController extends HttpServlet {
 
 		adminNoticeService.setNotice(req);
 		
-		resp.sendRedirect("/XGGYH/admin/notice/list");	//@@@url
+		//작성 완료 후 notice list로 보내기
+		resp.sendRedirect("/admin/notice/list");
 	}
 	
 }
