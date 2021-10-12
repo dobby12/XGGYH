@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import dto.XFile;
 import dto.XReview;
+import dto.XShow;
 import util.Paging;
 
 public interface ReviewService {
@@ -46,6 +47,14 @@ public interface ReviewService {
 	public XReview getReviewNo(HttpServletRequest req);
 
 	/**
+	 * 요청파라미터 얻기
+	 * 
+	 * @param req - 요청정보객체
+	 * @return XSHow - 전달파라미터 show_no를 포함한 객체
+	 */
+	public XShow getShowNo(HttpServletRequest req);
+
+	/**
 	 * 주어진 review_no를 이용하여 게시글을 조회한다
 	 * 조회된 게시글의 조회수를 1 증가시킨다
 	 * 
@@ -53,6 +62,7 @@ public interface ReviewService {
 	 * @return XReview - 조회된 게시글
 	 */
 	public XReview view(XReview review_no);
+	
 	
 	/**
 	 * XReview 객체의 id 를 이용한 닉네임 조회
@@ -102,6 +112,8 @@ public interface ReviewService {
 	 * @param review - 삭제할 게시글 번호를 가진 객체
 	 */
 	public void delete(XReview reviewno);
+
+
 
 
 }

@@ -83,6 +83,16 @@ public interface ReviewDao {
 	 * @return 다음 게시글 번호
 	 */
 	public int selectNextReviewNo(Connection conn);
+	
+	/**
+	 * 다음 게시글 번호 조회
+	 * 
+	 * 	게시글 테이블과 공연 테이블에 입력될 공통 show_no값을 시퀀스를 통해 조회한다
+	 * 
+	 * @param conn - DB연결 객체
+	 * @return 다음 게시글 번호
+	 */
+	public int selectNextShowNo(Connection conn);
 
 	/**
 	 * 첨부파일 입력
