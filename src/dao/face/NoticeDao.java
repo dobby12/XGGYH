@@ -22,7 +22,7 @@ public interface NoticeDao {
 	 * 
 	 * @param paging - 페이징 정보 객체
 	 * @param conn - DB연결 객체
-	 * @return List<Board> - XNotice 테이블 전체 조회 결과 리스트
+	 * @return List<XNotice> - XNotice 테이블 전체 조회 결과 리스트
 	 */
 	public List<XNotice> selectAll(Connection conn, Paging paging);
 	

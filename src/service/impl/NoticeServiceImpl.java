@@ -68,6 +68,8 @@ public class NoticeServiceImpl implements NoticeService {
 
 	@Override
 	public String getAdminName(XNotice viewNotice) {
+		
 		return noticeDao.selectNameByAdminId(JDBCTemplate.getConnection(), viewNotice);
+		
 	}
 }

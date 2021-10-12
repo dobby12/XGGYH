@@ -18,11 +18,11 @@
 	<th>작성일</th>
 </tr>
 
-<c:forEach items="${noticeList }" var="notice">
+<c:forEach items="${noticeList }" var="notice" varStatus="status">
 <tr>
 	<td>${notice.noticeNo }</td>
 	<td>${notice.noticeTitle }</td>
-	<td>${notice.adminId }</td>
+	<td>${adminNameList[status.index] }</td>
 	<td>${notice.noticeDate }</td>
 </tr>
 </c:forEach>

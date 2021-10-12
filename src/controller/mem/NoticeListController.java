@@ -1,6 +1,7 @@
 package controller.mem;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -31,8 +32,17 @@ public class NoticeListController extends HttpServlet {
 		//게시글 전체 조회
 		List<XNotice> noticeList = noticeService.getNoticeList(paging);
 		
+		List<String> adminNameList = new ArrayList<>();
+		
+		for(XNotice notice:noticeList) {
+			adminNameList.add(noticeService.getAdminName(notice));
+		}
+		
 		//조회결과 MODEL값 전달
 		req.setAttribute("noticeList", noticeList);
+		
+		//관리자 이름 리스트 전달
+		req.setAttribute("adminNameList", adminNameList);
 		
 		//페이징 정보 MODEL값 전달
 		req.setAttribute("linkUrl", "/mem/mypage/notice");
