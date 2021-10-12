@@ -33,4 +33,22 @@ public interface AdminMemberDao {
 	 * @return
 	 */
 	public int deleteMem(Connection conn, XMem memid);
+	
+	/**
+	 * 멤버 아이디로 검색
+	 * 
+	 * @param connection
+	 * @param keyword
+	 * @return 멤버 객체
+	 */
+	public List<XMem> selectMemSearchByMemid(Connection conn, String keyword);
+
+	/**
+	 * 멤버 닉네임으로 검색
+	 * 
+	 * @param connection
+	 * @param keyword
+	 * @return 멤버 객체
+	 */
+	public List<XMem> selectMemSearchByMemnick(Connection conn, String keyword);
 }

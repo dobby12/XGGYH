@@ -113,5 +113,83 @@ public class AdminMemberDaoImpl implements AdminMemberDao {
 		return res;
 	
 	}
+	
+	@Override
+	public List<XMem> selectMemSearchByMemid(Connection conn, String keyword) {
+		
+		String sql = "";
+		sql += "SELECT * FROM XMEM"; 
+		sql += " WHERE mem_id like ?";
+
+		List<XMem> searchMemList = new ArrayList<XMem>();
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, "%" + keyword + "%");
+			
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				XMem member = new XMem();
+				
+				member.setMemId(rs.getString("mem_id"));
+				member.setGenreNo(rs.getInt("genre_no"));
+				member.setMemNick(rs.getString("mem_nick"));
+				member.setMemPw(rs.getString("mem_pw"));
+				member.setMemMail(rs.getString("mem_mail"));
+				member.setMailState(rs.getString("mail_state"));
+				member.setMemDate(rs.getDate("mem_date"));
+				
+				searchMemList.add(member);
+				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+		}
+		
+		return searchMemList;
+	}
+	
+	@Override
+	public List<XMem> selectMemSearchByMemnick(Connection conn, String keyword) {
+		
+		String sql = "";
+		sql += "SELECT * FROM XMEM"; 
+		sql += " WHERE mem_nick like ?";
+
+		List<XMem> searchMemList = new ArrayList<XMem>();
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, "%" + keyword + "%");
+			
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				XMem member = new XMem();
+				
+				member.setMemId(rs.getString("mem_id"));
+				member.setGenreNo(rs.getInt("genre_no"));
+				member.setMemNick(rs.getString("mem_nick"));
+				member.setMemPw(rs.getString("mem_pw"));
+				member.setMemMail(rs.getString("mem_mail"));
+				member.setMailState(rs.getString("mail_state"));
+				member.setMemDate(rs.getDate("mem_date"));
+				
+				searchMemList.add(member);
+				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+		}
+		
+		return searchMemList;
+	}
 
 }

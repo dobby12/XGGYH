@@ -45,5 +45,12 @@ public interface AdminMemberService {
 	 * @param memid - 삭제할 mem객체
 	 */
 	public void setMemDelete(XMem memid);
+	
+	/**
+	 * 
+	 * @req - 요청파라미터로 searchtype, keyword가지고 있음
+	 * @return parameter로 찾은 mem객체 반환
+	 */
+	public List<XMem> searchMemList(HttpServletRequest req, Paging paging);
 
 }

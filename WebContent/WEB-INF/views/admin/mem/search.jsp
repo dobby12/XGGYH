@@ -15,7 +15,7 @@ table {
 
 <div class="container">
 
-<h2>회원정보</h2>
+<h2>회원정보 검색 결과</h2>
 <hr>
 
 <table class="table table-hover table-condensed">
@@ -32,7 +32,7 @@ table {
 </tr>
 </thead>
 
-<c:forEach items="${memList }" var="mem">
+<c:forEach items="${searchMemList }" var="mem">
 </tbody>
 <tr>
 	<td>${mem.memId }</td>
@@ -51,17 +51,5 @@ table {
 
 </div>
 <c:import url="/WEB-INF/views/layout/paging.jsp" />
-
-<form action="<%=request.getContextPath() %>/admin/mem/search" method="get">
-<div>
-	<select id="searchtype" name="searchtype">
-		<option value="">검색조건</option>
-		<option value="memid">회원 아이디</option> 
-		<option value="memnick">회원 닉네임</option>
-	</select>
-	<input type="text" id="keyword" name="keyword" placeholder="검색어를 입력하세요"/>
-	<button>검색</button>
-</div>
-</form>
 
 <c:import url="/WEB-INF/views/layout/footer.jsp" />

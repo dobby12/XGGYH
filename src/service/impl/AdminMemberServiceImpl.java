@@ -13,7 +13,7 @@ import service.face.AdminMemberService;
 import util.Paging;
 
 public class AdminMemberServiceImpl implements AdminMemberService {
-	
+
 	private AdminMemberDao adminMemberDao = new AdminMemberDaoImpl();
 
 	@Override
@@ -36,33 +36,56 @@ public class AdminMemberServiceImpl implements AdminMemberService {
 
 	@Override
 	public List<XMem> getMemList(Paging paging) {
-		
+
 		return adminMemberDao.selectMemAll(JDBCTemplate.getConnection(), paging);
 	}
-	
+
 	@Override
 	public XMem getMemId(HttpServletRequest req) {
-		
+
 		XMem memid = new XMem();
 
 		String param = req.getParameter("memid");
 		if(param != null && !"".equals(param)) {
 			memid.setMemId(param);
 		}
-		
+
 		return memid;
 	}
-	
+
 	@Override
 	public void setMemDelete(XMem memid) {
-		
+
 		Connection conn = JDBCTemplate.getConnection();
-	
+
 		if(adminMemberDao.deleteMem(conn, memid) > 0 ) {
 			JDBCTemplate.commit(conn);
 		} else { 
 			JDBCTemplate.rollback(conn);
 		}
+
+	}
+
+	@Override
+	public List<XMem> searchMemList(HttpServletRequest req, Paging paging) {
+
+		//전달 파라미터 얻기 - searchtype, keyword
+		String searchtype = (String)req.getParameter("searchtype");
+		String keyword = (String)req.getParameter("keyword");
+
+		System.out.println(searchtype);
+		System.out.println(keyword);
+		
+		if(searchtype == "memnick") {
+			return adminMemberDao.selectMemSearchByMemnick(JDBCTemplate.getConnection(), keyword);
+			
+		} else if(searchtype == "memid") {
+			return adminMemberDao.selectMemSearchByMemid(JDBCTemplate.getConnection(), keyword);
+		} else {
+			return adminMemberDao.selectMemAll(JDBCTemplate.getConnection(), paging);
+		}
+		
+
 		
 	}
-}
+}	
