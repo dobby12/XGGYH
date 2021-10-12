@@ -36,6 +36,8 @@ public class AdminMemSearchController extends HttpServlet {
 		
 		req.setAttribute("paging", paging);
 		
+		req.setCharacterEncoding("UTF-8");
+		
 		req.setAttribute("linkUrl", "/admin/mem/search");
 		
 		req.getRequestDispatcher("/WEB-INF/views/admin/mem/search.jsp").forward(req, resp);
