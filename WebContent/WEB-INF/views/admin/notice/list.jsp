@@ -34,6 +34,9 @@
 
 <c:import url="/WEB-INF/views/layout/paging.jsp" />	<%-- @@@urlLink 수정하긔 --%>
 
+	<a href="<%=request.getContextPath() %>/admin/notice/write"><button>NOTICE WRITE</button></a>
+
+
 <!------------------------------------------------------>
 </body>
 </html>

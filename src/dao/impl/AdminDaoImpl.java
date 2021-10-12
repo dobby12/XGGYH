@@ -40,6 +40,14 @@ public class AdminDaoImpl implements AdminDao {
 		
 	}
 
+	
+	
+	
+	
+	
+	
+	
+	
 	@Override
 	public XAdmin selectAdminByAdminid(Connection connection, XAdmin admin) {
 		
@@ -66,5 +74,46 @@ public class AdminDaoImpl implements AdminDao {
 		
 		return res;
 	}
+
+
+
+
+
+
+
+
+
+	@Override
+	public int selectCntAdminByAdminid(Connection connection, String attribute) {
+		
+		int count = 0;	//성공 시 1로 반환될 결과 변수
+		
+		String sql = "SELECT COUNT(*) FROM XADMIN WHERE ADMIN_ID=? AND ADMIN_AUTHORITY=?";
+		
+		try {
+			ps = connection.prepareStatement(sql);
+			ps.setString(1, attribute);
+			ps.setString(2, "y");
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				count = rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+		}
+		
+		return count;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 	
 }

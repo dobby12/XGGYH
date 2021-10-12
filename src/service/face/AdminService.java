@@ -26,5 +26,12 @@ public interface AdminService {
 	 * @return DB에 저장되어 있던 정보를 담은 XAdmin객체
 	 */
 	public XAdmin getAdmin(XAdmin admin);
+
+	/**
+	 * DB에 존재하는 adminid로 로그인이 되어 있는 지 확인
+	 * @param attribute - session에 저장되어 있는 adminid
+	 * @return 있을 시 true, 없을 시 false
+	 */
+	public boolean authorAdmin(String attribute);
 	
 }

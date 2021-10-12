@@ -31,4 +31,19 @@ public interface AdminNoticeDao {
 	 */
 	public XFile selectFileByFileno(Connection connection, int noticeno);
 
+	/**
+	 * 
+	 * @param conn
+	 * @return
+	 */
+	public int selectNextNoticeno(Connection conn);
+
+	/**
+	 * 
+	 * @param conn
+	 * @param notice
+	 * @return
+	 */
+	public int insertNotice(Connection conn, XNotice notice);
+
 }

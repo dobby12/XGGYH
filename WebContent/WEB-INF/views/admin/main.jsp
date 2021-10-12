@@ -45,6 +45,7 @@
 <hr>
 	<strong>로그인 한 상태일 때 보여질 영역</strong><br>
 	<a href="<%=request.getContextPath() %>/admin/logout"><button>LOGOUT</button></a>
+	<a href="<%=request.getContextPath() %>/admin/notice/list"><button>NOTICE LIST</button></a>
 <hr>
 </c:if>
 

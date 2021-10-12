@@ -2,6 +2,8 @@ package service.face;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import dto.XFile;
 import dto.XNotice;
 
@@ -26,5 +28,7 @@ public interface AdminNoticeService {
 	 * @return DB에서 조회한 XFile객체
 	 */
 	public XFile getFile(int noticeno);
+
+	public void setNotice(HttpServletRequest req);
 
 }

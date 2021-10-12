@@ -21,5 +21,13 @@ public interface AdminDao {
 	 * @return admin_id, admin_name, admin_authority가 저장된 XAdmin객체
 	 */
 	public XAdmin selectAdminByAdminid(Connection connection, XAdmin admin);
+
+	/**
+	 * 전달 받은 adminid와 일치하는 admin_id가 있는 지 확인한 후 boolean 반환
+	 * @param connection - DB연결객체
+	 * @param attribute - DB를 조회해 보려는 adminid
+	 * @return 1 == 아이디가 존재하며 admin_authority가 y임
+	 */
+	public int selectCntAdminByAdminid(Connection connection, String attribute);
 	
 }

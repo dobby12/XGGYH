@@ -38,5 +38,14 @@ public class AdminServiceImpl implements AdminService {
 	public XAdmin getAdmin(XAdmin admin) {
 		return adminDao.selectAdminByAdminid(JDBCTemplate.getConnection(), admin);
 	}
+
+	@Override
+	public boolean authorAdmin(String attribute) {
+		if(adminDao.selectCntAdminByAdminid(JDBCTemplate.getConnection(), attribute)==1) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 	
 }

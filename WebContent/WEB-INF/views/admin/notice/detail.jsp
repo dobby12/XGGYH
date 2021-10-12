@@ -38,6 +38,10 @@
 @@@첨부 파일 없습...
 </c:if>
 
+<br>
+<a href="<%=request.getContextPath() %>/admin/notice/list"><button>LIST</button></a>
+<a href="<%=request.getContextPath() %>/admin/notice/upadate?noticeno=${notice.noticeNo }"><button>MODIFY</button></a>
+<a href="<%=request.getContextPath() %>/admin/notice/delete?noticeno=${notice.noticeNo }"><button>DELETE</button></a>
 
 <!------------------------------------------------------>
 </body>

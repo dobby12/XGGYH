@@ -130,6 +130,75 @@ public class AdminNoticeDaoImpl implements AdminNoticeDao {
 		
 		return res;
 	}
+
+
+
+
+
+
+
+
+
+
+
+	@Override
+	public int selectNextNoticeno(Connection conn) {
+		String sql = "SELECT XNOTICE_SEQ.NEXTVAL FROM DUAL";
+		int nextNoticeno = 0;
+		try {
+			ps = conn.prepareStatement(sql);
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				nextNoticeno = rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+		}
+		 
+		return nextNoticeno;
+	}
+
+
+
+
+
+
+
+
+
+
+
+	@Override
+	public int insertNotice(Connection conn, XNotice notice) {
+		
+		String sql = "INSERT INTO XNOTICE(NOTICE_NO, ADMIN_ID, FILE_NO, NOTICE_TITLE, NOTICE_CONTENT)"
+				+ " VALUES(?, ?, ?, ?, ?)";
+
+		int res = 0;
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, notice.getNoticeNo());
+			ps.setString(2,  notice.getAdminId());
+			if(notice.getFileNo()==0) {
+				ps.setObject(3, null);
+			} else {
+				ps.setInt(3, notice.getFileNo());
+			}
+			ps.setString(4, notice.getNoticeTitle());
+			ps.setString(5, notice.getNoticeContent());
+			res = ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(ps);
+		}
+		
+		return res;
+	}
 	
 	
 	
