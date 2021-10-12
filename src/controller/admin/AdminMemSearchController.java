@@ -26,6 +26,7 @@ public class AdminMemSearchController extends HttpServlet {
 		
 		Paging paging = adminMemberService.getPaging(req);
 		System.out.println("AdminMemberListController [GET] - " + paging);
+
 		
 		//전달 파라미터 searchtype, keyword를 통해서 searchMember객체를 반환
 		List<XMem> searchMemList = adminMemberService.searchMemList(req, paging);
