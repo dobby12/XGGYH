@@ -201,7 +201,6 @@ public class AdminAskDaoImpl implements AdminAskDao {
 		try {
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, xaskno.getAskNo() );
-			
 			rs = ps.executeQuery();
 			
 			while( rs.next() ) {

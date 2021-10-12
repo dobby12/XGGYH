@@ -32,6 +32,7 @@ public class AdminLoginController extends HttpServlet {
 		
 		XAdmin admin = adminService.getLoginAdmin(req);
 		System.out.println("###TEST### admin : " + admin);
+		System.out.println(req.getParameter("adminid"));
 		HttpSession session = req.getSession();
 		
 		if(adminService.loginAdmin(admin)) {
