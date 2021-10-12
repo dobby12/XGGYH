@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import dto.XFile;
 import dto.XNotice;
 import util.Paging;
 
@@ -51,5 +52,20 @@ public interface NoticeService {
 	 * @return String - 게시글 관리자의 닉네임
 	 */
 	public String getAdminName(XNotice viewNotice);
+
+	/**
+	 * 첨부파일 정보 조회
+	 * 
+	 * @param viewNotice - 첨부파일과 연결된 게시글번호를 포함한 DTO객체
+	 * @return XFile - 첨부파일 정보 DTO객체
+	 */
+	public XFile viewFile(XNotice viewNotice);
+
+	/**
+	 * 
+	 * @param noticeNo
+	 * @return
+	 */
+	public XNotice view(XNotice noticeNo);
 
 }
