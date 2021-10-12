@@ -35,7 +35,7 @@ table {
 <c:forEach items="${memList }" var="mem">
 </tbody>
 <tr>
-	<td>${memL.memId }</td>
+	<td>${mem.memId }</td>
 	<td>${mem.memNick }</td>
 	<td>${mem.memMail }</td>
 	<td>${mem.mailState }</td>
