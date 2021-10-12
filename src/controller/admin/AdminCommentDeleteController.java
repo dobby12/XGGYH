@@ -24,11 +24,12 @@ public class AdminCommentDeleteController extends HttpServlet {
 		
 		System.out.println("/admin/comment/delete [GET]");
 		System.out.println(req.getParameter("askNo"));
-		//전달 파라미터 얻기 - askno
-//		XAsk xaskno = adminAskService.getAskNo(req);
-//		
-//		adminAskService.deleteComment(xaskno);
-//		
-//		resp.sendRedirect("/WEB-INF/views/admin/ask/list.jsp");
+		
+//		전달 파라미터 얻기 - askno
+		XAsk xaskno = adminAskService.getAskNo(req);
+		
+		adminAskService.deleteComment(xaskno);
+		
+		resp.sendRedirect(req.getContextPath() + "/admin/ask/list");
 	}
 }

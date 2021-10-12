@@ -14,7 +14,17 @@
 <script type="text/javascript" src="/resources/js/httpRequest.js"></script>
 <script type="text/javascript">
 
-
+$(document).ready(function(){
+	$("#btnDelete").click(function(){
+		
+		var answer = confirm("댓글을 정말 삭제하시겠습니까?")
+		
+		if( answer = true ){
+			location.href = "<%=request.getContextPath() %>/admin/comment/delete?askNo=${xask.askNo }";
+		}
+		
+	})
+})
 
 </script>
 
@@ -90,7 +100,7 @@ td {
 	<c:if test="${login }">
 		<td style="width: 100px;" class="ans">
 			<a href="<%=request.getContextPath() %>/admin/comment/update?commentno=${xcomment.commentNo }"><button class="btn btn-info">수정하기</button></a>
-			<a href="<%=request.getContextPath() %>/admin/comment/delete?askNo=${xask.askNo }"><button class="btn btn-default">삭제하기</button></a>			
+			<button id="btnDelete" class="btn btn-default">삭제하기</button>			
 		</td>
 		
 	</c:if>

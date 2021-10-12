@@ -70,17 +70,20 @@ public interface AdminAskDao {
 	public void deleteCommentByAskNo(Connection conn, XAsk xaskno);
 
 	/**
+	 * ask_state n으로 변경
 	 * 
-	 * @param conn
-	 * @param xcomment
-	 * @return
+	 * @param conn - DB 연결 객체
+	 * @param xask - ask_no
+	 * @return int
 	 */
 	public int updateAskStateToN(Connection conn, XAsk xask);
 
 	/**
+	 * ask_state y로 변경
 	 * 
-	 * @param conn
-	 * @return
+	 * @param conn - DB 연결 객체
+	 * @param xask - ask_no
+	 * @return int
 	 */
 	public int updateAskStateToY(Connection conn, XAsk xask);
 

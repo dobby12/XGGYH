@@ -238,11 +238,10 @@ public class AdminAskDaoImpl implements AdminAskDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
+			JDBCTemplate.close(rs);
 			JDBCTemplate.close(ps);
 		}
-		
 
-		
 		
 	}
 

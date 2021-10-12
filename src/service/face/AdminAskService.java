@@ -78,20 +78,21 @@ public interface AdminAskService {
 	/**
 	 * ask_no로 댓글 삭제하기
 	 * 
-	 * @param xaskno - int형 ask_no
+	 * @param xaskno - XAsk ask_no
 	 */
 	public void deleteComment(XAsk xaskno);
 
 	/**
+	 * 답변이 null이 아니면 y로 변경
 	 * 
-	 * 
-	 * @param xaskno - 해당 ask_no의 comment
+	 * @param xaskno - 해당 ask_no
 	 */
 	public void updateAskStatetoY(XAsk xask);
 
 	/**
+	 * 답변이 null이면 n로 변겨
 	 * 
-	 * @param xcomment
+	 * @param xask - 해당 ask_no
 	 */
 	public void updateAskStatetoN(XAsk xask);
 
