@@ -32,15 +32,17 @@
 </table>
 
 <c:if test="${notice.fileNo ne 0 }">
-@@@첨부 파일 있을 때 : <a href="/${file.fileStoredName }" download="${file.fileOriginName }">${file.fileOriginName }</a>
+@@@첨부 파일 있을 때 보여질 영역<br>
+<a href="/upload/${file.fileStoredName }" download="${file.fileOriginName }">${file.fileOriginName }</a>
 </c:if>
 <c:if test="${notice.fileNo eq 0 }">
-@@@첨부 파일 없습...
+@@@첨부 파일 없을 때 보여질 영역<br>
+@@@첨부파일이 없습니다.
 </c:if>
 
 <br>
 <a href="<%=request.getContextPath() %>/admin/notice/list"><button>LIST</button></a>
-<a href="<%=request.getContextPath() %>/admin/notice/upadate?noticeno=${notice.noticeNo }"><button>MODIFY</button></a>
+<a href="<%=request.getContextPath() %>/admin/notice/update?noticeno=${notice.noticeNo }"><button>MODIFY</button></a>
 <a href="<%=request.getContextPath() %>/admin/notice/delete?noticeno=${notice.noticeNo }"><button>DELETE</button></a>
 
 <!------------------------------------------------------>

@@ -46,4 +46,11 @@ public interface AdminNoticeDao {
 	 */
 	public int insertNotice(Connection conn, XNotice notice);
 
+	/**
+	 * 
+	 * @param connection
+	 * @param no
+	 */
+	public int updateNotice(Connection connection, XNotice notice);
+
 }

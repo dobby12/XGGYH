@@ -31,4 +31,6 @@ public interface AdminNoticeService {
 
 	public void setNotice(HttpServletRequest req);
 
+	public void setNoticeUpdate(HttpServletRequest req);
+
 }
