@@ -39,7 +39,10 @@ public class AdminShowWriteController extends HttpServlet {
 		req.setCharacterEncoding("utf-8");
 
 		adminShowService.setShow( req );
-		
+//		
+//		System.out.println("showContent: " + req.getParameter("showContent"));
+//		System.out.println("showStart : " + req.getParameter("showStart"));
+//		System.out.println("showEnd : " + req.getParameter("showEnd"));
 		resp.sendRedirect("/admin/show/list");
 	}
 

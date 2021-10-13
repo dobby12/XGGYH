@@ -189,6 +189,8 @@ public class AdminShowServiceImpl implements AdminShowService {
 			     
 				if("showTitle".equals(key)) {
 					xshow.setShowTitle(value);	
+				} else if("hallNo".equals(key)) {
+					xshow.setHallNo(Integer.parseInt(value));
 				} else if("kindNo".equals(key)) {
 					xshow.setKindNo(Integer.parseInt(value));
 				} else if("genreNo".equals(key)) {
@@ -199,6 +201,8 @@ public class AdminShowServiceImpl implements AdminShowService {
 					xshow.setShowDirector(value);
 				} else if("showActor".equals(key)) {
 					xshow.setShowActor(value);
+				} else if("showContent".equals(key)) {
+					xshow.setShowContent(value);
 				} else if("startDate".equals(key)) {
 					try {
 						xshow.setShowStart( new SimpleDateFormat("yyyy-MM-dd").parse(value) );
@@ -276,7 +280,7 @@ public class AdminShowServiceImpl implements AdminShowService {
 			if(xshow.getShowTitle()==null ||" ".equals(xshow.getShowTitle())) {	//@@@각 게시판에 맞게 수정 필요
 				xshow.setShowTitle("공연 제목 없음");
 			}
-			if(adminShowDao.insertShow(conn, xshow)>0) {
+			if(adminShowDao.insertShow(conn, xshow) > 0) {
 				JDBCTemplate.commit(conn);
 			} else {
 				JDBCTemplate.rollback(conn);
