@@ -181,14 +181,16 @@ public class ReviewServiceImpl implements ReviewService {
 					e1.printStackTrace();
 				}
 
-				if( "memid".equals(key) ) {
-					review.setMemId( value );
-				} else if( "reviewTitle".equals(key) ) {
+				if( "reviewTitle".equals(key) ) {
 					review.setReviewTitle( value );
-				} else if( "reviewContent".equals(key) ) {
+				} else if ( "reviewContent".equals(key) ) {
 					review.setReviewContent( value );
-				} else if( "reviewScore".equals(key) ) {
+				} else if ( "reviewScore".equals(key) ) {
 					review.setReviewScore( Integer.parseInt(value) );
+				} else if ( "showNo".equals(key) ) {
+					review.setShowNo( Integer.parseInt(value) );
+				} else if ( "memId".equals(key) ) {
+					review.setMemId( value );
 				}
 				
 			} //if( item.isFormField() ) end
