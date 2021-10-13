@@ -23,7 +23,7 @@ public class AdminMemSearchController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {		
 		
-		Paging paging = adminMemberService.getPaging(req);
+		Paging paging = adminMemberService.getParameterPaging(req);
 		System.out.println("AdminMemberListController [GET] - " + paging);
 
 		

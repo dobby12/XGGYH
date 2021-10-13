@@ -33,6 +33,27 @@ public class AdminMemberServiceImpl implements AdminMemberService {
 
 		return paging;
 	}
+	
+	@Override
+	public Paging getParameterPaging(HttpServletRequest req) {
+		
+		String param = req.getParameter("curPage");
+		int curPage = 0;
+		if(param != null && !"".equals(param)) {
+			curPage = Integer.parseInt(param);
+		} else {
+			System.out.println("[WARNING] curPage값이 null이거나 비어있습니다");
+		}
+		
+		String searchtype = (String)req.getParameter("searchtype");
+		String keyword = (String)req.getParameter("keyword");
+
+		int totalCount = adminMemberDao.selectCntSearchMemAll(JDBCTemplate.getConnection(), searchtype, keyword);
+
+		Paging paging = new Paging(totalCount, curPage);
+
+		return paging;
+	}
 
 	@Override
 	public List<XMem> getMemList(Paging paging) {

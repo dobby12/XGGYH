@@ -17,6 +17,16 @@ public interface AdminMemberDao {
 	public int selectCntMemAll(Connection conn);
 
 	/**
+	 * 검색된 전체 회원 수 조회
+	 * 
+	 * @param conn
+	 * @param searchtype - 검색 타입
+	 * @param keyword - 검색어
+	 * @return 전체 인원
+	 */
+	public int selectCntSearchMemAll(Connection conn, String searchtype, String keyword);
+	
+	/**
 	 * 회원 전체 리스트 조회(페이징 있음)
 	 * 
 	 * @param connection - DB연결 객체
@@ -51,4 +61,5 @@ public interface AdminMemberDao {
 	 * @return 멤버 객체
 	 */
 	public List<XMem> selectMemSearchByMemnick(Connection conn, String keyword, Paging paging);
+
 }
