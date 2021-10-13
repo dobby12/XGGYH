@@ -13,7 +13,7 @@ import service.face.MemberService;
 import service.impl.MemberServiceImpl;
 
 @WebServlet("/join")
-public class JoinController extends HttpServlet {
+public class MemberJoinController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	//MemberService 객체 생성
