@@ -86,7 +86,7 @@ $(document).ready(function() {
 <div>
 	<div id="beforeFile">
 		기존 첨부파일: 
-		<a href="/upload/${xFile.fileStoredName }" >${xFile.fileOriginName }</a>
+		<a href="/upload/${reviewFile.fileStoredName }" >${reviewFile.fileOriginName }</a>
 		<span id="delFile" style="color:red; font-weight: bold; cursor: pointer;">X</span>
 	</div>
 

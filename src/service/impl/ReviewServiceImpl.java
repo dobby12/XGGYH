@@ -188,8 +188,6 @@ public class ReviewServiceImpl implements ReviewService {
 					review.setReviewContent( value );
 				} else if( "reviewScore".equals(key) ) {
 					review.setReviewScore( Integer.parseInt(value) );
-				} else if( "reviewHit".equals(key) ) {
-					review.setReviewHit( 0 );
 				}
 				
 			} //if( item.isFormField() ) end
@@ -343,9 +341,7 @@ public class ReviewServiceImpl implements ReviewService {
 					review.setReviewContent( value );
 				} else if( "reviewScore".equals(key) ) {
 					review.setReviewScore( Integer.parseInt(value) );
-				} else if( "reviewHit".equals(key) ) {
-					review.setReviewHit( 0 );
-				} 
+				}
 			} //if( item.isFormField() ) end
 			
 			
@@ -386,11 +382,8 @@ public class ReviewServiceImpl implements ReviewService {
 		
 		//첨부파일정보 있을경우
 		if(reviewFile != null) {
-			
-			int fileno = fileDao.selectNextFileno(conn);
-			reviewFile.setFileNo(fileno);
-			review.setFileNo(fileno);
-			reviewFile.setFileNo(reviewNo);
+			reviewFile.setFileNo(review.getReviewNo());
+
 			if( fileDao.insertFile(conn, reviewFile) > 0 ) {
 				JDBCTemplate.commit(conn);
 			} else {
@@ -400,14 +393,6 @@ public class ReviewServiceImpl implements ReviewService {
 		
 		//게시글정보있을경우
 		if(review != null) {
-			review.setMemId((String)req.getSession().getAttribute("memId"));
-			
-			review.setReviewNo(reviewNo);
-			
-			if(review.getReviewTitle()==null || "".equals(review.getReviewTitle())) {
-				review.setReviewTitle("(제목없음)");
-			}
-			
 			if( reviewDao.update(conn, review) > 0 ) {
 				JDBCTemplate.commit(conn);
 			} else {
