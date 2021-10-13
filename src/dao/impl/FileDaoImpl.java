@@ -57,4 +57,25 @@ public class FileDaoImpl implements FileDao {
 		return res;
 	}
 
+	
+	
+	@Override
+	public int deleteFile(Connection conn, int fileNo) {
+		
+		String sql = "DELETE XFILE WHERE FILE_NO=?";
+		int res = -1;
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, fileNo);
+			res = ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(ps);
+		}
+				
+		return res;
+	}
+	
+	
 }

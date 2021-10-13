@@ -81,21 +81,22 @@ public class AdminAskServiceImpl implements AdminAskService {
 	}
 
 	@Override
-	public XComment setCommentWrite(HttpServletRequest req) {
+	public XComment setCommentWrite(HttpServletRequest req, XAsk xaskno) {
 		
 		XComment comment = new XComment();
 		
 		comment.setAskNo(Integer.parseInt(req.getParameter("askNo")));
 		comment.setCommentContent(req.getParameter("comment"));
-		
 		comment.setAdminId( req.getParameter("adminId") );
 		
 		Connection conn = JDBCTemplate.getConnection();
 		
 		if( adminAskDao.insertComment(conn, comment) > 0 ) {
+			int res = adminAskDao.updateAskStateToY(conn, xaskno);
+			
 			JDBCTemplate.commit(conn);
 		} else {
-			JDBCTemplate.commit(conn);
+			JDBCTemplate.rollback(conn);
 		}
 		
 		return comment;
@@ -168,6 +169,40 @@ public class AdminAskServiceImpl implements AdminAskService {
 		} else {
 			JDBCTemplate.rollback(conn);			
 		}
+	}
+
+	@Override
+	public int getCommentNo(HttpServletRequest req) {
+		
+		int comment_no = 0;
+		
+		//ask_no 전달 파라미터 검증 - !null, !""
+		String param = req.getParameter("commentNo");
+		
+		if(param!=null && !"".equals(param)) {
+			 comment_no = Integer.parseInt(param);
+		}
+		
+		return comment_no;
+	}
+
+	@Override
+	public XComment setCommentUpdate(HttpServletRequest req, int commentno) {
+		XComment comment = new XComment();
+		
+		comment.setCommentContent(req.getParameter("comment"));
+		comment.setAdminId( req.getParameter("adminId") );
+		comment.setCommentNo(commentno);
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		if( adminAskDao.updateComment(conn, comment) > 0 ) {
+			JDBCTemplate.commit(conn);
+		} else {
+			JDBCTemplate.rollback(conn);
+		}
+		
+		return comment;
 	}
 
 }

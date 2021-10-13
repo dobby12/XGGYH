@@ -20,5 +20,13 @@ public interface FileDao {
 	 * @return
 	 */
 	public int insertFile(Connection conn, XFile file);
+
+	/**
+	 * 
+	 * @param conn
+	 * @param fileNo
+	 * @return
+	 */
+	int deleteFile(Connection conn, int fileNo);
 	
 }

@@ -13,7 +13,7 @@
 <tr>
 		<th>no</th>
 		<th>title</th>
-		<th>content</th>
+<!-- 		<th>content</th> -->
 		<th>id</th>
 		<th>file</th>
 		<th>date</th>
@@ -24,7 +24,7 @@
 <tr>
 	<td>${noticeList.noticeNo }</td>
 	<td><a href="<%=request.getContextPath() %>/admin/notice/detail?noticeno=${noticeList.noticeNo }">${noticeList.noticeTitle }</a></td>
-	<td>${noticeList.noticeContent }</td>
+<%-- 	<td>${noticeList.noticeContent }</td> --%>
 	<td>${noticeList.adminId }</td>
 	<td><c:if test="${noticeList.fileNo ne 0 }">첨부됨</c:if></td>	
 	<td>${noticeList.noticeDate }</td>

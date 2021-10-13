@@ -21,6 +21,14 @@ public interface AdminMemberService {
 	 */
 	public Paging getPaging(HttpServletRequest req);
 
+	/**
+	 * 검색결과 페이징
+	 * 
+	 * @param req
+	 * @return 페이징 계산이 완료된 Paging 객체
+	 */
+	public Paging getParameterPaging(HttpServletRequest req);
+	
 	/** 
 	 * 
 	 * 회원 정보 전체 리스트 형식으로 조회
@@ -45,5 +53,14 @@ public interface AdminMemberService {
 	 * @param memid - 삭제할 mem객체
 	 */
 	public void setMemDelete(XMem memid);
+	
+	/**
+	 * 
+	 * @req - 요청파라미터로 searchtype, keyword가지고 있음
+	 * @return parameter로 찾은 mem객체 반환
+	 */
+	public List<XMem> searchMemList(HttpServletRequest req, Paging paging);
+	
+	
 
 }

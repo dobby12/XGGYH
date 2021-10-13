@@ -1,6 +1,5 @@
 <%@page import="dto.XAsk"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
@@ -19,10 +18,35 @@ $(document).ready(function(){
 		
 		var answer = confirm("댓글을 정말 삭제하시겠습니까?")
 		
-		if( answer = true ){
+		if( answer == true ){
 			location.href = "<%=request.getContextPath() %>/admin/comment/delete?askNo=${xask.askNo }";
+		} else {
+			return false;
+		}
+	})
+	
+	$("#btnUpdate").click(function(){
+		
+		var answer = confirm("댓글을 수정하시겠습니까?")
+		
+		if(answer == true){
+			location.href="<%=request.getContextPath() %>/admin/comment/update?askNo=${xask.askNo }";
+		} else {
+			return false;
 		}
 		
+	})
+	
+	$("#btnAnswer").click(function(){
+		
+		var answer = confirm("댓글을 작성하시겠습니까?")
+		
+		if( answer == true ){
+			
+			$("form").submit();
+		} else {
+			return false;
+		}
 	})
 })
 
@@ -87,6 +111,7 @@ td {
 <div id="answer" class="container">
 <c:if test="${xask.askState == 'y'}">
 <table class="table table-condensed">
+
 <tr>	
 	<!-- 아이디 -->
 	<td colspan="2" class="ans" width="150px;">관리자 아이디 : ${xcomment.adminId }</td>
@@ -97,20 +122,20 @@ td {
 	</td>
 
 		<td style="width: 100px;" class="ans">
-			<a href="<%=request.getContextPath() %>/admin/comment/update?commentno=${xcomment.commentNo }"><button class="btn btn-info">수정하기</button></a>
+			<button id="btnUpdate" class="btn btn-info">수정하기</button>
 			<button id="btnDelete" class="btn btn-default">삭제하기</button>			
 		</td>
 </tr>
 
-
 </table>
+
 <a href="<%=request.getContextPath() %>/admin/ask/list"><button id="btnList" class="btn btn-default">목록으로</button></a>
 </c:if>
 
 <c:if test="${xask.askState == 'n' }">
 	
 	<br>
-	<form method="post" action="<%=request.getContextPath() %>/admin/ask/write?askNo=${xask.askNo }">
+	<form method="post" action="<%=request.getContextPath() %>/admin/comment/write?askNo=${xask.askNo }">
 	<input type="hidden" name="adminId" value="${adminid }" />
 	<input type="hidden" name="askNo" value="${xask.askNo }" />
 	
@@ -120,7 +145,7 @@ td {
 		<br><br>
 	
 		<a href="<%=request.getContextPath() %>/admin/ask/list"><button type="button" class="btn btn-default">목록으로</button></a>
-		<button type="submit" id="btnAnswer" class="btn btn-info">답변하기</button>
+		<button type="button" id="btnAnswer" class="btn btn-info">답변하기</button>
 	
 	</form>
 	
@@ -128,5 +153,4 @@ td {
 </div>
 </div>
 
-</body>
-</html>
+<c:import url="/WEB-INF/views/layout/footer.jsp" />

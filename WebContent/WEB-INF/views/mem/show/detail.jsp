@@ -83,5 +83,8 @@
 				목록</button>
 		</div>
 	</div>
+	
+	<c:import url="/WEB-INF/views/layout/footer.jsp" />
+	
 </body>
 </html>

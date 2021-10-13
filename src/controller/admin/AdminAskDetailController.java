@@ -35,20 +35,6 @@ public class AdminAskDetailController extends HttpServlet {
 
 		XComment xcomment = adminAskService.getComment(xaskno);
 //		System.out.println(xcomment);
-		
-		
-//		if(xcomment.getCommentNo() == 0) {
-//			adminAskService.updateAskStatetoN(xask);
-//			
-//		} else if (xcomment.getCommentNo() != 0) {
-//			
-//			adminAskService.updateAskStatetoY(xask);
-//		}
-
-		xask = adminAskService.getAskDetail(xaskno);
-		System.out.println(xask);
-		
-
 
 		XAdmin admin = adminService.getLoginAdmin(req);
 		HttpSession session = req.getSession();

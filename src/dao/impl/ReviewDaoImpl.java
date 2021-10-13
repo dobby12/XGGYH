@@ -266,8 +266,9 @@ public class ReviewDaoImpl implements ReviewDao {
 	public int insert(Connection conn, XReview review) {
 		
 		String sql = "";
-		sql += "INSERT INTO xreview(REVIEW_NO, SHOW_NO, FILE_NO, MEM_ID, REVIEW_TITLE, REVIEW_CONTENT, REVIEW_DATE, REVIEW_SCORE, REVIEW_HIT)";
-		sql += " VALUES (?, ?, ?, ?, ?, ?, ?, 0)";
+		sql += "INSERT INTO xreview(review_no, show_no, mem_id, review_title,";
+		sql += " review_content, review_score, review_hit)";
+		sql += " VALUES (?, ?, ?, ?, ?, ?, 0)";
 		
 		int res = 0;
 		
@@ -276,12 +277,10 @@ public class ReviewDaoImpl implements ReviewDao {
 			
 			ps.setInt(1, review.getReviewNo());
 			ps.setInt(2, review.getShowNo());
-			ps.setInt(3, review.getFileNo());
-			ps.setString(4, review.getMemId());
-			ps.setString(5, review.getReviewTitle());
-			ps.setString(6, review.getReviewContent());
-			ps.setInt(7, review.getReviewScore());
-			ps.setInt(8, review.getReviewHit());
+			ps.setString(3, review.getMemId());
+			ps.setString(4, review.getReviewTitle());
+			ps.setString(5, review.getReviewContent());
+			ps.setInt(6, review.getReviewScore());
 
 			res = ps.executeUpdate();
 			
@@ -322,21 +321,47 @@ public class ReviewDaoImpl implements ReviewDao {
 	}
 	
 	@Override
+	public int selectNextShowNo(Connection conn) {
+		
+		String sql = "";
+		sql += "SELECT xshow_seq.nextval FROM dual";
+		
+		int nextShowNo = 0;
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				nextShowNo = rs.getInt(1);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+		}
+		
+		return nextShowNo;
+	}
+	
+	@Override
 	public int insertFile(Connection conn, XFile xFile) {
 
 		String sql = "";
-		sql += "INSERT INTO xfile( file_no, review_no, file_origin_name, file_stored_name, file_size )";
-		sql += " VALUES( xreviewfile_seq.nextval, ?, ?, ?, ? )";
+		sql += "INSERT INTO xfile( file_no, file_origin_name, file_stored_name, file_size )";
+		sql += " VALUES( xfile_seq.nextval, ?, ?, ? )";
 		
 		int res = 0;
 		
 		try {
 			ps = conn.prepareStatement(sql);
 			
-			ps.setInt(1, xFile.getFileNo());
-			ps.setString(2, xFile.getFileOriginName());
-			ps.setString(3, xFile.getFileStoredName());
-			ps.setString(4, xFile.getFileSize());
+			ps.setString(1, xFile.getFileOriginName());
+			ps.setString(2, xFile.getFileStoredName());
+			ps.setString(3, xFile.getFileSize());
 			
 			res = ps.executeUpdate();
 			
@@ -362,7 +387,7 @@ public class ReviewDaoImpl implements ReviewDao {
 		try {
 			ps = conn.prepareStatement(sql);
 			
-			ps.setInt(1, viewReview.getReviewNo());
+			ps.setInt(1, viewReview.getFileNo());
 			
 			rs = ps.executeQuery();
 			

@@ -22,11 +22,14 @@ public class AdminCommentWriteController extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-//		System.out.println("/");
+		req.setCharacterEncoding("UTF-8");
 		
-		XComment comment = adminAskService.setCommentWrite( req );
+		XAsk xaskno = adminAskService.getAskNo(req);
+		XComment comment = adminAskService.setCommentWrite( req, xaskno );
 		
 		req.setAttribute("comment", comment);
+
+		resp.sendRedirect(req.getContextPath() + "/admin/ask/detail?askNo=" + req.getParameter("askNo"));
 
 		
 	}

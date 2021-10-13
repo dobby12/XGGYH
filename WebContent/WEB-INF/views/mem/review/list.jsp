@@ -5,16 +5,6 @@
 
 <c:import url="/WEB-INF/views/layout/header.jsp" />
 
-<script type="text/javascript">
-$(document).ready(function() {
-	
-	$("#btnWrite").click(function() {
-		location.href="<%=request.getContextPath() %>/review/write";
-	});
-	
-});
-</script>
-
 <style>
 th, div {
 	text-align: center;
@@ -23,7 +13,7 @@ th, div {
 
 <div class="container" >
 
-<h1>리뷰 게시판</h1>
+<h1 class="pull-left">리뷰 게시판</h1>
 <hr>
 
 <table class="table table-striped table-hover table-condensed">
@@ -48,13 +38,19 @@ th, div {
 </c:forEach>
 </table>
 
-<div id="btnBox" class="pull-right">
-	<button id="btnWrite" >리뷰작성</button>
 </div>
 
+<div style="text-align: center; margin: 0 0 25px 0;" >
+<form action="<%=request.getContextPath() %>/review/list" method="get">
+	<select id="searchtype" name="searchtype">
+		<option value="reviewTitle">제목</option> 
+		<option value="reviewContent">내용</option>
+	</select>
+	<input type="text" id="keyword" name="keyword" placeholder="검색어를 입력하세요"/>
+	<button>검색</button>
+</form>
 </div>
 
 <c:import url="/WEB-INF/views/layout/paging.jsp" />
 
-</body>
-</html>
+<c:import url="/WEB-INF/views/layout/footer.jsp" />

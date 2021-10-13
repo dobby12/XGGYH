@@ -87,5 +87,14 @@ public interface AdminAskDao {
 	 */
 	public int updateAskStateToY(Connection conn, XAsk xask);
 
+	/**
+	 * comment 수정
+	 * 
+	 * @param conn - DB 연결 객체
+	 * @param comment - 수정된 comment
+	 * @return int
+	 */
+	public int updateComment(Connection conn, XComment comment);
+
 
 }

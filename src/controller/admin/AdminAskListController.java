@@ -40,11 +40,10 @@ public class AdminAskListController extends HttpServlet {
 	
 		
 		if(adminService.authorAdmin((String)req.getSession().getAttribute("adminid"))) {
-			//현재 로그인 되어 있는 관리자 아이디 adminid이 DB에 저장된 admin_id이며, admin_authority값이 y인 경우가 맞다면
 			req.getRequestDispatcher("/WEB-INF/views/admin/ask/list.jsp").forward(req, resp);
 			return;
 		}
-		resp.sendRedirect("/admin");	//@@@보낼 url 어디?
+		resp.sendRedirect("/admin");
 		
 		
 	}

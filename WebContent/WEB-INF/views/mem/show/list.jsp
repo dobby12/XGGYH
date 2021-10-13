@@ -31,7 +31,6 @@
     display: inline-block;
     width: 300px;
     height: 350px;
-	border: 1px solid;
     margin-bottom: 40px;
     margin-right: 20px;
     margin-left: 20px;
@@ -51,6 +50,20 @@
     margin-top: 25px;
 }
 
+.poster {
+    width: 250px;
+    height: 280px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    border:1px solid black;
+}
+
+.search {
+	width: 240px;
+	margin: 0 auto;
+}
+
 </style>
 
 </head>
@@ -60,25 +73,36 @@
 
 <div class="container">
 
-<h1>공연 정보 게시판(전체 리스트)</h1>
+<h1>공연 정보 게시판( ${kindName} )</h1>
 <hr>
 
 <div class="main_list">
 		<div class="list_start">
 			<c:forEach items="${showList }" var="showList">
 			<div class="list_detail">
-			<div class="photoEx">사진 들어갈 자리</div>
+			
 			<a href="<%=request.getContextPath() %>/show/detail?showNo=${showList.showNo }"> 
-			<p>${showList.showTitle} <br> ${showList.showDirector }</p> </a>
+			<div class="photoEx"><img class="poster" src='http://drive.google.com/uc?export=view&id=1UCDamPPObCPN9BY8Iz2WjsgiY8m80K2b' /><br></div>
+			<p>${showList.showTitle} <br> ${showList.showDirector }</p> 
+			</a>
+			
 			</div>
 			</c:forEach>
 		</div>
 </div>
 
+<div class="search" id="search">
+	<form action="/show" method="get">
+		<input type="text" name="title" placeholder="공연 제목을 입력해주세요."/>
+		<input type="submit" value="검색">
+	</form>
+</div>
 
-<c:import url="/WEB-INF/views/layout/paging.jsp" />
+<c:import url="/WEB-INF/views/layout/parameterPaging.jsp" />
 
 </div>
+
+<c:import url="/WEB-INF/views/layout/footer.jsp" />
 
 </body>
 </html>

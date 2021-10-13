@@ -84,5 +84,11 @@ public interface AdminShowService {
 	 */
 	public void setShowDelete(XShow showno);
 
+	/**
+	 * 
+	 * @param req
+	 */
+	public void setShow(HttpServletRequest req);
+
 
 }

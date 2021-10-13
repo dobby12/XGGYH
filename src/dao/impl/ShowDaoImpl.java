@@ -123,6 +123,64 @@ public class ShowDaoImpl implements ShowDao {
 
 		return showList;
 	}
+	
+	@Override
+	public List<XShow> selectShowAllByKindNo(Connection conn, Paging paging, int kindNo) {
+		String sql = "";
+		sql += "SELECT * FROM (";
+		sql += "	SELECT rownum rnum, X.* FROM (";
+		sql += "		SELECT";
+		sql += "			show_no, file_no, admin_id, kind_no, genre_no, hall_no, show_title";
+		sql += "			, show_content, show_date, show_age, show_director, show_actor, show_start, show_end";
+		sql += "		FROM XShow";
+		sql += "		WHERE kind_no = ?";
+		sql += "		ORDER BY show_no DESC";
+		sql += "	) X";
+		sql += " ) XShow";
+		sql += " WHERE rnum BETWEEN ? AND ?";
+
+		// 결과 저장할 List
+		List<XShow> showList = new ArrayList<>();
+
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, kindNo);
+			ps.setInt(2, paging.getStartNo());
+			ps.setInt(3, paging.getEndNo());
+
+			rs = ps.executeQuery();
+
+			while (rs.next()) {
+				XShow showInfo = new XShow();
+
+				showInfo.setShowNo(rs.getInt("show_no"));
+				showInfo.setFileNo(rs.getInt("file_no"));
+				showInfo.setAdminId(rs.getString("admin_id"));
+				showInfo.setKindNo(rs.getInt("kind_no"));
+				showInfo.setGenreNo(rs.getInt("genre_no"));
+				showInfo.setHallNo(rs.getInt("hall_no"));
+				showInfo.setShowTitle(rs.getString("show_title"));
+				showInfo.setShowContent(rs.getString("show_content"));
+				showInfo.setShowDate(rs.getDate("show_date"));
+				showInfo.setShowAge(rs.getString("show_age"));
+				showInfo.setShowDirector(rs.getString("show_director"));
+				showInfo.setShowActor(rs.getString("show_actor"));
+				showInfo.setShowStart(rs.getDate("show_start"));
+				showInfo.setShowEnd(rs.getDate("show_end"));
+
+				// 리스트에 결과값 저장
+				showList.add(showInfo);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+		}
+
+		return showList;
+	}
 
 	@Override
 	public int selectCntAll(Connection conn) {
@@ -135,6 +193,36 @@ public class ShowDaoImpl implements ShowDao {
 
 		try {
 			ps = conn.prepareStatement(sql);
+			rs = ps.executeQuery();
+
+			while (rs.next()) {
+				count = rs.getInt(1);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+		}
+
+		return count;
+	}
+	
+	@Override
+	public int selectCntBykindNo(Connection conn, int kindNo) {
+		// SQL 작성
+		String sql = "";
+		sql += "SELECT count(*) FROM XShow ";
+		sql += "WHERE kind_no = ?";
+
+		// 총 게시글 수
+		int count = 0;
+
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, kindNo);
+			
 			rs = ps.executeQuery();
 
 			while (rs.next()) {
@@ -193,9 +281,9 @@ public class ShowDaoImpl implements ShowDao {
 
 		return showInfo;
 	}
-
+	
 	@Override
-	public String selectKindNameByKindNo(Connection conn, XShow showInfo) {
+	public String selectKindNameByKindNo(Connection conn, int kindNo) {
 		String sql = "";
 		sql += "SELECT * FROM XKIND";
 		sql += " WHERE kind_no = ?";
@@ -204,7 +292,7 @@ public class ShowDaoImpl implements ShowDao {
 		
 		try {
 			ps = conn.prepareStatement(sql);
-			ps.setInt(1, showInfo.getKindNo());
+			ps.setInt(1, kindNo);
 
 			rs = ps.executeQuery();
 
@@ -277,4 +365,6 @@ public class ShowDaoImpl implements ShowDao {
 		
 		return hallName;
 	}
+
+
 }

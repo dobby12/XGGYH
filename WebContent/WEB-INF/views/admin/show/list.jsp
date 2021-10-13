@@ -19,13 +19,15 @@ table {
 
 </style>
 
-<div class="container">
+<div class="container" style="text-align: center;">
 
 <h2>공연 목록</h2>
+<button id="btnWrite" onclick="location.href='/admin/show/write';"style="margin: -25px 0 15px 0; float: right;">
+	작성하기
+</button>
+<hr style="clear: both;">
 
-<hr>
-
-<table class="table table-hover table-condensed">
+<table style="clear: both;" class="table table-hover table-condensed">
 <thead>
 <tr>
 	<th style="text-align: center; width: 7.5%">공연번호</th>

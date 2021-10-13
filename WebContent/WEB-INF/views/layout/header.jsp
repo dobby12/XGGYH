@@ -39,6 +39,28 @@ a:hover {
 	background: #f2f2f2;
 }
 
+#logo_header {
+	width: 90px;
+	height: 30px;
+}
+
+
+#footer {
+	height: 210px;
+	width: 1920px;
+	padding: 30px;
+	text-align: center;
+	background-color: #F2F2F2;
+}
+
+#logo_footer {
+	height: 120px;
+	width: 120px;
+	
+	float: left;
+	margin: 10px 0 0 300px;
+}
+
 /* 메인 메뉴 - 1depth */
 ul.nav {
 	/* ul태그의 기본 리스트스타일 없애기 */
@@ -46,8 +68,9 @@ ul.nav {
 	
 	/* 기본 여백 제거 */
 	padding: 0;
-	margin: 0;	
+	margin: 0 0 0 180px;	
 }
+
 
 /* ------------------------------------------------ */
 
@@ -101,12 +124,13 @@ ul.nav > li > a:hover {
 
 <div id="header">
 <ul class="nav">
-	<li><a href="#">로고영역</a>
-	<li><a href="#">뮤지컬</a></li>
-	<li><a href="#">오페라</a></li>
-	<li><a href="#">콘서트</a></li>
-	<li><a href="#">연극</a></li>
+	<li><a href="<%=request.getContextPath() %>/main"><img id="logo_header" src="/resources/file/logo_line.png" /></a></li>
+	<li><a href="<%=request.getContextPath() %>/show">공연정보</a></li>
+	<li><a href="<%=request.getContextPath() %>/show?kindNo=1">뮤지컬</a></li>
+	<li><a href="<%=request.getContextPath() %>/show?kindNo=4">오페라</a></li>
+	<li><a href="<%=request.getContextPath() %>/show?kindNo=3">콘서트</a></li>
+	<li><a href="<%=request.getContextPath() %>/show?kindNo=2">연극</a></li>
 	<li><a href="#">내가 찜한 콘텐츠</a></li>
-	<li><a href="#">리뷰 게시판</a></li>
+	<li><a href="<%=request.getContextPath() %>/review/list">리뷰 게시판</a></li>
 </ul>
 </div>

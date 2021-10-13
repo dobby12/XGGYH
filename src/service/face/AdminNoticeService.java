@@ -29,6 +29,23 @@ public interface AdminNoticeService {
 	 */
 	public XFile getFile(int noticeno);
 
+	/**
+	 * 
+	 * @param req
+	 */
 	public void setNotice(HttpServletRequest req);
+
+	/**
+	 * 
+	 * @param req
+	 */
+	public void setNoticeUpdate(HttpServletRequest req);
+
+	/**
+	 * 
+	 * @param noticeno
+	 */
+	void setNoticeDelete(int noticeno);
+
 
 }
