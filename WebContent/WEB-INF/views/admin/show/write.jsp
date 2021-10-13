@@ -55,8 +55,7 @@ $(document).ready(function() {
                  dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'], 
                  monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
                  monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
-                 dateFormat: "yy-mm-dd",
-                 maxDate: 0 
+                 dateFormat: "yy-mm-dd"
  
             });
             $( "#endDate" ).datepicker({
@@ -69,8 +68,7 @@ $(document).ready(function() {
                  dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'], 
                  monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
                  monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
-                 dateFormat: "yy-MM-dd",
-                 maxDate: +10y 
+                 dateFormat: "yy-mm-dd"
  
             });    
     });
@@ -144,10 +142,10 @@ table, input, textarea {
 	<td><input type="text" id="showActor" name="showActor" /></td>
 
 	<td>공연 시작일</td>
-	<td><input type="text" id="startDate" name="startDate" autocomplete="off"/></td>
+	<td><input type="text" id="startDate" name="startDate" style="cursor: default;" autocomplete="off" readonly/></td>
 	
 	<td>공연 종료일</td>
-	<td><label><input type="text" id="endDate" name="endDate" autocomplete="off"/></label></td>
+	<td><input type="text" id="endDate" name="endDate" style="cursor: default;" autocomplete="off" readonly/></td>
 </tr>
 
 <tr>
