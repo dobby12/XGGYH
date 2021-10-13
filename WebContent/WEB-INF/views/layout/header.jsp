@@ -44,6 +44,23 @@ a:hover {
 	height: 30px;
 }
 
+
+#footer {
+	height: 210px;
+	width: 1920px;
+	padding: 30px;
+	text-align: center;
+	background-color: #F2F2F2;
+}
+
+#logo_footer {
+	height: 120px;
+	width: 120px;
+	
+	float: left;
+	margin: 10px 0 0 300px;
+}
+
 /* 메인 메뉴 - 1depth */
 ul.nav {
 	/* ul태그의 기본 리스트스타일 없애기 */
