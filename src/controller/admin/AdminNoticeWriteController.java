@@ -36,7 +36,7 @@ public class AdminNoticeWriteController extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		System.out.println("###TEST### AdminNoticeWriteController Post");
-
+		
 		adminNoticeService.setNotice(req);
 		
 		//작성 완료 후 notice list로 보내기
