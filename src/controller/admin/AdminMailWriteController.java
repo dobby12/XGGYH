@@ -31,6 +31,8 @@ public class AdminMailWriteController extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		System.out.println("/admin/mail/write [POST]");
 		
+		req.setCharacterEncoding("utf-8");
+		
 		String memMail = req.getParameter("memMail");
 		String mailTitle = req.getParameter("mailTitle");
 		String mailContent = req.getParameter("mailContent");

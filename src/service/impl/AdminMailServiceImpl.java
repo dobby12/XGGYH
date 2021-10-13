@@ -46,7 +46,7 @@ public class AdminMailServiceImpl implements AdminMailService {
 
 			Address toAddr = new InternetAddress(memMail); 
 			msg.addRecipient(Message.RecipientType.TO, toAddr);
-			msg.setContent(message, "text/html;charset=KSC5601");
+			msg.setContent(message, "text/html; charset=EUC-KR");
 
 			Transport.send(msg);
 
