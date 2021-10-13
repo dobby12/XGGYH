@@ -1,5 +1,6 @@
 package service.impl;
 
+import java.io.UnsupportedEncodingException;
 import java.sql.Connection;
 import java.util.List;
 
@@ -67,11 +68,19 @@ public class AskServiceImpl implements AskService {
 	@Override
 	public void write(HttpServletRequest req) {
 		
+		try {
+			req.setCharacterEncoding("UTF-8");
+		} catch(UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		
 		XAsk ask = new XAsk();
 
 		ask.setAskTitle( req.getParameter("title") );
+		ask.setAskKind(req.getParameter("kind"));
 		ask.setAskContent( req.getParameter("content") );
-
+		ask.setAskState("n");
+		
 		//작성자id 처리
 		ask.setMemId((String) req.getSession().getAttribute("memid"));
 
@@ -80,12 +89,7 @@ public class AskServiceImpl implements AskService {
 		}
 
 		Connection conn = JDBCTemplate.getConnection();
-		if( askDao.insert(conn, ask) > 0 ) {
-			JDBCTemplate.commit(conn);
-		} else {
-			JDBCTemplate.rollback(conn);
-		}
-		
+
 		//게시글 번호 생성 - DAO 이용
 		int askno = askDao.selectNextAskNo(conn);
 		

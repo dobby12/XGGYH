@@ -5,6 +5,8 @@
 
 <c:import url="/WEB-INF/views/layout/header.jsp" />
 
+<!-- jQuery 2.2.4 -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
 	
@@ -32,7 +34,7 @@ $(document).ready(function() {
 <hr>
 
 <div>
-<form action="/mypage/myask/write" method="post" enctype="multipart/form-data">
+<form action="<%=request.getContextPath() %>/mypage/myask/write" method="post">
 
 <table class="table table-bordered">
 <tr>

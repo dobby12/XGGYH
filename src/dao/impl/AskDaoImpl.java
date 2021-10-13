@@ -177,6 +177,8 @@ public class AskDaoImpl implements AskDao {
 			ps.setString(5, ask.getAskKind());
 			ps.setString(6, ask.getAskState());
 
+			System.out.println("[TEST]" + ask.getAskContent());
+			
 			res = ps.executeUpdate();
 			
 		} catch (SQLException e) {
