@@ -72,7 +72,7 @@ public class ReviewServiceImpl implements ReviewService {
 			
 			reviewNo.setReviewNo( Integer.parseInt(param) );
 		}
-		
+		System.out.println(reviewNo);
 		return reviewNo;
 	}
 	

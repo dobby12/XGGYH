@@ -325,5 +325,37 @@ public class AdminNoticeServiceImpl implements AdminNoticeService {
 		}
 		
 	}
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	@Override
+	public void setNoticeDelete(int noticeno) {
+
+		Connection conn = JDBCTemplate.getConnection();
+		
+		int fileno = getFile(noticeno).getFileNo();
+		
+		if(adminNoticeDao.deleteNotice(conn, noticeno) > 0) {
+			JDBCTemplate.commit(conn);
+		} else {
+			JDBCTemplate.rollback(conn);
+		}
+		
+		if(fileDao.deleteFile(conn, fileno) > 0) {
+			JDBCTemplate.commit(conn);
+		} else {
+			JDBCTemplate.rollback(conn);
+		}
+
+		
+	}
 	
 }

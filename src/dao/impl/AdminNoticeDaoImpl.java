@@ -237,7 +237,68 @@ public class AdminNoticeDaoImpl implements AdminNoticeDao {
 	
 		return res;
 	}
+
+
+
+
+
 	
+	
+
+
+
+	@Override
+	public int deleteNotice(Connection conn, int noticeno) {
+		
+		String sql = "DELETE XNOTICE WHERE NOTICE_NO=?";
+		int res = -1;
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, noticeno);
+			res = ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(ps);
+		}
+		
+		return res;
+	}
+
+
+
+
+
+
+	
+
+	
+	
+
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
 	
 	
 	
