@@ -5,16 +5,6 @@
 
 <c:import url="/WEB-INF/views/layout/header.jsp" />
 
-<script type="text/javascript">
-$(document).ready(function() {
-	
-	$("#btnWrite").click(function() {
-		location.href="<%=request.getContextPath() %>/review/write";
-	});
-	
-});
-</script>
-
 <style>
 th, div {
 	text-align: center;
@@ -23,7 +13,7 @@ th, div {
 
 <div class="container" >
 
-<h1>리뷰 게시판</h1>
+<h1 class="pull-left">리뷰 게시판</h1>
 <hr>
 
 <table class="table table-striped table-hover table-condensed">
@@ -49,12 +39,11 @@ th, div {
 </table>
 
 <div id="btnBox" class="pull-right">
-	<button id="btnWrite" >리뷰작성</button>
+		<a href="<%=request.getContextPath() %>/review/write"><button id="btnWrite">리뷰작성</button></a>
 </div>
 
 </div>
 
 <c:import url="/WEB-INF/views/layout/paging.jsp" />
 
-</body>
-</html>
+<c:import url="/WEB-INF/views/layout/footer.jsp" />
