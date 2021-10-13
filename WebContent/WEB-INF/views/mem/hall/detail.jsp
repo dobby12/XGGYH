@@ -33,7 +33,7 @@
 </tr>
 
 <tr>
-<td class="info">공연장 링크</td><td >${hallInfo.hallLink }</td>
+<td class="info">공연장 링크</td><td > <a href="${hallInfo.hallLink}">${hallInfo.hallLink}</a> </td>
 </tr>
 
 <tr>

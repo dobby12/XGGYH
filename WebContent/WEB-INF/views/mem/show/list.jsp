@@ -41,15 +41,6 @@
 	text-align: center;
 }
 
-.photoEx {
-	width: 250px;
-    height: 280px;
-    border: 1px solid;
-    text-align: center;
-    margin: 0 auto;
-    margin-top: 25px;
-}
-
 .poster {
     width: 250px;
     height: 280px;
@@ -82,8 +73,8 @@
 			<div class="list_detail">
 			
 			<a href="<%=request.getContextPath() %>/show/detail?showNo=${showList.showNo }"> 
-			<div class="photoEx"><img class="poster" src='http://drive.google.com/uc?export=view&id=1UCDamPPObCPN9BY8Iz2WjsgiY8m80K2b' /><br></div>
-			<p>${showList.showTitle} <br> ${showList.showDirector }</p> 
+			<img class="poster" src='http://drive.google.com/uc?export=view&id=1UCDamPPObCPN9BY8Iz2WjsgiY8m80K2b' /><br>
+			${showList.showTitle} <br> ${showList.showDirector }
 			</a>
 			
 			</div>
@@ -91,7 +82,7 @@
 		</div>
 </div>
 
-<c:import url="/WEB-INF/views/layout/parameterPaging.jsp" />
+
 
 </div>
 
@@ -101,6 +92,8 @@
 		<input type="submit" value="검색">
 	</form>
 </div>
+
+<c:import url="/WEB-INF/views/layout/parameterPaging.jsp" />
 
 <c:import url="/WEB-INF/views/layout/footer.jsp" />
 
