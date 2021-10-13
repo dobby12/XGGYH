@@ -41,7 +41,7 @@
 
 <!-- 첫 페이지로 -->
 <c:if test="${paging.curPage ne 1 }">
-	<li><a href="<%=request.getContextPath() %>${linkUrl }&curPage=${paging.startPage }">첫 페이지로 &laquo;</a></li>
+	<li><a href="<%=request.getContextPath() %>${linkUrl }">첫 페이지로 &laquo;</a></li>
 </c:if>
 
 
