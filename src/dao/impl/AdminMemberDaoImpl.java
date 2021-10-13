@@ -46,13 +46,18 @@ public class AdminMemberDaoImpl implements AdminMemberDao {
 	@Override
 	public int selectCntSearchMemAll(Connection conn, String searchtype, String keyword) {
 		
-		if(searchtype == "memid") {
-		
 		String sql = "";
 		sql += "SELECT count(*) FROM xmem";
-		sql += "	WHERE mem_id like ?";
-		sql += "		ORDER BY mem_date DESC";
-	
+		
+		if( "memid".equals(searchtype) ){
+			sql += "	WHERE mem_id like ?";
+			
+		} else {
+			sql += "	WHERE mem_nick like ?";
+		}
+		
+		sql += " ORDER BY mem_date DESC";
+
 		int count = 0;
 
 		try {
@@ -70,36 +75,7 @@ public class AdminMemberDaoImpl implements AdminMemberDao {
 			JDBCTemplate.close(ps);
 		}
 
-		return count; //전체 회원 수 반환
-		
-		
-		} else {
-			String sql = "";
-			sql += "SELECT count(*) FROM xmem";
-			sql += "	WHERE mem_nick like ?";
-			sql += "		ORDER BY mem_date DESC";
-		
-			int count = 0;
-
-			try {
-				ps = conn.prepareStatement(sql);
-				ps.setString(1, "%" + keyword + "%");
-				rs = ps.executeQuery();
-
-				while(rs.next()) {
-					count = rs.getInt(1);
-				}
-			} catch (SQLException e) {
-				e.printStackTrace();
-			} finally {
-				JDBCTemplate.close(rs);
-				JDBCTemplate.close(ps);
-			}
-
-			return count; //전체 회원 수 반환
-		}
-
-		
+		return count;
 
 	}
 

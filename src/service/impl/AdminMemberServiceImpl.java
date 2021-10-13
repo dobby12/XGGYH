@@ -97,7 +97,7 @@ public class AdminMemberServiceImpl implements AdminMemberService {
 		System.out.println(searchtype);
 		System.out.println(keyword);
 		
-		if(searchtype == "memid") 
+		if("memnick".equals(searchtype)) 
 			return adminMemberDao.selectMemSearchByMemnick(JDBCTemplate.getConnection(), keyword, paging);
 		 else 
 			return adminMemberDao.selectMemSearchByMemid(JDBCTemplate.getConnection(), keyword, paging);
