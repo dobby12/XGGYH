@@ -42,6 +42,15 @@ public interface ShowDao {
 	 * @return int - XShow 테이블의 전체 행 수가 몇개인지 반환
 	 */
 	public int selectCntAll(Connection conn);
+	
+	/**
+	 * XShow 테이블에서 공연 종류에 따라 행 수 조회
+	 * 
+	 * @param conn - DB연결 객체
+	 * @param kindNo - 공연 종류가 뭔지 알려주는 객체
+	 * @return int - XShow 테이블의 전체 행 수가 몇개인지 반환
+	 */
+	public int selectCntBykindNo(Connection conn, int kindNo);
 
 	/**
 	 * 특정 게시글 조회
@@ -77,4 +86,5 @@ public interface ShowDao {
 	 * @return 공연장 이름
 	 */
 	public String selectHallNameByHallNo(Connection conn, XShow showInfo);
+
 }

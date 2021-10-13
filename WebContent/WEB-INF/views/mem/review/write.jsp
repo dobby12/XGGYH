@@ -27,7 +27,7 @@ $(document).ready(function() {
 
 <div class="container">
 
-<h3>리뷰 작성</h3>
+<h3 class="pull-left">리뷰 작성</h3>
 <hr>
 
 <div>

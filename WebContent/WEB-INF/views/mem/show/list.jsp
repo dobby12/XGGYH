@@ -96,7 +96,7 @@
 	</form>
 </div>
 
-<c:import url="/WEB-INF/views/layout/showPaging.jsp" />
+<c:import url="/WEB-INF/views/layout/parameterPaging.jsp" />
 
 </div>
 

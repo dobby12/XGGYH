@@ -29,7 +29,7 @@ public class ShowListController extends HttpServlet {
 		System.out.println("/show/list : Get");
 		
 		//페이징 객체 생성
-		Paging paging = showService.getPaging(req);
+		Paging paging = null;
 		
 		int kindNo = showService.getKindNo(req);
 		
@@ -40,12 +40,14 @@ public class ShowListController extends HttpServlet {
 		if(kindNo == 0)
 		{
 			//showService에서 XShow 테이블의 정보를 가진 리스트를 받아옴
+			paging = showService.getPaging(req);
 			showList = showService.getShowList(paging);
 			req.setAttribute("kindName", "전체 페이지");
 		}
 		else
 		{
 			//showService에서 XShow 테이블의 정보를 가진 리스트를 받아옴. 이거는 공연 종류로 가져옴
+			paging = showService.getParameterPaging(req, kindNo);
 			showList = showService.getShowList(paging, kindNo);
 			req.setAttribute("kindName", kindName);
 		}
@@ -60,7 +62,7 @@ public class ShowListController extends HttpServlet {
 		req.setAttribute("kindNo", kindNo);
 		
 		// /show/list 라는 url을 "linkUrl" 이라는 이름을 가진 요소로 설정 (페이징을 위해 넣은 객체)
-		req.setAttribute("linkUrl", "/show");
+		req.setAttribute("linkUrl", "/show?kindNo=" + kindNo);
 		
 		//요청 보내기
 		req.getRequestDispatcher("/WEB-INF/views/mem/show/list.jsp").forward(req, resp);

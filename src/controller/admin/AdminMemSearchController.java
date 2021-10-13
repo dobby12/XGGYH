@@ -36,10 +36,13 @@ public class AdminMemSearchController extends HttpServlet {
 		
 		req.setCharacterEncoding("UTF-8");
 		
+		req.setAttribute("searchtype", req.getParameter("searchtype"));
+		
 		req.setAttribute("linkUrl", "/admin/mem/search?searchtype=" + req.getParameter("searchtype") + "&keyword=" + req.getParameter("keyword"));
 		
 //		System.out.println("linkUrl : admin/mem/search?searchtype=" + req.getParameter("searchtype") + "&keyword=" + req.getParameter("keyword"));
-			
+		
+		
 		req.getRequestDispatcher("/WEB-INF/views/admin/mem/search.jsp").forward(req, resp);
 		
 		

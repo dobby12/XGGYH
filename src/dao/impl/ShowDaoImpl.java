@@ -208,6 +208,36 @@ public class ShowDaoImpl implements ShowDao {
 
 		return count;
 	}
+	
+	@Override
+	public int selectCntBykindNo(Connection conn, int kindNo) {
+		// SQL 작성
+		String sql = "";
+		sql += "SELECT count(*) FROM XShow ";
+		sql += "WHERE kind_no = ?";
+
+		// 총 게시글 수
+		int count = 0;
+
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, kindNo);
+			
+			rs = ps.executeQuery();
+
+			while (rs.next()) {
+				count = rs.getInt(1);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+		}
+
+		return count;
+	}
 
 	@Override
 	public XShow selectShowByShowno(Connection conn, XShow showNo) {
@@ -335,4 +365,6 @@ public class ShowDaoImpl implements ShowDao {
 		
 		return hallName;
 	}
+
+
 }
