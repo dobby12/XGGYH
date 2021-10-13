@@ -335,11 +335,7 @@ public class AdminShowDaoImpl implements AdminShowDao {
 		try {
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, xshow.getShowNo());
-			if(xshow.getFileNo()==0) {
-				ps.setObject(2, null);
-			} else {
-				ps.setInt(2, xshow.getFileNo());
-			}
+			ps.setInt(2, xshow.getFileNo());
 			ps.setString(3, xshow.getAdminId());
 			ps.setInt(4, xshow.getKindNo());
 			ps.setInt(5, xshow.getGenreNo());
@@ -353,7 +349,6 @@ public class AdminShowDaoImpl implements AdminShowDao {
 			ps.setDate(13, new java.sql.Date(xshow.getShowEnd().getTime()));
 			
 			res = ps.executeUpdate();
-			System.out.println(xshow);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {

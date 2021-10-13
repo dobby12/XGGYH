@@ -36,4 +36,12 @@ public interface MemberDao {
 	 */
 	public String selectMemidByMemmail(Connection connection, String parameter);
 
+	/**
+	 * 
+	 * @param connection
+	 * @param mailForPw
+	 * @param uuidPw
+	 */
+	public int updateMempw(Connection connection, String mailForPw, String uuidPw);
+
 }

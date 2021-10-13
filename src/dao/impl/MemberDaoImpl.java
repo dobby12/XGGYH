@@ -124,5 +124,27 @@ public class MemberDaoImpl implements MemberDao {
 		}
 		return res;
 	}
+	
+	@Override
+	public int updateMempw(Connection connection, String mailForPw, String uuidPw) {
+		
+		String sql = "UPDATE XMEM SET MEM_PW=? WHERE MEM_MAIL=?";
+		
+		int res = -1;
+		
+		try {
+			ps = connection.prepareStatement(sql);
+			ps.setString(1, uuidPw);
+			ps.setString(2, mailForPw);
+			
+			res = ps.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return res;
+	}
 
 }

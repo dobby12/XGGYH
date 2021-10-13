@@ -12,11 +12,17 @@
 
 <script type="text/javascript">
 
-function submitContents(elClickedObj){	
+//<form>태그에 submit이 수행되면 스마트에디터에 작성한 내용을 <textarea>에 반영
+function submitContents(elClickedObj){
+	
+	//에디터의 내용을 #content에 반영
 	oEditors.getById["showContent"].exec("UPDATE_CONTENTS_FIELD", []);
 	
 	try {
+		
+		//<form>태그의 submit 수행
 		elClickedObj.form.submit();
+		
 	} catch(e) {}
 }
 
@@ -93,7 +99,7 @@ table, input, textarea {
 <table class="table table-striped table-condensed">
 
 <tr>
-	<td colspan="8"><h4><input type="text" id="showTitle" name="showTitle" style="width: 100%; padding: 5px;"placeholder="공연 제목"/></h4></td>
+	<td colspan="10"><h4><input type="text" id="showTitle" name="showTitle" style="width: 100%; padding: 5px;"placeholder="공연 제목"/></h4></td>
 </tr>
 <tr>
 	<td>관리자 아이디</td>
@@ -132,14 +138,29 @@ table, input, textarea {
 			<option value="19세이하관람불가">19세이하관람불가</option>
 		</select>
 	</td>
+	<td>공연장</td>
+	<td>
+		<select id="hallNo" name="hallNo">
+			<option value="1">LG아트센터</option>
+			<option value="2">광림아트센터 BBCH홀</option>
+			<option value="3">예술의전당 오페라극장</option>
+			<option value="4">금정문화회관</option>
+			<option value="5">부산광역시문화회관대극장</option>
+			<option value="6">백령아트센터</option>
+			<option value="7">천안예술의전당 대공연장</option>
+			<option value="8">구미문화예술회관</option>
+			<option value="9">여수 예울마루</option>
+			<option value="10">제주아트센터</option>
+		</select>
+	</td>
 </tr>
 
 <tr>
 	<td>감독</td>
-	<td><input type="text" id="showDirector" name="showDirector" /></td>
+	<td colspan="2"><input type="text" id="showDirector" name="showDirector" /></td>
 	
 	<td>배우</td>
-	<td><input type="text" id="showActor" name="showActor" /></td>
+	<td colspan="2"><input type="text" id="showActor" name="showActor" /></td>
 
 	<td>공연 시작일</td>
 	<td><input type="text" id="startDate" name="startDate" style="cursor: default;" autocomplete="off" readonly/></td>
@@ -149,7 +170,7 @@ table, input, textarea {
 </tr>
 
 <tr>
-	<td colspan="8"><textarea id="showContent" name="showContent" style="width: 100%; height: 300px; padding: 10px;"></textarea></td>
+	<td colspan="10"><textarea id="showContent" name="showContent" style="width: 100%; height: 300px; padding: 10px;"></textarea></td>
 </tr>
 
 </table>
@@ -175,7 +196,7 @@ var oEditors = [];
 nhn.husky.EZCreator.createInIFrame({
 	oAppRef: oEditors,
 	elPlaceHolder: "showContent",
-	sSkinURI: "<%=request.getContextPath()%>/resources/se2/SmartEditor2Skin.html",
+	sSkinURI: "/resources/se2/SmartEditor2Skin.html",
 	fCreator: "createSEditor2"
 });
 
