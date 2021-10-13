@@ -28,12 +28,31 @@ public interface ReviewDao {
 	public List<XReview> selectAll(Connection conn, Paging paging);
 	
 	/**
+	 * XReview테이블 memid 조회
+	 * 
+	 * @param paging - 페이징 정보 객체
+	 * @param conn - DB연결 객체
+	 * @param memid
+	 * @return List<XReview> - XReview테이블 memid 조회 결과 리스트
+	 */
+	public List<XReview> selectAllByMemid(Connection conn, Paging paging, String memid);
+	
+	/**
 	 * 총 게시글 수 조회
 	 * 
 	 * @param conn - DB연결 객체
 	 * @return int - XReview테이블 전체 행 수 조회 결과
 	 */
 	public int selectCntAll(Connection conn);
+	
+	/**
+	 * 멤버 게시글 수 조회
+	 * 
+	 * @param conn
+	 * @param memid
+	 * @return int - XReview테이블 memid 행 수 조회 결과
+	 */
+	public int selectCntByMemId(Connection conn, String memid);
 	
 	/**
 	 * 특정 게시글 조회

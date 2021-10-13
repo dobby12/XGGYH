@@ -107,6 +107,57 @@ public class ReviewDaoImpl implements ReviewDao {
 		
 		return reviewList;
 	}
+	
+	@Override
+	public List<XReview> selectAllByMemid(Connection conn, Paging paging, String memid) {
+		String sql = "";
+		sql += "SELECT * FROM (";
+		sql += "	SELECT rownum rnum, X.* FROM (";
+		sql += "		SELECT";
+		sql += "			review_no, show_no, file_no, mem_id, review_title";
+		sql += "			, review_content, review_date, review_score, review_hit";
+		sql += "		FROM xreview";
+		sql += "		WHERE mem_id = ?";
+		sql += "		ORDER BY review_no DESC";
+		sql += "	) X";
+		sql += " ) XREVIEW";
+		sql += " WHERE rnum BETWEEN ? AND ?";
+
+		List<XReview> reviewList = new ArrayList<>(); 
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, memid);
+			ps.setInt(2, paging.getStartNo());
+			ps.setInt(3, paging.getEndNo());
+			
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				XReview review = new XReview();
+				
+				review.setReviewNo( rs.getInt("review_no") );
+				review.setShowNo( rs.getInt("show_no") );
+				review.setFileNo( rs.getInt("file_no") );
+				review.setMemId( rs.getString("Mem_id") );
+				review.setReviewTitle( rs.getString("review_title") );
+				review.setReviewContent( rs.getString("review_content") );
+				review.setReviewDate( rs.getDate("review_date") );
+				review.setReviewScore( rs.getInt("review_score") );
+				review.setReviewHit( rs.getInt("review_hit") );
+
+				reviewList.add(review);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+		}
+		
+		return reviewList;
+	}
 
 	@Override
 	public int selectCntAll(Connection conn) {
@@ -128,6 +179,36 @@ public class ReviewDaoImpl implements ReviewDao {
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+		}
+		
+		return count;
+	}
+	
+	@Override
+	public int selectCntByMemId(Connection conn, String memid) {
+		
+		//SQL 작성
+		String sql = "";
+		sql += "SELECT count(*) FROM xreview";
+		sql += " WHERE mem_id = ?";
+				
+		//총 게시글 수
+		int count = 0;
+				
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, memid);
+			rs = ps.executeQuery();
+					
+			while(rs.next()) {
+				count = rs.getInt(1);
+			}
+					
+		} catch (SQLException e) {
+					e.printStackTrace();
 		} finally {
 			JDBCTemplate.close(rs);
 			JDBCTemplate.close(ps);
