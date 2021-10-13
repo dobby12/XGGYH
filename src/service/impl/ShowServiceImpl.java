@@ -52,6 +52,27 @@ public class ShowServiceImpl implements ShowService {
 
 		return paging;
 	}
+	
+	@Override
+	public Paging getParameterPaging(HttpServletRequest req, int kindNo) {
+		String param = req.getParameter("curPage");
+		int curPage = 0;
+		
+		// 한번에 몇개씩 보여줄건지
+		int listCount = 6;
+		
+		if(param != null && !"".equals(param)) {
+			curPage = Integer.parseInt(param);
+		} else {
+			System.out.println("[WARNING] curPage값이 null이거나 비어있습니다");
+		}
+
+		int totalCount = showDao.selectCntBykindNo(JDBCTemplate.getConnection(), kindNo);
+
+		Paging paging = new Paging(totalCount, curPage, listCount);
+
+		return paging;
+	}
 
 	@Override
 	public XShow getShowNo(HttpServletRequest req) {
