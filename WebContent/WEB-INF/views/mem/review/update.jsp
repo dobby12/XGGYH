@@ -19,13 +19,13 @@ $(document).ready(function() {
 	
 
 	//파일이 있을 경우
-	if(${not empty boardFile }) {
+	if(${not empty reviewFile }) {
 		$("#beforeFile").show();
 		$("#afterFile").hide();
 	}
 	
 	//파일이 없을 경우
-	if(${empty boardFile }) {
+	if(${empty reviewFile }) {
 		$("#beforeFile").hide();
 		$("#afterFile").show();
 	}
@@ -52,14 +52,15 @@ $(document).ready(function() {
 
 <div>
 <form action="/review/update" method="post" enctype="multipart/form-data">
-<input type="hidden" name="reviewno" value="${reviewFile.reviewNo }" />
+
+<input type="hidden" name="reviewNo" value="${updateReview.reviewNo }" />
 
 <table class="table table-bordered">
 <tr>
 <td class="info">글번호</td><td colspan="3">${updateReview.reviewNo }</td>
 </tr>
 <tr>
-<td class="info">제목</td><td colspan="3">${updateReview.reviewTitle }</td>
+<td class="info">제목</td><td colspan="3"><input type="text" name="reviewTitle" style="width:100%" value="${updateReview.reviewTitle }"/></td>
 </tr>
 <tr>
 <td class="info">아이디</td><td>${updateReview.memId }</td>
@@ -75,17 +76,17 @@ $(document).ready(function() {
 <td class="info">공연 제목</td><td colspan="3">${showTitle }</td>
 </tr>
 <tr>
-<td class="info">별점</td><td colspan="3">${updateReview.reviewScore }</td>
+<td class="info">별점</td><td colspan="3"><input type="text" name="reviewScore" style="width:100%" value="${updateReview.reviewScore }"/></td>
 </tr>
 <tr><td class="info"  colspan="4">본문</td></tr>
-<tr><td colspan="4">${updateReview.reviewContent }</td></tr>
+<tr><td colspan="4"><input type="text" name="reviewContent" style="width:100%" value="${updateReview.reviewContent }" /></td></tr>
 </table>
 
 <!-- 첨부파일 -->
 <div>
 	<div id="beforeFile">
 		기존 첨부파일: 
-		<a href="/upload/${reviewFile.fileStoredName }" >${reviewFile.fileOriginName }</a>
+		<a href="/upload/${xFile.fileStoredName }" >${xFile.fileOriginName }</a>
 		<span id="delFile" style="color:red; font-weight: bold; cursor: pointer;">X</span>
 	</div>
 

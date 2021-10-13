@@ -416,7 +416,8 @@ public class ReviewDaoImpl implements ReviewDao {
 		String sql = "";
 		sql += "UPDATE xreview";
 		sql += " SET review_title = ?,";
-		sql += " 	review_content = ?";
+		sql += " review_content = ?,";
+		sql += " review_score = ?";
 		sql += " WHERE review_no = ?";
 		
 		PreparedStatement ps = null; 
@@ -427,7 +428,8 @@ public class ReviewDaoImpl implements ReviewDao {
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, review.getReviewTitle());
 			ps.setString(2, review.getReviewContent());
-			ps.setInt(3, review.getReviewNo());
+			ps.setInt(3,  review.getReviewScore());
+			ps.setInt(4, review.getReviewNo());
 
 			res = ps.executeUpdate();
 			

@@ -408,7 +408,7 @@ public class ReviewServiceImpl implements ReviewService {
 				review.setReviewTitle("(제목없음)");
 			}
 			
-			if( reviewDao.insert(conn, review) > 0 ) {
+			if( reviewDao.update(conn, review) > 0 ) {
 				JDBCTemplate.commit(conn);
 			} else {
 				JDBCTemplate.rollback(conn);
