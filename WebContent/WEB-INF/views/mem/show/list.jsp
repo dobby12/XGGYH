@@ -31,7 +31,6 @@
     display: inline-block;
     width: 300px;
     height: 350px;
-	border: 1px solid;
     margin-bottom: 40px;
     margin-right: 20px;
     margin-left: 20px;
@@ -81,9 +80,12 @@
 		<div class="list_start">
 			<c:forEach items="${showList }" var="showList">
 			<div class="list_detail">
-			<div class="photoEx"><img class="poster" src='http://drive.google.com/uc?export=view&id=1UCDamPPObCPN9BY8Iz2WjsgiY8m80K2b' /><br></div>
+			
 			<a href="<%=request.getContextPath() %>/show/detail?showNo=${showList.showNo }"> 
-			<p>${showList.showTitle} <br> ${showList.showDirector }</p> </a>
+			<div class="photoEx"><img class="poster" src='http://drive.google.com/uc?export=view&id=1UCDamPPObCPN9BY8Iz2WjsgiY8m80K2b' /><br></div>
+			<p>${showList.showTitle} <br> ${showList.showDirector }</p> 
+			</a>
+			
 			</div>
 			</c:forEach>
 		</div>

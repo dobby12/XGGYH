@@ -22,11 +22,13 @@ public class ShowServiceImpl implements ShowService {
 		return showDao.selectShowAll(JDBCTemplate.getConnection());
 	}
 
+	// 페이징 객체 추가
 	@Override
 	public List<XShow> getShowList(Paging paging) {
 		return showDao.selectShowAll(JDBCTemplate.getConnection(), paging);
 	}
 	
+	// 카테고리 번호 추가
 	@Override
 	public List<XShow> getShowList(Paging paging, int kindNo) {
 		return showDao.selectShowAllByKindNo(JDBCTemplate.getConnection(), paging, kindNo);
@@ -53,6 +55,7 @@ public class ShowServiceImpl implements ShowService {
 		return paging;
 	}
 	
+	//공연 종류로 골라낸 리스트 수 추가해서 페이징 객체 생성
 	@Override
 	public Paging getParameterPaging(HttpServletRequest req, int kindNo) {
 		String param = req.getParameter("curPage");
