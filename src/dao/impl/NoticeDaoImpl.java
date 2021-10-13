@@ -9,6 +9,7 @@ import java.util.List;
 
 import common.JDBCTemplate;
 import dao.face.NoticeDao;
+import dto.XFile;
 import dto.XNotice;
 import util.Paging;
 
@@ -221,4 +222,41 @@ public class NoticeDaoImpl implements NoticeDao {
 		
 		return nextNoticeNo;
 	}
+
+	@Override
+	public XFile selectFile(Connection conn, XNotice viewNotice) {
+		
+		String sql = "";
+		sql += "SELECT * FROM xfile";
+		sql += " WHERE file_no = ?";
+
+		XFile noticeFile = null;
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			
+			ps.setInt(1, viewNotice.getNoticeNo());
+			
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				noticeFile = new XFile();
+				
+				noticeFile.setFileNo( rs.getInt("file_no") );
+				noticeFile.setFileOriginName( rs.getString("file_origin_name") );
+				noticeFile.setFileStoredName( rs.getString("file_stored_name") );
+				noticeFile.setFileSize( rs.getString("file_size") );
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+		}
+				
+		return noticeFile;
+	}
+
 }
+

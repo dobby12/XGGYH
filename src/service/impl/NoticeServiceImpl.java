@@ -1,5 +1,6 @@
 package service.impl;
 
+import java.sql.Connection;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -7,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import common.JDBCTemplate;
 import dao.face.NoticeDao;
 import dao.impl.NoticeDaoImpl;
+import dto.XFile;
 import dto.XNotice;
 import service.face.NoticeService;
 import util.Paging;
@@ -72,4 +74,20 @@ public class NoticeServiceImpl implements NoticeService {
 		return noticeDao.selectNameByAdminId(JDBCTemplate.getConnection(), viewNotice);
 		
 	}
+	
+	@Override
+	public XNotice view(XNotice noticeNo) {
+
+		Connection conn = JDBCTemplate.getConnection();
+
+		XNotice notice = noticeDao.selectNoticeByNoticeNo(conn, noticeNo); 
+		
+		return notice;
+	}
+	
+	@Override
+	public XFile viewFile(XNotice viewNotice) {
+		return noticeDao.selectFile(JDBCTemplate.getConnection(), viewNotice);
+	}
+	
 }
