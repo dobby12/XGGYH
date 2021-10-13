@@ -53,6 +53,14 @@ public interface ReviewService {
 	 * @return XSHow - 전달파라미터 show_no를 포함한 객체
 	 */
 	public XShow getShowNo(HttpServletRequest req);
+	
+	/**
+	 * 전달받은 숫자를 reviewNo로 가진 XFile객체 반환
+	 * 
+	 * @param reviewNo - 조회할 reviewno
+	 * @return DB에서 조회한 XFile 객체
+	 */
+	public XFile getFile(int reviewNo);
 
 	/**
 	 * 주어진 review_no를 이용하여 게시글을 조회한다

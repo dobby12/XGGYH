@@ -89,6 +89,11 @@ public class ReviewServiceImpl implements ReviewService {
 		
 		return showNo;
 	}
+	
+	@Override
+	public XFile getFile(int reviewNo) {
+		return reviewDao.selectFileByFileNo(JDBCTemplate.getConnection(), reviewNo);
+	}
 
 	@Override
 	public XReview view(XReview reviewNo) {

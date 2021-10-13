@@ -176,6 +176,36 @@ public class ReviewDaoImpl implements ReviewDao {
 		
 		return viewReview;
 	}
+	
+
+	@Override
+	public XFile selectFileByFileNo(Connection conn, int reviewNo) {
+		
+		String sql = ""; 
+		sql += "SELECT file_no, file_origin_name, file_stored_name, file_size FROM xfile";
+		sql += " WHERE file_no = (SELECT file_no FROM xreview WHERE review_no = ?)";
+		XFile res = null;
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, reviewNo);
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				res = new XFile();
+				res.setFileNo(rs.getInt("file_no"));
+				res.setFileOriginName(rs.getString("file_origin_name"));
+				res.setFileStoredName(rs.getString("file_stored_name"));
+				res.setFileSize(rs.getString("file_size"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+		}
+		return res;
+	}
+	
 
 	@Override
 	public int updateReviewHit(Connection conn, XReview reviewNo) {
