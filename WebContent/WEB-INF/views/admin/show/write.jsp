@@ -35,9 +35,15 @@ $(document).ready(function() {
 	//작성버튼 동작
 	$("#btnWrite").click(function() {
 		
-		submitContents( $("#btnWrite") )
+		var answer = confirm("공연 정보를 등록하시겠습니까?");
 		
-		$("form").submit();
+		if( answer == true ){
+			submitContents( $("#btnWrite") )
+			
+			$("form").submit();	
+		} else {
+			return false;
+		}
 	});
 	
 	//취소버튼 동작
@@ -99,7 +105,7 @@ table, input, textarea {
 <table class="table table-striped table-condensed">
 
 <tr>
-	<td colspan="10"><h4><input type="text" id="showTitle" name="showTitle" style="width: 100%; padding: 5px;"placeholder="공연 제목"/></h4></td>
+	<td colspan="10"><h4><input type="text" id="showTitle" name="showTitle" style="width: 100%; padding: 5px;" autocomplete="off" placeholder="공연 제목"/></h4></td>
 </tr>
 <tr>
 	<td>관리자 아이디</td>
@@ -157,10 +163,10 @@ table, input, textarea {
 
 <tr>
 	<td>감독</td>
-	<td colspan="2"><input type="text" id="showDirector" name="showDirector" /></td>
+	<td colspan="2"><input type="text" id="showDirector" name="showDirector" autocomplete="off" placeholder="감독 이름"/></td>
 	
 	<td>배우</td>
-	<td colspan="2"><input type="text" id="showActor" name="showActor" /></td>
+	<td colspan="2"><input type="text" id="showActor" name="showActor" autocomplete="off" placeholder="배우 이름"/></td>
 
 	<td>공연 시작일</td>
 	<td><input type="text" id="startDate" name="startDate" style="cursor: default;" autocomplete="off" readonly/></td>

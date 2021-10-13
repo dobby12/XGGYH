@@ -91,5 +91,12 @@ public interface AdminShowService {
 	 */
 	public void setShow(HttpServletRequest req);
 
+	/**
+	 * 공연정보 수정
+	 * 
+	 * @param req - 요청 정보 객체
+	 */
+	public void setShowUpdate(HttpServletRequest req);
+
 
 }

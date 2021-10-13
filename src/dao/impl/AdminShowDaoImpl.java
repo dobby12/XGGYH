@@ -158,6 +158,9 @@ public class AdminShowDaoImpl implements AdminShowDao {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
 		}
 
 		return kind_name;
@@ -183,6 +186,9 @@ public class AdminShowDaoImpl implements AdminShowDao {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
 		}
 
 		return genre_name;
@@ -208,6 +214,9 @@ public class AdminShowDaoImpl implements AdminShowDao {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
 		}
 
 		return hall_name;
@@ -254,7 +263,7 @@ public class AdminShowDaoImpl implements AdminShowDao {
 
 		String sql = "";
 		sql += "DELETE xshow";
-		sql += " WHERE showno_no = ?";
+		sql += " WHERE show_no = ?";
 		
 		int res = -1;
 		
@@ -349,6 +358,47 @@ public class AdminShowDaoImpl implements AdminShowDao {
 			ps.setDate(13, new java.sql.Date(xshow.getShowEnd().getTime()));
 			
 			res = ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(ps);
+		}
+		
+		return res;
+		
+	}
+
+	@Override
+	public int updateShow(Connection conn, XShow xshow) {
+		
+		String sql = "";
+		sql += "UPDATE xshow SET file_no=?, admin_id=?, kind_no=?,";
+		sql += " genre_no=?, hall_no=?, show_title=?, show_content=?,";
+		sql += " show_age=?, show_director=?, show_actor=?, show_start=?, show_end=?, show_date=sysdate";
+		sql += " WHERE show_no=?";
+		
+		int res = -1;
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			
+			ps.setInt(1, xshow.getFileNo());
+			ps.setString(2, xshow.getAdminId());
+			ps.setInt(3, xshow.getKindNo());
+			ps.setInt(4, xshow.getGenreNo());
+			ps.setInt(5, xshow.getHallNo());
+			ps.setString(6, xshow.getShowTitle());
+			ps.setString(7, xshow.getShowContent());
+			ps.setString(8, xshow.getShowAge());
+			ps.setString(9, xshow.getShowDirector());
+			ps.setString(10, xshow.getShowActor());
+			ps.setDate(11, new java.sql.Date(xshow.getShowStart().getTime()));
+			ps.setDate(12, new java.sql.Date(xshow.getShowEnd().getTime()));
+			ps.setInt(13, xshow.getShowNo());
+			
+			System.out.println(xshow);
+			res = ps.executeUpdate();
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
