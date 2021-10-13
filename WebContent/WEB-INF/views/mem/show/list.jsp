@@ -91,15 +91,15 @@
 		</div>
 </div>
 
+<c:import url="/WEB-INF/views/layout/parameterPaging.jsp" />
+
+</div>
+
 <div class="search" id="search">
 	<form action="/show" method="get">
 		<input type="text" name="title" placeholder="공연 제목을 입력해주세요."/>
 		<input type="submit" value="검색">
 	</form>
-</div>
-
-<c:import url="/WEB-INF/views/layout/parameterPaging.jsp" />
-
 </div>
 
 <c:import url="/WEB-INF/views/layout/footer.jsp" />

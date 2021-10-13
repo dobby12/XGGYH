@@ -43,6 +43,21 @@
 	clear: left;
 	margin: 0 auto;
 }
+
+.poster {
+	width: 550px;
+	height: 610px;
+	border: 1px solid;
+	float: left;
+}
+
+.detailButton {
+	width: 200px;
+	height: 200px;
+	float: right;
+	clear: both;
+}
+
 </style>
 
 </head>
@@ -55,7 +70,10 @@
 		<h1>공연 상세 정보( ${showDetail.showTitle} )</h1>
 		<hr>
 
-		<div class="photoEx">사진 사진</div>
+		<div class="photoEx">
+		<img class="poster" src='http://drive.google.com/uc?export=view&id=1UCDamPPObCPN9BY8Iz2WjsgiY8m80K2b' />
+		<br>
+		</div>
 
 		<div class="detailInfo">
 			공연 번호 : ${showDetail.showNo} <br>
@@ -75,13 +93,11 @@
 		</div>
 
 		<div class="content">${showDetail.showContent }</div>
-
-
-		<div class="text-center">
-			<button style="margin: auto 0"
-				onclick="location.href='<%=request.getContextPath()%>/show';">공연
-				목록</button>
-		</div>
+	</div>
+	
+	<div class="detailButton">
+	<button  style="margin: auto 0"onclick="location.href='<%=request.getContextPath()%>/show?kindNo=${showDetail.kindNo}';">공연목록</button>
+	<button  style="margin: auto 0"onclick="location.href='<%=request.getContextPath()%>/review/write?showTitle=${showDetail.showTitle}';">리뷰 작성</button>
 	</div>
 	
 	<c:import url="/WEB-INF/views/layout/footer.jsp" />

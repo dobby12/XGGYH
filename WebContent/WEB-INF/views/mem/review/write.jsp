@@ -36,7 +36,7 @@ $(document).ready(function() {
 <table class="table table-bordered">
 <tr><td class="info">아이디</td><td>${memid }</td></tr>
 <tr><td class="info">닉네임</td><td>${memnick }</td></tr>
-<tr><td class="info">공연이름</td><td><input type="text" name="showTitle" style="width:98%"/></td></tr>
+<tr><td class="info">공연이름</td><td>${showTitle }</td></tr>
 <tr><td class="info">별점</td><td><input type="text" name="reviewScore" style="width:98%"/></td></tr>
 <tr><td class="info">제목</td><td><input type="text" name="reviewTitle" style="width:98%"/></td></tr>
 <tr><td class="info" colspan="12">본문</td></tr>
