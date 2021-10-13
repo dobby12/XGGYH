@@ -22,7 +22,8 @@ public class AdminMailMemListController extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("/admin/mail/list [GET]");
+		
+		System.out.println("/admin/mem/mail/list [GET]");
 		
 		Paging paging = adminMemberService.getPaging(req);
 		

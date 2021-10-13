@@ -45,7 +45,7 @@ public class AdminMailMemWriteController extends HttpServlet {
 		String mailTitle = req.getParameter("mailtitle");
 		String mailContent = req.getParameter("mailcontent");
 		
-//		System.out.println("memmail");
+		System.out.println("memmail");
 
 		adminMailService.sendMail(memMail, mailTitle, mailContent);
 

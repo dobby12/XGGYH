@@ -15,7 +15,7 @@ table {
 
 <div class="container">
 
-<h2>회원정보</h2>
+<h2>메일 보내기 화면</h2>
 <hr>
 
 <table class="table table-hover table-condensed">
@@ -53,7 +53,7 @@ table {
 <c:import url="/WEB-INF/views/layout/paging.jsp" />
 
 <div style="text-align: center; margin: 0 0 25px 0;" >
-<form action="<%=request.getContextPath() %>/admin/mem/search" method="get">
+<form action="<%=request.getContextPath() %>/admin/mail/mem/search" method="get">
 	<select id="searchtype" name="searchtype">
 		<option value="memid">회원 아이디</option> 
 		<option value="memnick">회원 닉네임</option>
