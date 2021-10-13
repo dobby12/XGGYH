@@ -40,7 +40,7 @@ public class AdminShowWriteController extends HttpServlet {
 
 		adminShowService.setShow( req );
 		
-//		resp.sendRedirect("/admin/show/list);
+		resp.sendRedirect("/admin/show/list");
 	}
 
 }

@@ -89,4 +89,21 @@ public interface AdminShowDao {
 	 */
 	public int deleteShow(Connection conn, XShow showno);
 
+	/**
+	 * XShow_seq.nextval로 show_no 만들기
+	 * 
+	 * @param conn - DB 연결 객체
+	 * @return int
+	 */
+	public int selectNextShowno(Connection conn);
+
+	/**
+	 * XShow 공연 정보 저장
+	 * 
+	 * @param conn - DB 연결 객체
+	 * @param xshow - 전달받은 공연 정보
+	 * @return int
+	 */
+	public int insertShow(Connection conn, XShow xshow);
+
 }

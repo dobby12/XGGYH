@@ -85,8 +85,9 @@ public interface AdminShowService {
 	public void setShowDelete(XShow showno);
 
 	/**
+	 * 공연정보 작성
 	 * 
-	 * @param req
+	 * @param req - 요청 정보 객체
 	 */
 	public void setShow(HttpServletRequest req);
 

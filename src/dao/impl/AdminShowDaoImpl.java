@@ -298,4 +298,70 @@ public class AdminShowDaoImpl implements AdminShowDao {
 		return res;
 	}
 
+	@Override
+	public int selectNextShowno(Connection conn) {
+		
+		String sql = "";
+		sql += "SELECT XSHOW_SEQ.NEXTVAL FROM DUAL";
+		
+		int showno = 0;
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				showno = rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+		}
+		return showno;
+	}
+
+	@Override
+	public int insertShow(Connection conn, XShow xshow) {
+		
+		String sql = "";
+		sql += "INSERT INTO xshow( show_no, file_no, admin_id, kind_no,";
+		sql += " genre_no, hall_no, show_title, show_content,";
+		sql += " show_age, show_director, show_actor, show_start, show_end )";
+		sql += " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		
+		int res = 0;
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, xshow.getShowNo());
+			if(xshow.getFileNo()==0) {
+				ps.setObject(2, null);
+			} else {
+				ps.setInt(2, xshow.getFileNo());
+			}
+			ps.setString(3, xshow.getAdminId());
+			ps.setInt(4, xshow.getKindNo());
+			ps.setInt(5, xshow.getGenreNo());
+			ps.setInt(6, xshow.getHallNo());
+			ps.setString(7, xshow.getShowTitle());
+			ps.setString(8, xshow.getShowContent());
+			ps.setString(9, xshow.getShowAge());
+			ps.setString(10, xshow.getShowDirector());
+			ps.setString(11, xshow.getShowActor());
+			ps.setDate(12, new java.sql.Date(xshow.getShowStart().getTime()));
+			ps.setDate(13, new java.sql.Date(xshow.getShowEnd().getTime()));
+			
+			res = ps.executeUpdate();
+			System.out.println(xshow);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(ps);
+		}
+		
+		return res;
+		
+	}
+
 }

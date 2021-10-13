@@ -12,12 +12,12 @@ public class XShow {
 	private int hallNo;
 	private String showTitle;
 	private String showContent;
-	private Date showDate;
 	private String showAge;
 	private String showDirector;
 	private String showActor;
 	private Date showStart;
 	private Date showEnd;
+	private Date showDate;
 	
 	@Override
 	public String toString() {
@@ -75,7 +75,7 @@ public class XShow {
 	public void setShowContent(String showContent) {
 		this.showContent = showContent;
 	}
-	public Date getShowDate() {
+	public Date getShowDate() { //공연정보 등록일 (sysdate)
 		return showDate;
 	}
 	public void setShowDate(Date showDate) {
