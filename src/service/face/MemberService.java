@@ -49,4 +49,10 @@ public interface MemberService {
 	 */
 	public String getMemid(String parameter);
 
+	/**
+	 * @param uuidPw2 
+	 * 
+	 */
+	public void setMempwUpdate(String mailForPw, String uuidPw);
+
 }

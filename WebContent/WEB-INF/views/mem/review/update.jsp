@@ -19,13 +19,13 @@ $(document).ready(function() {
 	
 
 	//파일이 있을 경우
-	if(${not empty reviewFile }) {
+	if(${not empty xFile }) {
 		$("#beforeFile").show();
 		$("#afterFile").hide();
 	}
 	
 	//파일이 없을 경우
-	if(${empty reviewFile }) {
+	if(${empty xFile }) {
 		$("#beforeFile").hide();
 		$("#afterFile").show();
 	}
@@ -86,7 +86,7 @@ $(document).ready(function() {
 <div>
 	<div id="beforeFile">
 		기존 첨부파일: 
-		<a href="/upload/${reviewFile.fileStoredName }" >${reviewFile.fileOriginName }</a>
+		<a href="/upload/${xFile.fileStoredName }" >${xFile.fileOriginName }</a>
 		<span id="delFile" style="color:red; font-weight: bold; cursor: pointer;">X</span>
 	</div>
 

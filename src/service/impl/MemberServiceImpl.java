@@ -84,4 +84,15 @@ public class MemberServiceImpl implements MemberService {
 	public String getMemid(String parameter) {
 		return memberDao.selectMemidByMemmail(JDBCTemplate.getConnection(), parameter);
 	}
+
+	@Override
+	public void setMempwUpdate(String mailForPw, String uuidPw) {
+		Connection conn = JDBCTemplate.getConnection();
+		if(memberDao.updateMempw(conn, mailForPw, uuidPw) > 0) {
+			JDBCTemplate.commit(conn);
+		} else {
+			JDBCTemplate.rollback(conn);
+		}
+	}
+	
 }

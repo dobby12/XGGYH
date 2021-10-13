@@ -89,6 +89,7 @@ public class ReviewServiceImpl implements ReviewService {
 		
 		return showNo;
 	}
+	
 
 	@Override
 	public XReview view(XReview reviewNo) {
@@ -260,6 +261,11 @@ public class ReviewServiceImpl implements ReviewService {
 	@Override
 	public XFile viewFile(XReview viewReview) {
 		return reviewDao.selectFile(JDBCTemplate.getConnection(), viewReview);
+	}
+	
+	@Override
+	public XFile getFile(int reviewno) {
+		return reviewDao.selectFileByFileNo(JDBCTemplate.getConnection(), reviewno);
 	}
 	
 	@Override
