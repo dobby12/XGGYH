@@ -5,6 +5,39 @@
 
 <c:import url="/WEB-INF/views/layout/adminheader.jsp" />
 
+<script type="text/javascript">
+
+$(document).ready(function(){
+	
+	$("#btnUpdate").click(function(){
+		
+		var answer = confirm("공연 정보를 수정하시겠습니까?")
+		
+		if(answer == true){
+			location.href="<%=request.getContextPath() %>/admin/show/update?showno=${viewShow.showNo }";
+		} else {
+			return false;
+		}
+		
+	})
+	
+	$("#btnDelete").click(function() {
+		
+		var answer = confirm("공연 정보를 삭제하시겠습니까?")
+		
+		if( answer == true ){
+			
+			location.href = "<%=request.getContextPath() %>/admin/show/delete?showno=${viewShow.showNo}";
+			
+		} else {
+			return false;
+		}
+	});
+	
+})
+
+</script>
+
 <div class="container">
 
 <h1>공연정보 상세보기</h1>
@@ -58,7 +91,8 @@
 </div>
 
 <div class="button">
-	<a href="<%=request.getContextPath() %>/admin/review/delete?showno=${viewShow.showNo }"><button id="btnDelete">삭제</button></a>
+	<button id="btnUpdate">수정</button>
+	<button id="btnDelete">삭제</button>
 </div>
 
 

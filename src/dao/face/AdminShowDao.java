@@ -106,4 +106,13 @@ public interface AdminShowDao {
 	 */
 	public int insertShow(Connection conn, XShow xshow);
 
+	/**
+	 * 공연 정보 수정
+	 * 
+	 * @param conn - DB 연결 객체
+	 * @param xshow - 전달받은 공연 정보
+	 * @return int
+	 */
+	public int updateShow(Connection conn, XShow xshow);
+
 }
