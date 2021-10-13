@@ -43,4 +43,10 @@ public interface MemberService {
 	 */
 	public void join(XMem param);
 
+	/**
+	 * 
+	 * @param parameter
+	 */
+	public String getMemid(String parameter);
+
 }

@@ -79,4 +79,9 @@ public class MemberServiceImpl implements MemberService {
 			JDBCTemplate.rollback(conn);
 		}
 	}
+
+	@Override
+	public String getMemid(String parameter) {
+		return memberDao.selectMemidByMemmail(JDBCTemplate.getConnection(), parameter);
+	}
 }
