@@ -12,7 +12,7 @@ import service.face.AskService;
 import service.impl.AskServiceImpl;
 
 @WebServlet("/mypage/myask/write")
-public class MemAskWriteController extends HttpServlet {
+public class MemberAskWriteController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	//AskService 객체
