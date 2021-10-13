@@ -50,5 +50,24 @@ public interface AskDao {
 	 * @param ask - 삽입될 게시글 내용
 	 */
 	public int insert(Connection conn, XAsk ask);
+
+	/**
+	 * XAsk테이블 memid 조회
+	 * 
+	 * @param paging - 페이징 정보 객체
+	 * @param conn - DB연결 객체
+	 * @param memid
+	 * @return List<XAsk> - XAsk테이블 memid 조회 결과 리스트
+	 */
+	public List<XAsk> selectAllByMemid(Connection connection, Paging paging, String memid);
+
+	/**
+	 * 멤버 게시글 수 조회
+	 * 
+	 * @param conn
+	 * @param memid
+	 * @return int - XAsk테이블 memid 행 수 조회 결과
+	 */
+	public int selectCntByMemId(Connection connection, String memid);
 	
 }

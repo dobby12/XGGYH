@@ -3,7 +3,7 @@
     
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<c:import url="/WEB-INF/views/layout/adminheader.jsp" />
+<c:import url="/WEB-INF/views/layout/header.jsp" />
 
 <style type="text/css">
 
@@ -22,7 +22,7 @@ table {
 
 <thead>
 <tr>
-	<th style="text-align: center; width: 10%">리뷰 번호</th>
+	<th style="text-align: center; width: 10%">번호</th>
 	<th style="text-align: center; width: 70%">제목</th>
 	<th style="text-align: center; width: 10%">작성 날짜</th>
 	<th style="text-align: center; width: 10%">평점</th>

@@ -114,4 +114,30 @@ public class AskServiceImpl implements AskService {
 		
 	}
 
+	@Override
+	public Paging getPagingByMemId(HttpServletRequest req, String memid) {
+		
+		String param = req.getParameter("curPage");
+		int curPage = 0;
+		if(param != null && !"".equals(param)) {
+			curPage = Integer.parseInt(param);
+		} else {
+			System.out.println("[WARNING] curPage값이 null이거나 비어있습니다");
+		}
+		
+		int totalCount = askDao.selectCntByMemId(JDBCTemplate.getConnection(), memid);
+		
+		Paging paging = new Paging(totalCount, curPage);
+		
+		return paging;
+		
+	}
+
+	@Override
+	public List<XAsk> getAskListByMemid(Paging paging, String memid) {
+		
+		return askDao.selectAllByMemid(JDBCTemplate.getConnection(), paging, memid);
+	}
+	
+
 }

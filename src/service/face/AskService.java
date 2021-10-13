@@ -53,4 +53,23 @@ public interface AskService {
 	 */
 	public void write(HttpServletRequest req);
 
+	/**
+	 * 페이징 객체 생성
+	 * 
+	 * @param req - 요청정보 객체
+	 * @param memid
+	 * @return 페이징 계산이 완료된 Paging 객체
+	 */
+	public Paging getPagingByMemId(HttpServletRequest req, String memid);
+
+	/**
+	 * 멤버id 게시글 조회
+	 * 	페이징 처리 추가
+	 * 
+	 * @param paging - 페이징 정보 객체
+	 * @param memid - 로그인 된 회원 아이디
+	 * @return List<XReview> - 멤버id 게시글 조회 결과 리스트
+	 */
+	public List<XAsk> getAskListByMemid(Paging paging, String memid);
+
 }
