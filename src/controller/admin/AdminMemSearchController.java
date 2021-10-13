@@ -26,7 +26,6 @@ public class AdminMemSearchController extends HttpServlet {
 		Paging paging = adminMemberService.getParameterPaging(req);
 		System.out.println("AdminMemberListController [GET] - " + paging);
 
-		
 		//전달 파라미터 searchtype, keyword를 통해서 searchMember객체를 반환
 		List<XMem> searchMemList = adminMemberService.searchMemList(req, paging);
 				
@@ -36,12 +35,9 @@ public class AdminMemSearchController extends HttpServlet {
 		
 		req.setCharacterEncoding("UTF-8");
 		
-		req.setAttribute("searchtype", req.getParameter("searchtype"));
-		
 		req.setAttribute("linkUrl", "/admin/mem/search?searchtype=" + req.getParameter("searchtype") + "&keyword=" + req.getParameter("keyword"));
 		
 //		System.out.println("linkUrl : admin/mem/search?searchtype=" + req.getParameter("searchtype") + "&keyword=" + req.getParameter("keyword"));
-		
 		
 		req.getRequestDispatcher("/WEB-INF/views/admin/mem/search.jsp").forward(req, resp);
 		
