@@ -120,7 +120,7 @@ public interface ReviewDao {
 	 * @param reviewNo - 조회할 fileNo를 가진 XReview의 PK
 	 * @return DB에서 가져온 XFile의 객체
 	 */
-	public XFile selectFileByFileNo(Connection conn, int reviewNo);
+	public XFile selectFileByFileNo(Connection conn, int reviewno);
 
 	/**
 	 * 게시글 수정 
@@ -142,6 +142,7 @@ public interface ReviewDao {
 	 * @param review - 삭제할 게시글번호를 담은 객체
 	 */
 	public int deleteFile(Connection conn, XReview review);
+
 
 
 }

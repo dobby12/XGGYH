@@ -179,7 +179,7 @@ public class ReviewDaoImpl implements ReviewDao {
 	
 
 	@Override
-	public XFile selectFileByFileNo(Connection conn, int reviewNo) {
+	public XFile selectFileByFileNo(Connection conn, int reviewno) {
 		
 		String sql = ""; 
 		sql += "SELECT file_no, file_origin_name, file_stored_name, file_size FROM xfile";
@@ -188,7 +188,7 @@ public class ReviewDaoImpl implements ReviewDao {
 		
 		try {
 			ps = conn.prepareStatement(sql);
-			ps.setInt(1, reviewNo);
+			ps.setInt(1, reviewno);
 			rs = ps.executeQuery();
 			while(rs.next()) {
 				res = new XFile();

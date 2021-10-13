@@ -23,6 +23,14 @@ public class ReviewUpdateController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		System.out.println("/review/update [GET]");
 		
+		String param = req.getParameter("reviewno");
+		int reviewno = 0;
+		if(param!=null && !"".equals(param)) {
+			reviewno = Integer.parseInt(param);
+		} else {
+			System.out.println("!!!ERROR!!! noticeno로 전달된 파라미터가 숫자가 아닙니다.");
+		}
+		
 		//전달파라미터
 		XReview reviewNo = reviewService.getReviewNo(req);
 		
@@ -39,7 +47,7 @@ public class ReviewUpdateController extends HttpServlet {
 		req.setAttribute("updateReview", updateReview);
 
 		//첨부파일 전달
-		XFile xFile = reviewService.viewFile(updateReview);
+		XFile xFile = reviewService.getFile(reviewno);
 		req.setAttribute("xFile", xFile);
 
 		req.getRequestDispatcher("/WEB-INF/views/mem/review/update.jsp").forward(req, resp);		
