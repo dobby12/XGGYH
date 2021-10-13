@@ -27,6 +27,8 @@ public class ReviewUpdateController extends HttpServlet {
 		XReview updateReview = reviewService.view(reviewNo);
 		
 		req.setAttribute("memNick", reviewService.getMemNick(updateReview));
+		
+		req.setAttribute("showTitle", reviewService.getShowTitle(updateReview));
 	
 		req.setAttribute("updateReivew", updateReview);
 

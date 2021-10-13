@@ -5,7 +5,6 @@
 
 <c:import url="/WEB-INF/views/layout/header.jsp" />
 
-</script>
 
 <script type="text/javascript">
 $(document).ready(function() {
@@ -53,21 +52,40 @@ $(document).ready(function() {
 
 <div>
 <form action="/review/update" method="post" enctype="multipart/form-data">
-<input type="hidden" name="reviewno" value="${viewFile.reviewNo }" />
+<input type="hidden" name="reviewno" value="${reviewFile.reviewNo }" />
 
 <table class="table table-bordered">
-<tr><td class="info">아이디</td><td>${updateReview.memId }</td></tr>
-<tr><td class="info">닉네임</td><td>${updateReview.memNick }</td></tr>
-<tr><td class="info">제목</td><td><input type="text" name="title" style="width:100%" value="${updateReview.reviewTitle }"/></td></tr>
-<tr><td class="info" colspan="2">본문</td></tr>
-<tr><td colspan="2">${updateReview.reviewContent }</td></tr>
+<tr>
+<td class="info">글번호</td><td colspan="3">${updateReview.reviewNo }</td>
+</tr>
+<tr>
+<td class="info">제목</td><td colspan="3">${updateReview.reviewTitle }</td>
+</tr>
+<tr>
+<td class="info">아이디</td><td>${updateReview.memId }</td>
+<td class="info">닉네임</td><td>${memNick }</td>
+</tr>
+<tr>
+<td class="info">조회수</td><td>${updateReview.reviewHit }</td>
+</tr>
+<tr>
+<td class="info">작성일</td><td colspan="3">${updateReview.reviewDate }</td>
+</tr>
+<tr>
+<td class="info">공연 제목</td><td colspan="3">${showTitle }</td>
+</tr>
+<tr>
+<td class="info">별점</td><td colspan="3">${updateReview.reviewScore }</td>
+</tr>
+<tr><td class="info"  colspan="4">본문</td></tr>
+<tr><td colspan="4">${updateReview.reviewContent }</td></tr>
 </table>
 
 <!-- 첨부파일 -->
 <div>
 	<div id="beforeFile">
 		기존 첨부파일: 
-		<a href="/upload/${reviewFile.fileStoredName }" download="${reviewFile.fileOriginName }">${reviewFile.fileOriginName }</a>
+		<a href="/upload/${reviewFile.fileStoredName }" >${reviewFile.fileOriginName }</a>
 		<span id="delFile" style="color:red; font-weight: bold; cursor: pointer;">X</span>
 	</div>
 

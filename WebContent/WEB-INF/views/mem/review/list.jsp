@@ -38,10 +38,6 @@ th, div {
 </c:forEach>
 </table>
 
-<div id="btnBox" class="pull-right">
-		<a href="<%=request.getContextPath() %>/review/write"><button id="btnWrite">리뷰작성</button></a>
-</div>
-
 </div>
 
 <c:import url="/WEB-INF/views/layout/paging.jsp" />
