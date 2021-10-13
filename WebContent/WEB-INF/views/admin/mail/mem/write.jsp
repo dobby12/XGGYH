@@ -17,7 +17,7 @@ table {
 	<form action="<%=request.getContextPath() %>/admin/mail/write" method="post">
 		<table>
 			<tr>
-				<th colspan="2">메일 주소 입력해서 메일 작성</th>
+				<th colspan="2">회원에게 메일 작성하기</th>
 			</tr>
 			<tr>
 				<td>보내는 이</td>
@@ -25,7 +25,7 @@ table {
 			</tr>
 			<tr>
 				<td>받는 이</td>
-				<td><input type="text" name="memmail" /></td>
+				<td>${memMail }<input type="hidden" name="memmail" value ="${memMail }" /></td>
 			</tr>
 			<tr>
 				<td>메일 제목</td>

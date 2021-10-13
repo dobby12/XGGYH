@@ -123,7 +123,7 @@ public class ReviewServiceImpl implements ReviewService {
 		XReview review = null;
 		
 		//업로드한 첨부파일 전달
-		XFile File = null;
+		XFile reviewFile = null;
 		
 		boolean isMultipart = false;
 		isMultipart = ServletFileUpload.isMultipartContent(req);
@@ -188,8 +188,6 @@ public class ReviewServiceImpl implements ReviewService {
 					review.setReviewContent( value );
 				} else if( "reviewScore".equals(key) ) {
 					review.setReviewScore( Integer.parseInt(value) );
-				} else if( "reviewHit".equals(key) ) {
-					review.setReviewHit( 0 );
 				}
 				
 			} //if( item.isFormField() ) end
@@ -215,10 +213,10 @@ public class ReviewServiceImpl implements ReviewService {
 					e.printStackTrace();
 				}
 				
-				File = new XFile();
-				File.setFileOriginName(origin);
-				File.setFileStoredName(stored);
-				File.setFileSize( Long.toString(item.getSize()) );
+				reviewFile = new XFile();
+				reviewFile.setFileOriginName(origin);
+				reviewFile.setFileStoredName(stored);
+				reviewFile.setFileSize( Long.toString(item.getSize()) );
 				
 			} //if( !item.isFormField() ) end
 		} //while( iter.hasNext() ) end
@@ -230,13 +228,10 @@ public class ReviewServiceImpl implements ReviewService {
 		int reviewNo = reviewDao.selectNextReviewNo(conn);
 		
 		//첨부파일정보 있을경우
-		if(File != null) {
+		if(reviewFile != null) {
+			reviewFile.setFileNo(reviewNo); //게시글 번호 입력(FK)
 			
-			int fileno = fileDao.selectNextFileno(conn);
-			File.setFileNo(fileno);
-			review.setFileNo(fileno);
-			File.setFileNo(reviewNo);
-			if( fileDao.insertFile(conn, File) > 0 ) {
+			if( fileDao.insertFile(conn, reviewFile) > 0 ) {
 				JDBCTemplate.commit(conn);
 			} else {
 				JDBCTemplate.rollback(conn);
@@ -245,9 +240,9 @@ public class ReviewServiceImpl implements ReviewService {
 		
 		//게시글정보있을경우
 		if(review != null) {
-			review.setMemId((String)req.getSession().getAttribute("memid"));
+			review.setMemId((String)req.getSession().getAttribute("memId"));
 			
-			review.setReviewNo(reviewNo);
+			review.setReviewNo(reviewNo);//(PK)
 			
 			if(review.getReviewTitle()==null || "".equals(review.getReviewTitle())) {
 				review.setReviewTitle("(제목없음)");
@@ -343,9 +338,7 @@ public class ReviewServiceImpl implements ReviewService {
 					review.setReviewContent( value );
 				} else if( "reviewScore".equals(key) ) {
 					review.setReviewScore( Integer.parseInt(value) );
-				} else if( "reviewHit".equals(key) ) {
-					review.setReviewHit( 0 );
-				} 
+				}
 			} //if( item.isFormField() ) end
 			
 			
@@ -386,11 +379,8 @@ public class ReviewServiceImpl implements ReviewService {
 		
 		//첨부파일정보 있을경우
 		if(reviewFile != null) {
-			
-			int fileno = fileDao.selectNextFileno(conn);
-			reviewFile.setFileNo(fileno);
-			review.setFileNo(fileno);
-			reviewFile.setFileNo(reviewNo);
+			reviewFile.setFileNo(review.getReviewNo());
+
 			if( fileDao.insertFile(conn, reviewFile) > 0 ) {
 				JDBCTemplate.commit(conn);
 			} else {
@@ -400,15 +390,7 @@ public class ReviewServiceImpl implements ReviewService {
 		
 		//게시글정보있을경우
 		if(review != null) {
-			review.setMemId((String)req.getSession().getAttribute("memId"));
-			
-			review.setReviewNo(reviewNo);
-			
-			if(review.getReviewTitle()==null || "".equals(review.getReviewTitle())) {
-				review.setReviewTitle("(제목없음)");
-			}
-			
-			if( reviewDao.insert(conn, review) > 0 ) {
+			if( reviewDao.update(conn, review) > 0 ) {
 				JDBCTemplate.commit(conn);
 			} else {
 				JDBCTemplate.rollback(conn);

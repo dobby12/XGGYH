@@ -40,17 +40,6 @@ th, div {
 
 </div>
 
-<div style="text-align: center; margin: 0 0 25px 0;" >
-<form action="<%=request.getContextPath() %>/review/list" method="get">
-	<select id="searchtype" name="searchtype">
-		<option value="reviewTitle">제목</option> 
-		<option value="reviewContent">내용</option>
-	</select>
-	<input type="text" id="keyword" name="keyword" placeholder="검색어를 입력하세요"/>
-	<button>검색</button>
-</form>
-</div>
-
 <c:import url="/WEB-INF/views/layout/paging.jsp" />
 
 <c:import url="/WEB-INF/views/layout/footer.jsp" />

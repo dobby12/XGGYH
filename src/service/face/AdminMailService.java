@@ -10,5 +10,5 @@ public interface AdminMailService {
 	 * @param mailContent - 메일 내용
 	 */
 	public void sendMail(String memMail, String mailTitle, String mailContent);
-
+	
 }

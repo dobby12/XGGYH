@@ -10,13 +10,47 @@
 	String nick = (String)session.getAttribute("memnick");
 %>
 
-<!DOCTYPE html>
-<html>
-<head>
+<script type="text/javascript">
+$(document).ready(function() {
+	
+	//버튼 이동
+	$("#myinfo").click(function() {
+		location.href="<%=request.getContextPath() %>";
+	});
+	
+	$("#userdel").click(function() {
+		location.href="<%=request.getContextPath() %>";
+	});
+	
+	$("#myrev").click(function() {
+		location.href="<%=request.getContextPath() %>";
+	});
+	
+	$("#myjim").click(function() {
+		location.href="<%=request.getContextPath() %>";
+	});
+	
+	$("#mycal").click(function() {
+		location.href="<%=request.getContextPath() %>";
+	});
+	
+	$("#notice").click(function() {
+		location.href="<%=request.getContextPath() %>/notice";
+	});
+	
+	$("#askwrite").click(function() {
+		location.href="<%=request.getContextPath() %>";
+	});
+	
+	$("#asklist").click(function() {
+		location.href="<%=request.getContextPath() %>";
+	});
+	
+});
+</script>
+
 <meta charset="UTF-8">
 <title>마이 페이지</title>
-</head>
-<body>
 
 <div class="container">
 
@@ -42,6 +76,3 @@
 </table>
 
 </div>
-
-</body>
-</html>

@@ -29,4 +29,11 @@ public interface MemberDao {
 	 */
 	public int insert(Connection conn, XMem member);
 
+	/**
+	 * 
+	 * @param parameter
+	 * @return
+	 */
+	public String selectMemidByMemmail(Connection connection, String parameter);
+
 }

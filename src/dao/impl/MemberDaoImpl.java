@@ -19,7 +19,6 @@ public class MemberDaoImpl implements MemberDao {
 		System.out.println("###TEST### MemberDaoImpl selectCntMemByMemidMempw()");
 //		System.out.println("id : " + mem.getMem_id() +", pw : "+ mem.getMem_pw());
 		
-		
 		int count = 0;	//성공 시 1로 반환될 결과 변수
 		
 		String sql = "SELECT COUNT(*) FROM XMEM WHERE MEM_ID=? AND MEM_PW=?";
@@ -100,6 +99,29 @@ public class MemberDaoImpl implements MemberDao {
 			JDBCTemplate.close(ps);
 		}
 		
+		return res;
+	}
+
+	@Override
+	public String selectMemidByMemmail(Connection connection, String parameter) {
+
+		String res = null;
+	
+		String sql = "SELECT MEM_ID FROM XMEM WHERE MEM_MAIL=?";
+		
+		try {
+			ps = connection.prepareStatement(sql);
+			ps.setString(1, parameter);
+			rs = ps.executeQuery();
+			while(rs.next()) {				
+				res = rs.getString("mem_id");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+		}
 		return res;
 	}
 

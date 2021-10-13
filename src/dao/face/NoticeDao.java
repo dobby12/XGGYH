@@ -3,6 +3,7 @@ package dao.face;
 import java.sql.Connection;
 import java.util.List;
 
+import dto.XFile;
 import dto.XNotice;
 import util.Paging;
 
@@ -64,8 +65,9 @@ public interface NoticeDao {
 	 * 첨부파일 조회
 	 * 
 	 * @param connection - DB연결 객체
-	 * @param viewNotice - 첨부파일을 조회할 게시글번호 객체
-	 * @return BoardFile - 조회된 첨부파일
+	 * @param viewNotice - 첨부파일을 조회할 게시글 번호 객체
+	 * @return XFile - 조회된 첨부파일
 	 */
+	public XFile selectFile(Connection connection, XNotice viewNotice);
 	
 }

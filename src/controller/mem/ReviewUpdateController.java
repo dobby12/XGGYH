@@ -21,20 +21,26 @@ public class ReviewUpdateController extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-		XReview reviewNo = reviewService.getReviewNo(req);
-
-		XReview updateReview = reviewService.view(reviewNo);
+		System.out.println("/review/update [GET]");
 		
+		//전달파라미터
+		XReview reviewNo = reviewService.getReviewNo(req);
+		
+		//상세보기
+		XReview updateReview = reviewService.view(reviewNo);
+
+		//닉네임
 		req.setAttribute("memNick", reviewService.getMemNick(updateReview));
 		
+		//공연제목
 		req.setAttribute("showTitle", reviewService.getShowTitle(updateReview));
-	
-		req.setAttribute("updateReivew", updateReview);
-
-		XFile viewFile = reviewService.viewFile(updateReview);
 		
-		req.setAttribute("viewFile", viewFile);
+		//조회결과값 전달
+		req.setAttribute("updateReview", updateReview);
+
+		//첨부파일 전달
+		XFile xFile = reviewService.viewFile(updateReview);
+		req.setAttribute("xFile", xFile);
 
 		req.getRequestDispatcher("/WEB-INF/views/mem/review/update.jsp").forward(req, resp);		
 
@@ -42,6 +48,7 @@ public class ReviewUpdateController extends HttpServlet {
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		System.out.println("/review/update [POST]");
 		
 		reviewService.update(req);
 		

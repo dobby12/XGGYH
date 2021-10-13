@@ -44,11 +44,14 @@ public class NoticeListController extends HttpServlet {
 		//관리자 이름 리스트 전달
 		req.setAttribute("adminNameList", adminNameList);
 		
+		//페이징
+		req.setAttribute("paging", paging);
+		
 		//페이징 정보 MODEL값 전달
-		req.setAttribute("linkUrl", "/mem/mypage/notice");
+		req.setAttribute("linkUrl", "/notice");
 		
 		//VIEW 지정 및 응답 - forward
-		req.getRequestDispatcher("/WEB-INF/views/mem/mypage/notice.jsp").forward(req, resp);
+		req.getRequestDispatcher("/WEB-INF/views/mem/mypage/notice/list.jsp").forward(req, resp);
 		
 		}
 }

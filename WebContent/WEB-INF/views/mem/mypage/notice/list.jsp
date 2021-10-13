@@ -21,11 +21,15 @@
 <c:forEach items="${noticeList }" var="notice" varStatus="status">
 <tr>
 	<td>${notice.noticeNo }</td>
-	<td>${notice.noticeTitle }</td>
+	<td><a href="<%=request.getContextPath() %>/notice/detail?noticeno=${notice.noticeNo }">
+		${notice.noticeTitle }
+		</a>
+	</td>
 	<td>${adminNameList[status.index] }</td>
 	<td>${notice.noticeDate }</td>
 </tr>
 </c:forEach>
+
 </table>
 
 </div>
