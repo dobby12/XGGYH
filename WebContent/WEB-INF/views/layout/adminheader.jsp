@@ -37,6 +37,9 @@ a:hover {
 
 #header {
 	background: #f2f2f2;
+	height: 60px;
+	width: 1920px;
+	text-align: center;
 }
 
 #logo_header {
@@ -60,6 +63,7 @@ a:hover {
 	margin: 10px 0 0 300px;
 }
 
+
 /* 메인 메뉴 - 1depth */
 ul.nav {
 	/* ul태그의 기본 리스트스타일 없애기 */
@@ -75,14 +79,21 @@ ul.nav {
 /* 메인 메뉴의 항목 */
 ul.nav > li {
 
+	/* 서브메뉴(absolute)의 위치 기준점 설정하기 */
+	position: relative;
+	
+	width: 120px;
+
 	/* 수평으로 일렬 배치하기 */
 	float: left;
 
 	/* 줄간격을 이용한 높이 조절 */
-	line-height: 40px;
+	line-height: 30px;
 	
 	/* 테두리를 이용한 메뉴 항목 구분선 만들기 */
 	border-right: 1px solid #f2f2f2;
+	
+	text-align: center;
 }
 
 /* 메인 메뉴의 항목 텍스트 */
@@ -104,13 +115,90 @@ ul.nav > li > a {
 	/* 외부여백 */
 	/* 	-> a태그의 외부여백은 링크 클릭 불가능한 영역 */
 	margin: 0 3px;
+	
+	text-align: center;
 
+}
+
+/* 서브 메뉴 */
+ul.nav > li > ul {
+	/* HTML계층구조(레이아웃)에서 빼내는 설정 */
+	/*  -> 부모요소인 <li>태그의 컨텐츠 영역에서 빠져나옴 */
+	position: absolute;
+	
+/* 	/* 요소 위치 지정 - 안 해도 됨 */ */
+/* 	left: 10px; */
+
+	/* ul태그 기본 리스트스타일 제거하기 */
+	list-style-type: none;
+	
+	/* ul태그의 기본 여백 제거 */
+	padding: 0;
+	margin: 0;
+	
+	/* 서브메뉴영역의 너비 */
+	width: 120px;
+	
+	text-align: center;
 }
 
 ul.nav > li > a:hover {
 	text-decoration:none; color:#D96459;
 	background-color: #f2f2f2;
 }
+
+/* 서브 메뉴의 항목 */
+ul.nav > li > ul > li {
+	/* 배경색 지정 */
+	background: #f2f2f2;
+	
+	/* 항목의 크기 키우기 */
+/* 	padding: 10px; */
+
+	/* 왼쪽 여백 - 들여쓰기 효과주기 */
+/* 	padding-left: 10px; */
+	
+	/* 평소에 화면에서 안보이도록 설정하기 */
+	height: 0; /* 컨텐츠영역 높이 제거 */
+	font-size: 0; /* 글자 크기 제거 */
+	line-height: 0; /* 줄간격 제거 */
+	
+	text-align: center;
+	
+	list-style-type: none;
+	
+}
+
+/* 메인메뉴 항목에 마우스 올릴 경우 다시 보이도록 설정 */
+ul.nav > li:hover > ul > li {
+	height: 30px; /* 컨텐츠영역 높이 되돌리기 */
+	font-size: 12px; /* 글자 크기 되돌리기 */
+	line-height: 40px; /* 줄간격 되돌리기 */
+	
+	
+}
+
+ul.nav > li > ul > li > a {
+	/* 배경색 지정 */
+	background: #f2f2f2;
+	
+	/* 글자색 지정 */
+	color: #333;
+	
+	/* 글자 꾸밈선 제거(underline) */
+	text-decoration: none;
+	
+	/* 부모요소 <li>항목만큼 영역을 차지하는 태그로 만들기 */
+	/*  -> <a>태그가 부모<li>태그로 가득 채워짐 */
+	display: block;
+
+}
+
+ul.nav > li > ul > li > a:hover {
+	text-decoration:none; color:#D96459;
+	background-color: #f2f2f2;
+}
+
 
 </style>
 
@@ -125,7 +213,12 @@ ul.nav > li > a:hover {
 	<li><a href="<%=request.getContextPath() %>/admin/mem/list">회원 관리</a></li>
 	<li><a href="<%=request.getContextPath() %>/admin/review/list">리뷰 관리</a></li>
 	<li><a href="<%=request.getContextPath() %>/admin/show/list">공연 관리</a></li>
-	<li><a href="<%=request.getContextPath() %>/admin/mail/mem/list">메일 관리</a></li>
-
+	<li>
+		<a href="#">메일 관리</a>
+		<ul>
+			<li><a href="<%=request.getContextPath() %>/admin/mail/write">메일 발송</a></li>
+			<li><a href="<%=request.getContextPath() %>/admin/mail/mem/list">회원 메일 발송</a></li>
+		</ul>
+	</li>
 </ul>
 </div>
