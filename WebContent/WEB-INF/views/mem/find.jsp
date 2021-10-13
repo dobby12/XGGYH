@@ -13,17 +13,15 @@ $(document).ready(function(){
 
 
 <form action="<%=request.getContextPath() %>/member/find" method="post">
-<div>
 @@@영문 입력 검사 합시다용@@@<br>
+js로 둘 중에 하나만 전송할 수 있게 합시다요<br>
 
-
-ID 찾기 : <input type="text" name="memmail" placeholder="이메일 주소를 입력하세요.">
+ID 찾기 : <input type="text" name="mailForId" placeholder="이메일 주소를 입력하세요.">
 <button type="button" id="btnFindid">ID찾기</button>
 <br><br><br>
 
-PW 찾기 : <input type="text" name="memid" placeholder="아이디를 입력하세요.">
+PW 찾기 : <input type="text" name="mailForPw" placeholder="이메일 주소를 입력하세요.">
 <button type="button" id="btnFindpw">PW찾기</button>
-</div>
 </form>
 
 
