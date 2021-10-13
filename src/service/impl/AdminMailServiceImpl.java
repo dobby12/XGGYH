@@ -9,12 +9,11 @@ import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
-
 import service.face.AdminMailService;
 import util.mail.MailAuth;
 
 public class AdminMailServiceImpl implements AdminMailService {
-
+	
 	@Override
 	public void sendMail(String memMail, String mailTitle, String mailContent) {
 		 
@@ -55,5 +54,7 @@ public class AdminMailServiceImpl implements AdminMailService {
 		}
 		
 	}
+	
+
 
 }
