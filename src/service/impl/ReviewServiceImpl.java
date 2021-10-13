@@ -67,12 +67,12 @@ public class ReviewServiceImpl implements ReviewService {
 		
 		XReview reviewNo = new XReview();
 		
-		String param = req.getParameter("review_no");
+		String param = req.getParameter("reviewno");
 		if(param!=null && !"".equals(param)) {
 			
 			reviewNo.setReviewNo( Integer.parseInt(param) );
 		}
-		System.out.println(reviewNo);
+		
 		return reviewNo;
 	}
 	
@@ -81,7 +81,7 @@ public class ReviewServiceImpl implements ReviewService {
 		
 		XShow showNo = new XShow();
 		
-		String param = req.getParameter("show_no");
+		String param = req.getParameter("showno");
 		if(param!=null && !"".equals(param)) {
 			
 			showNo.setShowNo( Integer.parseInt(param) );

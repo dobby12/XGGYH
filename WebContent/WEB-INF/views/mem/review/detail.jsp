@@ -44,11 +44,9 @@
 </div>
 
 <div class="button">	
-	<button id="btnList">목록</button>
-	<button id="btnUpdate">수정</button>
 	<a href="<%=request.getContextPath() %>/review/list"><button id="btnList">목록</button></a>
 	<a href="<%=request.getContextPath() %>/review/update?reviewno=${viewReview.reviewNo }"><button id="btnUpdate">수정</button></a>
-	<a href="<%=request.getContextPath() %>/admin/review/delete?reviewno=${viewReview.reviewNo }"><button id="btnDelete">삭제</button></a>
+	<a href="<%=request.getContextPath() %>/review/delete?reviewno=${viewReview.reviewNo }"><button id="btnDelete">삭제</button></a>
 </div>
 
 </div>
