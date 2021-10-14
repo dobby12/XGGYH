@@ -3,6 +3,8 @@
 <c:import url="/WEB-INF/views/layout/header.jsp" />
 <!------------------------------------------------------>
 
+<div class="container">
+
 <h1>MAIN</h1>
 
 
@@ -19,11 +21,11 @@
 로그인 된 아이디 : ${memid }<br>
 로그인 된 닉네임 : ${memnick }<br>
 <hr>
-	<strong>로그인 한 상태일 때 보여질 영역</strong><br>
+	<strong>로그인 한 상태일 때 보여질 영역</strong><br><br>
 	<a href="<%=request.getContextPath() %>/logout"><button>LOGOUT</button></a>
 <hr>
 </c:if>
 
+</div><!-- .container end -->
 
-</body>
-</html>
+<c:import url="/WEB-INF/views/layout/footer.jsp" />

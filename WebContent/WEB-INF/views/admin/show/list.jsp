@@ -16,15 +16,17 @@
 table {
 	text-align: center;
 }
+#flex-end {
+	justify-content: flex-end;
+}
 
 </style>
 
 <div class="container" style="text-align: center;">
 
 <h2>공연 목록</h2>
-<button id="btnWrite" onclick="location.href='/admin/show/write';"style="margin: -25px 0 15px 0; float: right;">
-	작성하기
-</button>
+<button id="btnWrite" onclick="location.href='/admin/show/write';" style="float: right; margin: -20px 0 10px 0;">작성</button>
+
 <hr style="clear: both;">
 
 <table style="clear: both;" class="table table-hover table-condensed">

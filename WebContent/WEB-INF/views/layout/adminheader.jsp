@@ -23,15 +23,17 @@
 
 <style type="text/css">
 
+/* 기본 css */
+
 html, body { 
 	margin: 0; 
 	padding: 0;
 	height: 100%;
 }
 
-#body-wrapper { min-height: 100%; position: relative; }
+#body-wrapper { min-height: 90%; position: relative; }
 
-#body-content { margin-top: 100px; padding-bottom: 210px; /* footer의 높이 */ }
+#body-content { margin-top: 0px; padding-bottom: 210px; /* footer의 높이 */ }
 
 #footer {
 	width: 100%;
@@ -48,15 +50,6 @@ html, body {
 
 body, ul.nav > li > a  {
 	font-family: 'IBM Plex Sans KR', sans-serif;
-	text-align: center;
-}
-
-a {
-	color: black;
-}
-
-a:hover {
-	color: #D96459;
 }
 
 #header {
@@ -85,6 +78,10 @@ a:hover {
 	margin: 10px 0 0 300px;
 }
 
+
+/* ------------------------------------------------ */
+/* 네비게이션 (header-menu) */
+
 /* 메인 메뉴 - 1depth */
 ul.nav {
 	/* ul태그의 기본 리스트스타일 없애기 */
@@ -92,18 +89,15 @@ ul.nav {
 	
 	/* 기본 여백 제거 */
 	padding: 0;
-	margin: 0 0 0 180px;	
+	margin: 0 0 0 200px;	
 }
 
-/* ------------------------------------------------ */
 
 /* 메인 메뉴의 항목 */
 ul.nav > li {
 
 	/* 서브메뉴(absolute)의 위치 기준점 설정하기 */
 	position: relative;
-	
-	width: 100px;
 	
 	/* 수평으로 일렬 배치하기 */
 	float: left;
@@ -254,14 +248,9 @@ ul.nav > li > ul > li > a:hover {
 	background-color: #f2f2f2;
 }
 
-table {
-	text-align: center;
-	border-collapse: collapse;
-	margin: 0 auto;
-	width: 1000px;
-}
 
 /* ------------------------------------------------ */
+/* 버튼 */
 
 button { 
 	background:#D96459; 
@@ -276,11 +265,11 @@ button {
 	outline:none;
 	border-radius: 5px;
 } 
- button:hover{ 
+button:hover{ 
    background:#f2f2f2; 
    color:#D96459; 
- } 
- button:before,button:after{ 
+} 
+button:before,button:after{ 
    content:''; 
    position:absolute; 
    top:0; 
@@ -289,22 +278,57 @@ button {
    width:0; 
    background: #d96459; 
    transition:400ms ease all; 
- }
+}
   
- button:after { 
+button:after { 
    right:inherit; 
    top:inherit; 
    left:0; 
    bottom:0; 
- } 
- button:hover:before,button:hover:after { 
+} 
+
+button:hover:before,button:hover:after { 
    width:100%; 
    transition:800ms ease all;
- }
+}
  
-input[type=text] { border: solid 1px #d96459; 
-    border-radius: 5px; height: 30px; }
+ 
+/* ------------------------------------------------ */
+/* body */
 
+.container {
+	text-align: center;
+	
+}
+
+input[type=text] {
+	border: solid 1px #d96459; 
+    border-radius: 5px;
+    height: 30px;
+    vertical-align: middle;
+    text-align: center;
+}
+
+
+table {
+	text-align: center;
+	border-collapse: collapse;
+	margin: 0 auto;
+	width: 1000px;
+}
+
+td, th, textarea {
+	text-align: center;
+	vertical-align: middle;
+}
+
+a {
+	color: black;
+}
+
+a:hover {
+	color: #D96459;
+}
 
 </style>
 

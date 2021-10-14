@@ -88,8 +88,8 @@ $(document).ready(function() {
 
 <style type="text/css">
 
-table, input, textarea {
-	text-align: center;
+input[type=text] {
+	height: 24.48px;
 }
 
 </style>
@@ -97,21 +97,21 @@ table, input, textarea {
 <div class="container">
 
 <h3>공연 정보 등록</h3>
-<hr>
+<br>
 
 <div>
 <form action="/admin/show/write" method="post" enctype="multipart/form-data">
 
-<table class="table table-condensed">
+<table class="table table-condensed table-bordered">
 
 <tr>
-	<td colspan="10"><h4><input type="text" id="showTitle" name="showTitle" style="width: 100%; padding: 5px;" autocomplete="off" placeholder="공연 제목"/></h4></td>
+	<td colspan="10"><h4><input type="text" id="showTitle" name="showTitle" style="width: 100%; padding: 5px; height: 50px;" autocomplete="off" placeholder="공연 제목"/></h4></td>
 </tr>
 <tr>
-	<td>관리자 아이디</td>
+	<td style="background: #D99771;">관리자 아이디</td>
 	<td>${adminid }<input type="hidden" name="adminId" value="${adminid }" /></td>
 	
-	<td>공연 종류</td>
+	<td style="background: #D99771;">공연 종류</td>
 	<td>
 		<select id="kindNo" name="kindNo">
 			<option value="1">뮤지컬</option>
@@ -121,7 +121,7 @@ table, input, textarea {
 		</select>
 	</td>
 	
-	<td>장르</td>
+	<td style="background: #D99771;">장르</td>
 	<td>
 		<select id="genreNo" name="genreNo">
 			<option value="1">코미디</option>
@@ -135,7 +135,7 @@ table, input, textarea {
 		</select>
 	</td>
 	
-	<td>관람등급</td>
+	<td style="background: #D99771;">관람등급</td>
 	<td>
 		<select id="showAge" name="showAge">
 			<option value="7세이하관람불가">7세이하관람불가</option>
@@ -144,7 +144,7 @@ table, input, textarea {
 			<option value="19세이하관람불가">19세이하관람불가</option>
 		</select>
 	</td>
-	<td>공연장</td>
+	<td style="background: #D99771;">공연장</td>
 	<td>
 		<select id="hallNo" name="hallNo">
 			<option value="1">LG아트센터</option>
@@ -162,16 +162,16 @@ table, input, textarea {
 </tr>
 
 <tr>
-	<td>감독</td>
+	<td style="background: #D99771;">감독</td>
 	<td colspan="2"><input type="text" id="showDirector" name="showDirector" autocomplete="off" placeholder="감독 이름"/></td>
 	
-	<td>배우</td>
+	<td style="background: #D99771;">배우</td>
 	<td colspan="2"><input type="text" id="showActor" name="showActor" autocomplete="off" placeholder="배우 이름"/></td>
 
-	<td>공연 시작일</td>
+	<td style="background: #D99771;">공연 시작일</td>
 	<td><input type="text" id="startDate" name="startDate" style="cursor: default;" autocomplete="off" readonly/></td>
 	
-	<td>공연 종료일</td>
+	<td style="background: #D99771;">공연 종료일</td>
 	<td><input type="text" id="endDate" name="endDate" style="cursor: default;" autocomplete="off" readonly/></td>
 </tr>
 
@@ -181,14 +181,14 @@ table, input, textarea {
 
 </table>
 
-
-
-<label>UPLOAD FILE <input type="file" name="file" /></label>
+<div style="text-align: left">
+첨부파일 <input type="file" name="file" id="input-file" />
+</div>
 
 </form>
 </div>
 
-<div class="text-center" style="margin: 0 0 25px 0;">	
+<div style="margin: 0 0 25px 0;">	
 	<button type="button" id="btnWrite" class="btnSubmit">등록</button>
 	<button type="button" id="btnCancel" class="btnBack">취소</button>
 </div>

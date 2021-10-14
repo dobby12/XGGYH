@@ -3,6 +3,8 @@
 <c:import url="/WEB-INF/views/layout/header.jsp" />
 <!------------------------------------------------------>
 
+<div class="container">
+
 <h1>LOGIN</h1>
 
 <!------------------------로그인 안 했을 때 보여지는 영역------------------------->
@@ -26,7 +28,9 @@
 		<input type="text" id="mempw" name="mempw"/><br><%-- @@@type="password" --%>
 	</div>
 </div>
-	<button>LOGIN</button>
+
+<br>
+<button type="submit">LOGIN</button>
 </form>
 
 <hr>
@@ -63,5 +67,7 @@ function kakaoLogin() {
 </script>
 
 <!------------------------------------------------------>
-</body>
-</html>
+
+</div><!-- .container end -->
+
+<c:import url="/WEB-INF/views/layout/footer.jsp" />

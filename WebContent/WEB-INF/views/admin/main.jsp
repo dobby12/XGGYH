@@ -4,16 +4,21 @@
 
 <c:import url="/WEB-INF/views/layout/adminheader.jsp" />
 
+<div class="container">
+
 <h1>ADMIN MAIN + LOGIN</h1>
 
 
 <c:if test="${empty adminlogin || not adminlogin }">
 로그인 상태 아님
 
+<br>
 
 <c:if test="${not empty loginfail }">
 로그인에 실패하였습니다. ID와 PW를 확인하세요.
 </c:if>
+
+<br>
 
 <form action="<%=request.getContextPath() %>/admin" method="post">
 <div>
@@ -28,7 +33,9 @@
 		<input type="text" id="adminpw" name="adminpw"/><br><%-- @@@type="password" --%>
 	</div>
 </div>
-	<button class="btnSubmit">LOGIN</button>
+
+<br>
+<button class="btnSubmit">LOGIN</button>
 </form>
 
 </c:if>
@@ -40,9 +47,8 @@
 <hr>
 	<strong>로그인 한 상태일 때 보여질 영역</strong><br>
 	<a href="<%=request.getContextPath() %>/admin/logout"><button>LOGOUT</button></a>
-	<a href="<%=request.getContextPath() %>/admin/notice/list"><button>NOTICE LIST</button></a>
 <hr>
 </c:if>
-
+</div><!-- .container end -->
 
 <c:import url="/WEB-INF/views/layout/footer.jsp" />
