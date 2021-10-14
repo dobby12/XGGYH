@@ -44,7 +44,21 @@ public interface MemberDao {
 	 */
 	public int updateMempw(Connection connection, String mailForPw, String uuidPw);
 
+	/**
+	 * 
+	 * 
+	 * @param connection - DB연결객체
+	 * @param memid - 현재 로그인 중인 아이디
+	 * @return
+	 */
 	public XMem selectMemByMemid(Connection connection, String memid);
 
+	/**
+	 * 
+	 * @param conn
+	 * @param mem
+	 * @return
+	 */
+	public int updateMem(Connection conn, XMem mem);
 
 }

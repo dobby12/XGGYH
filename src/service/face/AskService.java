@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import dto.XAsk;
+import dto.XComment;
 import util.Paging;
 
 public interface AskService {
@@ -71,5 +72,19 @@ public interface AskService {
 	 * @return List<XReview> - 멤버id 게시글 조회 결과 리스트
 	 */
 	public List<XAsk> getAskListByMemid(Paging paging, String memid);
+
+	/**
+	 * 
+	 * @param askNo
+	 * @return
+	 */
+	public XAsk detail(XAsk askNo);
+
+	/**
+	 * 
+	 * @param askNo
+	 * @return
+	 */
+	public XComment getComment(XAsk askNo);
 
 }

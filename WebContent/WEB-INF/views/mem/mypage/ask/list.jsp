@@ -36,7 +36,7 @@ table {
 </tbody>
 <tr>
 	<td>${ask.askNo }</td>
-	<td><a href="<%=request.getContextPath() %>/ask/detail?askno=${ask.askNo }">${ask.askTitle }</a></td>
+	<td><a href="<%=request.getContextPath() %>/mypage/myask/detail?askno=${ask.askNo }">${ask.askTitle }</a></td>
 	<td>${ask.askKind }</td>
 	<td>${ask.askDate }</td>
 	<td><c:if test="${ask.askState eq 'y'}"> 답변완료 </c:if>
