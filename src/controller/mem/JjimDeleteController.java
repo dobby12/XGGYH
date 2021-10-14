@@ -32,11 +32,11 @@ public class JjimDeleteController extends HttpServlet {
 		String memId = req.getParameter("memId");
 		String showNo = req.getParameter("showNo");
 		
-		int isDeleted = jjimService.setJjimDelete(memId, showNo);
+		int isDeleteAble = jjimService.setJjimDelete(memId, showNo);
 		
-		System.out.println("삭제 여부 : " + isDeleted);
+		System.out.println("삭제 여부 : " + isDeleteAble);
 		
-		if(isDeleted == 0)
+		if(isDeleteAble == 0)
 			System.out.println("찜 목록 삭제 실패");
 		else
 			System.out.println("찜 목록 삭제 성공");
