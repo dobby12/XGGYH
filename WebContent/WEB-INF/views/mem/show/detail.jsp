@@ -99,7 +99,7 @@
 		<button  style="margin: auto 0"onclick="location.href='<%=request.getContextPath()%>/show?kindNo=${showDetail.kindNo}';">공연목록</button>
 	<c:if test="${login}">
 		<button  style="margin: auto 0"onclick="location.href='<%=request.getContextPath()%>/review/write?showNo=${showDetail.showNo}';">리뷰 작성</button>
-		<button  style="margin: auto 0"onclick="location.href='<%=request.getContextPath()%>/mem/jjim?showNo=${showDetail.showNo}';">이 공연 찜하기</button>
+		<button  style="margin: auto 0"onclick="location.href='<%=request.getContextPath()%>/mem/jjim?showNo=${showDetail.showNo}&memId=${memid}';">이 공연 찜하기</button>
 	</c:if>
 	</div>
 	

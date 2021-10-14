@@ -31,6 +31,8 @@ public class JjimController extends HttpServlet {
 		
 		XJjim jjim = jjimService.getJjimInfo(req);
 		
+		System.out.println(jjim);
+		
 		if(req.getSession().getAttribute("login") == null || !(boolean)req.getSession().getAttribute("login"))
 		{
 			System.out.println("로그인 안됨");
@@ -42,6 +44,11 @@ public class JjimController extends HttpServlet {
 			System.out.println("로그인 정보 가져오기 성공");
 			
 			int insertAble = jjimService.setJjim(jjim);
+			
+			if(insertAble == 0)
+				System.out.println("찜 목록 추가 실패");
+			else
+				System.out.println("찜 목록 추가 성공");
 		}
 	}
 }

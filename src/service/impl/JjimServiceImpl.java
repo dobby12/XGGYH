@@ -47,13 +47,35 @@ public class JjimServiceImpl implements JjimService  {
 		
 		int isAble = jjimDao.insertJjim(JDBCTemplate.getConnection(), jjim);
 		
+		if(isAble > 0)
+			JDBCTemplate.commit(JDBCTemplate.getConnection());
+		else
+			JDBCTemplate.rollback(JDBCTemplate.getConnection());
+		
 		return isAble;
 	}
 
 	@Override
 	public XJjim getJjimInfo(HttpServletRequest req) {
-		// TODO Auto-generated method stub
-		return null;
+		XJjim jjimInfo = new XJjim();
+		
+		String param = req.getParameter("showNo");
+		
+		if(param != null && !"".equals(param)) {
+			jjimInfo.setShowNo(Integer.parseInt(param));
+		} else {
+			System.out.println("[WARNING] showNo값이 null이거나 비어있습니다");
+		}
+		
+		param = req.getParameter("memId");
+		
+		if(param != null && !"".equals(param)) {
+			jjimInfo.setMemId(param);
+		} else {
+			System.out.println("[WARNING] memId값이 null이거나 비어있습니다");
+		}
+		
+		return jjimInfo;
 	}
 
 }

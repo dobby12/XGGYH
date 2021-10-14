@@ -27,6 +27,12 @@ public interface JjimDao {
 	 */
 	public int selectCntByMemId(Connection conn, String memid);
 	
+	/**
+	 * XJjim 테이블에 정보 삽입
+	 * @param conn - DB 연결 객체
+	 * @param jjim - XJjim 테이블에 들어갈 정보
+	 * @return 정보 넣는데 성공 했는지 아닌지 여부
+	 */
 	public int insertJjim(Connection conn, XJjim jjim);
 
 }
