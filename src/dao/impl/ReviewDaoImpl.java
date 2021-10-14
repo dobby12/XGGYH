@@ -399,7 +399,7 @@ public class ReviewDaoImpl implements ReviewDao {
 			ps.setString(6, review.getReviewContent());
 			ps.setInt(7, review.getReviewScore());
 
-			System.out.println(review);
+			System.out.println("[TEST insert]\n" + review);
 			
 			res = ps.executeUpdate();
 			
@@ -482,6 +482,8 @@ public class ReviewDaoImpl implements ReviewDao {
 			ps.setString(2, xFile.getFileStoredName());
 			ps.setString(3, xFile.getFileSize());
 			
+			System.out.println("[TEST insertFile]\n" + xFile);
+			
 			res = ps.executeUpdate();
 			
 		} catch (SQLException e) {
@@ -559,6 +561,8 @@ public class ReviewDaoImpl implements ReviewDao {
 				ps.setInt(4, review.getFileNo());
 				ps.setInt(5, review.getReviewNo());
 			}
+			
+			System.out.println("[TEST update]\n" + review);
 
 			res = ps.executeUpdate();
 			
