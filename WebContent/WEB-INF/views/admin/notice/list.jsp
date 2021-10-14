@@ -1,5 +1,3 @@
-<%@page import="dto.XNotice"%>
-<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:import url="/WEB-INF/views/layout/adminheader.jsp" />
@@ -41,7 +39,7 @@ tr, th, td {
 <tbody>
 <tr>
 	<td>${noticeList.noticeNo }</td>
-	<td><a href="<%=request.getContextPath() %>/admin/notice/detail?noticeno=${noticeList.noticeNo }">${noticeList.noticeTitle }</a><c:if test="${noticeList.fileNo ne 0 }">&nbsp &nbsp<span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span></c:if></td>
+	<td><a href="<%=request.getContextPath() %>/admin/notice/detail?noticeno=${noticeList.noticeNo }">${noticeList.noticeTitle }</a><c:if test="${noticeList.fileNo ne 0 }">&nbsp; &nbsp;<span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span></c:if></td>
 <%-- 	<td>${noticeList.noticeContent }</td> --%>
 	<td>${noticeList.adminId }</td>
 	<td>${noticeList.noticeDate }</td>
@@ -52,7 +50,7 @@ tr, th, td {
 
 </div>
 
-<c:import url="/WEB-INF/views/layout/paging.jsp" />	<%-- @@@urlLink 수정하긔 --%>
+<c:import url="/WEB-INF/views/layout/paging.jsp" />
 
 
 <c:import url="/WEB-INF/views/layout/footer.jsp" />
