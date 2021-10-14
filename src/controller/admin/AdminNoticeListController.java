@@ -27,7 +27,8 @@ public class AdminNoticeListController extends HttpServlet {
 		Paging paging = adminNoticeService.getPaging(req);
 		System.out.println("/admin/notice/list [GET] - " + paging);
 		
-		List<XNotice> list = adminNoticeService.getNoticeList();
+//		List<XNotice> list = adminNoticeService.getNoticeList();
+		List<XNotice> list = adminNoticeService.getNoticeList(paging);
 		
 		req.setAttribute("noticeList", list);
 		

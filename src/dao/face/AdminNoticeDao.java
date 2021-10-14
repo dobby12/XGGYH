@@ -5,6 +5,7 @@ import java.util.List;
 
 import dto.XFile;
 import dto.XNotice;
+import util.Paging;
 
 public interface AdminNoticeDao {
 
@@ -69,6 +70,14 @@ public interface AdminNoticeDao {
 	 * @return 전체 공지 개수
 	 */
 	public int selectCntNoticeAll(Connection conn);
+
+	/**
+	 * 
+	 * @param connection
+	 * @param paging
+	 * @return
+	 */
+	public List<XNotice> selectNoticeAll(Connection connection, Paging paging);
 
 
 	

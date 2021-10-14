@@ -11,6 +11,7 @@ import common.JDBCTemplate;
 import dao.face.AdminNoticeDao;
 import dto.XFile;
 import dto.XNotice;
+import util.Paging;
 
 public class AdminNoticeDaoImpl implements AdminNoticeDao {
 
@@ -329,6 +330,38 @@ public class AdminNoticeDaoImpl implements AdminNoticeDao {
 
 
 
+	@Override
+	public List<XNotice> selectNoticeAll(Connection connection, Paging paging) {
+
+		String sql = "SELECT * FROM (SELECT rownum rnum, XN.* FROM (SELECT NOTICE_NO, ADMIN_ID, FILE_NO, NOTICE_TITLE, NOTICE_CONTENT, NOTICE_DATE FROM XNOTICE ORDER BY NOTICE_NO DESC) XN) XNOTICE WHERE RNUM BETWEEN ? AND ?";
+		
+		List<XNotice> list = new ArrayList<>();
+
+		try {
+			ps = connection.prepareStatement(sql);
+			ps.setInt(1, paging.getStartNo());
+			ps.setInt(2, paging.getEndNo());
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				XNotice notice = new XNotice();
+				notice.setNoticeNo(rs.getInt("notice_no"));
+				notice.setAdminId(rs.getString("admin_id"));
+				notice.setFileNo(rs.getInt("file_no"));
+				notice.setNoticeTitle(rs.getString("notice_title"));
+				notice.setNoticeContent(rs.getString("notice_content"));
+				notice.setNoticeDate(rs.getDate("notice_date"));
+				list.add(notice);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+		}
+
+		return list;
+	}
 
 
 
