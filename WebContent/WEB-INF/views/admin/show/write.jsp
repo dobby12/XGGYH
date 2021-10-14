@@ -3,7 +3,7 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<c:import url="/WEB-INF/views/layout/header.jsp" />
+<c:import url="/WEB-INF/views/layout/adminheader.jsp" />
 
 <script type="text/javascript" src="<%=request.getContextPath() %>/resources/se2/js/service/HuskyEZCreator.js" charset="utf-8"></script>
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />  
@@ -58,7 +58,7 @@ $(document).ready(function() {
     $(document).ready(function () {
             $.datepicker.setDefaults($.datepicker.regional['ko']); 
             $( "#startDate" ).datepicker({
-                 showOn: "button",
+                 showOn: "focus",
             	 changeMonth: true, 
                  changeYear: true,
                  nextText: '다음 달',
@@ -71,7 +71,7 @@ $(document).ready(function() {
  
             });
             $( "#endDate" ).datepicker({
-            	 showOn: "button",
+            	 showOn: "focus",
                  changeMonth: true, 
                  changeYear: true,
                  nextText: '다음 달',
@@ -102,7 +102,7 @@ table, input, textarea {
 <div>
 <form action="/admin/show/write" method="post" enctype="multipart/form-data">
 
-<table class="table table-striped table-condensed">
+<table class="table table-condensed">
 
 <tr>
 	<td colspan="10"><h4><input type="text" id="showTitle" name="showTitle" style="width: 100%; padding: 5px;" autocomplete="off" placeholder="공연 제목"/></h4></td>
@@ -183,7 +183,7 @@ table, input, textarea {
 
 
 
-UPLOAD FILE <input type="file" name="file" />
+<label>UPLOAD FILE <input type="file" name="file" /></label>
 
 </form>
 </div>

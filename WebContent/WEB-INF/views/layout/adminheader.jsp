@@ -23,6 +23,28 @@
 
 <style type="text/css">
 
+html, body { 
+	margin: 0; 
+	padding: 0;
+	height: 100%;
+}
+
+#body-wrapper { min-height: 100%; position: relative; }
+
+#body-content { margin-top: 100px; padding-bottom: 210px; /* footer의 높이 */ }
+
+#footer {
+	width: 100%;
+	height: 210px; /* footer의 높이 */
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	padding: 30px;
+	display: block;
+	text-align: center;
+	background-color: #F2F2F2;
+	margin: 25px 0 0 0;
+}
 
 body, ul.nav > li > a  {
 	font-family: 'IBM Plex Sans KR', sans-serif;
@@ -39,7 +61,7 @@ a:hover {
 
 #header {
 
-	postion: sticky;
+	postion: absolute;
 	
 	background: #f2f2f2;
 	height: 60px;
@@ -54,14 +76,6 @@ a:hover {
 	height: 30px;
 }
 
-#footer {
-	height: 210px;
-	width: 1920px;
-	padding: 30px;
-	text-align: center;
-	background-color: #F2F2F2;
-	margin: 25px 0 0 0;
-}
 
 #logo_footer {
 	height: 120px;
@@ -91,8 +105,6 @@ ul.nav > li {
 	
 	width: 100px;
 	
-	margin-left: 20px;
-
 	/* 수평으로 일렬 배치하기 */
 	float: left;
 
@@ -159,6 +171,16 @@ ul.nav > li > a:hover {
  	padding-bottom:3px; 
 
 }
+
+#logoA > a:hover, #logoA> a:before,#logoA> a:after {
+ 	border-bottom: 0px; 
+ 	padding-bottom:3px; 
+}
+
+#logoA {
+	margin-right: 30px;
+}
+
 
 ul.nav > li > a:before {
 	content: '';
@@ -232,7 +254,12 @@ ul.nav > li > ul > li > a:hover {
 	background-color: #f2f2f2;
 }
 
-
+table {
+	text-align: center;
+	border-collapse: collapse;
+	margin: 0 auto;
+	width: 1000px;
+}
 
 /* ------------------------------------------------ */
 
@@ -286,7 +313,7 @@ input[type=text] { border: solid 1px #d96459;
 
 <div id="header" class="fixed-top">
 <ul class="nav">
-	<li id="logoList"><a href="<%=request.getContextPath() %>/admin"><img id="logo_header" src="/resources/file/logo_line.png" /></a></li>
+	<li id="logoA"><a href="<%=request.getContextPath() %>/admin"><img id="logo_header" src="/resources/file/logo_line.png" /></a></li>
 	<li><a href="<%=request.getContextPath() %>/admin/notice/list">공지사항</a>
 	<li><a href="<%=request.getContextPath() %>/admin/ask/list">1:1문의</a></li>
 	<li><a href="<%=request.getContextPath() %>/admin/mem/list">회원 관리</a></li>
@@ -301,3 +328,6 @@ input[type=text] { border: solid 1px #d96459;
 	</li>
 </ul>
 </div>
+
+<div id="body-wrapper">
+<div id="body-content">

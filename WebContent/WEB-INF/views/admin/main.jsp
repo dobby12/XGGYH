@@ -1,18 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
+
+<c:import url="/WEB-INF/views/layout/adminheader.jsp" />
 
 <h1>ADMIN MAIN + LOGIN</h1>
 
 
-<c:if test="${empty login || not login }">
+<c:if test="${empty adminlogin || not adminlogin }">
 로그인 상태 아님
 
 
@@ -33,12 +28,12 @@
 		<input type="text" id="adminpw" name="adminpw"/><br><%-- @@@type="password" --%>
 	</div>
 </div>
-	<button>LOGIN</button>
+	<button class="btnSubmit">LOGIN</button>
 </form>
 
 </c:if>
 
-<c:if test="${login }">
+<c:if test="${adminlogin }">
 관리자 아이디 : ${adminid }<br>
 관리자 이름 : ${adminname }<br> 
 관리자 상태? : ${adminauthority }<br>
@@ -50,5 +45,4 @@
 </c:if>
 
 
-</body>
-</html>
+<c:import url="/WEB-INF/views/layout/footer.jsp" />
