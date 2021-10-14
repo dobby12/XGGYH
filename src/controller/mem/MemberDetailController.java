@@ -1,7 +1,6 @@
 package controller.mem;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,15 +16,21 @@ import service.impl.MemberServiceImpl;
 public class MemberDetailController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	private MemberService memberservice = new MemberServiceImpl();
+	private MemberService memberService = new MemberServiceImpl();
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		System.out.println("/mypage/myinfo [GET]");
 		
 		//로그인한 회원아이디
 		String memid = (String)req.getSession().getAttribute("memid");
 		
-		List<XMem> memidMyinfoList = memberService.getId
+		XMem myinfo = memberService.getMyInfo(memid);
+		System.out.println(myinfo);
 		
+		req.setAttribute("myinfo", myinfo);
+		
+		req.getRequestDispatcher("/WEB-INF/views/mem/mypage/mem/detail.jsp").forward(req, resp);
+
 	}
 }

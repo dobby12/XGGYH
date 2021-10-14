@@ -146,5 +146,43 @@ public class MemberDaoImpl implements MemberDao {
 		
 		return res;
 	}
+	
+	@Override
+	public XMem selectMemByMemid(Connection connection, String memid) {
+		
+		String sql = "";
+		sql += "SELECT * FROM XMEM";
+		sql += "	WHERE MEM_ID = ? ";
+			
+		XMem myinfo = null;
+			
+		try {
+			
+			ps = connection.prepareStatement(sql);
+			ps.setString(1, memid);
+			rs = ps.executeQuery();
+
+			while (rs.next()) {
+					
+				myinfo = new XMem();
+					
+				myinfo.setMemId(rs.getString("mem_id"));
+				myinfo.setMemPw(rs.getString("mem_pw"));
+				myinfo.setMemNick(rs.getString("mem_nick"));
+				myinfo.setMemMail(rs.getString("mem_mail"));
+				myinfo.setMailState(rs.getString("mail_state"));
+				myinfo.setGenreNo(rs.getInt("genre_no"));
+				myinfo.setMemDate(rs.getDate("mem_date"));
+				
+			}
+			
+		} catch (SQLException e) {
+	            e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+		}
+			return myinfo;
+	}
 
 }

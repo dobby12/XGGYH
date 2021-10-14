@@ -94,5 +94,10 @@ public class MemberServiceImpl implements MemberService {
 			JDBCTemplate.rollback(conn);
 		}
 	}
-	
+
+
+	@Override
+	public XMem getMyInfo(String memid) {
+		return memberDao.selectMemByMemid(JDBCTemplate.getConnection(), memid);
+	}
 }
