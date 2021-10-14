@@ -44,4 +44,7 @@ public interface MemberDao {
 	 */
 	public int updateMempw(Connection connection, String mailForPw, String uuidPw);
 
+	public XMem selectMemByMemid(Connection connection, String memid);
+
+
 }

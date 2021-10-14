@@ -1,18 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<%
-	// 이전화면에서 전달받은 데이터를 받습니다.
-	// 화면에 미리 보여지도록 처리를 하세요~
-	request.setCharacterEncoding("UTF-8");
-
-	String mempw = (String)request.getAttribute("mempw");
-	String memmail = (String)request.getAttribute("memmail");
-	String memstate = (String)request.getAttribute("memstate");
-	String genreno = (String)request.getAttribute("genreno");
-	
-%> 
-  
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:import url="/WEB-INF/views/layout/header.jsp" />
 
