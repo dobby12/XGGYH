@@ -268,7 +268,7 @@ public class ReviewDaoImpl implements ReviewDao {
 		sql += " WHERE review_no = ?";
 		
 		XReview res = null;
-
+		
 		try {
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, reviewno);
@@ -291,8 +291,11 @@ public class ReviewDaoImpl implements ReviewDao {
 			JDBCTemplate.close(rs);
 			JDBCTemplate.close(ps);
 		}
+		
+		System.out.println("res" + res); //null 발생(부적합한 열 이름)
 
 		return res;
+		
 	}
 
 	@Override
