@@ -22,11 +22,30 @@ import dao.impl.FileDaoImpl;
 import dto.XFile;
 import dto.XNotice;
 import service.face.AdminNoticeService;
+import util.Paging;
 
 public class AdminNoticeServiceImpl implements AdminNoticeService {
 
 	private AdminNoticeDao adminNoticeDao = new AdminNoticeDaoImpl();
 	private FileDao fileDao = new FileDaoImpl();
+	
+	@Override
+	public Paging getPaging(HttpServletRequest req) {
+		
+		String param = req.getParameter("curPage");
+		int curPage = 0;
+		if(param != null && !"".equals(param)) {
+			curPage = Integer.parseInt(param);
+		} else {
+			System.out.println("[WARNING] curPage값이 null이거나 비어있습니다");
+		}
+
+		int totalCount = adminNoticeDao.selectCntNoticeAll(JDBCTemplate.getConnection());
+
+		Paging paging = new Paging(totalCount, curPage);
+
+		return paging;
+	}
 
 	@Override
 	public List<XNotice> getNoticeList() {

@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import dto.XNotice;
 import service.face.AdminNoticeService;
 import service.impl.AdminNoticeServiceImpl;
+import util.Paging;
 
 @WebServlet("/admin/notice/list")
 public class AdminNoticeListController extends HttpServlet {
@@ -23,7 +24,10 @@ public class AdminNoticeListController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		System.out.println("###TEST### AdminNoticeListController Get");
 		
-		//@@@ paging 전달 추가해야 함
+		Paging paging = adminNoticeService.getPaging(req);
+		System.out.println("/admin/notice/list [GET] - " + paging);
+		
+		req.setAttribute("paging", paging);
 		
 		List<XNotice> list = adminNoticeService.getNoticeList();
 		req.setAttribute("noticeList", list);

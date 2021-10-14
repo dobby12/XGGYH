@@ -16,14 +16,14 @@ public class AdminNoticeDaoImpl implements AdminNoticeDao {
 
 	PreparedStatement ps = null;
 	ResultSet rs = null;
-	
+
 	@Override
 	public List<XNotice> selectNoticeAll(Connection connection) {
 
 		String sql = "SELECT NOTICE_NO, ADMIN_ID, FILE_NO, NOTICE_TITLE, NOTICE_CONTENT, NOTICE_DATE FROM XNOTICE ORDER BY NOTICE_NO DESC";
-		
+
 		List<XNotice> list = new ArrayList<>();
-		
+
 		try {
 			ps = connection.prepareStatement(sql);
 			rs = ps.executeQuery();
@@ -37,30 +37,54 @@ public class AdminNoticeDaoImpl implements AdminNoticeDao {
 				notice.setNoticeDate(rs.getDate("notice_date"));
 				list.add(notice);
 			}
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			JDBCTemplate.close(rs);
 			JDBCTemplate.close(ps);
 		}
-				
+
 		return list;
 	}
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+	@Override
+	public int selectCntNoticeAll(Connection conn) {
+		
+		//SQL작성
+		String sql = "";
+		sql += "SELECT count(*) FROM xnotice";
+
+		int count = 0;
+
+		try {
+			ps = conn.prepareStatement(sql);
+			rs = ps.executeQuery();
+
+			while(rs.next()) {
+				count = rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+		}
+
+		return count; //전체 공지 개수 반환
+	}
+
+
+
+
+
+
+
+
 	@Override
 	public XNotice selectNoticeByNoticeno(Connection connection, int noticeno) {
-		
+
 		String sql = "SELECT NOTICE_NO, ADMIN_ID, FILE_NO, NOTICE_TITLE, NOTICE_CONTENT, NOTICE_DATE FROM XNOTICE WHERE NOTICE_NO=?";
 		XNotice res = null;
 
@@ -77,14 +101,14 @@ public class AdminNoticeDaoImpl implements AdminNoticeDao {
 				res.setNoticeContent(rs.getString("notice_content"));
 				res.setNoticeDate(rs.getDate("notice_date"));
 			}
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			JDBCTemplate.close(rs);
 			JDBCTemplate.close(ps);
 		}
-		
+
 		return res;
 	}
 
@@ -97,19 +121,19 @@ public class AdminNoticeDaoImpl implements AdminNoticeDao {
 
 
 
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
 
 	@Override
 	public XFile selectFileByFileno(Connection connection, int noticeno) {
 
 		String sql = "SELECT FILE_NO, FILE_ORIGIN_NAME, FILE_STORED_NAME, FILE_SIZE FROM XFILE WHERE FILE_NO=(SELECT FILE_NO FROM XNOTICE WHERE NOTICE_NO=?)";
 		XFile res = null;
-		
+
 		try {
 			ps = connection.prepareStatement(sql);
 			ps.setInt(1, noticeno);
@@ -127,7 +151,7 @@ public class AdminNoticeDaoImpl implements AdminNoticeDao {
 			JDBCTemplate.close(rs);
 			JDBCTemplate.close(ps);
 		}
-		
+
 		return res;
 	}
 
@@ -157,7 +181,7 @@ public class AdminNoticeDaoImpl implements AdminNoticeDao {
 			JDBCTemplate.close(rs);
 			JDBCTemplate.close(ps);
 		}
-		 
+
 		return nextNoticeno;
 	}
 
@@ -173,12 +197,12 @@ public class AdminNoticeDaoImpl implements AdminNoticeDao {
 
 	@Override
 	public int insertNotice(Connection conn, XNotice notice) {
-		
+
 		String sql = "INSERT INTO XNOTICE(NOTICE_NO, ADMIN_ID, FILE_NO, NOTICE_TITLE, NOTICE_CONTENT)"
 				+ " VALUES(?, ?, ?, ?, ?)";
 
 		int res = 0;
-		
+
 		try {
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, notice.getNoticeNo());
@@ -196,7 +220,7 @@ public class AdminNoticeDaoImpl implements AdminNoticeDao {
 		} finally {
 			JDBCTemplate.close(ps);
 		}
-		
+
 		return res;
 	}
 
@@ -205,12 +229,12 @@ public class AdminNoticeDaoImpl implements AdminNoticeDao {
 
 
 
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
 
 
 
@@ -242,7 +266,7 @@ public class AdminNoticeDaoImpl implements AdminNoticeDao {
 		} finally {
 			JDBCTemplate.close(ps);
 		}
-	
+
 		return res;
 	}
 
@@ -250,17 +274,17 @@ public class AdminNoticeDaoImpl implements AdminNoticeDao {
 
 
 
-	
-	
+
+
 
 
 
 	@Override
 	public int deleteNotice(Connection conn, int noticeno) {
-		
+
 		String sql = "DELETE XNOTICE WHERE NOTICE_NO=?";
 		int res = -1;
-		
+
 		try {
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, noticeno);
@@ -270,7 +294,7 @@ public class AdminNoticeDaoImpl implements AdminNoticeDao {
 		} finally {
 			JDBCTemplate.close(ps);
 		}
-		
+
 		return res;
 	}
 
@@ -279,21 +303,6 @@ public class AdminNoticeDaoImpl implements AdminNoticeDao {
 
 
 
-	
-
-	
-	
-
-
-
-	
-	
-	
-	
-	
-	
-	
-	
 
 
 
@@ -307,17 +316,32 @@ public class AdminNoticeDaoImpl implements AdminNoticeDao {
 
 
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }

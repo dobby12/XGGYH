@@ -96,10 +96,12 @@
 	</div>
 	
 	<div class="detailButton">
-		<button  style="margin: auto 0"onclick="location.href='<%=request.getContextPath()%>/show?kindNo=${showDetail.kindNo}';">공연목록</button>
+		<a href="<%=request.getContextPath() %>/review/list?Title=${showDetail.showTitle}">공연 리뷰 더보기</a>
+		<button onclick="location.href='<%=request.getContextPath()%>/show?kindNo=${showDetail.kindNo}';">공연목록</button>
 	<c:if test="${login}">
-		<button  style="margin: auto 0"onclick="location.href='<%=request.getContextPath()%>/review/write?showNo=${showDetail.showNo}';">리뷰 작성</button>
-		<button  style="margin: auto 0"onclick="location.href='<%=request.getContextPath()%>/mem/jjim?showNo=${showDetail.showNo}&memId=${memid}';">이 공연 찜하기</button>
+		<button onclick="location.href='<%=request.getContextPath()%>/review/write?showNo=${showDetail.showNo}';">리뷰 작성</button>
+		<button onclick="location.href='<%=request.getContextPath()%>/mem/jjim?showNo=${showDetail.showNo}&memId=${memid}';">이 공연 찜하기</button>
+		<button onclick="location.href='<%=request.getContextPath()%>/mem/jjim?showNo=${showDetail.showNo}&memId=${memid}';">찜한 공연 삭제하기</button>
 	</c:if>
 	</div>
 	
