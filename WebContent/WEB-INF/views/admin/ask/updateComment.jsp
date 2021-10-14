@@ -100,8 +100,8 @@ td {
 	
 		<br><br>
 	
-		<button type="button" id="btnCancel" class="btn btn-default">취소</button>
-		<button type="button" id="btnUpdate" class="btn btn-info">수정하기</button>
+		<button type="button" id="btnCancel" class="btnBack">취소</button>
+		<button type="button" id="btnUpdate" class="btnSubmit">수정하기</button>
 	
 	</form>
 

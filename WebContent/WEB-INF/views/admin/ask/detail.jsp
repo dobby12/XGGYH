@@ -59,11 +59,6 @@ th {
 	
 }
 
-td {
-	border: 1px solid #ccc;
-	height: 30px;
-
-}
 
 #answer {
 	width: 1000px;
@@ -96,7 +91,7 @@ td {
 <div id="view" class="container">
 
 
-<table style="width: 1000px; text-align: center; margin: 0 auto; border-collapse: collapse;">
+<table class="table table-condensed table-bordered" style="width: 1000px; text-align: center; margin: 0 auto; border-collapse: collapse;">
 
 <tr>
 	<th colspan="10" style="text-align: center; border: 1px solid #ccc; font-size: 30px;">${xask.askTitle }</th>
@@ -131,19 +126,19 @@ td {
 	<td colspan="2" class="ans" width="150px;">${xcomment.adminId }</td>
 	
 	<!-- 본문 -->
-	<td colspan="2" width="700px;" border="0px; ">
+	<td colspan="2" width="700px;" >
 		<div id="cont" class="ans"><p>${xcomment.commentContent }</p></div>
 	</td>
 
 		<td style="width: 100px;" class="ans">
-			<button id="btnUpdate" class="btn btn-info">수정하기</button>
-			<button id="btnDelete" class="btn btn-default">삭제하기</button>			
+			<button id="btnUpdate" class="btnUpdate" style="margin: 0 0 5px 0;">수정</button>
+			<button id="btnDelete" class="btnDelete">삭제</button>			
 		</td>
 </tr>
 
 </table>
 <br><br>
-<a href="<%=request.getContextPath() %>/admin/ask/list"><button id="btnList" class="btn btn-default">목록으로</button></a>
+<a href="<%=request.getContextPath() %>/admin/ask/list"><button id="btnList" class="btnBack">목록</button></a>
 </c:if>
 
 <c:if test="${xask.askState == 'n' }">
@@ -158,8 +153,8 @@ td {
 	
 		<br><br>
 	
-		<a href="<%=request.getContextPath() %>/admin/ask/list"><button type="button" class="btn btn-default">목록으로</button></a>
-		<button type="button" id="btnAnswer" class="btn btn-info">답변하기</button>
+		<a href="<%=request.getContextPath() %>/admin/ask/list"><button type="button" class="btnBack">목록</button></a>
+		<button type="button" id="btnAnswer" class="btnSubmit">답변</button>
 	
 	</form>
 	

@@ -39,7 +39,7 @@ public class AdminShowUpdateController extends HttpServlet {
 		HttpSession session = req.getSession();
 		
 		if(adminService.loginAdmin(admin)) {
-			session.setAttribute("login", true);
+			session.setAttribute("adminlogin", true);
 			session.setAttribute("adminid", adminService.getAdmin(admin).getAdminId());
 			session.setAttribute("adminname", adminService.getAdmin(admin).getAdminName());
 			session.setAttribute("adminauthority", adminService.getAdmin(admin).getAdminAuthority());

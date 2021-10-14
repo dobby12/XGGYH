@@ -189,8 +189,8 @@ UPLOAD FILE <input type="file" name="file" />
 </div>
 
 <div class="text-center" style="margin: 0 0 25px 0;">	
-	<button type="button" id="btnWrite">등록</button>
-	<button type="button" id="btnCancel">취소</button>
+	<button type="button" id="btnWrite" class="btnSubmit">등록</button>
+	<button type="button" id="btnCancel" class="btnBack">취소</button>
 </div>
 
 <!-- .container -->

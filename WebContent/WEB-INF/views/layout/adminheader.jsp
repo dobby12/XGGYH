@@ -89,7 +89,9 @@ ul.nav > li {
 	/* 서브메뉴(absolute)의 위치 기준점 설정하기 */
 	position: relative;
 	
-	width: 120px;
+	width: 100px;
+	
+	margin-left: 20px;
 
 	/* 수평으로 일렬 배치하기 */
 	float: left;
@@ -98,7 +100,7 @@ ul.nav > li {
 	line-height: 30px;
 	
 	/* 테두리를 이용한 메뉴 항목 구분선 만들기 */
-	border-right: 1px solid #f2f2f2;
+/* 	border-right: 1px solid #f2f2f2; */
 	
 	text-align: center;
 }
@@ -142,7 +144,7 @@ ul.nav > li > ul {
 	margin: 0;
 	
 	/* 서브메뉴영역의 너비 */
-	width: 120px;
+	width: 100px;
 	
 	text-align: center;
 }
@@ -284,7 +286,7 @@ input[type=text] { border: solid 1px #d96459;
 
 <div id="header" class="fixed-top">
 <ul class="nav">
-	<li><a href="<%=request.getContextPath() %>/admin"><img id="logo_header" src="/resources/file/logo_line.png" /></a></li>
+	<li id="logoList"><a href="<%=request.getContextPath() %>/admin"><img id="logo_header" src="/resources/file/logo_line.png" /></a></li>
 	<li><a href="<%=request.getContextPath() %>/admin/notice/list">공지사항</a>
 	<li><a href="<%=request.getContextPath() %>/admin/ask/list">1:1문의</a></li>
 	<li><a href="<%=request.getContextPath() %>/admin/mem/list">회원 관리</a></li>

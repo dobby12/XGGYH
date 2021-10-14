@@ -27,8 +27,7 @@ public class AdminShowDeleteController extends HttpServlet {
 		adminShowService.setShowDelete(showno);
 		
 		resp.sendRedirect("/admin/show/list");
-		
-		
+
 	}
 	
 	

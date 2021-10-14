@@ -91,8 +91,8 @@ $(document).ready(function(){
 </div>
 
 <div class="button">
-	<button id="btnUpdate">수정</button>
-	<button id="btnDelete">삭제</button>
+	<button id="btnUpdate" class="btnUpdate">수정</button>
+	<button id="btnDelete" class="btnDelete">삭제</button>
 </div>
 
 
