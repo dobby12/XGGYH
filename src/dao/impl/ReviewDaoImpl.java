@@ -533,13 +533,13 @@ public class ReviewDaoImpl implements ReviewDao {
 		
 		String sql = "";
 		sql += "UPDATE xreview";
-		sql += " SET review_title = ?,";
-		sql += " review_content = ?,";
-		sql += " review_score = ?,";
+		sql += " SET review_title = ?";
+		sql += " , review_content = ?";
+		sql += " , review_score = ?";
 		if(review.getFileNo() == 0) {
 			sql += " WHERE review_no = ?";
 		} else {
-			sql += " file_no = ?";
+			sql += " , file_no = ?";
 			sql += " WHERE review_no = ?";
 		}
 		
@@ -553,7 +553,7 @@ public class ReviewDaoImpl implements ReviewDao {
 			ps.setString(2, review.getReviewContent());
 			ps.setInt(3,  review.getReviewScore());
 			if(review.getFileNo() == 0 ) {
-				ps.setInt(5, review.getReviewNo());
+				ps.setInt(4, review.getReviewNo());
 			} else {
 				ps.setInt(4, review.getFileNo());
 				ps.setInt(5, review.getReviewNo());
