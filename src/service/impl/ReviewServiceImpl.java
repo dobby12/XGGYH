@@ -45,6 +45,40 @@ public class ReviewServiceImpl implements ReviewService {
 	}
 	
 	@Override
+	public List<XReview> searchReviewList(HttpServletRequest req, Paging paging) {
+		
+		//전달 파라미터 얻기 - searchtype, keyword
+		String searchtype = (String)req.getParameter("searchtype");
+		String keyword = (String)req.getParameter("keyword");
+
+		System.out.println(searchtype);
+		System.out.println(keyword);
+		
+		return reviewDao.selectReviewSearchByReviewTitle(JDBCTemplate.getConnection(), keyword, paging);
+	}
+	
+	@Override
+	public Paging getParameterPaging(HttpServletRequest req) {
+		
+		String param = req.getParameter("curPage");
+		int curPage = 0;
+		if(param != null && !"".equals(param)) {
+			curPage = Integer.parseInt(param);
+		} else {
+			System.out.println("[WARNING] curPage값이 null이거나 비어있습니다");
+		}
+		
+		String searchtype = (String)req.getParameter("searchtype");
+		String keyword = (String)req.getParameter("keyword");
+
+		int totalCount = reviewDao.selectCntSearchReviewAll(JDBCTemplate.getConnection(), searchtype, keyword);
+
+		Paging paging = new Paging(totalCount, curPage);
+
+		return paging;
+	}
+	
+	@Override
 	public List<XReview> getReviewListByMemid(Paging paging, String memid) {
 		
 		return reviewDao.selectAllByMemid(JDBCTemplate.getConnection(), paging, memid);

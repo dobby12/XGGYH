@@ -5,11 +5,7 @@
 
 <c:import url="/WEB-INF/views/layout/header.jsp" />
 
-<style>
-th, div {
-	text-align: center;
-}
-</style>
+
 
 <div class="container" >
 <h3 class="pull-left">리뷰 게시판</h3>
@@ -18,7 +14,7 @@ th, div {
 
 <div class="text-right" id="umm..">
 			<p>
-			<a href="umm..">최신순</a>&nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp
+			<a href="<%=request.getContextPath() %>/review/list">최신순</a>&nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp
 			<a href="umm..">조회순</a>
 </div>
 
@@ -44,6 +40,17 @@ th, div {
 </c:forEach>
 </table>
 
+</div><br>
+
+
+<div style="text-align: center; margin: 0 0 25px 0;" >
+<form action="<%=request.getContextPath() %>/review/search" method="get">
+	<select id="searchtype" name="searchtype">
+		<option value="reviewTitle">제목</option> 
+	</select>
+	<input type="text" id="keyword" name="keyword" placeholder="검색어를 입력하세요"/>
+	<button>검색</button>
+</form>
 </div>
 
 <c:import url="/WEB-INF/views/layout/paging.jsp" />

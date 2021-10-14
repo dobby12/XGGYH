@@ -164,6 +164,25 @@ public interface ReviewDao {
 	 */
 	public XReview selectReviewToReviewno(Connection conn, int reviewno);
 
+	/**
+	 * 검색된 전체 리뷰 수 조회
+	 * 
+	 * @param conn
+	 * @param searchtype - 검색 타입
+	 * @param keyword - 검색어
+	 * @return 전체 리뷰
+	 */
+	public int selectCntSearchReviewAll(Connection conn, String searchtype, String keyword);
+
+	/**
+	 * 리뷰 제목으로 검색
+	 * 
+	 * @param conn
+	 * @param keyword
+	 * @return 리뷰 객체
+	 */
+	public List<XReview> selectReviewSearchByReviewTitle(Connection conn, String keyword, Paging paging);
+
 }
 
 

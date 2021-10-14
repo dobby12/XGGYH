@@ -147,6 +147,22 @@ public interface ReviewService {
 	 * @return DB에서 조회한 XReview객체
 	 */
 	public XReview getReviewDetail(int reviewno);
+	
+	
+	/**
+	 * 검색결과 페이징
+	 * 
+	 * @param req
+	 * @return 페이징 계산이 완료된 Paging 객체
+	 */
+	public Paging getParameterPaging(HttpServletRequest req);
+	
+	/**
+	 * 
+	 * @req - 요청파라미터로 searchtype, keyword가지고 있음
+	 * @return parameter로 찾은 review객체 반환
+	 */
+	public List<XReview> searchReviewList(HttpServletRequest req, Paging paging);
 
 
 
