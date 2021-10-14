@@ -12,7 +12,7 @@ $(document).ready(function(){
 		var answer = confirm("리뷰를 정말 삭제하시겠습니까?")
 		
 		if( answer == true ){
-			location.href = "<%=request.getContextPath() %>/admin/comment/delete?askNo=${xask.askNo }";
+			location.href = "<%=request.getContextPath() %>/admin/review/delete?reviewno=${viewReview.reviewNo }";
 		} else {
 			return false;
 		}
@@ -20,13 +20,7 @@ $(document).ready(function(){
 	
 	$("#btnList").click(function(){
 		
-		var answer = confirm("댓글을 수정하시겠습니까?")
-		
-		if(answer == true){
-			location.href="<%=request.getContextPath() %>/admin/comment/update?askNo=${xask.askNo }";
-		} else {
-			return false;
-		}
+		history.back();
 		
 	})
 
@@ -34,6 +28,13 @@ $(document).ready(function(){
 
 </script>
 
+<style type="text/css">
+
+table {
+	text-align: center;
+}
+
+</style>
 
 <div class="container">
 

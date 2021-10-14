@@ -55,4 +55,12 @@ public interface MemberService {
 	 */
 	public void setMempwUpdate(String mailForPw, String uuidPw);
 
+	/**
+	 * 유저정보 가져오기
+	 * 
+	 * @param 
+	 * @return 
+	 */
+	public XMem getMyInfo(String memid);
+
 }

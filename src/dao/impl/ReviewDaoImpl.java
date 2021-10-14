@@ -11,6 +11,7 @@ import common.JDBCTemplate;
 import dao.face.ReviewDao;
 import dto.XFile;
 import dto.XReview;
+import dto.XShow;
 import util.Paging;
 
 public class ReviewDaoImpl implements ReviewDao {
@@ -374,7 +375,7 @@ public class ReviewDaoImpl implements ReviewDao {
 	
 	
 	@Override
-	public int insert(Connection conn, XReview review) {
+	public int insert(Connection conn, XReview review, XShow show) {
 		
 		String sql = "";
 		sql += "INSERT INTO xreview(review_no, show_no, file_no, mem_id, review_title,";
@@ -398,7 +399,7 @@ public class ReviewDaoImpl implements ReviewDao {
 			ps.setString(6, review.getReviewContent());
 			ps.setInt(7, review.getReviewScore());
 
-			System.out.println(review);
+			System.out.println("[TEST insert]\n" + review);
 			
 			res = ps.executeUpdate();
 			
@@ -481,6 +482,8 @@ public class ReviewDaoImpl implements ReviewDao {
 			ps.setString(2, xFile.getFileStoredName());
 			ps.setString(3, xFile.getFileSize());
 			
+			System.out.println("[TEST insertFile]\n" + xFile);
+			
 			res = ps.executeUpdate();
 			
 		} catch (SQLException e) {
@@ -533,13 +536,13 @@ public class ReviewDaoImpl implements ReviewDao {
 		
 		String sql = "";
 		sql += "UPDATE xreview";
-		sql += " SET review_title = ?,";
-		sql += " review_content = ?,";
-		sql += " review_score = ?,";
+		sql += " SET review_title = ?";
+		sql += " , review_content = ?";
+		sql += " , review_score = ?";
 		if(review.getFileNo() == 0) {
 			sql += " WHERE review_no = ?";
 		} else {
-			sql += " file_no = ?";
+			sql += " , file_no = ?";
 			sql += " WHERE review_no = ?";
 		}
 		
@@ -553,11 +556,13 @@ public class ReviewDaoImpl implements ReviewDao {
 			ps.setString(2, review.getReviewContent());
 			ps.setInt(3,  review.getReviewScore());
 			if(review.getFileNo() == 0 ) {
-				ps.setInt(5, review.getReviewNo());
+				ps.setInt(4, review.getReviewNo());
 			} else {
 				ps.setInt(4, review.getFileNo());
 				ps.setInt(5, review.getReviewNo());
 			}
+			
+			System.out.println("[TEST update]\n" + review);
 
 			res = ps.executeUpdate();
 			

@@ -59,7 +59,7 @@ table {
 		<option value="memnick">회원 닉네임</option>
 	</select>
 	<input type="text" id="keyword" name="keyword" placeholder="검색어를 입력하세요"/>
-	<button>검색</button>
+	<button id="buttonSearch">검색</button>
 </form>
 </div>
 

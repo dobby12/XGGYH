@@ -114,8 +114,8 @@ form {
 	</div>
 	<div class="form-group">
 		<label for="memstate" class="control-label">이메일수신여부</label>
-		<label><input type="radio" placeholder="이메일수신여부" name="memstate" value="y" checked>수신</label>
-		<label><input type="radio" placeholder="이메일수신여부" name="memstate" value="n">거부</label>
+		<label><input type="radio" name="memstate" value="y" checked>수신</label>
+		<label><input type="radio" name="memstate" value="n">거부</label>
 	</div>
 	<div class="form-group">
 	<label>관심사</label>

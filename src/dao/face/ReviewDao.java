@@ -5,6 +5,7 @@ import java.util.List;
 
 import dto.XFile;
 import dto.XReview;
+import dto.XShow;
 import util.Paging;
 
 public interface ReviewDao {
@@ -91,7 +92,7 @@ public interface ReviewDao {
 	 * 
 	 * @param review - 삽입될 게시글 내용
 	 */
-	public int insert(Connection conn, XReview review);
+	public int insert(Connection conn, XReview review, XShow show);
 
 	/**
 	 * 다음 게시글 번호 조회

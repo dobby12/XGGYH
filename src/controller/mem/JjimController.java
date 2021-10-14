@@ -7,6 +7,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dto.XJjim;
+import service.face.JjimService;
+import service.impl.JjimServiceImpl;
+
 /**
  * Servlet implementation class JjimController
  */
@@ -14,6 +18,8 @@ import javax.servlet.http.HttpServletResponse;
 public class JjimController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	private JjimService jjimService = new JjimServiceImpl();
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		this.doPost(req, resp);
@@ -23,14 +29,19 @@ public class JjimController extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		System.out.println("/mem/jjim [POST]");
 		
-		if(req.getSession().getAttribute("login") == null)
+		XJjim jjim = jjimService.getJjimInfo(req);
+		
+		if(req.getSession().getAttribute("login") == null || !(boolean)req.getSession().getAttribute("login"))
 		{
-			System.out.println("로그인 안됨");	
+			System.out.println("로그인 안됨");
+			return;
 		}
 		else {
-			System.out.println(req.getSession().getAttribute("memid"));
-			System.out.println(req.getSession().getAttribute("memnick"));
+			System.out.println(req.getParameter("memId"));
+			System.out.println(req.getParameter("showNo"));
 			System.out.println("로그인 정보 가져오기 성공");
+			
+			int insertAble = jjimService.setJjim(jjim);
 		}
 	}
 }
