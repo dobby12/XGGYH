@@ -372,41 +372,54 @@ public class AdminShowDaoImpl implements AdminShowDao {
 	public int updateShow(Connection conn, XShow xshow) {
 		
 		String sql = "";
-		sql += "UPDATE xshow SET file_no=?, admin_id=?, kind_no=?,";
-		sql += " genre_no=?, hall_no=?, show_title=?, show_content=?,";
+		sql += "UPDATE XSHOW SET admin_id=?, kind_no=?, genre_no=?, hall_no=?, show_title=?, show_content=?,";
 		sql += " show_age=?, show_director=?, show_actor=?, show_start=?, show_end=?, show_date=sysdate";
-		sql += " WHERE show_no=?";
 		
-		int res = -1;
-		
-		try {
-			ps = conn.prepareStatement(sql);
-			
-			ps.setInt(1, xshow.getFileNo());
-			ps.setString(2, xshow.getAdminId());
-			ps.setInt(3, xshow.getKindNo());
-			ps.setInt(4, xshow.getGenreNo());
-			ps.setInt(5, xshow.getHallNo());
-			ps.setString(6, xshow.getShowTitle());
-			ps.setString(7, xshow.getShowContent());
-			ps.setString(8, xshow.getShowAge());
-			ps.setString(9, xshow.getShowDirector());
-			ps.setString(10, xshow.getShowActor());
-			ps.setDate(11, new java.sql.Date(xshow.getShowStart().getTime()));
-			ps.setDate(12, new java.sql.Date(xshow.getShowEnd().getTime()));
-			ps.setInt(13, xshow.getShowNo());
-			
-			System.out.println(xshow);
-			res = ps.executeUpdate();
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			JDBCTemplate.close(ps);
+		if( xshow.getFileNo() == 0 ) {
+			sql += " WHERE show_no=?";
+		} else {
+			sql += ", file_no=? WHERE show_no=?";
 		}
 		
-		return res;
+			int res = -1;
+			
+			try {
+				ps = conn.prepareStatement(sql);
+				
+				ps.setString(1, xshow.getAdminId());
+				ps.setInt(2, xshow.getKindNo());
+				ps.setInt(3, xshow.getGenreNo());
+				ps.setInt(4, xshow.getHallNo());
+				ps.setString(5, xshow.getShowTitle());
+				ps.setString(6, xshow.getShowContent());
+				ps.setString(7, xshow.getShowAge());
+				ps.setString(8, xshow.getShowDirector());
+				ps.setString(9, xshow.getShowActor());
+				ps.setDate(10, new java.sql.Date(xshow.getShowStart().getTime()));
+				ps.setDate(11, new java.sql.Date(xshow.getShowEnd().getTime()));
+				
+				if( xshow.getFileNo() == 0 ) {
+					ps.setInt(12, xshow.getShowNo());
+				} else {
+					ps.setInt(12, xshow.getFileNo());
+					ps.setInt(13, xshow.getShowNo());
+				}
+					
+				
+				System.out.println(xshow);
+				res = ps.executeUpdate();
+
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				JDBCTemplate.close(ps);
+			}
+			
+			return res;
 		
-	}
+		}
+		
+
 
 }
