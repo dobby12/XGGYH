@@ -76,6 +76,20 @@ td {
 	border-collapse: collapse;
 }
 
+#cont {
+	background-color: #F2F2F2;
+	height:70px;
+	width: 100%;
+	padding:10px;
+	
+	display: table;
+}
+
+#cont p {
+	display: table-cell;
+	text-align: center;
+	vertical-align:middle;
+}
 
 </style>
 
@@ -110,15 +124,15 @@ td {
 
 <div id="answer" class="container">
 <c:if test="${xask.askState == 'y'}">
-<table class="table table-condensed">
+<table>
 
 <tr>	
 	<!-- 아이디 -->
-	<td colspan="2" class="ans" width="150px;">관리자 아이디 : ${xcomment.adminId }</td>
+	<td colspan="2" class="ans" width="150px;">${xcomment.adminId }</td>
 	
 	<!-- 본문 -->
-	<td colspan="2" width="700px;">
-		<div class="ans" style="background-color: #F2F2F2; height:70px; padding: 10px;">${xcomment.commentContent }</div>
+	<td colspan="2" width="700px;" border="0px; ">
+		<div id="cont" class="ans"><p>${xcomment.commentContent }</p></div>
 	</td>
 
 		<td style="width: 100px;" class="ans">
@@ -128,7 +142,7 @@ td {
 </tr>
 
 </table>
-
+<br><br>
 <a href="<%=request.getContextPath() %>/admin/ask/list"><button id="btnList" class="btn btn-default">목록으로</button></a>
 </c:if>
 
