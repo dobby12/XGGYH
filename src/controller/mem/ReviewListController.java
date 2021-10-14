@@ -10,8 +10,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dto.XReview;
+import dto.XShow;
 import service.face.ReviewService;
+import service.face.ShowService;
 import service.impl.ReviewServiceImpl;
+import service.impl.ShowServiceImpl;
 import util.Paging;
 
 @WebServlet("/review/list")
@@ -27,6 +30,20 @@ public class ReviewListController extends HttpServlet {
 		System.out.println("ReviewListController [GET] - " + paging);
 		
 		List<XReview> reviewList = reviewService.getList(paging);
+
+		
+		
+		
+		
+		//수정필요
+		req.setAttribute("showTitle", req.getParameter("showTitle"));
+		
+		System.out.println(req.getParameter("showTitle"));//null
+
+		
+		
+		
+		
 		
 		req.setAttribute("reviewList", reviewList);
 		

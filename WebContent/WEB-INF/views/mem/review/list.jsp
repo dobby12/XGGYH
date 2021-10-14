@@ -18,18 +18,27 @@
 			<a href="umm..">조회순</a>
 </div>
 
-<table class="table table-striped table-hover table-condensed">
+<input type="hidden" name="showNo" value="${showDetail.showNo }" />
+
+<table class="table table-hover table-condensed">
+
+
+<thead>
 <tr>
-	<th>리뷰번호</th>
-	<th>제목</th>
-	<th>작성자</th>
-	<th>조회수</th>
-	<th>작성일</th>
+	<th style="text-align: center; width: 10%">게시글 번호</th>
+	<th style="text-align: center; width: 20%">공연</th>
+	<th style="text-align: center; width: 42%">제목</th>
+	<th style="text-align: center; width: 10%">작성자</th>
+	<th style="text-align: center; width: 5%">조회수</th>
+	<th style="text-align: center; width: 10%">작성일</th>
 </tr>
+</thead>
+
 
 <c:forEach items="${reviewList }" var="review">
 <tr>
 	<td>${review.reviewNo }</td>
+	<td>${review.showNo }</td>
 	<td>
 		<a href="<%=request.getContextPath() %>/review/detail?reviewno=${review.reviewNo }">${review.reviewTitle }</a>
 	</td>
@@ -45,10 +54,10 @@
 
 <div style="text-align: center; margin: 0 0 25px 0;" >
 <form action="<%=request.getContextPath() %>/review/search" method="get">
-	<select id="searchtype" name="searchtype">
+	<select type="hidden" id="searchtype" name="searchtype">
 		<option value="reviewTitle">제목</option> 
 	</select>
-	<input type="text" id="keyword" name="keyword" placeholder="검색어를 입력하세요"/>
+	<input type="text" id="keyword" name="keyword" placeholder="궁금한 공연을 검색해보세요!"/>
 	<button>검색</button>
 </form>
 </div>

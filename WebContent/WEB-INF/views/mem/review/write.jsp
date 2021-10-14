@@ -51,7 +51,9 @@ $(document).ready(function() {
 <tr><td colspan="2"><textarea id="content" name="reviewContent" style="width:100%"></textarea></td></tr>
 </table>
 
+<div>
 첨부파일 <input type="file" name="file" />
+</div>
 
 </form>
 </div>
