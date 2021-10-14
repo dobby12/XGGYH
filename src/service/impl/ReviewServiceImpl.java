@@ -260,7 +260,7 @@ public class ReviewServiceImpl implements ReviewService {
 		
 		//게시글정보있을경우
 		if(review != null) {
-			review.setMemId((String)req.getSession().getAttribute("memId"));
+			review.setMemId((String)req.getSession().getAttribute("memid"));
 			
 			review.setReviewNo(reviewNo);//(PK)
 			

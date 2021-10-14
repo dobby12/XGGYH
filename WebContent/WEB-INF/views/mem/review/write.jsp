@@ -40,7 +40,7 @@ $(document).ready(function() {
 <div>
 <form action="/review/write" method="post" enctype="multipart/form-data">
 
-<input type="hidden" name="memId" value="${memid }" />
+<%-- <input type="hidden" name="memId" value="${memid }" /> --%>
 
 <table class="table table-striped table-hover table-condensed">
 <tr><td class="info">닉네임</td><td>${memnick }</td></tr>
