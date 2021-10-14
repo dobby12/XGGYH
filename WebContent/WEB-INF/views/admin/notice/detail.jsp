@@ -3,30 +3,35 @@
 <c:import url="/WEB-INF/views/layout/adminheader.jsp" />
 <!------------------------------------------------------>
 
-<h1>ADMIN DETAIL</h1>
+<style>
+
+#content {
+	vertical-align:middle;
+}
+
+</style>
+
+<div class="container">
+
+
+<h2>공지사항 세부 조회</h2>
 <hr>
 
-<table>
+<table class ="table table-bordered table-condensed" style="">
 <thead>
 <tr>
-	<td>no</td>
+	<td colspan="6" style="height: 40px; font-size: 30px;">${notice.noticeTitle }</td>
+</tr>
+<tr>
+	<td style="background-color: #D99771">번호</td>
 	<td>${notice.noticeNo }</td>
-</tr>
-<tr>
-	<td>title</td>
-	<td>${notice.noticeTitle }</td>
-</tr>
-<tr>
-	<td>content</td>
-	<td>${notice.noticeContent }</td>
-</tr>
-<tr>
-	<td>id</td>
+	<td style="background-color: #D99771">작성자</td>
 	<td>${notice.adminId }</td>
+	<td style="background-color: #D99771">작성일</td>
+	<td>${notice.noticeDate }</td>
 </tr>
 <tr>
-	<td>date</td>
-	<td>${notice.noticeDate }</td>
+	<td id="content" colspan="6" style="height: 300px;">${notice.noticeContent }</td>
 </tr>
 </thead>
 </table>
@@ -41,10 +46,11 @@
 </c:if>
 
 <br>
-<a href="<%=request.getContextPath() %>/admin/notice/list"><button>LIST</button></a>
-<a href="<%=request.getContextPath() %>/admin/notice/update?noticeno=${notice.noticeNo }"><button>MODIFY</button></a>
-<a href="<%=request.getContextPath() %>/admin/notice/delete?noticeno=${notice.noticeNo }"><button>DELETE</button></a>
+<a href="<%=request.getContextPath() %>/admin/notice/list"><button class="btnBack">목록</button></a>
+<a href="<%=request.getContextPath() %>/admin/notice/update?noticeno=${notice.noticeNo }"><button class="btnUpdate">수정</button></a>
+<a href="<%=request.getContextPath() %>/admin/notice/delete?noticeno=${notice.noticeNo }"><button class="btnDelete">삭제</button></a>
 
 <!------------------------------------------------------>
-</body>
-</html>
+</div>
+
+<c:import url="/WEB-INF/views/layout/footer.jsp" />

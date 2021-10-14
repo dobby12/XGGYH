@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<c:import url="/WEB-INF/views/layout/header.jsp" />
+<c:import url="/WEB-INF/views/layout/adminheader.jsp" />
 <script type="text/javascript" src="<%=request.getContextPath() %>/resources/se2/js/service/HuskyEZCreator.js" charset="utf-8"></script>
 <script type="text/javascript">
 function submitContents(elClickedObj){
@@ -10,42 +10,42 @@ function submitContents(elClickedObj){
 </script>
 <script type="text/javascript">
 $(document).ready(function(){
-	$("#btnWrite").click(function(){
-		submitContents($("#btnWrite"))
+	$("#btnSubmit").click(function(){
+		submitContents($("#btnSubmit"))
 		$("form").submit();
 	});
-	$("#btnCancel").click(function(){
+	$("#btnBack").click(function(){
 		history.go(-1);
 	});
 });
 </script>
 
 <!------------------------------------------------------>
+<div class="container">
 
-<h1>ADMIN UPDATE</h1>
+<h1>공지사항 수정</h1>
 <hr>
 
 <form action="<%=request.getContextPath() %>/admin/notice/update" method="post" enctype="multipart/form-data">
 <input type="hidden" name="no" value="${notice.noticeNo }">
 
-<table>
+<table class="table table-condensed table-bordered">
+
 <thead>
+
 <tr>
-	<td>no</td>
-	<td>${notice.noticeNo }</td>
+	<td colspan="6"><h4><input type="text" id="showTitle" name="showTitle" style="width: 100%; padding: 5px;" value="${notice.noticeTitle }"/></h4></td>
 </tr>
 <tr>
-	<td>title</td>
-	<td><input id="title" name="title" value="${notice.noticeTitle }"></td>
+	<td style="background-color: #D99771; width:25%;">관리자 아이디</td>
+	<td style="width:25%;">${adminid }<input type="hidden" name="adminId" value="${adminid }" /></td>
+	<td style="background-color: #D99771">관리자 이름</td>
+	<td style="width:25%;">${adminname }</td>
 </tr>
 <tr>
-	<td>content</td>
-	<td><textarea id="content" name="content">${notice.noticeContent }</textarea></td>
+	<td colspan="6"><textarea id="content" name="content" style="width: 100%; height: 300px; padding: 10px;">${notice.noticeContent }</textarea></td>
 </tr>
-<tr>
-	<td>id</td>
-	<td>${notice.adminId }</td>
-</tr>
+
 <!-- <tr> -->
 <!-- 	<td>date</td> -->
 <%-- 	<td>${notice.noticeDate }</td> --%>
@@ -73,8 +73,9 @@ $(document).ready(function(){
 
 <br>
 <%-- <a href="<%=request.getContextPath() %>/admin/notice/update?noticeno=${notice.noticeNo }"> --%>
-<button type="button" id="btnWrite">수정</button>
-<button type="button" id="btnCancel">취소</button>
+<button type="button" id="btnSubmit" class="btnSubmit">수정</button>
+<button type="button" id="btnBack" class="btnBack">취소</button>
+</div>
 
 <!------------------------------------------------------>
 <script type="text/javascript">
@@ -86,5 +87,5 @@ nhn.husky.EZCreator.createInIFrame({
  fCreator: "createSEditor2"
 });
 </script>
-</body>
-</html>
+
+<c:import url="/WEB-INF/views/layout/footer.jsp" />

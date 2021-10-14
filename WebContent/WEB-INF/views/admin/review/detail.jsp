@@ -38,10 +38,10 @@ table {
 
 <div class="container">
 
-<h1>게시글 상세보기</h1>
+<h2>리뷰 상세보기</h2>
 <hr>
 
-<table class="table table-bordered">
+<table class="table table-condensed table-bordered">
 <tr>
 <td class="info">글번호</td><td colspan="3">${viewReview.reviewNo }</td>
 </tr>

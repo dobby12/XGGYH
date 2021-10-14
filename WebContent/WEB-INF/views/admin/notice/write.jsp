@@ -1,18 +1,30 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<c:import url="/WEB-INF/views/layout/header.jsp" />
+<c:import url="/WEB-INF/views/layout/adminheader.jsp" />
 <script type="text/javascript" src="<%=request.getContextPath() %>/resources/se2/js/service/HuskyEZCreator.js" charset="utf-8"></script>
+
 <script type="text/javascript">
+
 function submitContents(elClickedObj){
 	oEditors.getById["content"].exec("UPDATE_CONTENTS_FIELD", []);
 	try {elClickedObj.form.submit();} catch(e) {}
 	}
 </script>
+
 <script type="text/javascript">
 $(document).ready(function(){
-	$("#btnWrite").click(function(){
-		submitContents($("#btnWrite"))
-		$("form").submit();
+	
+	$("#btnSubmit").click(function(){
+		
+		var answer = confirm("공지사항을 등록하시겠습니까?")
+		
+		if(answer == true) {
+			submitContents($("#btnSubmit"))
+		
+			$("form").submit();
+		} else {
+			return false;
+		}
 	});
 	$("#btnCancel").click(function(){
 		history.go(-1);
@@ -22,54 +34,61 @@ $(document).ready(function(){
 
 <!------------------------------------------------------>
 
-<div class="container text-center">
+<style>
+table {
+	text-align: center;
+}
 
-<h1>NOTICE WRITE</h1>
+</style>
+
+<div class="container">
+
+<h1>공지사항 작성</h1>
 <hr>
 
 <form action="<%=request.getContextPath() %>/admin/notice/write" method="post" enctype="multipart/form-data">
-<table class="table table-striped table-hover table-condensed">
+<table class="table table-hover table-condensed">
 <!-- <tr> -->
 <!-- 	<td>no</td> -->
 <!-- 	<td class=>자동생성</td> -->
 <!-- </tr> -->
+
 <tr>
-	<td>title</td>
-	<td><input type="text" id="title" name="title"/></td>
+	<td colspan="6"><h4><input type="text" id="showTitle" name="showTitle" style="width: 100%; padding: 5px;" autocomplete="off" placeholder="공지사항 제목"/></h4></td>
 </tr>
 <tr>
-	<td>adminid</td>
-	<td>${adminid }</td>
+	<td style="background-color: #D99771; width:25%;">관리자 아이디</td>
+	<td style="width:25%;">${adminid }<input type="hidden" name="adminId" value="${adminid }" /></td>
+	<td style="background-color: #D99771">관리자 이름</td>
+	<td style="width:25%;">${adminname }</td>
 </tr>
 <tr>
-	<td>adminname</td>
-	<td>${adminname }</td>
-</tr>
-<tr>
-	<td>content</td>
-	<td><textarea id="content" name="content"></textarea></td>
+	<td colspan="6"><textarea id="content" name="content" style="width: 100%; height: 300px; padding: 10px;"></textarea></td>
 </tr>
 
 <!-- <tr> -->
 <!-- 	<td>date</td> -->
 <!-- 	<td>자동생성</td> -->
 <!-- </tr> -->
-<tr>
-	<td>fileupload</td>
-	<td><input type="file" name="file"/></td>
-</tr>
 </table>
+
+
+<input type="file" name="file" />
+<!-- 	<td>파일 첨부</td> -->
+<!-- 	<td><input type="file" name="file"/></td> -->
+
+
 <button>SUBMIT(SE없이테스트용)</button>
 </form>
 <div class="text-center">	
-	<button type="button" id="btnWrite" class="btn btn-info">SUBMIT</button>
-	<button type="button" id="btnCancel" class="btn btn-danger">CANCEL</button>
+	<button type="button" id="btnSubmit" class="btnSubmit" >작성</button>
+	<button type="button" id="btnCancel" class="btnCancel" >취소</button>
 </div>
 <!-- <div class="text-center"> -->
 <!-- 	<button type="button" id="btnWrite" class="btn btn-info">SUBMIT</button> -->
 <!-- 	<button type="button" id="btnCancel" class="btn btn-info">CANCEL</button> -->
 <!-- </div> -->
-
+ 
 </div>
 
 <!------------------------------------------------------>
@@ -83,5 +102,4 @@ nhn.husky.EZCreator.createInIFrame({
  fCreator: "createSEditor2"
 });
 </script>
-</body>
-</html>
+<c:import url="/WEB-INF/views/layout/footer.jsp" />
