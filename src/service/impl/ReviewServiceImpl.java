@@ -438,7 +438,9 @@ public class ReviewServiceImpl implements ReviewService {
 	
 	@Override
 	public void delete(int reviewno) {
+		
 		Connection conn = JDBCTemplate.getConnection();
+		
 		int fileno = getFile(reviewno).getFileNo();
 		
 		if( reviewDao.delete(conn, reviewno) > 0 ) {
@@ -446,6 +448,7 @@ public class ReviewServiceImpl implements ReviewService {
 		} else {
 			JDBCTemplate.rollback(conn);
 		}
+		
 		if( fileDao.deleteFile(conn, fileno) > 0 ) {
 			JDBCTemplate.commit(conn);
 		} else {
