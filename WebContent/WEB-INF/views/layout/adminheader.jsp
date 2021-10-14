@@ -127,15 +127,13 @@ ul.nav > li > a {
 
 }
 
+
 /* 서브 메뉴 */
 ul.nav > li > ul {
 	/* HTML계층구조(레이아웃)에서 빼내는 설정 */
 	/*  -> 부모요소인 <li>태그의 컨텐츠 영역에서 빠져나옴 */
 	position: absolute;
 	
-/* 	/* 요소 위치 지정 - 안 해도 됨 */ */
-/* 	left: 10px; */
-
 	/* ul태그 기본 리스트스타일 제거하기 */
 	list-style-type: none;
 	
@@ -149,10 +147,35 @@ ul.nav > li > ul {
 	text-align: center;
 }
 
+/*  */
 ul.nav > li > a:hover {
 	text-decoration: none;
 	color:#D96459;
 	background-color: #f2f2f2;
+	text-decoration:none;
+ 	border-bottom: 2px solid #D96459; 
+ 	padding-bottom:3px; 
+
+}
+
+ul.nav > li > a:before {
+	content: '';
+	border-bottom: 2px solid #D96459;
+	padding-bottom:3px;
+	bottom: 0; left: 0;
+	width: 100%;
+	
+	opacity: 0;
+}
+
+ul.nav > li > a:hover:before {
+	opacity: 1.0;
+}
+
+ul.nav > li > a, ul.nav > li > a:before {
+	transition: all 0.2s ease;
+	
+
 }
 
 /* 서브 메뉴의 항목 */
@@ -211,19 +234,19 @@ ul.nav > li > ul > li > a:hover {
 
 /* ------------------------------------------------ */
 
- button{ 
-   background:#D96459; 
-   color:#fff; 
-   border:none; 
-   position:relative; 
-   height:30px; 
-   font-size: 1em; 
-   padding:0 1em; 
-   cursor:pointer; 
-   transition:800ms ease all; 
-   outline:none;
-   border-radius: 5px;
- } 
+button { 
+	background:#D96459; 
+	color:#fff; 
+	border:none; 
+	position:relative; 
+	height:30px; 
+	font-size: 1em; 
+	padding:0 1em; 
+	cursor:pointer; 
+	transition:800ms ease all; 
+	outline:none;
+	border-radius: 5px;
+} 
  button:hover{ 
    background:#f2f2f2; 
    color:#D96459; 
@@ -237,14 +260,15 @@ ul.nav > li > ul > li > a:hover {
    width:0; 
    background: #d96459; 
    transition:400ms ease all; 
- } 
- button:after{ 
+ }
+  
+ button:after { 
    right:inherit; 
    top:inherit; 
    left:0; 
    bottom:0; 
  } 
- button:hover:before,button:hover:after{ 
+ button:hover:before,button:hover:after { 
    width:100%; 
    transition:800ms ease all;
  }
