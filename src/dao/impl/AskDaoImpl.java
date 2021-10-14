@@ -190,5 +190,83 @@ public class AskDaoImpl implements AskDao {
 		return res;
 	}
 
+	@Override
+	public List<XAsk> selectAllByMemid(Connection conn, Paging paging, String memid) {
+		
+		String sql = "";
+		sql += "SELECT * FROM (";
+		sql += "	SELECT rownum rnum, X.* FROM (";
+		sql += "		SELECT";
+		sql += "			ask_no, mem_id, ask_title, ask_content";
+		sql += "			, ask_date, ask_kind, ask_state";
+		sql += "		FROM xask";
+		sql += "		WHERE mem_id = ?";
+		sql += "		ORDER BY ask_no DESC";
+		sql += "	) X";
+		sql += " ) XASK";
+		sql += " WHERE rnum BETWEEN ? AND ?";
 
+		List<XAsk> askList = new ArrayList<>(); 
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, memid);
+			ps.setInt(2, paging.getStartNo());
+			ps.setInt(3, paging.getEndNo());
+			
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				XAsk ask = new XAsk();
+				
+				ask.setAskNo( rs.getInt("ask_no") );
+				ask.setMemId( rs.getString("Mem_id") );
+				ask.setAskTitle( rs.getString("ask_title") );
+				ask.setAskContent( rs.getString("ask_content") );
+				ask.setAskDate( rs.getDate("ask_date") );
+				ask.setAskKind( rs.getString("ask_kind") );
+				ask.setAskState( rs.getString("ask_state") );
+
+				askList.add(ask);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+		}
+		
+		return askList;
+	}
+
+	@Override
+	public int selectCntByMemId(Connection conn, String memid) {
+		
+		//SQL 작성
+		String sql = "";
+		sql += "SELECT count(*) FROM xask";
+		sql += " WHERE mem_id = ?";
+				
+		//총 게시글 수
+		int count = 0;
+				
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, memid);
+			rs = ps.executeQuery();
+					
+			while(rs.next()) {
+				count = rs.getInt(1);
+			}
+					
+		} catch (SQLException e) {
+					e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+		}
+		
+		return count;
+	}
 }

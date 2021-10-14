@@ -15,7 +15,7 @@ table {
 
 <div class="container">
 
-<h2>내가 작성한 리뷰</h2>
+<h2>내가 찜한 콘텐츠</h2>
 <hr>
 
 <table class="table table-hover table-condensed">
@@ -23,20 +23,18 @@ table {
 <thead>
 <tr>
 	<th style="text-align: center; width: 10%">번호</th>
-	<th style="text-align: center; width: 70%">제목</th>
-	<th style="text-align: center; width: 10%">작성 날짜</th>
+	<th style="text-align: center; width: 10%">제목</th>
 	<th style="text-align: center; width: 10%">평점</th>
 </tr>
 </thead>
 
-<c:forEach items="${memidReviewList }" var="review">
+<c:forEach items="${memidJjimList }" var="jjim">
 </tbody>
 <tr>
 
-	<td>${review.reviewNo }</td>
-	<td><a href="<%=request.getContextPath() %>/review/detail?reviewno=${review.reviewNo }">${review.reviewTitle }</a></td>
-	<td>${review.reviewDate }</td>
-	<td>${review.reviewScore }</td>
+	<td>${memidJjimList.ShowNo }</td>
+	<td><a href="<%=request.getContextPath() %>/show/detail?showNo=${memidJjimList.showNo }">${memidJjimList.showTitle }</a></td>
+	<td>${memidJjimList.showDirector }</td>
 </tr>
 </tbody>
 </c:forEach>
