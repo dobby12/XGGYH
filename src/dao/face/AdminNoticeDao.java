@@ -65,7 +65,7 @@ public interface AdminNoticeDao {
 	/**
 	 * 전체 공지 개수 확인
 	 * 
-	 * @param connection
+	 * @param conn
 	 * @return 전체 공지 개수
 	 */
 	public int selectCntNoticeAll(Connection conn);

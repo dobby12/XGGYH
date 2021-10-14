@@ -27,10 +27,13 @@ public class AdminNoticeListController extends HttpServlet {
 		Paging paging = adminNoticeService.getPaging(req);
 		System.out.println("/admin/notice/list [GET] - " + paging);
 		
+		List<XNotice> list = adminNoticeService.getNoticeList();
+		
+		req.setAttribute("noticeList", list);
+		
 		req.setAttribute("paging", paging);
 		
-		List<XNotice> list = adminNoticeService.getNoticeList();
-		req.setAttribute("noticeList", list);
+		req.setAttribute("linkUrl", "/admin/notice/list");
 		
 		req.getRequestDispatcher("/WEB-INF/views/admin/notice/list.jsp").forward(req, resp);
 	}
