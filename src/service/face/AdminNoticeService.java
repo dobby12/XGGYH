@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import dto.XFile;
 import dto.XNotice;
+import util.Paging;
 
 public interface AdminNoticeService {
 
@@ -45,7 +46,19 @@ public interface AdminNoticeService {
 	 * 
 	 * @param noticeno
 	 */
-	void setNoticeDelete(int noticeno);
+	public void setNoticeDelete(int noticeno);
+	
+	/**
+	 * 
+	 * 페이징 객체 생성
+	 * 
+	 * 요청파라미터 curPage를 구한다
+	 * XReview테이블과 curPage값을 이용, Paging객체를 구하여 반환
+	 * 
+	 * @param req - 요청정보 객체
+	 * @return 페이징 계산이 완료된 Paging 객체
+	 */
+	public Paging getPaging(HttpServletRequest req);
 
 
 }

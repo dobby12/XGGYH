@@ -60,6 +60,15 @@ public interface AdminNoticeDao {
 	 * @return
 	 */
 	public int deleteNotice(Connection conn, int noticeno);
+	
+	
+	/**
+	 * 전체 공지 개수 확인
+	 * 
+	 * @param connection
+	 * @return 전체 공지 개수
+	 */
+	public int selectCntNoticeAll(Connection conn);
 
 
 	
