@@ -156,6 +156,14 @@ public interface ReviewDao {
 	 */
 	public int delete(Connection conn, int reviewno);
 
+	/**
+	 * DB를 조회하여 reviewno와 일치하는 행을 XReview객체로 반환
+	 * @param conn - DB연결객체
+	 * @param reviewno - 조회할 공지사항 번호
+	 * @return DB에서 가져 온 XReivew객체
+	 */
+	public XReview selectReviewToReviewno(Connection conn, int reviewno);
+
 }
 
 

@@ -10,6 +10,7 @@ import java.util.List;
 import common.JDBCTemplate;
 import dao.face.ReviewDao;
 import dto.XFile;
+import dto.XNotice;
 import dto.XReview;
 import dto.XShow;
 import util.Paging;
@@ -259,6 +260,40 @@ public class ReviewDaoImpl implements ReviewDao {
 		return viewReview;
 	}
 	
+	@Override
+	public XReview selectReviewToReviewno(Connection conn, int reviewno) {
+		
+		String sql = "";
+		sql += "SELECT * FROM xreview";
+		sql += " WHERE review_no = ?";
+		
+		XReview res = null;
+
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, reviewno);
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				res.setReviewNo( rs.getInt("review_no") );
+				res.setShowNo( rs.getInt("show_no") );
+				res.setFileNo( rs.getInt("file_no") );
+				res.setMemId( rs.getString("mem_id") );
+				res.setReviewTitle( rs.getString("review_title") );
+				res.setReviewContent( rs.getString("review_content") );
+				res.setReviewDate( rs.getDate("review_date") );
+				res.setReviewScore( rs.getInt("review_score") );
+				res.setReviewHit( rs.getInt("review_hit") );
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+		}
+
+		return res;
+	}
 
 	@Override
 	public XFile selectFileByFileNo(Connection conn, int reviewno) {

@@ -141,6 +141,13 @@ public interface ReviewService {
 	 */
 	public void delete(int reviewno);
 
+	/**
+	 * 전달받은 숫자를 reviewno로 가진 XReview객체 반환
+	 * @param reviewno - 조회할 reviewno
+	 * @return DB에서 조회한 XReview객체
+	 */
+	public XReview getReviewDetail(int reviewno);
+
 
 
 }

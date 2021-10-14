@@ -142,7 +142,10 @@ public class ReviewServiceImpl implements ReviewService {
 		return reviewDao.selectShowTitleByShowNo(JDBCTemplate.getConnection(), viewReview);
 	}
 
-	
+	@Override
+	public XReview getReviewDetail(int reviewno) {
+		return reviewDao.selectReviewToReviewno(JDBCTemplate.getConnection(), reviewno);
+	}
 	
 	
 	
@@ -436,7 +439,6 @@ public class ReviewServiceImpl implements ReviewService {
 	@Override
 	public void delete(int reviewno) {
 		Connection conn = JDBCTemplate.getConnection();
-		
 		int fileno = getFile(reviewno).getFileNo();
 		
 		if( reviewDao.delete(conn, reviewno) > 0 ) {

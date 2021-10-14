@@ -12,9 +12,15 @@ th, div {
 </style>
 
 <div class="container" >
-
-<h1 class="pull-left">리뷰 게시판</h1>
+<h3 class="pull-left">리뷰 게시판</h3>
 <hr>
+<br>
+
+<div class="text-right" id="umm..">
+			<p>
+			<a href="umm..">최신순</a>&nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp
+			<a href="umm..">조회순</a>
+</div>
 
 <table class="table table-striped table-hover table-condensed">
 <tr>
