@@ -3,7 +3,7 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<c:import url="/WEB-INF/views/layout/header.jsp" />
+<c:import url="/WEB-INF/views/layout/adminheader.jsp" />
 
 <script type="text/javascript" src="<%=request.getContextPath() %>/resources/se2/js/service/HuskyEZCreator.js" charset="utf-8"></script>
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />  
@@ -71,7 +71,7 @@ $(document).ready(function() {
     $(document).ready(function () {
             $.datepicker.setDefaults($.datepicker.regional['ko']); 
             $( "#startDate" ).datepicker({
-                 showOn: "button",
+                 showOn: "focus",
             	 changeMonth: true, 
                  changeYear: true,
                  nextText: '다음 달',
@@ -84,7 +84,7 @@ $(document).ready(function() {
  
             });
             $( "#endDate" ).datepicker({
-            	 showOn: "button",
+            	 showOn: "focus",
                  changeMonth: true, 
                  changeYear: true,
                  nextText: '다음 달',
@@ -193,7 +193,7 @@ table, input, textarea {
 </tr>
 
 </table>
-<div>
+<div style="text-align: left;">
 	<div id="beforeFile">
 		기존 파일 : 
 		<a href="/upload/${file.fileStoredName }" download="${file.fileOriginName }">${file.fileOriginName }</a>

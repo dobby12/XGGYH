@@ -9,6 +9,7 @@ import common.JDBCTemplate;
 import dao.face.MemberDao;
 import dao.impl.MemberDaoImpl;
 import dto.XMem;
+import dto.XReview;
 import service.face.MemberService;
 
 //로그인, ID/PW찾기, 회원가입
@@ -95,9 +96,49 @@ public class MemberServiceImpl implements MemberService {
 		}
 	}
 
-
 	@Override
 	public XMem getMyInfo(String memid) {
 		return memberDao.selectMemByMemid(JDBCTemplate.getConnection(), memid);
+	}
+
+	@Override
+	public XMem getUpdate(String memid) {
+		return memberDao.selectMemByMemid(JDBCTemplate.getConnection(), memid);
+	}
+
+	@Override
+	public int updateMem(HttpServletRequest req) {
+		
+		try {
+			req.setCharacterEncoding("UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		XMem mem = new XMem();
+		
+		mem.setMemId(req.getParameter("memid"));
+		if (req.getParameter("mempw").length() > 0) {
+			mem.setMemPw(req.getParameter("mempw"));
+		} else {
+			mem.setMemPw(memberDao.selectMemByMemid(conn, mem.getMemId()).getMemPw());
+		}
+	
+		mem.setMemNick(req.getParameter("memnick"));
+		mem.setMemMail(req.getParameter("memmail"));
+		mem.setMailState(req.getParameter("mailstate"));
+		mem.setGenreNo(Integer.parseInt(req.getParameter("genreno")));
+		
+		System.out.println("###TEST### 멤버서비스임플 getJoinMember()의 member : " + mem);
+				
+		if (memberDao.updateMem(conn, mem) > 0) {
+			JDBCTemplate.commit(conn);
+		} else {
+			JDBCTemplate.rollback(conn);
+		}	
+		req.getSession().setAttribute("memnick", mem.getMemNick());
+		return 1;
 	}
 }

@@ -274,6 +274,9 @@ public class ReviewDaoImpl implements ReviewDao {
 			ps.setInt(1, reviewno);
 			rs = ps.executeQuery();
 			while(rs.next()) {
+				
+				res = new XReview();
+				
 				res.setReviewNo( rs.getInt("review_no") );
 				res.setShowNo( rs.getInt("show_no") );
 				res.setFileNo( rs.getInt("file_no") );
@@ -292,8 +295,6 @@ public class ReviewDaoImpl implements ReviewDao {
 			JDBCTemplate.close(ps);
 		}
 		
-		System.out.println("res" + res); //null 발생(부적합한 열 이름)
-
 		return res;
 		
 	}
@@ -620,8 +621,6 @@ public class ReviewDaoImpl implements ReviewDao {
 		String sql = "";
 		sql += "DELETE xreview";
 		sql += " WHERE review_no = ?";
-		
-		PreparedStatement ps = null; 
 		
 		int res = -1;
 		

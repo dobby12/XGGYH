@@ -63,4 +63,19 @@ public interface MemberService {
 	 */
 	public XMem getMyInfo(String memid);
 
+	/**
+	 * 유저정보 가져오기
+	 * 
+	 * @param memid
+	 * @return
+	 */
+	public XMem getUpdate(String memid);
+
+	/**
+	 * 
+	 * @param req
+	 */
+	public int updateMem(HttpServletRequest req);
+
+
 }
