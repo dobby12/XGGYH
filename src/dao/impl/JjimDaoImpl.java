@@ -9,6 +9,7 @@ import java.util.List;
 
 import common.JDBCTemplate;
 import dao.face.JjimDao;
+import dto.XJjim;
 import dto.XShow;
 import util.Paging;
 
@@ -16,6 +17,31 @@ public class JjimDaoImpl implements JjimDao {
 	
 	private PreparedStatement ps = null;
 	private ResultSet rs = null;
+	
+	@Override
+	public int insertJjim(Connection conn, XJjim jjim) {
+		String sql = "";
+		sql += "INSERT INTO XJJIM( jjim_no, mem_id, show_no)";
+		sql += " VALUES ( xjjim_seq.nextval, ?, ?)";
+		
+		int res = 0;
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			
+			ps.setString(1, jjim.getMemId());
+			ps.setInt(2, jjim.getShowNo());
+			
+			res = ps.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(ps);
+		}
+		
+		return res;
+	}
 
 	@Override
 	public List<XShow> selectAllByMemid(Connection conn, Paging paging, String memid) {

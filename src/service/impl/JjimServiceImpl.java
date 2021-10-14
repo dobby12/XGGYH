@@ -7,8 +7,10 @@ import javax.servlet.http.HttpServletRequest;
 import common.JDBCTemplate;
 import dao.face.JjimDao;
 import dao.impl.JjimDaoImpl;
+import dto.XJjim;
 import dto.XShow;
 import service.face.JjimService;
+
 import util.Paging;
 
 public class JjimServiceImpl implements JjimService  {
@@ -38,6 +40,20 @@ public class JjimServiceImpl implements JjimService  {
 
 		return jjimDao.selectAllByMemid(JDBCTemplate.getConnection(), paging, memid);
 		
+	}
+	
+	@Override
+	public int setJjim(XJjim jjim) {
+		
+		int isAble = jjimDao.insertJjim(JDBCTemplate.getConnection(), jjim);
+		
+		return isAble;
+	}
+
+	@Override
+	public XJjim getJjimInfo(HttpServletRequest req) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
