@@ -10,6 +10,7 @@ import common.JDBCTemplate;
 import dao.face.AskDao;
 import dao.impl.AskDaoImpl;
 import dto.XAsk;
+import dto.XComment;
 import service.face.AskService;
 import util.Paging;
 
@@ -137,6 +138,24 @@ public class AskServiceImpl implements AskService {
 	public List<XAsk> getAskListByMemid(Paging paging, String memid) {
 		
 		return askDao.selectAllByMemid(JDBCTemplate.getConnection(), paging, memid);
+	}
+
+	@Override
+	public XAsk detail(XAsk askNo) {
+		
+		Connection conn = JDBCTemplate.getConnection();
+
+		XAsk ask = askDao.selectAskByAskNo(conn, askNo); 
+		
+		return ask;
+		
+	}
+
+	@Override
+	public XComment getComment(XAsk askNo) {
+		Connection conn = JDBCTemplate.getConnection();
+		XComment comment= askDao.selectCommentByAskNo(conn, askNo);
+		return comment;
 	}
 	
 

@@ -7,28 +7,42 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import dto.XMem;
+import service.face.MemberService;
+import service.impl.MemberServiceImpl;
 
 @WebServlet("/mypage/myinfo/update")
 public class MemberUpdateController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
+	private MemberService memberService = new MemberServiceImpl();
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("/mypage/myinfo/update");
-	
+		System.out.println("/mypage/myinfo/update [GET]");
+
+		//로그인한 회원아이디
+		String memid = (String)req.getSession().getAttribute("memid");
+		
+		//상세보기
+		XMem updateMem = memberService.getUpdate(memid);
+		System.out.println(updateMem);
+
+		//조회결과값 전달
+		req.setAttribute("updateMem", updateMem);
+
+		req.getRequestDispatcher("/WEB-INF/views/mem/mypage/mem/update.jsp").forward(req, resp);		
+
 	}
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		System.out.println("/mypage/myinfo/update  [POST]");
 
-		memberService.update(req);
+		memberService.updateMem(req);
 		
-		resp.sendRedirect("/review/list");
+		resp.sendRedirect("/mypage/myinfo");
 	}
-	
 	
 }

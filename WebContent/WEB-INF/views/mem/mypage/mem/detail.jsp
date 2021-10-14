@@ -5,19 +5,7 @@
 
 <c:import url="/WEB-INF/views/layout/header.jsp" />
 
-<!-- jQuery 2.2.4 -->
-<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-
-<style type="text/css">
-form {
-	width: 400px;
-	margin: 0 auto;
-}
-</style>
-
-<div class="container">
-
-<h3></h3>
+<h2>${myinfo.memNick }님의 회원정보</h2>
 <hr>
 
 	<div>
@@ -48,10 +36,8 @@ form {
 		<label><c:if test="${myinfo.genreNo eq '7'}">어드벤처</c:if></label>
 		<label><c:if test="${myinfo.genreNo eq '8'}">미스테리</c:if></label>
 	</div>
-	<div>
-		<button type="button" id="btnJoin" >수정</button>
-		<button type="button" id="btnCancel" >취소</button>
-	</div>
 
-<!-- .container -->
-</div>
+	<div>
+		<button type="button" id="btnJoin" onclick="location.href='<%=request.getContextPath()%>/mypage/myinfo/update'">수정</button>
+		<button type="button" id="btnBack" >취소</button>
+	</div>

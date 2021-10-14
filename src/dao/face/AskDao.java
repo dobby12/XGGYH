@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.util.List;
 
 import dto.XAsk;
+import dto.XComment;
 import util.Paging;
 
 public interface AskDao {
@@ -69,5 +70,21 @@ public interface AskDao {
 	 * @return int - XAsk테이블 memid 행 수 조회 결과
 	 */
 	public int selectCntByMemId(Connection connection, String memid);
+
+	/**
+	 * 
+	 * @param conn
+	 * @param askNo
+	 * @return
+	 */
+	public XAsk selectAskByAskNo(Connection conn, XAsk askNo);
+
+	/**
+	 * 
+	 * @param conn
+	 * @param askNo
+	 * @return
+	 */
+	public XComment selectCommentByAskNo(Connection conn, XAsk askNo);
 	
 }
