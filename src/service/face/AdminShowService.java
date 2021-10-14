@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import dto.XFile;
+import dto.XMem;
 import dto.XShow;
 import util.Paging;
 
@@ -97,6 +98,23 @@ public interface AdminShowService {
 	 * @param req - 요청 정보 객체
 	 */
 	public void setShowUpdate(HttpServletRequest req);
+	
+	/**
+	 * 검색 결과 페이징
+	 * 
+	 * @param req
+	 * @return 페이징 계산이 완료된 Paging객체
+	 */
+	public Paging getParameterPaging(HttpServletRequest req);
+	
+	/**
+	 * 검색 결과리스트로 반환
+	 * 
+	 * @param req - 요청파라미터 keyword 
+	 * @param paging 
+	 * @return parameter로 찾은 show객체 리스트 반환
+	 */
+	public List<XShow> searchShowList(HttpServletRequest req, Paging paging);
 
 
 }

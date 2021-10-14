@@ -21,7 +21,7 @@ table {
 <table class="table table-hover table-condensed">
 
 <thead>
-<tr>	
+<tr>
 	<th style="text-align: center; width: 15%">회원 아이디</th>
 	<th style="text-align: center; width: 15%">회원 닉네임</th>
 	<th style="text-align: center; width: 20%">회원 메일 주소</th>

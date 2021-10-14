@@ -10,6 +10,7 @@ import java.util.List;
 import common.JDBCTemplate;
 import dao.face.AdminShowDao;
 import dto.XFile;
+import dto.XMem;
 import dto.XShow;
 import util.Paging;
 
@@ -419,6 +420,89 @@ public class AdminShowDaoImpl implements AdminShowDao {
 			return res;
 		
 		}
+	
+	@Override
+	public int selectCntSearchShowAll(Connection conn, String keyword) {
+		
+		String sql = "";
+		sql += "SELECT count(*) FROM xshow";
+		sql += " WHERE show_title like ?";
+		sql += " ORDER BY show_no";
+
+		int count = 0;
+
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, "%" + keyword + "%");
+			rs = ps.executeQuery();
+
+			while(rs.next()) {
+				count = rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+		}
+
+		return count;
+	}
+	
+	@Override
+	public List<XShow> selectShowSearchByShowtitle(Connection conn, String keyword, Paging paging) {
+		
+		String sql = "";
+		sql += "SELECT * FROM (";
+		sql += "	SELECT rownum rnum, XS.* FROM (";
+		sql += "		SELECT * FROM XShow"; 
+		sql += " 			WHERE show_title like ?";
+		sql += "		ORDER BY show_no DESC";
+		sql += "		)XS";
+		sql += "	)XSHOW";
+		sql += " WHERE rnum BETWEEN ? AND ?";
+
+
+		List<XShow> searchShowList = new ArrayList<XShow>();
+
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, "%" + keyword + "%");
+			ps.setInt(2, paging.getStartNo());
+			ps.setInt(3, paging.getEndNo());
+
+			rs = ps.executeQuery();
+
+			while(rs.next()) {
+				XShow show = new XShow();
+
+				show.setShowNo(rs.getInt("show_no"));
+				show.setFileNo(rs.getInt("file_no"));
+				show.setAdminId(rs.getString("admin_id"));
+				show.setKindNo(rs.getInt("kind_no"));
+				show.setGenreNo(rs.getInt("genre_no"));
+				show.setHallNo(rs.getInt("hall_no"));
+				show.setShowTitle(rs.getString("show_title"));
+				show.setShowContent(rs.getString("show_content"));
+				show.setShowDate(rs.getDate("show_date"));
+				show.setShowAge(rs.getString("show_age"));
+				show.setShowDirector(rs.getString("show_director"));
+				show.setShowActor(rs.getString("show_actor"));
+				show.setShowStart(rs.getDate("show_start"));
+				show.setShowEnd(rs.getDate("show_end"));
+
+				searchShowList.add(show);
+
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+		}
+
+		return searchShowList;
+	}
 		
 
 

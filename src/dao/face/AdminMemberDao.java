@@ -11,7 +11,7 @@ public interface AdminMemberDao {
 	/**
 	 * 멤버 전체 명수 조회
 	 * 
-	 * @param connection - DB연결 객체
+	 * @param conn - DB연결 객체
 	 * @return - 회원 총 인원
 	 */
 	public int selectCntMemAll(Connection conn);
@@ -29,7 +29,7 @@ public interface AdminMemberDao {
 	/**
 	 * 회원 전체 리스트 조회(페이징 있음)
 	 * 
-	 * @param connection - DB연결 객체
+	 * @param conn - DB연결 객체
 	 * @param paging - paging객체
 	 * @return 회원 전체 리스트 반환
 	 */
@@ -47,7 +47,7 @@ public interface AdminMemberDao {
 	/**
 	 * 멤버 아이디로 검색
 	 * 
-	 * @param connection
+	 * @param conn
 	 * @param keyword
 	 * @return 멤버 객체
 	 */
@@ -56,7 +56,7 @@ public interface AdminMemberDao {
 	/**
 	 * 멤버 닉네임으로 검색
 	 * 
-	 * @param connection
+	 * @param conn
 	 * @param keyword
 	 * @return 멤버 객체
 	 */
