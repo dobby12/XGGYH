@@ -50,5 +50,7 @@ public class JjimController extends HttpServlet {
 			else
 				System.out.println("찜 목록 추가 성공");
 		}
+		
+		resp.sendRedirect("/show/detail?showNo=" + req.getParameter("showNo"));
 	}
 }
