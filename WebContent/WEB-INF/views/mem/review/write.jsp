@@ -44,7 +44,7 @@ $(document).ready(function() {
 
 <table class="table table-striped table-hover table-condensed">
 <tr><td class="info">닉네임</td><td>${memnick }</td></tr>
-<tr><td class="info">공연이름</td><td><input type="text" name="showTitle" value="${showDetail.showTitle }" style="width:100%"/></td></tr>
+<tr><td class="info">공연이름</td><td>${showDetail.showTitle }</td></tr>
 <tr><td class="info">별점</td><td><input type="text" name="reviewScore" style="width:100%"/></td></tr>
 <tr><td class="info">제목</td><td><input type="text" name="reviewTitle" style="width:100%"/></td></tr>
 <tr><td class="info" colspan="12">본문</td></tr>

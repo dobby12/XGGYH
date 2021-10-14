@@ -377,6 +377,8 @@ public class ReviewServiceImpl implements ReviewService {
 					review.setReviewContent( value );
 				} else if( "reviewScore".equals(key) ) {
 					review.setReviewScore( Integer.parseInt(value) );
+				} else if ( "showNo".equals(key) ) {
+					review.setShowNo( Integer.parseInt(value) );
 				}
 			} //if( item.isFormField() ) end
 			
@@ -412,7 +414,7 @@ public class ReviewServiceImpl implements ReviewService {
 		//첨부파일정보 있을경우
 		if(reviewFile != null) {
 			int fileno = fileDao.selectNextFileno(conn);
-			reviewFile.setFileNo(review.getReviewNo());
+			reviewFile.setFileNo(fileno);
 			review.setFileNo(fileno);
 
 			if( fileDao.insertFile(conn, reviewFile) > 0 ) {
