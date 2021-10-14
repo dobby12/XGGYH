@@ -377,9 +377,9 @@ public class ReviewDaoImpl implements ReviewDao {
 	public int insert(Connection conn, XReview review) {
 		
 		String sql = "";
-		sql += "INSERT INTO xreview(review_no, show_no, mem_id, review_title,";
+		sql += "INSERT INTO xreview(review_no, show_no, file_no, mem_id, review_title,";
 		sql += " review_content, review_score, review_hit)";
-		sql += " VALUES (?, ?, ?, ?, ?, ?, 0)";
+		sql += " VALUES (?, ?, ?, ?, ?, ?, ?, 0)";
 		
 		int res = 0;
 		
@@ -388,10 +388,15 @@ public class ReviewDaoImpl implements ReviewDao {
 			
 			ps.setInt(1, review.getReviewNo());
 			ps.setInt(2, review.getShowNo());
-			ps.setString(3, review.getMemId());
-			ps.setString(4, review.getReviewTitle());
-			ps.setString(5, review.getReviewContent());
-			ps.setInt(6, review.getReviewScore());
+			if(review.getFileNo() == 0 ) {
+				ps.setObject(3, null);
+			} else {
+				ps.setInt(3, review.getFileNo());
+			}
+			ps.setString(4, review.getMemId());
+			ps.setString(5, review.getReviewTitle());
+			ps.setString(6, review.getReviewContent());
+			ps.setInt(7, review.getReviewScore());
 
 			res = ps.executeUpdate();
 			
@@ -528,7 +533,8 @@ public class ReviewDaoImpl implements ReviewDao {
 		sql += "UPDATE xreview";
 		sql += " SET review_title = ?,";
 		sql += " review_content = ?,";
-		sql += " review_score = ?";
+		sql += " review_score = ?,";
+		sql += " file_no = ?";
 		sql += " WHERE review_no = ?";
 		
 		PreparedStatement ps = null; 
@@ -540,7 +546,8 @@ public class ReviewDaoImpl implements ReviewDao {
 			ps.setString(1, review.getReviewTitle());
 			ps.setString(2, review.getReviewContent());
 			ps.setInt(3,  review.getReviewScore());
-			ps.setInt(4, review.getReviewNo());
+			ps.setInt(4, review.getFileNo());
+			ps.setInt(5, review.getReviewNo());
 
 			res = ps.executeUpdate();
 			

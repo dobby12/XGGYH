@@ -147,35 +147,32 @@ public class ReviewServiceImpl implements ReviewService {
 		
 		//입력한 게시글전달
 		XReview review = null;
-		
 		//업로드한 첨부파일 전달
 		XFile reviewFile = null;
 		
 		boolean isMultipart = false;
 		isMultipart = ServletFileUpload.isMultipartContent(req);
-		
 		if( !isMultipart ) {
 			System.out.println("[ERROR] multipart/form-data 형식이 아님");
-			
 			return;
 		}
-		
 		//입력을 저장할 DTO 생성
 		review = new XReview();
 		
 		DiskFileItemFactory factory = new DiskFileItemFactory();
-		
 		factory.setSizeThreshold(10 * 1024 * 1024); //10MB
 
 		File repository = new File(req.getServletContext().getRealPath("tmp"));
 		repository.mkdir();
 		factory.setRepository(repository);
 		
+		//파일 업로드 객체 생성
 		ServletFileUpload upload = new ServletFileUpload(factory);
 
+		//업로드 용량 제한
 		upload.setFileSizeMax(10 * 1024 * 1024); //10MB
 		
-		//전달데이터파싱
+		//전달 데이터 파싱
 		List<FileItem> items = null;
 		try {
 			items = upload.parseRequest(req);
@@ -185,21 +182,19 @@ public class ReviewServiceImpl implements ReviewService {
 
 		//파싱된 전달파라미터 처리할 반복자
 		Iterator<FileItem> iter = items.iterator();
-
 		while( iter.hasNext() ) {
 			FileItem item = iter.next();
 
-			
 			//빈파일
 			if( item.getSize() <= 0 ) {
 				continue;
 			}
 			
-			//form데이터 DB삽입 처리
+			//form DB삽입
 			if( item.isFormField() ) {
 				String key = item.getFieldName();
-				
 				String value = null;
+
 				try {
 					value = item.getString("UTF-8");
 				} catch (UnsupportedEncodingException e1) {
@@ -212,11 +207,7 @@ public class ReviewServiceImpl implements ReviewService {
 					review.setReviewContent( value );
 				} else if ( "reviewScore".equals(key) ) {
 					review.setReviewScore( Integer.parseInt(value) );
-				} else if ( "showNo".equals(key) ) {
-					review.setShowNo( Integer.parseInt(value) );
-				} else if ( "memId".equals(key) ) {
-					review.setMemId( value );
-				}
+				} 
 				
 			} //if( item.isFormField() ) end
 			
@@ -241,6 +232,7 @@ public class ReviewServiceImpl implements ReviewService {
 					e.printStackTrace();
 				}
 				
+				//업로드된 파일 정보 저장
 				reviewFile = new XFile();
 				reviewFile.setFileOriginName(origin);
 				reviewFile.setFileStoredName(stored);
