@@ -152,18 +152,9 @@ public interface ReviewDao {
 	/**
 	 * 게시글 삭제
 	 * 
-	 * @param review - 삭제할 게시글번호를 담은 객체
+	 * @param reviewno - 삭제할 게시글번호를 담은 객체
 	 */
-	public int delete(Connection conn, XReview review);
-	
-	/**
-	 * 게시글에 첨부된 파일 기록 삭제
-	 * 
-	 * @param review - 삭제할 게시글번호를 담은 객체
-	 */
-	public int deleteFile(Connection conn, XReview review);
-
-
+	public int delete(Connection conn, int reviewno);
 
 }
 

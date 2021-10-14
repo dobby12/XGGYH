@@ -39,14 +39,16 @@
 
 <div>
 <c:if test="${not empty reviewFile }">
-첨부파일 : ${reviewFile.fileOriginName }
+첨부파일 : <a href="/upload/${reviewFile.fileStoredName }" >${reviewFile.fileOriginName }</a>
 </c:if>
 </div>
 
 <div class="button">	
 	<a href="<%=request.getContextPath() %>/review/list"><button id="btnList">목록</button></a>
-	<a href="<%=request.getContextPath() %>/review/update?reviewno=${viewReview.reviewNo }"><button id="btnUpdate">수정</button></a>
-	<a href="<%=request.getContextPath() %>/review/delete?reviewno=${viewReview.reviewNo }"><button id="btnDelete">삭제</button></a>
+	<c:if test="${memid eq viewReview.memId }">
+		<a href="<%=request.getContextPath() %>/review/update?reviewno=${viewReview.reviewNo }"><button id="btnUpdate">수정</button></a>
+		<a href="<%=request.getContextPath() %>/review/delete?reviewno=${viewReview.reviewNo }"><button id="btnDelete">삭제</button></a>
+	</c:if>
 </div>
 
 </div>

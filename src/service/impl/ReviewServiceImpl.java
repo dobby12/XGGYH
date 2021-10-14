@@ -434,15 +434,17 @@ public class ReviewServiceImpl implements ReviewService {
 	}
 	
 	@Override
-	public void delete(XReview reviewno) {
+	public void delete(int reviewno) {
 		Connection conn = JDBCTemplate.getConnection();
 		
-		if( reviewDao.deleteFile(conn, reviewno) > 0 ) {
+		int fileno = getFile(reviewno).getFileNo();
+		
+		if( reviewDao.delete(conn, reviewno) > 0 ) {
 			JDBCTemplate.commit(conn);
 		} else {
 			JDBCTemplate.rollback(conn);
 		}
-		if( reviewDao.delete(conn, reviewno) > 0 ) {
+		if( fileDao.deleteFile(conn, fileno) > 0 ) {
 			JDBCTemplate.commit(conn);
 		} else {
 			JDBCTemplate.rollback(conn);

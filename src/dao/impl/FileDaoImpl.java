@@ -60,13 +60,13 @@ public class FileDaoImpl implements FileDao {
 	
 	
 	@Override
-	public int deleteFile(Connection conn, int fileNo) {
+	public int deleteFile(Connection conn, int fileno) {
 		
 		String sql = "DELETE XFILE WHERE FILE_NO=?";
 		int res = -1;
 		try {
 			ps = conn.prepareStatement(sql);
-			ps.setInt(1, fileNo);
+			ps.setInt(1, fileno);
 			res = ps.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

@@ -577,7 +577,7 @@ public class ReviewDaoImpl implements ReviewDao {
 	}
 
 	@Override
-	public int delete(Connection conn, XReview review) {
+	public int delete(Connection conn, int reviewno) {
 		
 		String sql = "";
 		sql += "DELETE xreview";
@@ -589,7 +589,7 @@ public class ReviewDaoImpl implements ReviewDao {
 		
 		try {
 			ps = conn.prepareStatement(sql);
-			ps.setInt(1, review.getReviewNo());
+			ps.setInt(1, reviewno);
 
 			res = ps.executeUpdate();
 			
@@ -602,33 +602,4 @@ public class ReviewDaoImpl implements ReviewDao {
 		
 		return res;
 	}
-	
-	@Override
-	public int deleteFile(Connection conn, XReview review) {
-		
-		String sql = "";
-		sql += "DELETE xfile";
-		sql += " WHERE file_no = ?";
-		
-		PreparedStatement ps = null; 
-		
-		int res = -1;
-		
-		try {
-			ps = conn.prepareStatement(sql);
-			ps.setInt(1, review.getReviewNo());
-
-			res = ps.executeUpdate();
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-			
-		} finally {
-			JDBCTemplate.close(ps);
-		}
-		
-		return res;
-	}
-
-
 }
