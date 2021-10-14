@@ -29,11 +29,7 @@ public class ReviewWriteController extends HttpServlet {
 			return;
 		}
 		
-		req.setAttribute("showTitle", req.getParameter("showTitle"));
-		//req.setAttribute("showTitle", showno를 title로 바꾸는 메소드);
-		
-//		<button  style="margin: auto 0"onclick="location.href='<%=request.getContextPath()%>/review/write?showNo=${showDetail.showNo}';">리뷰 작성</button>
-
+		req.setAttribute("showTitle", getShowTitle(XReview viewReview);
 		
 		req.getRequestDispatcher("/WEB-INF/views/mem/review/write.jsp").forward(req, resp);
 	}
