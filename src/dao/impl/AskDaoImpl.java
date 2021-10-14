@@ -10,6 +10,7 @@ import java.util.List;
 import common.JDBCTemplate;
 import dao.face.AskDao;
 import dto.XAsk;
+import dto.XComment;
 import util.Paging;
 
 public class AskDaoImpl implements AskDao {
@@ -268,5 +269,79 @@ public class AskDaoImpl implements AskDao {
 		}
 		
 		return count;
+	}
+
+	@Override
+	public XAsk selectAskByAskNo(Connection conn, XAsk askNo) {
+		
+	String sql = "";
+	sql += "SELECT * FROM xask";
+	sql += " WHERE ask_no = ?";
+	
+	XAsk detailAsk = null;
+	
+	try {
+		ps = conn.prepareStatement(sql);
+		
+		ps.setInt(1, askNo.getAskNo());
+		
+		rs = ps.executeQuery();
+		
+		while(rs.next()) {
+			
+			detailAsk = new XAsk(); //결과값 저장 객체
+			
+			detailAsk.setAskNo( rs.getInt("ask_no") );
+			detailAsk.setMemId( rs.getString("mem_id") );
+			detailAsk.setAskTitle( rs.getString("ask_title") );
+			detailAsk.setAskContent( rs.getString("ask_content") );
+			detailAsk.setAskDate( rs.getDate("ask_date") );
+			detailAsk.setAskKind( rs.getString("ask_kind") );
+			detailAsk.setAskState( rs.getString("ask_state") );
+			
+		}
+		
+	} catch (SQLException e) {
+		e.printStackTrace();
+	} finally {
+		JDBCTemplate.close(rs);
+		JDBCTemplate.close(ps);
+	}
+	
+	return detailAsk;
+	
+	}
+	
+	@Override
+	public XComment selectCommentByAskNo(Connection conn, XAsk askNo) {
+		
+		String sql ="";
+		sql += "SELECT comment_no, ask_no, admin_id, comment_content";
+		sql += " FROM XComment WHERE ask_no = ?";
+		
+		//조회된 결과를 저장할 객체
+		XComment com = new XComment();
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, askNo.getAskNo() );
+			rs = ps.executeQuery();
+			
+			while( rs.next() ) {
+				
+				com.setCommentNo(rs.getInt("comment_no"));
+				com.setAskNo(rs.getInt("ask_no"));
+				com.setAdminId(rs.getString("admin_id"));
+				com.setCommentContent(rs.getString("comment_content"));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+		}
+		
+		return com;
 	}
 }

@@ -22,18 +22,18 @@ $(document).ready(function() {
 
 <table class="table table-bordered">
 <tr>
-<td class="info">번호</td><td colspan="3">${viewNotice.noticeNo }</td>
+<td>번호</td><td colspan="3">${viewNotice.noticeNo }</td>
 </tr>
 
 <tr>
-<td class="info">제목</td><td colspan="3">${viewNotice.noticeTitle }</td>
+<td>제목</td><td colspan="3">${viewNotice.noticeTitle }</td>
 </tr>
 
 <tr>
-<td class="info">작성일</td><td colspan="3">${viewNotice.noticeDate }</td>
+<td>작성일</td><td colspan="3">${viewNotice.noticeDate }</td>
 </tr>
 
-<tr><td class="info"  colspan="4">본문</td></tr>
+<tr><td colspan="4">본문</td></tr>
 
 <tr><td colspan="4">${viewNotice.noticeContent }</td></tr>
 

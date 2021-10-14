@@ -154,7 +154,7 @@ public class MemberDaoImpl implements MemberDao {
 		sql += "SELECT * FROM XMEM";
 		sql += "	WHERE MEM_ID = ? ";
 			
-		XMem myinfo = null;
+		XMem mem = null;
 			
 		try {
 			
@@ -164,15 +164,15 @@ public class MemberDaoImpl implements MemberDao {
 
 			while (rs.next()) {
 					
-				myinfo = new XMem();
+				mem = new XMem();
 					
-				myinfo.setMemId(rs.getString("mem_id"));
-				myinfo.setMemPw(rs.getString("mem_pw"));
-				myinfo.setMemNick(rs.getString("mem_nick"));
-				myinfo.setMemMail(rs.getString("mem_mail"));
-				myinfo.setMailState(rs.getString("mail_state"));
-				myinfo.setGenreNo(rs.getInt("genre_no"));
-				myinfo.setMemDate(rs.getDate("mem_date"));
+				mem.setMemId(rs.getString("mem_id"));
+				mem.setMemPw(rs.getString("mem_pw"));
+				mem.setMemNick(rs.getString("mem_nick"));
+				mem.setMemMail(rs.getString("mem_mail"));
+				mem.setMailState(rs.getString("mail_state"));
+				mem.setGenreNo(rs.getInt("genre_no"));
+				mem.setMemDate(rs.getDate("mem_date"));
 				
 			}
 			
@@ -182,7 +182,44 @@ public class MemberDaoImpl implements MemberDao {
 			JDBCTemplate.close(rs);
 			JDBCTemplate.close(ps);
 		}
-			return myinfo;
+			return mem;
 	}
 
+	@Override
+	public int updateMem(Connection conn, XMem mem) {
+
+		String sql = "";
+		sql += "UPDATE xmem";
+		sql += " SET mem_pw = ?";
+		sql += " , mem_nick = ?";
+		sql += " , mem_mail = ?";
+		sql += " , mail_state = ?";
+		sql += " , genre_no = ?";
+		sql += " WHERE mem_id = ?";
+		
+		int res = 0;
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			
+			ps.setString(1, mem.getMemPw());
+			ps.setString(2, mem.getMemNick());
+			ps.setString(3,  mem.getMemMail());
+			ps.setString(4,  mem.getMailState());
+			ps.setInt(5,  mem.getGenreNo());
+			ps.setString(6, mem.getMemId());
+			
+			System.out.println("[TEST update]\n" + mem);
+
+			res = ps.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			
+		} finally {
+			JDBCTemplate.close(ps);
+		}
+		
+		return res;
+	}
 }
