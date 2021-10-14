@@ -6,7 +6,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 
 <%
-	List<XShow> list = (List) request.getAttribute("list");
+	List<XShow> searchShowList = (List) request.getAttribute("searchShowList");
 %>
 
 <c:import url="/WEB-INF/views/layout/adminheader.jsp"></c:import>
@@ -21,7 +21,7 @@ table {
 
 <div class="container" style="text-align: center;">
 
-<h2>공연 목록</h2>
+<h2>공연 목록 검색 결과</h2>
 <button id="btnWrite" onclick="location.href='/admin/show/write';"style="margin: -25px 0 15px 0; float: right;">
 	작성하기
 </button>
@@ -40,17 +40,17 @@ table {
 </thead>
 
 <tbody>
-<% for(int i=0 ; i<list.size(); i++) { %>
+<% for(int i=0 ; i<searchShowList.size(); i++) { %>
 <tr>
-	<td><%= list.get(i).getShowNo() %></td>
-	<td><%= list.get(i).getAdminId() %></td>
-	<td><a href="<%=request.getContextPath() %>/admin/show/detail?showno=<%=list.get(i).getShowNo() %>">
-			<%= list.get(i).getShowTitle() %>
+	<td><%= searchShowList.get(i).getShowNo() %></td>
+	<td><%= searchShowList.get(i).getAdminId() %></td>
+	<td><a href="<%=request.getContextPath() %>/admin/show/detail?showno=<%=searchShowList.get(i).getShowNo() %>">
+			<%= searchShowList.get(i).getShowTitle() %>
 		</a>
 	</td>
-	<td><%= list.get(i).getShowDate() %></td>
-	<td><%= list.get(i).getShowStart() %></td>
-	<td><%= list.get(i).getShowEnd() %></td>
+	<td><%= searchShowList.get(i).getShowDate() %></td>
+	<td><%= searchShowList.get(i).getShowStart() %></td>
+	<td><%= searchShowList.get(i).getShowEnd() %></td>
 </tr>
 <%} %>
 </tbody>
@@ -59,14 +59,6 @@ table {
 
 </div>
 
-<c:import url="/WEB-INF/views/layout/paging.jsp" />
-
-<div style="text-align: center; margin: 0 0 25px 0;" >
-<form action="<%=request.getContextPath() %>/admin/show/search" method="get">
-	<input type="text" id="keyword" name="keyword" placeholder="검색어를 입력하세요"/>
-	<button>검색</button>
-</form>
-</div>
-
+<c:import url="/WEB-INF/views/layout/parameterPaging.jsp" />
 <c:import url="/WEB-INF/views/layout/footer.jsp" />
 

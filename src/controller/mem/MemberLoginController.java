@@ -22,7 +22,6 @@ public class MemberLoginController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		System.out.println("###TEST### LoginController doGet()"); 
-		
 		req.getRequestDispatcher("/WEB-INF/views/mem/login.jsp").forward(req, resp);
 	}
 	
@@ -38,11 +37,12 @@ public class MemberLoginController extends HttpServlet {
 			session.setAttribute("login", true);
 			session.setAttribute("memid", memberService.getMem(mem).getMemId());
 			session.setAttribute("memnick", memberService.getMem(mem).getMemNick());
-			req.getRequestDispatcher("/WEB-INF/views/mem/main.jsp").forward(req, resp);
+//			req.getRequestDispatcher("/WEB-INF/views/mem/loginresult.jsp").forward(req, resp);
+			System.out.println("로그인 후 돌아갈 페이지 : "+req.getParameter("ref"));
+			resp.sendRedirect(req.getParameter("ref"));
 		} else {
 			session.setAttribute("loginfail", true);
 			req.getRequestDispatcher("/WEB-INF/views/mem/login.jsp").forward(req, resp);
 		}
-		
 	}
 }

@@ -10,6 +10,7 @@ import java.util.List;
 import common.JDBCTemplate;
 import dao.face.AdminShowDao;
 import dto.XFile;
+import dto.XMem;
 import dto.XShow;
 import util.Paging;
 
@@ -372,41 +373,137 @@ public class AdminShowDaoImpl implements AdminShowDao {
 	public int updateShow(Connection conn, XShow xshow) {
 		
 		String sql = "";
-		sql += "UPDATE xshow SET file_no=?, admin_id=?, kind_no=?,";
-		sql += " genre_no=?, hall_no=?, show_title=?, show_content=?,";
+		sql += "UPDATE XSHOW SET admin_id=?, kind_no=?, genre_no=?, hall_no=?, show_title=?, show_content=?,";
 		sql += " show_age=?, show_director=?, show_actor=?, show_start=?, show_end=?, show_date=sysdate";
-		sql += " WHERE show_no=?";
 		
-		int res = -1;
+		if( xshow.getFileNo() == 0 ) {
+			sql += " WHERE show_no=?";
+		} else {
+			sql += ", file_no=? WHERE show_no=?";
+		}
 		
+			int res = -1;
+			
+			try {
+				ps = conn.prepareStatement(sql);
+				
+				ps.setString(1, xshow.getAdminId());
+				ps.setInt(2, xshow.getKindNo());
+				ps.setInt(3, xshow.getGenreNo());
+				ps.setInt(4, xshow.getHallNo());
+				ps.setString(5, xshow.getShowTitle());
+				ps.setString(6, xshow.getShowContent());
+				ps.setString(7, xshow.getShowAge());
+				ps.setString(8, xshow.getShowDirector());
+				ps.setString(9, xshow.getShowActor());
+				ps.setDate(10, new java.sql.Date(xshow.getShowStart().getTime()));
+				ps.setDate(11, new java.sql.Date(xshow.getShowEnd().getTime()));
+				
+				if( xshow.getFileNo() == 0 ) {
+					ps.setInt(12, xshow.getShowNo());
+				} else {
+					ps.setInt(12, xshow.getFileNo());
+					ps.setInt(13, xshow.getShowNo());
+				}
+					
+				
+				System.out.println(xshow);
+				res = ps.executeUpdate();
+
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				JDBCTemplate.close(ps);
+			}
+			
+			return res;
+		
+		}
+	
+	@Override
+	public int selectCntSearchShowAll(Connection conn, String keyword) {
+		
+		String sql = "";
+		sql += "SELECT count(*) FROM xshow";
+		sql += " WHERE show_title like ?";
+		sql += " ORDER BY show_no";
+
+		int count = 0;
+
 		try {
 			ps = conn.prepareStatement(sql);
-			
-			ps.setInt(1, xshow.getFileNo());
-			ps.setString(2, xshow.getAdminId());
-			ps.setInt(3, xshow.getKindNo());
-			ps.setInt(4, xshow.getGenreNo());
-			ps.setInt(5, xshow.getHallNo());
-			ps.setString(6, xshow.getShowTitle());
-			ps.setString(7, xshow.getShowContent());
-			ps.setString(8, xshow.getShowAge());
-			ps.setString(9, xshow.getShowDirector());
-			ps.setString(10, xshow.getShowActor());
-			ps.setDate(11, new java.sql.Date(xshow.getShowStart().getTime()));
-			ps.setDate(12, new java.sql.Date(xshow.getShowEnd().getTime()));
-			ps.setInt(13, xshow.getShowNo());
-			
-			System.out.println(xshow);
-			res = ps.executeUpdate();
-			
+			ps.setString(1, "%" + keyword + "%");
+			rs = ps.executeQuery();
+
+			while(rs.next()) {
+				count = rs.getInt(1);
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
+			JDBCTemplate.close(rs);
 			JDBCTemplate.close(ps);
 		}
-		
-		return res;
-		
+
+		return count;
 	}
+	
+	@Override
+	public List<XShow> selectShowSearchByShowtitle(Connection conn, String keyword, Paging paging) {
+		
+		String sql = "";
+		sql += "SELECT * FROM (";
+		sql += "	SELECT rownum rnum, XS.* FROM (";
+		sql += "		SELECT * FROM XShow"; 
+		sql += " 			WHERE show_title like ?";
+		sql += "		ORDER BY show_no DESC";
+		sql += "		)XS";
+		sql += "	)XSHOW";
+		sql += " WHERE rnum BETWEEN ? AND ?";
+
+
+		List<XShow> searchShowList = new ArrayList<XShow>();
+
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, "%" + keyword + "%");
+			ps.setInt(2, paging.getStartNo());
+			ps.setInt(3, paging.getEndNo());
+
+			rs = ps.executeQuery();
+
+			while(rs.next()) {
+				XShow show = new XShow();
+
+				show.setShowNo(rs.getInt("show_no"));
+				show.setFileNo(rs.getInt("file_no"));
+				show.setAdminId(rs.getString("admin_id"));
+				show.setKindNo(rs.getInt("kind_no"));
+				show.setGenreNo(rs.getInt("genre_no"));
+				show.setHallNo(rs.getInt("hall_no"));
+				show.setShowTitle(rs.getString("show_title"));
+				show.setShowContent(rs.getString("show_content"));
+				show.setShowDate(rs.getDate("show_date"));
+				show.setShowAge(rs.getString("show_age"));
+				show.setShowDirector(rs.getString("show_director"));
+				show.setShowActor(rs.getString("show_actor"));
+				show.setShowStart(rs.getDate("show_start"));
+				show.setShowEnd(rs.getDate("show_end"));
+
+				searchShowList.add(show);
+
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+		}
+
+		return searchShowList;
+	}
+		
+
 
 }

@@ -114,5 +114,23 @@ public interface AdminShowDao {
 	 * @return int
 	 */
 	public int updateShow(Connection conn, XShow xshow);
+	
+	/**
+	 * 검색된 전체 공연 수 조회
+	 * 
+	 * @param conn
+	 * @param keyword - 검색어
+	 * @return 전체 인원
+	 */
+	public int selectCntSearchShowAll(Connection conn, String keyword);
+	
+	/**
+	 * 공연 제목으로 검색
+	 * 
+	 * @param conn
+	 * @param keyword
+	 * @return 공연 리스트 객체
+	 */
+	public List<XShow> selectShowSearchByShowtitle(Connection conn, String keyword, Paging paging);
 
 }

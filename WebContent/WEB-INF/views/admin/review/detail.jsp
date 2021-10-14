@@ -5,6 +5,36 @@
 
 <c:import url="/WEB-INF/views/layout/adminheader.jsp" />
 
+<script>
+$(document).ready(function(){
+	$("#btnDelete").click(function(){
+		
+		var answer = confirm("리뷰를 정말 삭제하시겠습니까?")
+		
+		if( answer == true ){
+			location.href = "<%=request.getContextPath() %>/admin/comment/delete?askNo=${xask.askNo }";
+		} else {
+			return false;
+		}
+	})
+	
+	$("#btnList").click(function(){
+		
+		var answer = confirm("댓글을 수정하시겠습니까?")
+		
+		if(answer == true){
+			location.href="<%=request.getContextPath() %>/admin/comment/update?askNo=${xask.askNo }";
+		} else {
+			return false;
+		}
+		
+	})
+
+})
+
+</script>
+
+
 <div class="container">
 
 <h1>게시글 상세보기</h1>
@@ -55,6 +85,8 @@
 
 <div class="button">
 	<a href="<%=request.getContextPath() %>/admin/review/delete?reviewno=${viewReview.reviewNo }"><button id="btnDelete">삭제</button></a>
+	<button id="btnList">목록으로 돌아가기</button>
+	
 </div>
 
 

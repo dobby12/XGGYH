@@ -219,15 +219,23 @@ public class AdminNoticeDaoImpl implements AdminNoticeDao {
 	@Override
 	public int updateNotice(Connection connection, XNotice notice) {
 
-		String sql = "UPDATE XNOTICE SET NOTICE_TITLE=?, NOTICE_CONTENT=?, FILE_NO=? WHERE NOTICE_NO=?";
+		String sql = "UPDATE XNOTICE SET NOTICE_TITLE=?, NOTICE_CONTENT=?";
+		if(notice.getFileNo()==0) {
+			sql += " WHERE NOTICE_NO=?";			
+		} else {
+			sql += ", FILE_NO=? WHERE NOTICE_NO=?";
+		}
 		int res = -1;
 		try {
 			ps = connection.prepareStatement(sql);
 			ps.setString(1, notice.getNoticeTitle());
 			ps.setString(2, notice.getNoticeContent());
-			ps.setInt(3, notice.getFileNo());
-			ps.setInt(4, notice.getNoticeNo());
-			System.out.println("@@@1@@@" + notice);
+			if(notice.getFileNo()==0) {
+				ps.setInt(3, notice.getNoticeNo());
+			} else {
+				ps.setInt(3, notice.getFileNo());
+				ps.setInt(4, notice.getNoticeNo());
+			}
 			res = ps.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

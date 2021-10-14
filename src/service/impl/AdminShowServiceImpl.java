@@ -3,7 +3,6 @@ package service.impl;
 import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.sql.Connection;
-import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Iterator;
@@ -440,6 +439,38 @@ public class AdminShowServiceImpl implements AdminShowService {
 				JDBCTemplate.rollback(conn);
 			}
 		}
+	}
+	
+	@Override
+	public Paging getParameterPaging(HttpServletRequest req) {
+		
+		String param = req.getParameter("curPage");
+		int curPage = 0;
+		if(param != null && !"".equals(param)) {
+			curPage = Integer.parseInt(param);
+		} else {
+			System.out.println("[WARNING] curPage값이 null이거나 비어있습니다");
+		}
+		
+		String keyword = (String)req.getParameter("keyword");
+
+		int totalCount = adminShowDao.selectCntSearchShowAll(JDBCTemplate.getConnection(), keyword);
+
+		Paging paging = new Paging(totalCount, curPage);
+
+		return paging;
+		
+		
+	}
+	
+	@Override
+	public List<XShow> searchShowList(HttpServletRequest req, Paging paging) {
+		
+		String keyword = (String)req.getParameter("keyword");
+		
+		System.out.println(keyword);
+		
+		return adminShowDao.selectShowSearchByShowtitle(JDBCTemplate.getConnection(), keyword, paging);
 	}
 
 }

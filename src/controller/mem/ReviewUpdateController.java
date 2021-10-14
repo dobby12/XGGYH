@@ -28,7 +28,7 @@ public class ReviewUpdateController extends HttpServlet {
 		if(param!=null && !"".equals(param)) {
 			reviewno = Integer.parseInt(param);
 		} else {
-			System.out.println("!!!ERROR!!! noticeno로 전달된 파라미터가 숫자가 아닙니다.");
+			System.out.println("!!!ERROR!!! reviewno로 전달된 파라미터가 숫자가 아닙니다.");
 		}
 		
 		//전달파라미터
