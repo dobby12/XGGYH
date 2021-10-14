@@ -64,6 +64,16 @@
 <body>
 
 	<c:import url="/WEB-INF/views/layout/header.jsp" />
+	
+	<div class="detailButton">
+		<a href="<%=request.getContextPath() %>/review/list">공연 리뷰 더보기</a>
+		<button onclick="location.href='<%=request.getContextPath()%>/show?kindNo=${showDetail.kindNo}';">공연목록</button>
+	<c:if test="${login}">
+		<button onclick="location.href='<%=request.getContextPath()%>/review/write?showNo=${showDetail.showNo}';">리뷰 작성</button>
+		<button onclick="location.href='<%=request.getContextPath()%>/mem/jjim?showNo=${showDetail.showNo}&memId=${memid}';">이 공연 찜하기</button>
+		<button onclick="location.href='<%=request.getContextPath()%>/mem/jjim/delete?showNo=${showDetail.showNo}&memId=${memid}';">찜한 공연 삭제하기</button>
+	</c:if>
+	</div>
 
 	<div class="container">
 
@@ -93,16 +103,6 @@
 		</div>
 
 		<div class="content">${showDetail.showContent }</div>
-	</div>
-	
-	<div class="detailButton">
-		<a href="<%=request.getContextPath() %>/review/list?Title=${showDetail.showTitle}">공연 리뷰 더보기</a>
-		<button onclick="location.href='<%=request.getContextPath()%>/show?kindNo=${showDetail.kindNo}';">공연목록</button>
-	<c:if test="${login}">
-		<button onclick="location.href='<%=request.getContextPath()%>/review/write?showNo=${showDetail.showNo}';">리뷰 작성</button>
-		<button onclick="location.href='<%=request.getContextPath()%>/mem/jjim?showNo=${showDetail.showNo}&memId=${memid}';">이 공연 찜하기</button>
-		<button onclick="location.href='<%=request.getContextPath()%>/mem/jjim?showNo=${showDetail.showNo}&memId=${memid}';">찜한 공연 삭제하기</button>
-	</c:if>
 	</div>
 	
 	<c:import url="/WEB-INF/views/layout/footer.jsp" />

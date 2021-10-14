@@ -14,32 +14,32 @@ import dto.XShow;
 import util.Paging;
 
 public class JjimDaoImpl implements JjimDao {
-	
+
 	private PreparedStatement ps = null;
 	private ResultSet rs = null;
-	
+
 	@Override
 	public int insertJjim(Connection conn, XJjim jjim) {
 		String sql = "";
 		sql += "INSERT INTO XJJIM( jjim_no, mem_id, show_no)";
 		sql += " VALUES ( xjjim_seq.nextval, ?, ?)";
-		
+
 		int res = 0;
-		
+
 		try {
 			ps = conn.prepareStatement(sql);
-			
+
 			ps.setString(1, jjim.getMemId());
 			ps.setInt(2, jjim.getShowNo());
-			
+
 			res = ps.executeUpdate();
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			JDBCTemplate.close(ps);
 		}
-		
+
 		return res;
 	}
 
@@ -57,17 +57,17 @@ public class JjimDaoImpl implements JjimDao {
 		sql += " ) XSHOW";
 		sql += " WHERE rnum BETWEEN ? AND ?";
 
-		List<XShow> jjimlist = new ArrayList<>(); 
-		
+		List<XShow> jjimlist = new ArrayList<>();
+
 		try {
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, memid);
 			ps.setInt(2, paging.getStartNo());
 			ps.setInt(3, paging.getEndNo());
-			
+
 			rs = ps.executeQuery();
-			
-			while(rs.next()) {
+
+			while (rs.next()) {
 				XShow s = new XShow();
 
 				s.setShowNo(rs.getInt("show_no"));
@@ -76,47 +76,75 @@ public class JjimDaoImpl implements JjimDao {
 				s.setShowDate(rs.getDate("show_date"));
 				s.setShowStart(rs.getDate("show_start"));
 				s.setShowEnd(rs.getDate("show_end"));
-				
+
 				jjimlist.add(s);
 			}
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			JDBCTemplate.close(rs);
 			JDBCTemplate.close(ps);
 		}
-		
+
 		return jjimlist;
 	}
 
 	@Override
 	public int selectCntByMemId(Connection conn, String memid) {
-		
-		//SQL 작성
+
+		// SQL 작성
 		String sql = "";
 		sql += "SELECT count(*) FROM xjjim";
 		sql += " WHERE mem_id = ?";
-				
-		//총 게시글 수
+
+		// 총 게시글 수
 		int count = 0;
-				
+
 		try {
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, memid);
 			rs = ps.executeQuery();
-					
-			while(rs.next()) {
+
+			while (rs.next()) {
 				count = rs.getInt(1);
 			}
-					
+
 		} catch (SQLException e) {
-					e.printStackTrace();
+			e.printStackTrace();
 		} finally {
 			JDBCTemplate.close(rs);
 			JDBCTemplate.close(ps);
 		}
-		
+
 		return count;
+	}
+
+	@Override
+	public int deleteJjim(Connection conn, String memId, String showNo) {
+
+		// XJjim 테이블에 조건에 맞는 행 삭제
+		String sql = "";
+		sql += "DELETE XJjim ";
+		sql += "WHERE mem_id = ? AND show_no = ?";
+
+		// 총 게시글 수
+		int isDeleted = 0;
+
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, memId);
+			ps.setString(2, showNo);
+
+			isDeleted = ps.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+		}
+
+		return isDeleted;
 	}
 }

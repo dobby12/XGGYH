@@ -8,6 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import service.face.JjimService;
+import service.impl.JjimServiceImpl;
+
 /**
  * Servlet implementation class JjimDeleteController
  */
@@ -15,13 +18,29 @@ import javax.servlet.http.HttpServletResponse;
 public class JjimDeleteController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
+	private JjimService jjimService = new JjimServiceImpl();
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("/mem/jjim/delete [GET]");
+		doPost(req, resp);
 	}
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		System.out.println("/mem/jjim/delete [POST]");
+		
+		String memId = req.getParameter("memId");
+		String showNo = req.getParameter("showNo");
+		
+		int isDeleted = jjimService.setJjimDelete(memId, showNo);
+		
+		System.out.println("삭제 여부 : " + isDeleted);
+		
+		if(isDeleted == 0)
+			System.out.println("찜 목록 추가 실패");
+		else
+			System.out.println("찜 목록 추가 성공");
+		
+		resp.sendRedirect("/main");
 	}
 }
