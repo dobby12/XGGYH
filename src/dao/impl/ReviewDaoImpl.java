@@ -11,6 +11,7 @@ import common.JDBCTemplate;
 import dao.face.ReviewDao;
 import dto.XFile;
 import dto.XReview;
+import dto.XShow;
 import util.Paging;
 
 public class ReviewDaoImpl implements ReviewDao {
@@ -374,7 +375,7 @@ public class ReviewDaoImpl implements ReviewDao {
 	
 	
 	@Override
-	public int insert(Connection conn, XReview review) {
+	public int insert(Connection conn, XReview review, XShow show) {
 		
 		String sql = "";
 		sql += "INSERT INTO xreview(review_no, show_no, file_no, mem_id, review_title,";

@@ -147,6 +147,8 @@ public class ReviewServiceImpl implements ReviewService {
 		
 		//입력한 게시글전달
 		XReview review = null;
+		XShow show = null;
+		
 		//업로드한 첨부파일 전달
 		XFile reviewFile = null;
 		
@@ -158,6 +160,7 @@ public class ReviewServiceImpl implements ReviewService {
 		}
 		//입력을 저장할 DTO 생성
 		review = new XReview();
+		show = new XShow();
 		
 		DiskFileItemFactory factory = new DiskFileItemFactory();
 		factory.setSizeThreshold(10 * 1024 * 1024); //10MB
@@ -270,7 +273,7 @@ public class ReviewServiceImpl implements ReviewService {
 				review.setReviewTitle("(제목없음)");
 			}
 			
-			if( reviewDao.insert(conn, review) > 0 ) {
+			if( reviewDao.insert(conn, review, show) > 0 ) {
 				JDBCTemplate.commit(conn);
 			} else {
 				JDBCTemplate.rollback(conn);

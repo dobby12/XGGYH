@@ -34,6 +34,7 @@ public class ReviewWriteController extends HttpServlet {
 		}
 		
 		XShow showNo = showService.getShowNo(req);
+		
 		XShow showDetail = showService.viewShowInfo(showNo);
 
 		req.setAttribute("showDetail", showDetail);
