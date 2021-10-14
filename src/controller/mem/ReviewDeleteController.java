@@ -25,8 +25,6 @@ public class ReviewDeleteController extends HttpServlet {
 		
 		String param = req.getParameter("reviewno");
 		
-		System.out.println(param + "param");//162확인
-		
 		int reviewno = 0;
 		if(param != null && !"".equals(param)) {
 			reviewno = Integer.parseInt(param);
@@ -35,18 +33,10 @@ public class ReviewDeleteController extends HttpServlet {
 			return;
 		}
 		
-		System.out.println(reviewno + "reviewno");//162확인
-		
 		XReview review = reviewService.getReviewDetail(reviewno);
-		
-		System.out.println(review + "review");
-		
 		HttpSession session = req.getSession();
-		
-		System.out.println(session + "session");
-		
-		if(!review.getMemId().equals(session.getAttribute("mem_id"))) {
-			System.out.println("!!!!!!!!!!!!!!!!!!!!!");
+		if(!review.getMemId().equals(session.getAttribute("memid"))) {
+			System.out.println("!!!!!!!!! ERROR ERROR ERROR !!!!!!!!!!");
 			return;
 		}
 		
