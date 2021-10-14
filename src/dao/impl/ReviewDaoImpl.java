@@ -398,6 +398,8 @@ public class ReviewDaoImpl implements ReviewDao {
 			ps.setString(6, review.getReviewContent());
 			ps.setInt(7, review.getReviewScore());
 
+			System.out.println(review);
+			
 			res = ps.executeUpdate();
 			
 		} catch (SQLException e) {
