@@ -3,6 +3,8 @@
 
 </div><!-- #body-content end -->
 
+<br><br>
+
 <div id="footer">
 <img id="logo_footer" src="/resources/file/logo_square.png" />
 <div style="float: right; margin: 16px 250px 0 20px; text-align: left;">

@@ -298,7 +298,6 @@ button:hover:before,button:hover:after {
 
 .container {
 	text-align: center;
-	
 }
 
 input[type=text] {

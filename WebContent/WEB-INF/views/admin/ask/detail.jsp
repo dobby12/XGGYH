@@ -62,10 +62,9 @@ th {
 
 #answer {
 	width: 1000px;
-	padding: 10px;
+	padding: 10px 10px 10px 0;
 	text-align: center;
 	vertical-align: middle;
-	overflow: auto; /* 자동 스크롤 */
 	
 	border: 1px solid #ccc;
 	border-collapse: collapse;
@@ -119,18 +118,18 @@ th {
 
 <div id="answer" class="container">
 <c:if test="${xask.askState == 'y'}">
-<table>
+<table style="width: 1000px;">
 
 <tr>	
 	<!-- 아이디 -->
-	<td colspan="2" class="ans" width="150px;">${xcomment.adminId }</td>
+	<td colspan="2" class="ans" width="15%">${xcomment.adminId }</td>
 	
 	<!-- 본문 -->
-	<td colspan="2" width="700px;" >
+	<td colspan="2" width="75%" >
 		<div id="cont" class="ans"><p>${xcomment.commentContent }</p></div>
 	</td>
 
-		<td style="width: 100px;" class="ans">
+		<td style="width: 10%" class="ans">
 			<button id="btnUpdate" class="btnUpdate" style="margin: 0 0 5px 0;">수정</button>
 			<button id="btnDelete" class="btnDelete">삭제</button>			
 		</td>

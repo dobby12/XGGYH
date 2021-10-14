@@ -52,7 +52,6 @@ html, body {
 	display: block;
 	text-align: center;
 	background-color: #F2F2F2;
-	margin: 25px 0 0 0;
 }
 
 body, ul.nav > li > a  {
@@ -287,16 +286,17 @@ button {
    transition:400ms ease all; 
  }
   
- button:after { 
+button:after { 
    right:inherit; 
    top:inherit; 
    left:0; 
-   bottom:0; 
- } 
- button:hover:before,button:hover:after { 
+   bottom:0;  
+}
+
+button:hover:before,button:hover:after { 
    width:100%; 
    transition:800ms ease all;
- }
+}
  
  
 /* ------------------------------------------------ */

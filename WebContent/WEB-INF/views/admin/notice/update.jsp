@@ -53,29 +53,30 @@ $(document).ready(function(){
 </thead>
 </table>
 
-<br><br><br><!-- @@@ -->
-<div>
+<div style="text-align: left;">
 	<div id="beforeFile">
 		<c:if test="${notice.fileNo ne 0 }">
-		기존 첨부파일 : 
+		기존 파일 : 
 		<a href="/upload/${file.fileStoredName }" download="${file.fileOriginName }">${file.fileOriginName }</a>
+		<span id="delFile" style="color: red; font: bold; cursor: pointer;">x</span>
 		</c:if>
 		<c:if test="${notice.fileNo eq 0 }">
 		첨부파일이 없습니다.
 		</c:if>
 	</div>
-<br><br><br><!-- @@@ -->
+	<br>
 	<div id="afterFile">
-		새 첨부파일 : <input type="file" name="file">새 파일 첨부 시 기존 파일은 삭제됩니다.
+		<input type="file" name="file" />새 파일 첨부 시 기존 파일은 삭제됩니다.
 	</div>
 </div>
+
 </form>
 
 <br>
 <%-- <a href="<%=request.getContextPath() %>/admin/notice/update?noticeno=${notice.noticeNo }"> --%>
 <button type="button" id="btnSubmit" class="btnSubmit">수정</button>
 <button type="button" id="btnBack" class="btnBack">취소</button>
-</div>
+</div><!-- .container end -->
 
 <!------------------------------------------------------>
 <script type="text/javascript">
