@@ -5,6 +5,29 @@
 
 <c:import url="/WEB-INF/views/layout/adminheader.jsp" />
 
+<script>
+$(document).ready(function(){
+	$("#btnDelete").click(function(){
+		
+		var answer = confirm("회원을 정말 삭제하시겠습니까?")
+		
+		if( answer == true ){
+			location.href = "<%=request.getContextPath() %>/admin/review/delete?reviewno=${viewReview.reviewNo }";
+		} else {
+			return false;
+		}
+	})
+	
+	$("#btnList").click(function(){
+		
+		history.back();
+		
+	})
+
+})
+
+</script>
+
 <style type="text/css">
 
 table {
