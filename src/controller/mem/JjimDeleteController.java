@@ -37,10 +37,11 @@ public class JjimDeleteController extends HttpServlet {
 		System.out.println("삭제 여부 : " + isDeleted);
 		
 		if(isDeleted == 0)
-			System.out.println("찜 목록 추가 실패");
+			System.out.println("찜 목록 삭제 실패");
 		else
-			System.out.println("찜 목록 추가 성공");
+			System.out.println("찜 목록 삭제 성공");
 		
+		//요건 링크 바꿔야됨
 		resp.sendRedirect("/main");
 	}
 }

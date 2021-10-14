@@ -137,6 +137,11 @@ public class JjimDaoImpl implements JjimDao {
 			ps.setString(2, showNo);
 
 			isDeleted = ps.executeUpdate();
+			
+			if(isDeleted > 0)
+				System.out.println("삭제 성공");
+			else
+				System.out.println("해당하는 정보가 없습니다.");
 
 		} catch (SQLException e) {
 			e.printStackTrace();
