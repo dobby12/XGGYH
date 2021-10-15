@@ -10,22 +10,20 @@
 <h1>공지사항</h1>
 <hr>
 
-<table class="table table-striped table-hover table-condensed">
+<table class="table table-hover table-condensed">
 <tr>
 	<th>번호</th>
 	<th>제목</th>
-	<th>관리자</th>
 	<th>작성일</th>
 </tr>
 
 <c:forEach items="${noticeList }" var="notice" varStatus="status">
 <tr>
 	<td>${notice.noticeNo }</td>
-	<td><a href="<%=request.getContextPath() %>/notice/detail?noticeno=${notice.noticeNo }">
+	<td style="width: 80%"><a href="<%=request.getContextPath() %>/notice/detail?noticeno=${notice.noticeNo }">
 		${notice.noticeTitle }
-		</a>
+		</a><c:if test="${notice.fileNo ne 0 }">&nbsp; &nbsp;<span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span></c:if>
 	</td>
-	<td>${adminNameList[status.index] }</td>
 	<td>${notice.noticeDate }</td>
 </tr>
 </c:forEach>
@@ -35,3 +33,5 @@
 </div>
 
 <c:import url="/WEB-INF/views/layout/paging.jsp" />
+
+<c:import url="/WEB-INF/views/layout/footer.jsp" />

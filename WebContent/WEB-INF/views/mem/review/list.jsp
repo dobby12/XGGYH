@@ -5,6 +5,47 @@
 
 <c:import url="/WEB-INF/views/layout/header.jsp" />
 
+<script>
+function sortTable(n) {
+	var table, rows, switching, o, x, y, shouldSwitch, dir, switchcount = 0;
+		table = document.getElementById("inventory");
+		switching = true;
+		dir = "asc";
+		
+	while (switching) {
+		switching = false;
+		rows = table.getElementsByTagName("TR");
+		
+		for (o = 1; o < (rows.length - 1); o++){
+			shouldSwitch = false;
+			x = rows[o].getElementsByTagName("TD")[n];
+			y = rows[o + 1].getElementsByTagName("TD")[n];
+			
+			if(dir == "asc") {
+				if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+				shouldSwitch = true;
+				break;
+				}
+			} else if (dir == "desc") {
+				if(x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+					shouldSwitch = true;
+					break;
+				}
+			}
+		}
+		if(shouldSwitch) {
+			rows[o].parentNode.insertBefore(rows[o + 1], rows[o]);
+			switching = true;
+			switchcount ++;
+		} else {
+			if (switchcount == 0 && dir == "asc") {
+				dir = "desc";
+				switching = true;
+			}
+		}
+	}
+}
+</script>
 
 
 <div class="container" >
@@ -14,23 +55,23 @@
 
 <div class="text-right" id="umm..">
 			<p>
-			<a id="latest" href="<%=request.getContextPath() %>/review/list">최신순</a>&nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp
-			<a id="hit" href="<%=request.getContextPath() %>/review/list">조회순</a>
+			<a id="latest" >최신순</a>&nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp
+			<a id="hit" >조회순</a>
 </div>
 
-<table class="table table-hover table-condensed table-center">
+<table id="inventory" class="table table-hover table-condensed table-center">
 
 <thead>
-<tr>
+<tr style="cursor: pointer;">
 	<th style="width: 15%">게시글 번호</th>
 	<th style="width: 40%">제목</th>
 	<th style="width: 15%">작성자</th>
-	<th style="width: 15%">조회수</th>
-	<th style="width: 15%">작성일</th>
+	<th style="width: 15%", onclick="sortTable(0)">조회수</th>
+	<th style="width: 15%", onclick="sortTable(1)">작성일</th>
 </tr>
 </thead>
 
-
+<tbody>
 <c:forEach items="${reviewList }" var="review">
 <tr>
 	<td>${review.reviewNo }</td>
@@ -42,6 +83,7 @@
 	<td>${review.reviewDate }</td>
 </tr>
 </c:forEach>
+</tbody>
 </table>
 
 </div><br>
