@@ -57,9 +57,9 @@ table {
 	<td colspan="6"><h4><input type="text" id="title" name="title" style="width: 100%; padding: 5px;" autocomplete="off" placeholder="공지사항 제목"/></h4></td>
 </tr>
 <tr>
-	<td style="background-color: #D99771; width:25%;">관리자 아이디</td>
+	<td class="item">관리자 아이디</td>
 	<td style="width:25%;">${adminid }<input type="hidden" name="adminId" value="${adminid }" /></td>
-	<td style="background-color: #D99771">관리자 이름</td>
+	<td class="item">관리자 이름</td>
 	<td style="width:25%;">${adminname }</td>
 </tr>
 <tr>
@@ -78,7 +78,6 @@ table {
 <!-- 	<td><input type="file" name="file"/></td> -->
 
 
-<button>SUBMIT(SE없이테스트용)</button>
 </form>
 <div class="text-center">	
 	<button type="button" id="btnSubmit" class="btnSubmit" >작성</button>
