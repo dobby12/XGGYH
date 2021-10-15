@@ -57,7 +57,7 @@ $(document).ready(function() {
 
 <div class="container">
 
-<h3 class="pull-left">리뷰 수정</h3>
+<h3 class="pull-left">글 수정</h3>
 <hr>
 
 <div>
@@ -89,7 +89,7 @@ $(document).ready(function() {
 	<td class="info">별점</td>
 	<td colspan="3">
 		<select name="reviewScore" style="text-align: center;">
-			<option value="${updateReview.reviewScore }" >점수를 선택해주세요</option>
+			<option>${updateReview.reviewScore }</option>
 			<option>1</option>
 			<option>2</option>
 			<option>3</option>

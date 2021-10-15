@@ -15,7 +15,7 @@ table {
 
 <div class="container">
 
-<h3 class="pull-left">리뷰 게시글 검색 결과</h3>
+<h3 class="pull-left">게시글 검색 결과</h3>
 <hr>
 <br>
 
