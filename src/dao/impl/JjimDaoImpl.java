@@ -166,4 +166,37 @@ public class JjimDaoImpl implements JjimDao {
 		
 		return showList;
 	}
+
+	@Override
+	public int deleteJjim(Connection conn, String memId, String showNo) {
+
+		// XJjim 테이블에 조건에 맞는 행 삭제
+		String sql = "";
+		sql += "DELETE XJjim ";
+		sql += "WHERE mem_id = ? AND show_no = ?";
+
+		// 총 게시글 수
+		int isDeleted = 0;
+
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, memId);
+			ps.setString(2, showNo);
+
+			isDeleted = ps.executeUpdate();
+			
+			if(isDeleted > 0)
+				System.out.println("삭제 성공");
+			else
+				System.out.println("해당하는 정보가 없습니다.");
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+		}
+
+		return isDeleted;
+	}
 }

@@ -34,12 +34,12 @@ $(document).ready(function(){
 <thead>
 
 <tr>
-	<td colspan="6"><h4><input type="text" id="showTitle" name="showTitle" style="width: 100%; padding: 5px;" value="${notice.noticeTitle }"/></h4></td>
+	<td colspan="6" style="width: 100%; padding: 5px; height: 30px;"><input type="text" id="title" name="title" style="width: 100%; padding: 5px;" value="${notice.noticeTitle }"/></td>
 </tr>
 <tr>
-	<td style="background-color: #D99771; width:25%;">관리자 아이디</td>
+	<td class="item" style="width:25%;">관리자 아이디</td>
 	<td style="width:25%;">${adminid }<input type="hidden" name="adminId" value="${adminid }" /></td>
-	<td style="background-color: #D99771">관리자 이름</td>
+	<td class="item" style="width:25%;">관리자 이름</td>
 	<td style="width:25%;">${adminname }</td>
 </tr>
 <tr>

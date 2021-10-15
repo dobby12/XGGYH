@@ -23,11 +23,11 @@
 	<td colspan="6" style="height: 40px; font-size: 30px;">${notice.noticeTitle }</td>
 </tr>
 <tr>
-	<td style="background-color: #D99771">번호</td>
+	<td class="item">번호</td>
 	<td>${notice.noticeNo }</td>
-	<td style="background-color: #D99771">작성자</td>
+	<td class="item">작성자</td>
 	<td>${notice.adminId }</td>
-	<td style="background-color: #D99771">작성일</td>
+	<td class="item">작성일</td>
 	<td>${notice.noticeDate }</td>
 </tr>
 <tr>
@@ -41,8 +41,9 @@
 <a href="/upload/${file.fileStoredName }" download="${file.fileOriginName }">${file.fileOriginName }</a>
 </c:if>
 <c:if test="${notice.fileNo eq 0 }">
-@@@첨부 파일 없을 때 보여질 영역<br>
-@@@첨부파일이 없습니다.
+<br>
+첨부파일이 없습니다.
+<br>
 </c:if>
 
 <br>

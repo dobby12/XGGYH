@@ -10,7 +10,6 @@ import java.util.List;
 import common.JDBCTemplate;
 import dao.face.ReviewDao;
 import dto.XFile;
-import dto.XNotice;
 import dto.XReview;
 import dto.XShow;
 import util.Paging;
@@ -20,34 +19,84 @@ public class ReviewDaoImpl implements ReviewDao {
 	private PreparedStatement ps = null;
 	private ResultSet rs = null;
 	
+//	@Override
+//	public List<XReview> selectAll(Connection conn) {
+//		
+//		String sql = "";
+//		sql += "SELECT * FROM xreview";
+//		sql += " ORDER BY review_no DESC";
+//		
+//		List<XReview> reviewList = new ArrayList<>();
+//		
+//		try {
+//			ps = conn.prepareStatement(sql);
+//			
+//			rs = ps.executeQuery();
+//			
+//			while(rs.next()) {
+//				XReview r = new XReview();
+//				
+//				r.setReviewNo( rs.getInt("reviewNo") );
+//				r.setShowNo( rs.getInt("showNo") );
+//				r.setFileNo( rs.getInt("fileNo") );
+//				r.setMemId( rs.getString("MemId") );
+//				r.setReviewTitle( rs.getString("reviewTitle") );
+//				r.setReviewContent( rs.getString("reviewContent") );
+//				r.setReviewDate( rs.getDate("reviewDate") );
+//				r.setReviewScore( rs.getInt("reviewScore") );
+//				r.setReviewHit( rs.getInt("reviewHit") );
+//				
+//				reviewList.add(r);
+//			}
+//			
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		} finally {
+//			JDBCTemplate.close(rs);
+//			JDBCTemplate.close(ps);
+//		}
+//		
+//		return reviewList;
+//	}
+	
 	@Override
-	public List<XReview> selectAll(Connection conn) {
+	public List<XReview> selectAll(Connection conn, Paging paging) {
 		
 		String sql = "";
-		sql += "SELECT * FROM xreview";
-		sql += " ORDER BY review_no DESC";
-		
-		List<XReview> reviewList = new ArrayList<>();
+		sql += "SELECT * FROM (";
+		sql += "	SELECT rownum rnum, X.* FROM (";
+		sql += "		SELECT";
+		sql += "			review_no, show_no, file_no, mem_id, review_title";
+		sql += "			, review_content, review_date, review_score, review_hit";
+		sql += "		FROM xreview";
+		sql += "		ORDER BY review_no DESC";
+		sql += "	) X";
+		sql += " ) XREVIEW";
+		sql += " WHERE rnum BETWEEN ? AND ?";
+
+		List<XReview> reviewList = new ArrayList<>(); 
 		
 		try {
 			ps = conn.prepareStatement(sql);
+			ps.setInt(1, paging.getStartNo());
+			ps.setInt(2, paging.getEndNo());
 			
 			rs = ps.executeQuery();
 			
 			while(rs.next()) {
-				XReview r = new XReview();
+				XReview review = new XReview();
 				
-				r.setReviewNo( rs.getInt("reviewNo") );
-				r.setShowNo( rs.getInt("showNo") );
-				r.setFileNo( rs.getInt("fileNo") );
-				r.setMemId( rs.getString("MemId") );
-				r.setReviewTitle( rs.getString("reviewTitle") );
-				r.setReviewContent( rs.getString("reviewContent") );
-				r.setReviewDate( rs.getDate("reviewDate") );
-				r.setReviewScore( rs.getInt("reviewScore") );
-				r.setReviewHit( rs.getInt("reviewHit") );
-				
-				reviewList.add(r);
+				review.setReviewNo( rs.getInt("review_no") );
+				review.setShowNo( rs.getInt("show_no") );
+				review.setFileNo( rs.getInt("file_no") );
+				review.setMemId( rs.getString("Mem_id") );
+				review.setReviewTitle( rs.getString("review_title") );
+				review.setReviewContent( rs.getString("review_content") );
+				review.setReviewDate( rs.getDate("review_date") );
+				review.setReviewScore( rs.getInt("review_score") );
+				review.setReviewHit( rs.getInt("review_hit") );
+
+				reviewList.add(review);
 			}
 			
 		} catch (SQLException e) {
@@ -61,7 +110,7 @@ public class ReviewDaoImpl implements ReviewDao {
 	}
 	
 	@Override
-	public List<XReview> selectAll(Connection conn, Paging paging) {
+	public List<XReview> selectAllHit(Connection conn, Paging paging) {
 		
 		String sql = "";
 		sql += "SELECT * FROM (";
@@ -70,7 +119,7 @@ public class ReviewDaoImpl implements ReviewDao {
 		sql += "			review_no, show_no, file_no, mem_id, review_title";
 		sql += "			, review_content, review_date, review_score, review_hit";
 		sql += "		FROM xreview";
-		sql += "		ORDER BY review_no DESC";
+		sql += "		ORDER BY review_hit DESC";
 		sql += "	) X";
 		sql += " ) XREVIEW";
 		sql += " WHERE rnum BETWEEN ? AND ?";
@@ -217,6 +266,85 @@ public class ReviewDaoImpl implements ReviewDao {
 		}
 		
 		return count;
+	}
+	
+	@Override
+	public int selectCntSearchReviewAll(Connection conn, String searchtype, String keyword) {
+		
+		String sql = "";
+		sql += "SELECT count(*) FROM xreview";
+		
+		if( "reviewTitle".equals(searchtype) ){
+			sql += "	WHERE review_title like ?";
+			
+		} 
+		
+		sql += " ORDER BY review_date DESC";
+
+		int count = 0;
+
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, "%" + keyword + "%");
+			rs = ps.executeQuery();
+
+			while(rs.next()) {
+				count = rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+		}
+
+		return count;
+	}
+	
+	@Override
+	public List<XReview> selectReviewSearchByReviewTitle(Connection conn, String keyword, Paging paging) {
+
+		String sql = "";
+		sql += "SELECT * FROM (";
+		sql += "	SELECT rownum rnum, XR.* FROM (";
+		sql += "		SELECT * FROM XREVIEW"; 
+		sql += " 			WHERE review_title like ?";
+		sql += "		ORDER BY review_date DESC";
+		sql += "		)XR";
+		sql += "	)XREVIEW";
+		sql += " WHERE rnum BETWEEN ? AND ?";
+
+
+		List<XReview> searchReviewList = new ArrayList<>();
+
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, "%" + keyword + "%");
+			ps.setInt(2, paging.getStartNo());
+			ps.setInt(3, paging.getEndNo());
+
+			rs = ps.executeQuery();
+
+			while(rs.next()) {
+				XReview review = new XReview();
+
+				review.setReviewNo(rs.getInt("review_no"));
+				review.setReviewTitle( rs.getString("review_title"));
+				review.setMemId(rs.getString("mem_id"));
+				review.setReviewHit(rs.getInt("review_hit"));
+				review.setReviewDate(rs.getDate("review_date"));
+
+				searchReviewList.add(review);
+
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+		}
+
+		return searchReviewList;		
 	}
 	
 	@Override

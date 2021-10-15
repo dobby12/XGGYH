@@ -14,8 +14,8 @@ import service.face.ReviewService;
 import service.impl.ReviewServiceImpl;
 import util.Paging;
 
-@WebServlet("/review/list")
-public class ReviewListController extends HttpServlet {
+@WebServlet("/review/listhit")
+public class ReviewListHitController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	private ReviewService reviewService = new ReviewServiceImpl();
@@ -26,15 +26,15 @@ public class ReviewListController extends HttpServlet {
 		Paging paging = reviewService.getPaging(req);
 		System.out.println("ReviewListController [GET] - " + paging);
 		
-		List<XReview> reviewList = reviewService.getList(paging);
+		List<XReview> reviewList = reviewService.getListhit(paging);
 		
 		req.setAttribute("reviewList", reviewList);
 		
 		req.setAttribute("paging", paging);
 		
-		req.setAttribute("linkUrl", "/review/list");
+		req.setAttribute("linkUrl", "/review/listhit");
 		
-		req.getRequestDispatcher("/WEB-INF/views/mem/review/list.jsp").forward(req, resp);		
+		req.getRequestDispatcher("/WEB-INF/views/mem/review/listhit.jsp").forward(req, resp);		
 		
 	}
 	

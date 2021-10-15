@@ -59,6 +59,13 @@ public interface AdminNoticeService {
 	 * @return 페이징 계산이 완료된 Paging 객체
 	 */
 	public Paging getPaging(HttpServletRequest req);
+	
+	/**
+	 * 
+	 * @param paging
+	 * @return
+	 */
+	public List<XNotice> getNoticeList(Paging paging);
 
 
 }

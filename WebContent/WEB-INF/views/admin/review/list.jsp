@@ -15,7 +15,7 @@ table {
 
 <div class="container">
 
-<h2>게시글 목록</h2>
+<h2>리뷰 목록</h2>
 <hr>
 
 <table class="table table-hover table-condensed">

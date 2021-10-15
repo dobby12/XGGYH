@@ -11,7 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import dto.XMem;
 import service.face.AdminMemberService;
+import service.face.AdminService;
 import service.impl.AdminMemberServiceImpl;
+import service.impl.AdminServiceImpl;
 import util.Paging;
 
 @WebServlet("/admin/mem/search")
@@ -19,6 +21,7 @@ public class AdminMemSearchController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	private AdminMemberService adminMemberService = new AdminMemberServiceImpl();
+	private AdminService adminService = new AdminServiceImpl();
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {		
@@ -39,7 +42,11 @@ public class AdminMemSearchController extends HttpServlet {
 		
 //		System.out.println("linkUrl : admin/mem/search?searchtype=" + req.getParameter("searchtype") + "&keyword=" + req.getParameter("keyword"));
 		
-		req.getRequestDispatcher("/WEB-INF/views/admin/mem/search.jsp").forward(req, resp);
+		if(adminService.authorAdmin((String)req.getSession().getAttribute("adminid"))) {
+			req.getRequestDispatcher("/WEB-INF/views/admin/mem/search.jsp").forward(req, resp);
+			return;
+		}
+		resp.sendRedirect("/admin");
 		
 		
 	

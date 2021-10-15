@@ -89,9 +89,9 @@ $(document).ready(function() {
 <style type="text/css">
 
 input[type=text] {
+	border: 1px solid rgba(217, 151, 113, 0.5);
 	height: 24.48px;
 }
-
 </style>
 
 <div class="container">
@@ -102,16 +102,16 @@ input[type=text] {
 <div>
 <form action="/admin/show/write" method="post" enctype="multipart/form-data">
 
-<table class="table table-condensed table-bordered">
+<table class="table table-condensed table-striped table-bordered">
 
 <tr>
 	<td colspan="10"><h4><input type="text" id="showTitle" name="showTitle" style="width: 100%; padding: 5px; height: 50px;" autocomplete="off" placeholder="공연 제목"/></h4></td>
 </tr>
 <tr>
-	<td style="background: #D99771;">관리자 아이디</td>
+	<td>관리자 아이디</td>
 	<td>${adminid }<input type="hidden" name="adminId" value="${adminid }" /></td>
 	
-	<td style="background: #D99771;">공연 종류</td>
+	<td>공연 종류</td>
 	<td>
 		<select id="kindNo" name="kindNo">
 			<option value="1">뮤지컬</option>
@@ -121,7 +121,7 @@ input[type=text] {
 		</select>
 	</td>
 	
-	<td style="background: #D99771;">장르</td>
+	<td>장르</td>
 	<td>
 		<select id="genreNo" name="genreNo">
 			<option value="1">코미디</option>
@@ -135,7 +135,7 @@ input[type=text] {
 		</select>
 	</td>
 	
-	<td style="background: #D99771;">관람등급</td>
+	<td>관람등급</td>
 	<td>
 		<select id="showAge" name="showAge">
 			<option value="7세이하관람불가">7세이하관람불가</option>
@@ -144,7 +144,7 @@ input[type=text] {
 			<option value="19세이하관람불가">19세이하관람불가</option>
 		</select>
 	</td>
-	<td style="background: #D99771;">공연장</td>
+	<td>공연장</td>
 	<td>
 		<select id="hallNo" name="hallNo">
 			<option value="1">LG아트센터</option>
@@ -162,16 +162,16 @@ input[type=text] {
 </tr>
 
 <tr>
-	<td style="background: #D99771;">감독</td>
+	<td>감독</td>
 	<td colspan="2"><input type="text" id="showDirector" name="showDirector" autocomplete="off" placeholder="감독 이름"/></td>
 	
-	<td style="background: #D99771;">배우</td>
+	<td>배우</td>
 	<td colspan="2"><input type="text" id="showActor" name="showActor" autocomplete="off" placeholder="배우 이름"/></td>
 
-	<td style="background: #D99771;">공연 시작일</td>
+	<td>공연 시작일</td>
 	<td><input type="text" id="startDate" name="startDate" style="cursor: default;" autocomplete="off" readonly/></td>
 	
-	<td style="background: #D99771;">공연 종료일</td>
+	<td>공연 종료일</td>
 	<td><input type="text" id="endDate" name="endDate" style="cursor: default;" autocomplete="off" readonly/></td>
 </tr>
 

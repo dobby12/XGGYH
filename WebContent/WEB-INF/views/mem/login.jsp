@@ -5,6 +5,7 @@
 
 <div class="container">
 
+
 <h1>LOGIN</h1>
 
 <!------------------------로그인 안 했을 때 보여지는 영역------------------------->
@@ -28,14 +29,12 @@
 		<input type="text" id="mempw" name="mempw"/><br><%-- @@@type="password" --%>
 	</div>
 </div>
-
 <br>
-<button type="submit">LOGIN</button>
+	<button>LOGIN</button>
 </form>
 
-<hr>
 
-<a href="javascript:kakaoLogin();">KAKAO</a>
+
 
 </c:if>
 <!-------------------------@@@로그인 상태에선 아래 페이지 보여짐니당----------------------------->
@@ -44,29 +43,65 @@
 로그인 했는데 /login으로 접속했을 때 보여지는 영역
 </c:if>
 
+<hr>
+
+
+
 <!------------------------------------------------------>
 
-<script src="http://developers.kakao.com/sdk/js/kakao.js"></script>
+
+<ul>
+	<li onclick="kakaoLogin();">
+      <a href="javascript:void(0)">
+          <span>카카오 로그인</span>
+      </a>
+	</li>
+	<li onclick="kakaoLogout();">
+      <a href="javascript:void(0)">
+          <span>카카오 로그아웃</span>
+      </a>
+	</li>
+</ul>
+<!-- 카카오 스크립트 -->
+<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 <script>
-window.Kakao.init("8b6ff5cc45fa05d18d5d5a27810f38f8");
+Kakao.init('8b6ff5cc45fa05d18d5d5a27810f38f8'); //발급받은 키 중 javascript키를 사용해준다.
+console.log(Kakao.isInitialized()); // sdk초기화여부판단
+//카카오로그인
 function kakaoLogin() {
-	window.Kakao.Auth.login({
-		scope:'profile_nickname, account_email',
-		success: function(authObj){
-			console.log(authObj);
-			window.Kakao.API.request({
-				url:'/v2/user/me',
-				success: res => {
-					const kakao_account = res.kakao_account;
-					console.log(kakao_account);
-				}
-			});
-		}
-	});
-}
+    Kakao.Auth.login({
+      success: function (response) {
+        Kakao.API.request({
+          url: '/v2/user/me',
+          success: function (response) {
+        	  console.log(response)
+          },
+          fail: function (error) {
+            console.log(error)
+          },
+        })
+      },
+      fail: function (error) {
+        console.log(error)
+      },
+    })
+  }
+//카카오로그아웃  
+function kakaoLogout() {
+    if (Kakao.Auth.getAccessToken()) {
+      Kakao.API.request({
+        url: '/v1/user/unlink',
+        success: function (response) {
+        	console.log(response)
+        },
+        fail: function (error) {
+          console.log(error)
+        },
+      })
+      Kakao.Auth.setAccessToken(undefined)
+    }
+  }  
 </script>
-
-<!------------------------------------------------------>
 
 </div><!-- .container end -->
 

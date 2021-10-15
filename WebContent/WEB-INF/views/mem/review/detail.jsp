@@ -7,7 +7,7 @@
 
 <div class="container">
 
-<h1 class="pull-left">리뷰 상세보기</h1>
+<h3 class="pull-left">Review</h3>
 <hr>
 
 <table class="table table-bordered">
@@ -31,7 +31,7 @@
 <td class="info">공연 제목</td><td colspan="3">${showTitle }</td>
 </tr>
 <tr>
-<td class="info">별점</td><td colspan="3">${viewReview.reviewScore }</td>
+<td class="info">평점</td><td colspan="3">${viewReview.reviewScore }</td>
 </tr>
 <tr><td class="info"  colspan="4">본문</td></tr>
 <tr><td colspan="4">${viewReview.reviewContent }</td></tr>
@@ -41,9 +41,9 @@
 <c:if test="${not empty reviewFile }">
 첨부파일 : <a href="/upload/${reviewFile.fileStoredName }" >${reviewFile.fileOriginName }</a>
 </c:if>
-</div>
+</div><br><br><br><br>
 
-<div class="button">	
+<div class="button">
 	<a href="<%=request.getContextPath() %>/review/list"><button id="btnList">목록</button></a>
 	<c:if test="${memid eq viewReview.memId }">
 		<a href="<%=request.getContextPath() %>/review/update?reviewno=${viewReview.reviewNo }"><button id="btnUpdate">수정</button></a>

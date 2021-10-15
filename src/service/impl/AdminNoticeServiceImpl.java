@@ -376,5 +376,10 @@ public class AdminNoticeServiceImpl implements AdminNoticeService {
 
 		
 	}
+
+	@Override
+	public List<XNotice> getNoticeList(Paging paging) {
+		return adminNoticeDao.selectNoticeAll(JDBCTemplate.getConnection(), paging);
+	}
 	
 }

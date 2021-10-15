@@ -97,20 +97,20 @@ th {
 </tr>
 
 <tr>
-	<td style="background-color: #ccc; width: 12.5%">문의번호</td>
+	<td class="item" style="width: 12.5%">문의번호</td>
 	<td style="width: 5%">${xask.askNo }</td>
-	<td style="background-color: #ccc; width: 15%">닉네임</td>
+	<td class="item" style="width: 15%">닉네임</td>
 	<td style="width: 10%">${nick }</td>
-	<td style="background-color: #ccc; width: 12.5%">문의유형</td>
+	<td class="item" style="width: 12.5%">문의유형</td>
 	<td style="width: 10%">${xask.askKind }</td>
-	<td style="background-color: #ccc; width: 7.5%">답변여부</td>
+	<td class="item"style="width: 7.5%">답변여부</td>
 	<td style="width: 5%">${xask.askState }</td>
-	<td style="background-color: #ccc; width: 7.5%">작성일</td>
+	<td class="item" style="width: 7.5%">작성일</td>
 	<td style="width: 15%">${xask.askDate }</td>
 </tr>
 
 <tr>
-	<td colspan="10" style="height: 300px; border: 1px solid #ccc;">${xask.askContent }</td>
+	<td colspan="10" style="height: 300px; vertical-align: middle; border: 1px solid #ccc;">${xask.askContent }</td>
 </tr>
 
 </table>
@@ -122,7 +122,7 @@ th {
 
 <tr>	
 	<!-- 아이디 -->
-	<td colspan="2" class="ans" width="15%">${xcomment.adminId }</td>
+	<td colspan="2" class="ans" width="10%">${xcomment.adminId }</td>
 	
 	<!-- 본문 -->
 	<td colspan="2" width="75%" >

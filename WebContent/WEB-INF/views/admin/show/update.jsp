@@ -105,6 +105,11 @@ table, input, textarea {
 	text-align: center;
 }
 
+input[type=text] {
+	border: 1px solid rgba(217, 151, 113, 0.5);
+	height: 24.48px;
+}
+
 </style>
 
 <div class="container">
@@ -115,10 +120,10 @@ table, input, textarea {
 <div>
 <form action="/admin/show/update" method="post" enctype="multipart/form-data">
 <input type="hidden" name="showNo" value="${xshow.showNo }" />
-<table class="table table-striped table-condensed">
+<table class="table table-striped table-condensed table-striped">
 
 <tr>
-	<td colspan="10"><h4><input type="text" id="showTitle" name="showTitle" autocomplete="off" style="width: 100%; padding: 5px;" value="${xshow.showTitle }"/></h4></td>
+	<td colspan="10"><h4><input type="text" id="showTitle" name="showTitle" autocomplete="off" style="width: 100%; padding: 5px; height: 50px;"value="${xshow.showTitle }"/></h4></td>
 </tr>
 <tr>
 	<td>관리자 아이디</td>

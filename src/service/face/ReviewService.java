@@ -11,22 +11,30 @@ import util.Paging;
 
 public interface ReviewService {
 
-	/**
-	 * 게시글 전체 조회
-	 * 
-	 * @return List<XReview> - 게시글 전체 조회 결과 리스트
-	 */
-	public List<XReview> getList();
+//	/**
+//	 * 게시글 전체 조회
+//	 * 
+//	 * @return List<XReview> - 게시글 전체 조회 결과 리스트
+//	 */
+//	public List<XReview> getList();
 
 	/**
 	 * 게시글 전체 조회
 	 * 	페이징 처리 추가
 	 * 
 	 * @param paging - 페이징 정보 객체
-	 * @return List<XReview> - 게시글 전체 조회 결과 리스트
+	 * @return List<XReview> - 게시글 전체 조회 결과 최신순 리스트
 	 */
 	public List<XReview> getList(Paging paging);
-	
+
+	/**
+	 * 게시글 전체 조회
+	 * 	페이징 처리 추가
+	 * 
+	 * @param paging - 페이징 정보 객체
+	 * @return List<XReview> - 게시글 전체 조회 결과 조회순 리스트
+	 */
+	public List<XReview> getListhit(Paging paging);
 	/**
 	 * 멤버id 게시글 조회
 	 * 	페이징 처리 추가
@@ -147,6 +155,23 @@ public interface ReviewService {
 	 * @return DB에서 조회한 XReview객체
 	 */
 	public XReview getReviewDetail(int reviewno);
+	
+	
+	/**
+	 * 검색결과 페이징
+	 * 
+	 * @param req
+	 * @return 페이징 계산이 완료된 Paging 객체
+	 */
+	public Paging getParameterPaging(HttpServletRequest req);
+	
+	/**
+	 * 
+	 * @req - 요청파라미터로 searchtype, keyword가지고 있음
+	 * @return parameter로 찾은 review객체 반환
+	 */
+	public List<XReview> searchReviewList(HttpServletRequest req, Paging paging);
+
 
 
 

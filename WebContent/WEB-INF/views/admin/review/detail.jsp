@@ -41,39 +41,29 @@ table {
 <h2>리뷰 상세보기</h2>
 <hr>
 
-<table class="table table-condensed table-bordered">
+<table class="table table-condensed table-bordered" >
+
 <tr>
-<td class="info">글번호</td><td colspan="3">${viewReview.reviewNo }</td>
+<td colspan="8" style="font-size: 30px; font-weight: bold; width: 100%; padding: 5px; height: 50px;">${viewReview.reviewTitle }</td>
 </tr>
 
 <tr>
-<td class="info">제목</td><td colspan="3">${viewReview.reviewTitle }</td>
+	<td class="item" colspan="2" >회원 아이디</td><td colspan="3">${viewReview.memId }</td>
+	<td class="item" colspan="1">조회수</td><td colspan="2">${viewReview.reviewHit }</td>
 </tr>
 
 <tr>
-<td class="info">아이디</td><td>${viewReview.memId }</td>
-<td class="info">닉네임</td><td>${memNick }</td>
+	<td class="item" colspan="2">회원 닉네임</td><td colspan="3">${memNick }</td>
+	<td class="item" colspan="1">작성일</td><td colspan="1">${viewReview.reviewDate }</td>
+
+<tr>
+	<td class="item" colspan="2">공연 제목</td><td colspan="3">${showTitle }</td>
+	<td class="item" colspan="1">평점</td><td colspan="1">${viewReview.reviewScore }</td>
 </tr>
 
 <tr>
-<td class="info">조회수</td><td>${viewReview.reviewHit }</td>
+	<td colspan="8" style="width: 100%; height: 300px; padding: 10px; vertical-align: middle;">${viewReview.reviewContent }</td>
 </tr>
-
-<tr>
-<td class="info">작성일</td><td colspan="3">${viewReview.reviewDate }</td>
-</tr>
-
-<tr>
-<td class="info">공연 제목</td><td colspan="3">${showTitle }</td>
-</tr>
-
-<tr>
-<td class="info">별점</td><td colspan="3">${viewReview.reviewScore }</td>
-</tr>
-
-<tr><td class="info"  colspan="4">본문</td></tr>
-
-<tr><td colspan="4">${viewReview.reviewContent }</td></tr>
 
 </table>
 
@@ -85,7 +75,7 @@ table {
 </div>
 
 <div class="button">
-	<a href="<%=request.getContextPath() %>/admin/review/delete?reviewno=${viewReview.reviewNo }"><button id="btnDelete">삭제</button></a>
+	<a href="<%=request.getContextPath() %>/admin/review/delete?reviewno=${viewReview.reviewNo }"><button id="btnDelete" class="btnDelete">삭제</button></a>
 	<button id="btnList">목록으로 돌아가기</button>
 	
 </div>

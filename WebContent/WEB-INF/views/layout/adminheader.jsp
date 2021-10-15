@@ -103,7 +103,7 @@ ul.nav > li {
 	float: left;
 
 	/* 줄간격을 이용한 높이 조절 */
-	line-height: 30px;
+	line-height: 35px;
 	
 	/* 테두리를 이용한 메뉴 항목 구분선 만들기 */
 /* 	border-right: 1px solid #f2f2f2; */
@@ -222,7 +222,7 @@ ul.nav > li > ul > li {
 ul.nav > li:hover > ul > li {
 	height: 30px; /* 컨텐츠영역 높이 되돌리기 */
 	font-size: 12px; /* 글자 크기 되돌리기 */
-	line-height: 40px; /* 줄간격 되돌리기 */
+	line-height: 30px; /* 줄간격 되돌리기 */
 	
 	
 }
@@ -265,11 +265,12 @@ button {
 	outline:none;
 	border-radius: 5px;
 } 
-button:hover{ 
+
+button:hover { 
    background:#f2f2f2; 
    color:#D96459; 
 } 
-button:before,button:after{ 
+button:before,button:after { 
    content:''; 
    position:absolute; 
    top:0; 
@@ -308,6 +309,7 @@ input[type=text] {
     text-align: center;
 }
 
+/* 테이블 */
 
 table {
 	text-align: center;
@@ -327,6 +329,20 @@ a {
 
 a:hover {
 	color: #D96459;
+}
+
+/* input에 자동완성으로 입력했을 때, 색상 변화 없도록 */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+	transition: background-color 5000s;
+	-webkit-text-fill-color: #000 !important;
+}
+
+/* input이나 textarea에 focus줘도 겉에 테두리 생기지 않도록 함 */
+textarea:focus, input:focus {
+    outline: none;
 }
 
 </style>

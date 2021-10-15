@@ -30,18 +30,56 @@ public class ReviewServiceImpl implements ReviewService {
 	private ReviewDao reviewDao = new ReviewDaoImpl();
 	private FileDao fileDao = new FileDaoImpl();
 	
-	@Override
-	public List<XReview> getList() {
-		
-		return reviewDao.selectAll(JDBCTemplate.getConnection());
-		
-	}
+//	@Override
+//	public List<XReview> getList() {
+//		
+//		return reviewDao.selectAll(JDBCTemplate.getConnection());
+//		
+//	}
 	
 	@Override
 	public List<XReview> getList(Paging paging) {
 
 		return reviewDao.selectAll(JDBCTemplate.getConnection(), paging);
 		
+	}
+	
+	@Override
+	public List<XReview> getListhit(Paging paging) {
+		
+		return reviewDao.selectAllHit(JDBCTemplate.getConnection(), paging);
+		
+	}
+	
+	@Override
+	public List<XReview> searchReviewList(HttpServletRequest req, Paging paging) {
+		
+		//전달 파라미터 얻기 - searchtype, keyword
+		String searchtype = (String)req.getParameter("searchtype");
+		String keyword = (String)req.getParameter("keyword");
+
+		return reviewDao.selectReviewSearchByReviewTitle(JDBCTemplate.getConnection(), keyword, paging);
+	}
+	
+	@Override
+	public Paging getParameterPaging(HttpServletRequest req) {
+		
+		String param = req.getParameter("curPage");
+		int curPage = 0;
+		if(param != null && !"".equals(param)) {
+			curPage = Integer.parseInt(param);
+		} else {
+			System.out.println("[WARNING] curPage값이 null이거나 비어있습니다");
+		}
+		
+		String searchtype = (String)req.getParameter("searchtype");
+		String keyword = (String)req.getParameter("keyword");
+
+		int totalCount = reviewDao.selectCntSearchReviewAll(JDBCTemplate.getConnection(), searchtype, keyword);
+
+		Paging paging = new Paging(totalCount, curPage);
+
+		return paging;
 	}
 	
 	@Override
@@ -443,16 +481,17 @@ public class ReviewServiceImpl implements ReviewService {
 		
 		int fileno = getFile(reviewno).getFileNo();
 		
+		if( fileDao.deleteFile(conn, fileno) > 0 ) {
+			JDBCTemplate.commit(conn);
+		} else {
+			JDBCTemplate.rollback(conn);
+		}
+
 		if( reviewDao.delete(conn, reviewno) > 0 ) {
 			JDBCTemplate.commit(conn);
 		} else {
 			JDBCTemplate.rollback(conn);
 		}
 		
-		if( fileDao.deleteFile(conn, fileno) > 0 ) {
-			JDBCTemplate.commit(conn);
-		} else {
-			JDBCTemplate.rollback(conn);
-		}
 	}
 }
