@@ -54,7 +54,7 @@ table {
 <!-- </tr> -->
 
 <tr>
-	<td colspan="6"><h4><input type="text" id="showTitle" name="showTitle" style="width: 100%; padding: 5px;" autocomplete="off" placeholder="공지사항 제목"/></h4></td>
+	<td colspan="6"><h4><input type="text" id="title" name="title" style="width: 100%; padding: 5px;" autocomplete="off" placeholder="공지사항 제목"/></h4></td>
 </tr>
 <tr>
 	<td style="background-color: #D99771; width:25%;">관리자 아이디</td>
