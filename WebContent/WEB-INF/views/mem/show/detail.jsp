@@ -21,36 +21,6 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
-<script type="text/javascript">
-
-function insertJjim() {
-	var isJjimed = ${isJjim};
-	
-	if(isJjimed == true){		
-		alert('찜 목록에 추가 되었습니다.');
-		location.href= '/mem/jjim?showNo=' + '${showDetail.showNo}' + '&memId=' + '${memId}';
-	}
-	else{
-		alert('이미 찜한 공연입니다.');
-	}
-}
-
-function deleteJjim() {
-	var isJjimed = ${isJjim};
-	
-	if(isJjimed == false){
-		alert('찜 목록에서 삭제 되었습니다.');
-		location.href= '/mem/jjim/delete?showNo=' + '${showDetail.showNo}' + '&memId=' + '${memId}';
-		${isJjim}.setAttribute(true);
-		window.history.back();
-	}
-	else{
-		alert('찜하지 않은 공연입니다.');
-	}
-}
-
-</script>
-
 <style type="text/css">
 .detailInfo {
 	width: 500px;
@@ -89,6 +59,36 @@ function deleteJjim() {
 }
 </style>
 
+<script type="text/javascript">
+
+function insertJjim() {
+	var isJjimed = ${isJjim};
+	
+	if(isJjimed == true){		
+		alert('찜 목록에 추가 되었습니다.');
+		location.href= '/mem/jjim?showNo=' + '${showDetail.showNo}' + '&memId=' + '${memId}';
+	}
+	else{
+		alert('이미 찜한 공연입니다.');
+	}
+}
+
+function deleteJjim() {
+	var isJjimed = ${isJjim};
+	
+	if(isJjimed == false){
+		alert('찜 목록에서 삭제 되었습니다.');
+		location.href= '/mem/jjim/delete?showNo=' + '${showDetail.showNo}' + '&memId=' + '${memId}';
+		//${isJjim}.setAttribute(true);
+		window.history.back();
+	}
+	else{
+		alert('찜하지 않은 공연입니다.');
+	}
+}
+
+</script>
+
 </head>
 <body>
 
@@ -114,20 +114,14 @@ function deleteJjim() {
 		</div>
 
 		<div class="detailInfo">
-			공연 번호 : ${showDetail.showNo} <br>
-			작성자(관리자 아이디) : ${showDetail.adminId} <br> 
-			카테고리 : ${showKindName} <br> 
-			장르 : ${showGenreName} <br>
-			
-			공연장 : <a href="<%=request.getContextPath() %>/hall/detail?hallNo=${showDetail.hallNo }"> 
-			${showHallName} </a> <br>
-			
-			작성일 : ${showDetail.showDate} <br>
-			연령 제한 : ${showDetail.showAge} <br> 
-			감독 : ${showDetail.showDirector} <br> 
-			출연 배우 : ${showDetail.showActor} <br> 
-			상연 시작일 : ${showDetail.showStart} <br> 
-			상연 종료일 : ${showDetail.showEnd} <br>
+			공연 번호 : ${showDetail.showNo} <br> 작성자(관리자 아이디) :
+			${showDetail.adminId} <br> 카테고리 : ${showKindName} <br> 장르 :
+			${showGenreName} <br> 공연장 : <a
+				href="<%=request.getContextPath() %>/hall/detail?hallNo=${showDetail.hallNo }">
+				${showHallName} </a> <br> 작성일 : ${showDetail.showDate} <br> 연령
+			제한 : ${showDetail.showAge} <br> 감독 : ${showDetail.showDirector}
+			<br> 출연 배우 : ${showDetail.showActor} <br> 상연 시작일 :
+			${showDetail.showStart} <br> 상연 종료일 : ${showDetail.showEnd} <br>
 		</div>
 
 		<div class="content">${showDetail.showContent }</div>
@@ -136,4 +130,35 @@ function deleteJjim() {
 	<c:import url="/WEB-INF/views/layout/footer.jsp" />
 
 </body>
+
+<script type="text/javascript">
+
+function insertJjim() {
+	var isJjimed = ${isJjim};
+	
+	if(isJjimed == true){		
+		alert('찜 목록에 추가 되었습니다.');
+		location.href= '/mem/jjim?showNo=' + '${showDetail.showNo}' + '&memId=' + '${memId}';
+	}
+	else{
+		alert('이미 찜한 공연입니다.');
+	}
+}
+
+function deleteJjim() {
+	var isJjimed = ${isJjim};
+	
+	if(isJjimed == false){
+		alert('찜 목록에서 삭제 되었습니다.');
+		location.href= '/mem/jjim/delete?showNo=' + '${showDetail.showNo}' + '&memId=' + '${memId}';
+		//${isJjim}.setAttribute(true);
+		window.history.back();
+	}
+	else{
+		alert('찜하지 않은 공연입니다.');
+	}
+}
+
+</script>
+
 </html>
