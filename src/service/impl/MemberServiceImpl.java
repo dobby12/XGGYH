@@ -151,4 +151,42 @@ public class MemberServiceImpl implements MemberService {
 			JDBCTemplate.rollback(conn);
 		}
 	}
+	
+	
+	
+	
+	@Override
+	public boolean loginMemByKakao(String kakaoemail) {
+		if(memberDao.selectCntMemByKakao(JDBCTemplate.getConnection(), kakaoemail)==1) {
+			return true;
+		} else {
+			return false;			
+		}
+	}
+	
+	@Override
+	public XMem getMemByKakao(String kakaoemail) {
+		System.out.println("@@@2 : "+kakaoemail);
+		return memberDao.selectMemByKakao(JDBCTemplate.getConnection(), kakaoemail);
+	}
+	
+	@Override
+	public boolean getKakaoAgree(String kakaoemail) {
+		if(memberDao.selectCntMemByKakaoY(JDBCTemplate.getConnection(), kakaoemail)==1) {
+			return true;
+		} else {
+			return false;			
+		}
+	}
+	
+	@Override
+	public void setKakaoByMemmail(String kakaoagree) {
+		Connection conn = JDBCTemplate.getConnection();
+		if(memberDao.updateMemKakaoByMemmail(conn, kakaoagree)==1) {
+			JDBCTemplate.commit(conn);
+		} else {
+			JDBCTemplate.rollback(conn);
+		}
+	}
+	
 }

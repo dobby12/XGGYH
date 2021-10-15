@@ -83,4 +83,33 @@ public interface MemberService {
 	 */
 	public void setMemDelete(XMem memId);
 
+	/**
+	 * 
+	 * @param kakaoemail
+	 * @return
+	 */
+	public boolean loginMemByKakao(String kakaoemail);
+
+	/**
+	 * 
+	 * @param kakaoemail
+	 * @return
+	 */
+	public XMem getMemByKakao(String kakaoemail);
+
+	/**
+	 * 소셜 로그인 동의하였는 지 확인
+	 * @param kakaoemail
+	 * @return
+	 */
+	public boolean getKakaoAgree(String kakaoemail);
+
+	/**
+	 * 
+	 * @param req
+	 */
+	public void setKakaoByMemmail(String kakaoagree);
+
+	
+	
 }

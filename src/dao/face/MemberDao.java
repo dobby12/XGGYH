@@ -68,4 +68,38 @@ public interface MemberDao {
 	 * @return
 	 */
 	public int deleteMem(Connection conn, XMem mem);
+	
+	
+	
+	/**
+	 * 
+	 * @param connection
+	 * @param kakaoemail
+	 * @return
+	 */
+	public int selectCntMemByKakao(Connection connection, String kakaoemail);
+
+	/**
+	 * 
+	 * @param kakaoemail
+	 * @return
+	 */
+	public XMem selectMemByKakao(Connection connection, String kakaoemail);
+
+	/**
+	 * kakao로 로그인한 email의 kakao column이 y인 행의 개수
+	 * @param connection
+	 * @param kakaoemail
+	 * @return
+	 */
+	public int selectCntMemByKakaoY(Connection connection, String kakaoemail);
+
+	/**
+	 * 
+	 * @param connection
+	 * @param kakaoagree
+	 */
+	public int updateMemKakaoByMemmail(Connection conn, String kakaoagree);
+
+	
 }

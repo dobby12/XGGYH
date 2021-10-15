@@ -247,4 +247,97 @@ public class MemberDaoImpl implements MemberDao {
 		return res;
 
 	}
+	
+	
+	
+	
+	
+	
+	
+	@Override
+	public int selectCntMemByKakao(Connection connection, String kakaoemail) {
+		String sql = "SELECT COUNT(*) FROM XMEM WHERE MEM_MAIL=?";
+		int count = 0;
+		
+		try {
+			ps = connection.prepareStatement(sql);
+			ps.setString(1, kakaoemail);
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				count = rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return count;
+	}
+	
+	@Override
+	public XMem selectMemByKakao(Connection connection, String kakaoemail) {
+
+		XMem res = null;
+		
+		String sql = "SELECT MEM_ID, MEM_NICK FROM XMEM WHERE MEM_MAIL=?";
+		
+		try {
+			ps = connection.prepareStatement(sql);
+			ps.setString(1, kakaoemail);
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				res = new XMem();
+				res.setMemId(rs.getString("mem_id"));
+				res.setMemNick(rs.getString("mem_nick"));
+			}
+			System.out.println("@@@3 : "+res);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+		}
+		
+		return res;
+	}
+	
+	@Override
+	public int selectCntMemByKakaoY(Connection connection, String kakaoemail) {
+		String sql = "SELECT COUNT(*) FROM XMEM WHERE MEM_MAIL=? AND KAKAO='y'";
+		int count = 0;
+		
+		try {
+			ps = connection.prepareStatement(sql);
+			ps.setString(1, kakaoemail);
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				count = rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return count;
+	}
+	
+	@Override
+	public int updateMemKakaoByMemmail(Connection conn, String kakaoagree) {
+		
+		String sql = "UPDATE XMEM SET KAKAO='y' WHERE MEM_MAIL=?";
+		int res = 0;
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, kakaoagree);
+			
+			res = ps.executeUpdate();			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(ps);
+		}
+		
+		return res;
+		
+	}
 }
