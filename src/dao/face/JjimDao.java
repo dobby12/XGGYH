@@ -10,16 +10,6 @@ import util.Paging;
 public interface JjimDao {
 
 	/**
-	 * XJjim테이블 memid 조회
-	 * 
-	 * @param paging - 페이징 정보 객체
-	 * @param conn - DB연결 객체
-	 * @param memid
-	 * @return List<XJjim> - XJjim테이블 memid 조회 결과 리스트
-	 */
-	public List<XShow> selectAllByMemid(Connection conn, Paging paging, String memid);
-
-	/**
 	 * 총 게시글 수 조회
 	 * 
 	 * @param conn - DB연결 객체
@@ -34,5 +24,14 @@ public interface JjimDao {
 	 * @return 정보 넣는데 성공 했는지 아닌지 여부
 	 */
 	public int insertJjim(Connection conn, XJjim jjim);
+
+	/**
+	 * 
+	 * @param connection
+	 * @param paging
+	 * @param memid
+	 * @return
+	 */
+	public List<XShow> selectShowByMemId(Connection conn, Paging paging, String memid);
 
 }

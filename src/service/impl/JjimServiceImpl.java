@@ -18,7 +18,7 @@ public class JjimServiceImpl implements JjimService  {
 	private JjimDao jjimDao = new JjimDaoImpl();
 
 	@Override
-	public Paging getPagingByMemId(HttpServletRequest req, String memid) {
+	public Paging getPaging(HttpServletRequest req, String memid) {
 		
 		String param = req.getParameter("curPage");
 		int curPage = 0;
@@ -28,18 +28,12 @@ public class JjimServiceImpl implements JjimService  {
 			System.out.println("[WARNING] curPage값이 null이거나 비어있습니다");
 		}
 		
+		//CntByMemId가 맞나...?
 		int totalCount = jjimDao.selectCntByMemId(JDBCTemplate.getConnection(), memid);
 		
 		Paging paging = new Paging(totalCount, curPage);
 		
 		return paging;	
-	}
-
-	@Override
-	public List<XShow> getJjimListMemid(Paging paging, String memid) {
-
-		return jjimDao.selectAllByMemid(JDBCTemplate.getConnection(), paging, memid);
-		
 	}
 	
 	@Override
@@ -78,4 +72,10 @@ public class JjimServiceImpl implements JjimService  {
 		return jjimInfo;
 	}
 
+	@Override
+	public List<XShow> getShowNoByMemId(Paging paging, String memid) {
+
+		return jjimDao.selectShowByMemId(JDBCTemplate.getConnection(), paging, memid);
+	}
+	
 }

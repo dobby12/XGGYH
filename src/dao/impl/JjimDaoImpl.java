@@ -43,52 +43,44 @@ public class JjimDaoImpl implements JjimDao {
 		return res;
 	}
 
-	@Override
-	public List<XShow> selectAllByMemid(Connection conn, Paging paging, String memid) {
-		String sql = "";
-		sql += "SELECT * FROM (";
-		sql += "	SELECT rownum rnum, X.* FROM (";
-		sql += "		SELECT";
-		sql += "			mem_id";
-		sql += "		FROM xjjim";
-		sql += "		WHERE mem_id = ?";
-		sql += "		ORDER BY jjim_no DESC";
-		sql += "	) X";
-		sql += " ) XSHOW";
-		sql += " WHERE rnum BETWEEN ? AND ?";
-
-		List<XShow> jjimlist = new ArrayList<>(); 
-		
-		try {
-			ps = conn.prepareStatement(sql);
-			ps.setString(1, memid);
-			ps.setInt(2, paging.getStartNo());
-			ps.setInt(3, paging.getEndNo());
-			
-			rs = ps.executeQuery();
-			
-			while(rs.next()) {
-				XShow s = new XShow();
-
-				s.setShowNo(rs.getInt("show_no"));
-				s.setAdminId(rs.getString("admin_id"));
-				s.setShowTitle(rs.getString("show_title"));
-				s.setShowDate(rs.getDate("show_date"));
-				s.setShowStart(rs.getDate("show_start"));
-				s.setShowEnd(rs.getDate("show_end"));
-				
-				jjimlist.add(s);
-			}
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			JDBCTemplate.close(rs);
-			JDBCTemplate.close(ps);
-		}
-		
-		return jjimlist;
-	}
+//	@Override
+//	public XJjim selectAllByMemId(Connection conn, String memid) {
+//
+//		String sql = "";
+//		sql += "SELECT * FROM XJJIM";
+//		sql += "	WHERE MEM_ID = ?";
+//		
+//		XJjim jjim = null; 
+//		
+//		try {
+//			ps = conn.prepareStatement(sql);
+//			ps.setString(1, memid);
+//			
+//			rs = ps.executeQuery();
+//			
+//			while(rs.next()) {
+//				
+//				jjim = new XJjim();
+//				
+//				jjim.setJjimNo( rs.getInt("jjim_no") );
+//				jjim.setMemId( rs.getString("Mem_id") );
+//				jjim.setShowNo( rs.getInt("show_no") );
+//				
+//				System.out.println(rs.getInt("jjim_no"));
+//				System.out.println(rs.getString("Mem_id"));
+//				System.out.println(rs.getInt("show_no"));
+//
+//			}
+//			
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		} finally {
+//			JDBCTemplate.close(rs);
+//			JDBCTemplate.close(ps);
+//		}
+//		
+//		return jjim;
+//	}
 
 	@Override
 	public int selectCntByMemId(Connection conn, String memid) {
@@ -118,5 +110,60 @@ public class JjimDaoImpl implements JjimDao {
 		}
 		
 		return count;
+	}
+
+	@Override
+	public List<XShow> selectShowByMemId(Connection conn, Paging paging, String memid) {
+
+		String sql = "";
+		sql += "SELECT * FROM (";
+		sql += "	SELECT * FROM XSHOW";
+		sql += "	WHERE show_no IN (";
+		sql += "		SELECT show_no FROM XJJIM";
+		sql += "		WHERE mem_id = ?))";
+		sql += "WHERE rownum BETWEEN ? AND ?";
+		
+		List<XShow> showList = new ArrayList<>(); 
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, memid);
+			ps.setInt(2, paging.getStartNo());
+			ps.setInt(3, paging.getEndNo());
+			
+			System.out.println(paging.getStartNo());
+			System.out.println(paging.getEndNo());
+			
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				XShow show = new XShow();
+
+				show.setShowNo(rs.getInt("show_no"));
+				show.setFileNo(rs.getInt("file_no"));
+				show.setAdminId(rs.getString("admin_id"));
+				show.setKindNo(rs.getInt("kind_no"));
+				show.setGenreNo(rs.getInt("genre_no"));
+				show.setHallNo(rs.getInt("hall_no"));
+				show.setShowTitle(rs.getString("show_title"));
+				show.setShowContent(rs.getString("show_content"));
+				show.setShowDate(rs.getDate("show_date"));
+				show.setShowAge(rs.getString("show_age"));
+				show.setShowDirector(rs.getString("show_director"));
+				show.setShowActor(rs.getString("show_actor"));
+				show.setShowStart(rs.getDate("show_start"));
+				show.setShowEnd(rs.getDate("show_end"));
+
+				showList.add(show);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+		}
+		
+		return showList;
 	}
 }
