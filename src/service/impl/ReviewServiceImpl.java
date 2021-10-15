@@ -45,6 +45,13 @@ public class ReviewServiceImpl implements ReviewService {
 	}
 	
 	@Override
+	public List<XReview> getListhit(Paging paging) {
+		
+		return reviewDao.selectAllHit(JDBCTemplate.getConnection(), paging);
+		
+	}
+	
+	@Override
 	public List<XReview> searchReviewList(HttpServletRequest req, Paging paging) {
 		
 		//전달 파라미터 얻기 - searchtype, keyword
