@@ -22,6 +22,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&display=swap" rel="stylesheet">
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <style type="text/css">
 
 /* 기본 css */
@@ -95,7 +97,7 @@ ul.nav {
 	
 	/* 기본 여백 제거 */
 	padding: 0;
-	margin: 0 0 0 200px;	
+	margin: 0 250px 0 200px;	
 }
 
 
@@ -172,15 +174,21 @@ ul.nav > li > a:hover {
 
 }
 
-#logoA > a:hover, #logoA> a:before,#logoA> a:after {
+#logoA > a:hover, #logoA> a:before, #logoA> a:after,
+#outlog > a:hover, #outlog> a:before, #outlog> a:after,
+#pagemy > a:hover, #pagemy> a:before, #pagemy> a:after,
+#inlog > a:hover, #inlog> a:before, #inlog> a:after {
  	border-bottom: 0px; 
- 	padding-bottom:3px; 
+ 	padding-bottom:3px;
 }
 
 #logoA {
 	margin-right: 30px;
 }
 
+#outlog {
+	padding-top: 1px;
+}
 
 ul.nav > li > a:before {
 	content: '';
@@ -368,8 +376,16 @@ textarea:focus, input:focus {
 	<li><a href="<%=request.getContextPath() %>/show?kindNo=4">오페라</a></li>
 	<li><a href="<%=request.getContextPath() %>/show?kindNo=3">콘서트</a></li>
 	<li><a href="<%=request.getContextPath() %>/show?kindNo=2">연극</a></li>
-	<li class="jjimmenu"><a href="#">내가 찜한 콘텐츠</a></li>
-	<li class="reviewmenu"><a href="<%=request.getContextPath() %>/review/list">리뷰 게시판</a></li>
+	<li><a href="#">내가 찜한 콘텐츠</a></li>
+	<li><a href="<%=request.getContextPath() %>/review/list">리뷰 게시판</a></li>
+	
+	<c:if test="${not empty login }">
+		<li id="outlog" style="float: right;"><a href="<%=request.getContextPath() %>/logout"><span class="glyphicon glyphicon-off" aria-hidden="true"></span></a></li>		
+		<li id="pagemy" style="float: right;"><a href="<%=request.getContextPath() %>/mypage">마이페이지</a></li>
+	</c:if>
+	<c:if test="${empty login }">
+		<li id="inlog" style="float: right;"><a href="<%=request.getContextPath() %>/login">로그인</a></li>
+	</c:if>
 </ul>
 </div>
 
