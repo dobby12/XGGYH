@@ -30,12 +30,12 @@ public class ReviewServiceImpl implements ReviewService {
 	private ReviewDao reviewDao = new ReviewDaoImpl();
 	private FileDao fileDao = new FileDaoImpl();
 	
-	@Override
-	public List<XReview> getList() {
-		
-		return reviewDao.selectAll(JDBCTemplate.getConnection());
-		
-	}
+//	@Override
+//	public List<XReview> getList() {
+//		
+//		return reviewDao.selectAll(JDBCTemplate.getConnection());
+//		
+//	}
 	
 	@Override
 	public List<XReview> getList(Paging paging) {
@@ -51,9 +51,6 @@ public class ReviewServiceImpl implements ReviewService {
 		String searchtype = (String)req.getParameter("searchtype");
 		String keyword = (String)req.getParameter("keyword");
 
-		System.out.println(searchtype);
-		System.out.println(keyword);
-		
 		return reviewDao.selectReviewSearchByReviewTitle(JDBCTemplate.getConnection(), keyword, paging);
 	}
 	

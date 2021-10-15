@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dto.XReview;
-import dto.XShow;
 import service.face.ReviewService;
 import service.impl.ReviewServiceImpl;
 import util.Paging;
@@ -40,15 +39,3 @@ public class ReviewListController extends HttpServlet {
 	}
 	
 }
-
-
-
-
-
-
-
-
-
-
-
-

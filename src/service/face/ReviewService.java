@@ -11,12 +11,12 @@ import util.Paging;
 
 public interface ReviewService {
 
-	/**
-	 * 게시글 전체 조회
-	 * 
-	 * @return List<XReview> - 게시글 전체 조회 결과 리스트
-	 */
-	public List<XReview> getList();
+//	/**
+//	 * 게시글 전체 조회
+//	 * 
+//	 * @return List<XReview> - 게시글 전체 조회 결과 리스트
+//	 */
+//	public List<XReview> getList();
 
 	/**
 	 * 게시글 전체 조회
