@@ -15,7 +15,7 @@
 <div class="text-right" id="umm..">
 			<p>
 			<a id="latest" href="<%=request.getContextPath() %>/review/list">최신순</a>&nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp
-			<a id="hit" href="<%=request.getContextPath() %>/review/list">조회순</a>
+			<a id="hit" href="<%=request.getContextPath() %>/">조회순</a>
 </div>
 
 <table class="table table-hover table-condensed table-center">
@@ -49,7 +49,7 @@
 
 <div style="text-align: center; margin: 0 0 25px 0;" >
 <form action="<%=request.getContextPath() %>/review/search" method="get">
-	<select type="hidden" id="searchtype" name="searchtype">
+	<select id="searchtype" name="searchtype">
 		<option value="reviewTitle">제목</option> 
 	</select>
 	<input type="text" id="keyword" name="keyword" placeholder="공연후기를 검색해보세요!"/>
