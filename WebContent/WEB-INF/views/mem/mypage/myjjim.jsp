@@ -3,46 +3,75 @@
     
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<c:import url="/WEB-INF/views/layout/header.jsp" />
+<!-- jQuery 2.2.4 -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 
-<style type="text/css">
+<!-- 부트스트랩 3 -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
-table {
+<style>
+.main_list {
+    width: 1100px;
+    margin: 0 auto;
+}
+
+.list_start {
+    text-align: center;
+}
+
+.list_detail {
+    display: inline-block;
+    width: 300px;
+    height: 350px;
+    margin-bottom: 40px;
+    margin-right: 20px;
+    margin-left: 20px;
+    text-align: center;
+}
+
+.paging_start{
 	text-align: center;
 }
 
+.poster {
+    width: 250px;
+    height: 280px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    border:1px solid black;
+}
+
 </style>
+
+<body>
+
+<c:import url="/WEB-INF/views/layout/header.jsp" />
 
 <div class="container">
 
 <h2>내가 찜한 콘텐츠</h2>
 <hr>
 
-<table class="table table-hover table-condensed">
-
-<thead>
-<tr>
-	<th style="text-align: center; width: 10%">번호</th>
-	<th style="text-align: center; width: 10%">제목</th>
-	<th style="text-align: center; width: 10%">평점</th>
-</tr>
-</thead>
-
-<c:forEach items="${memidJjimList }" var="jjim">
-</tbody>
-<tr>
-
-	<td>${memidJjimList.ShowNo }</td>
-	<td><a href="<%=request.getContextPath() %>/show/detail?showNo=${memidJjimList.showNo }">${memidJjimList.showTitle }</a></td>
-	<td>${memidJjimList.showDirector }</td>
-</tr>
-</tbody>
-</c:forEach>
-
-
-</table>
+<div class="main_list">
+		<div class="list_start">
+			<c:forEach items="${showList }" var="show">
+			<div class="list_detail">
+			
+			<a href="<%=request.getContextPath() %>/show/detail?showNo=${show.showNo }"> 
+			<img class="poster" src='http://drive.google.com/uc?export=view&id=1UCDamPPObCPN9BY8Iz2WjsgiY8m80K2b' /><br>
+			${show.showTitle} <br> ${show.showDate }
+			</a>
+			</div>
+			</c:forEach>
+		</div>
+</div>
 
 </div>
 <c:import url="/WEB-INF/views/layout/paging.jsp" />
 
 <c:import url="/WEB-INF/views/layout/footer.jsp" />
+
+</body>

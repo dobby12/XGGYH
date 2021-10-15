@@ -26,12 +26,12 @@ public class JjimListController extends HttpServlet {
 		//로그인한 회원아이디
 		String memid = (String)req.getSession().getAttribute("memid");
 		
-		Paging paging = jjimService.getPagingByMemId(req, memid);
+		Paging paging = jjimService.getPaging(req, memid);
 		
-		//로그인한 회원아이디가 찜한 리스트 객체
-		List<XShow> memidJjimList = jjimService.getJjimListMemid(paging, memid);
-		req.setAttribute("memidJjimList", memidJjimList);
+		List<XShow> showList = jjimService.getShowNoByMemId(paging, memid);
 		
+		req.setAttribute("showList", showList);
+
 		req.setAttribute("paging", paging);
 		
 		req.setAttribute("linkUrl", "/mypage/myjjim");

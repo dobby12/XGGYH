@@ -9,7 +9,6 @@ import common.JDBCTemplate;
 import dao.face.MemberDao;
 import dao.impl.MemberDaoImpl;
 import dto.XMem;
-import dto.XReview;
 import service.face.MemberService;
 
 //로그인, ID/PW찾기, 회원가입
@@ -140,5 +139,16 @@ public class MemberServiceImpl implements MemberService {
 		}	
 		req.getSession().setAttribute("memnick", mem.getMemNick());
 		return 1;
+	}
+
+	@Override
+	public void setMemDelete(XMem mem) {
+		Connection conn = JDBCTemplate.getConnection();
+
+		if(memberDao.deleteMem(conn, mem) > 0 ) {
+			JDBCTemplate.commit(conn);
+		} else { 
+			JDBCTemplate.rollback(conn);
+		}
 	}
 }
