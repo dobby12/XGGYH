@@ -10,7 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dto.XShow;
+import service.face.AdminService;
 import service.face.AdminShowService;
+import service.impl.AdminServiceImpl;
 import service.impl.AdminShowServiceImpl;
 import util.Paging;
 
@@ -18,7 +20,8 @@ import util.Paging;
 public class AdminShowListController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	AdminShowService adminShowService = new AdminShowServiceImpl();
+	private AdminShowService adminShowService = new AdminShowServiceImpl();
+	private AdminService adminService = new AdminServiceImpl();
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -34,8 +37,11 @@ public class AdminShowListController extends HttpServlet {
 		
 		req.setAttribute("linkUrl", "/admin/show/list");
 	
-		req.getRequestDispatcher("/WEB-INF/views/admin/show/list.jsp").forward(req, resp);
-		
+		if(adminService.authorAdmin((String)req.getSession().getAttribute("adminid"))) {
+			req.getRequestDispatcher("/WEB-INF/views/admin/show/list.jsp").forward(req, resp);
+			return;
+		}
+		resp.sendRedirect("/admin");		
 		
 	}
 	

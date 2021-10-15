@@ -50,7 +50,11 @@ public class AdminReviewListController extends HttpServlet {
 		
 		req.setAttribute("linkUrl", "/admin/review/list");
 		
-		req.getRequestDispatcher("/WEB-INF/views/admin/review/list.jsp").forward(req, resp);
+		if(adminService.authorAdmin((String)req.getSession().getAttribute("adminid"))) {
+			req.getRequestDispatcher("/WEB-INF/views/admin/review/list.jsp").forward(req, resp);
+			return;
+		}
+		resp.sendRedirect("/admin");
 				
 	}
 	

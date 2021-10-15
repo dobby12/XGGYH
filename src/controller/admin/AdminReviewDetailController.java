@@ -11,13 +11,16 @@ import javax.servlet.http.HttpServletResponse;
 import dto.XFile;
 import dto.XReview;
 import service.face.AdminReviewService;
+import service.face.AdminService;
 import service.impl.AdminReviewServiceImpl;
+import service.impl.AdminServiceImpl;
 
 @WebServlet("/admin/review/detail")
 public class AdminReviewDetailController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	private AdminReviewService adminReviewService = new AdminReviewServiceImpl();
+	private AdminService adminService = new AdminServiceImpl();
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -43,7 +46,11 @@ public class AdminReviewDetailController extends HttpServlet {
 		//첨부파일 정보 model값 전달
 		req.setAttribute("reviewFile", reviewFile);
 		
-		req.getRequestDispatcher("/WEB-INF/views/admin/review/detail.jsp").forward(req, resp);
+		if(adminService.authorAdmin((String)req.getSession().getAttribute("adminid"))) {
+			req.getRequestDispatcher("/WEB-INF/views/admin/review/detai.jsp").forward(req, resp);
+			return;
+		}
+		resp.sendRedirect("/admin");
 		
 	}
 
