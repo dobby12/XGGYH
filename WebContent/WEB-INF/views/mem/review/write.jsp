@@ -42,7 +42,7 @@ $(document).ready(function() {
 
 <div class="container text-center">
 
-<h3 class="pull-left">리뷰 작성</h3>
+<h3 class="pull-left">작성하기</h3>
 <hr>
 
 <div>
@@ -54,15 +54,15 @@ $(document).ready(function() {
 <tr><td class="info">닉네임</td><td>${memnick }</td></tr>
 <tr><td class="info">공연이름</td><td>${showDetail.showTitle }</td></tr>
 <tr>
-	<td class="info">별점</td>
+	<td class="info">평점</td>
 	<td>
 		<select name="reviewScore" style="text-align: center;">
-			<option>점수를 선택해주세요</option>
-			<option>1</option>
-			<option>2</option>
-			<option>3</option>
-			<option>4</option>
-			<option>5</option>
+			<option>평점을 선택해주세요</option>
+			<option value="★">1</option>
+			<option value="★★">2</option>
+			<option value="★★★">3</option>
+			<option value="★★★★">4</option>
+			<option value="★★★★★">5</option>
 		</select>
 	</td>
 </tr>

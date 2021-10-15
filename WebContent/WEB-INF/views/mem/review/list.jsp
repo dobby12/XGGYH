@@ -8,14 +8,14 @@
 
 
 <div class="container" >
-<h3 class="pull-left">리뷰 게시판</h3>
+<h3 class="pull-left">Review</h3>
 <hr>
 <br>
 
 <div class="text-right" id="umm..">
 			<p>
 			<a id="latest" href="<%=request.getContextPath() %>/review/list">최신순</a>&nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp
-			<a id="hit" href="<%=request.getContextPath() %>/">조회순</a>
+			<a id="hit" href="<%=request.getContextPath() %>/review/list">조회순</a>
 </div>
 
 <table class="table table-hover table-condensed table-center">
