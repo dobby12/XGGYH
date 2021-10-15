@@ -339,6 +339,20 @@ a:hover {
 	color: #D96459;
 }
 
+/* input에 자동완성으로 입력했을 때, 색상 변화 없도록 */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+	transition: background-color 5000s;
+	-webkit-text-fill-color: #000 !important;
+}
+
+/* input이나 textarea에 focus줘도 겉에 테두리 생기지 않도록 함 */
+textarea:focus, input:focus {
+    outline: none;
+}
+
 </style>
 
 
