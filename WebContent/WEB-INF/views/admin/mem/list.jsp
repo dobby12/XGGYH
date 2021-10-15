@@ -28,6 +28,29 @@ table {
 	text-align: center;
 }
 
+#searchtype {
+	border: solid 1px #d96459; 
+    border-radius: 5px;
+    height: 30px;
+    vertical-align: middle;
+    text-align: center;
+    width: 120px;
+    padding: 3px 5px 3px 10px;
+    -webkit-appearance: none;                                 /* 네이티브 외형 감추기 */
+	-moz-appearance: none;
+	appearance: none;
+}
+
+#searchtype:focus {
+    outline: none;
+}
+
+.search:active {
+	background: fff;
+
+}
+
+
 </style>
 
 <div class="container">
@@ -71,10 +94,12 @@ table {
 
 <div style="text-align: center; margin: 0 0 25px 0;" >
 <form action="<%=request.getContextPath() %>/admin/mem/search" method="get">
+	
 	<select id="searchtype" name="searchtype">
-		<option value="memid">회원 아이디</option> 
-		<option value="memnick">회원 닉네임</option>
+		<option id="search" class="search" value="memid">회원 아이디</option> 
+		<option id="search" class="search" value="memnick">회원 닉네임</option>
 	</select>
+
 	<input type="text" id="keyword" name="keyword" placeholder="검색어를 입력하세요"/>
 	<button>검색</button>
 </form>
