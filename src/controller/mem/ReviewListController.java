@@ -22,6 +22,7 @@ public class ReviewListController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	private ReviewService reviewService = new ReviewServiceImpl();
+	private ShowService showService = new ShowServiceImpl();
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -30,25 +31,18 @@ public class ReviewListController extends HttpServlet {
 		System.out.println("ReviewListController [GET] - " + paging);
 		
 		List<XReview> reviewList = reviewService.getList(paging);
+		
+		
+		
+		
+
+
 
 		
-		
-		
-		
-		//수정필요
-		req.setAttribute("showTitle", req.getParameter("showTitle"));
-		
-		System.out.println(req.getParameter("showTitle"));//null
-
-		
-		
-		
-		
+			
 		
 		req.setAttribute("reviewList", reviewList);
-		
 		req.setAttribute("paging", paging);
-		
 		req.setAttribute("linkUrl", "/review/list");
 		
 		req.getRequestDispatcher("/WEB-INF/views/mem/review/list.jsp").forward(req, resp);		

@@ -18,10 +18,7 @@
 			<a href="umm..">조회순</a>
 </div>
 
-<input type="hidden" name="showNo" value="${showDetail.showNo }" />
-
 <table class="table table-hover table-condensed">
-
 
 <thead>
 <tr>
@@ -38,7 +35,7 @@
 <c:forEach items="${reviewList }" var="review">
 <tr>
 	<td>${review.reviewNo }</td>
-	<td>${review.showNo }</td>
+	<td>${showTitle }</td>
 	<td>
 		<a href="<%=request.getContextPath() %>/review/detail?reviewno=${review.reviewNo }">${review.reviewTitle }</a>
 	</td>
@@ -57,7 +54,7 @@
 	<select type="hidden" id="searchtype" name="searchtype">
 		<option value="reviewTitle">제목</option> 
 	</select>
-	<input type="text" id="keyword" name="keyword" placeholder="궁금한 공연을 검색해보세요!"/>
+	<input type="text" id="keyword" name="keyword" placeholder="공연후기를 검색해보세요!"/>
 	<button>검색</button>
 </form>
 </div>
