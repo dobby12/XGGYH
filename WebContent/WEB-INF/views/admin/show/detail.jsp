@@ -38,6 +38,17 @@ $(document).ready(function(){
 
 </script>
 
+<style type="text/css">
+
+input[type=text] {
+	border: 1px solid rgba(217, 151, 113, 0.5);
+	height: 24.48px;
+}
+.table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
+   background: rgba(217, 151, 113, 0.5)
+
+</style>
+
 <div class="container">
 
 <h1>공연정보 상세보기</h1>
@@ -46,39 +57,36 @@ $(document).ready(function(){
 <table class="table table-bordered">
 
 <tr>
-<td class="info">공연 제목</td><td>${viewShow.showTitle }</td>
+	<td colspan="10" style="font-size: 30px; font-weight: bold; width: 100%; padding: 5px; height: 50px;">${viewShow.showTitle }</td>
 </tr>
 <tr>
-<td class="info">작성자</td><td>${viewShow.adminId }</td>
+<td style="background: rgba(217, 151, 113, 0.5);">작성자</td><td>${viewShow.adminId }</td>
+
+<td style="background: rgba(217, 151, 113, 0.5);">공연 종류</td><td>${showKind }</td>
+
+<td style="background: rgba(217, 151, 113, 0.5);">공연 장르</td><td>${showGenre }</td>
+
+<td style="background: rgba(217, 151, 113, 0.5);">관람등급</td><td>${viewShow.showAge }</td>
+
+<td style="background: rgba(217, 151, 113, 0.5);">작성일</td><td>${viewShow.showDate }</td>
 </tr>
 <tr>
-<td class="info">공연 종류</td><td>${showKind }</td>
-</tr>
-<tr>
-<td class="info">공연 장르</td><td>${showGenre }</td>
-</tr>
-<tr>
-<td class="info">작성일</td><td>${viewShow.showDate }</td>
-</tr>
-<tr>
-<td class="info">공연 설명</td><td>${viewShow.showContent }</td>
-</tr>
-<tr>
-<td class="info">공연장</td><td>${showHall }</td>
-</tr>
-<tr>
-<td class="info">관람등급</td><td>${viewShow.showAge }</td>
-</tr>
-<tr>
-<td class="info">감독</td><td>${viewShow.showDirector }</td>
-</tr>
-<tr>
-<td class="info">배우</td><td>${viewShow.showActor }</td>
-</tr>
-<tr>
-<td class="info">기간</td><td>${viewShow.showStart } ${viewShow.showEnd }</td>
+<td style="background: rgba(217, 151, 113, 0.5);">공연장</td><td>${showHall }</td>
+
+<td style="background: rgba(217, 151, 113, 0.5);">감독</td><td>${viewShow.showDirector }</td>
+
+<td style="background: rgba(217, 151, 113, 0.5);">배우</td><td>${viewShow.showActor }</td>
+
+<td style="background: rgba(217, 151, 113, 0.5);">시작일</td><td>${viewShow.showStart }</td>
+
+<td style="background: rgba(217, 151, 113, 0.5);">종료일</td><td>${viewShow.showEnd }</td>
+
+
 </tr>
 
+<tr>
+<td colspan="10" style="width: 100%; height: 300px; padding: 10px; vertical-align: middle;">${viewShow.showContent }</td>
+</tr>
 
 
 </table>
@@ -89,7 +97,7 @@ $(document).ready(function(){
 첨부파일 : ${showFile.fileOriginName }
 </c:if>
 </div>
-
+<br>
 <div class="button">
 	<button id="btnUpdate" class="btnUpdate">수정</button>
 	<button id="btnDelete" class="btnDelete">삭제</button>

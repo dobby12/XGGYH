@@ -308,6 +308,7 @@ input[type=text] {
     text-align: center;
 }
 
+/* 테이블 */
 
 table {
 	text-align: center;
