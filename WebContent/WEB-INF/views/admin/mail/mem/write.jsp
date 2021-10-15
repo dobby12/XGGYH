@@ -68,18 +68,18 @@ $(document).ready(function() {
 			
 			<tr>
 				<td>보내는 이</td>
-				<td>${adminMail }(공공연히)</td>
+				<td style="font-weight: bold;">${adminMail }(공공연히)</td>
 			</tr>
 			<tr>
 				<td>받는 이</td>
-				<td>${memMail }<input type="hidden" name="memmail" value ="${memMail }" /></td>
+				<td style="font-weight: bold;">${memMail }<input type="hidden" name="memmail" value ="${memMail }" /></td>
 			</tr>
 			<tr>
 				<td colspan="2"><input type="text" name="mailtitle" placeholder="제목" style="width:100%;" /></td>
 			</tr>
 			<tr>
 				<td colspan="2"><textarea name="mailcontent" id="mailcontent"
-						style="width: 100%; height: 200px;"></textarea></td>
+						style="width: 100%; height: 400px;"></textarea></td>
 			 </tr>
 		</table>
 	</form>

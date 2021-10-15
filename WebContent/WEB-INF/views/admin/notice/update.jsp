@@ -34,7 +34,7 @@ $(document).ready(function(){
 <thead>
 
 <tr>
-	<td colspan="6" style="font-size: 30px; width: 100%; padding: 5px; height: 50px;"><input type="text" id="title" name="title" style="width: 100%; padding: 5px;" value="${notice.noticeTitle }"/></td>
+	<td colspan="6" style="width: 100%; padding: 5px; height: 30px;"><input type="text" id="title" name="title" style="width: 100%; padding: 5px;" value="${notice.noticeTitle }"/></td>
 </tr>
 <tr>
 	<td class="item" style="width:25%;">관리자 아이디</td>

@@ -17,12 +17,6 @@ $(document).ready(function(){
 			return false;
 		}
 	})
-	
-	$("#btnList").click(function(){
-		
-		history.back();
-		
-	})
 
 })
 
@@ -33,6 +27,29 @@ $(document).ready(function(){
 table {
 	text-align: center;
 }
+
+#searchtype {
+	border: solid 1px #d96459; 
+    border-radius: 5px;
+    height: 30px;
+    vertical-align: middle;
+    text-align: center;
+    width: 120px;
+    padding: 3px 5px 3px 10px;
+    -webkit-appearance: none;                                 /* 네이티브 외형 감추기 */
+	-moz-appearance: none;
+	appearance: none;
+}
+
+#searchtype:focus {
+    outline: none;
+}
+
+.search:active {
+	background: fff;
+
+}
+
 
 </style>
 
@@ -63,8 +80,8 @@ table {
 	<td>${mem.memMail }</td>
 	<td>${mem.mailState }</td>
 	<td>${mem.memDate }</td>
-	<td><a href="<%=request.getContextPath() %>/admin/mem/review?memid=${mem.memId }"><button>작성한 리뷰 보기</button></a></td>	
-	<td><a href="<%=request.getContextPath() %>/admin/mem/delete?memid=${mem.memId }"><button>삭제</button></a></td>	
+	<td><a href="<%=request.getContextPath() %>/admin/mem/review?memid=${mem.memId }"><button class="btnBack" id="btnList">작성한 리뷰 보기</button></a></td>	
+	<td><a href="<%=request.getContextPath() %>/admin/mem/delete?memid=${mem.memId }"><button class="btnDelete" id="btnDelete">삭제</button></a></td>	
 </tr>
 </tbody>
 </c:forEach>
@@ -77,10 +94,12 @@ table {
 
 <div style="text-align: center; margin: 0 0 25px 0;" >
 <form action="<%=request.getContextPath() %>/admin/mem/search" method="get">
+	
 	<select id="searchtype" name="searchtype">
-		<option value="memid">회원 아이디</option> 
-		<option value="memnick">회원 닉네임</option>
+		<option id="search" class="search" value="memid">회원 아이디</option> 
+		<option id="search" class="search" value="memnick">회원 닉네임</option>
 	</select>
+
 	<input type="text" id="keyword" name="keyword" placeholder="검색어를 입력하세요"/>
 	<button>검색</button>
 </form>

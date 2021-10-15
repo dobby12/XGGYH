@@ -24,9 +24,20 @@ public interface ReviewDao {
 	 * 
 	 * @param paging - 페이징 정보 객체
 	 * @param conn - DB연결 객체
-	 * @return List<XReview> - XReview테이블 전체 조회 결과 리스트
+	 * @return List<XReview> - XReview테이블 전체 조회 최신순 결과 리스트
 	 */
 	public List<XReview> selectAll(Connection conn, Paging paging);
+
+	/**
+	 * XReview테이블 전체 조회
+	 * 	페이징 처리 추가
+	 * 
+	 * @param paging - 페이징 정보 객체
+	 * @param conn - DB연결 객체
+	 * @return List<XReview> - XReview테이블 전체 조회 조회순 결과 리스트
+	 */
+	public List<XReview> selectAllHit(Connection connection, Paging paging);
+
 	
 	/**
 	 * XReview테이블 memid 조회
@@ -182,6 +193,7 @@ public interface ReviewDao {
 	 * @return 리뷰 객체
 	 */
 	public List<XReview> selectReviewSearchByReviewTitle(Connection conn, String keyword, Paging paging);
+
 
 }
 

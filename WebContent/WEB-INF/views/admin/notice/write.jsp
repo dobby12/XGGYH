@@ -54,7 +54,7 @@ table {
 <!-- </tr> -->
 
 <tr>
-	<td colspan="6"><h4><input type="text" id="title" name="title" style="width: 100%; padding: 5px;" autocomplete="off" placeholder="공지사항 제목"/></h4></td>
+	<td colspan="6"><h4><input type="text" id="title" name="title" style="width: 100%; height: 30px; padding: 5px;" autocomplete="off" placeholder="공지사항 제목"/></h4></td>
 </tr>
 <tr>
 	<td class="item">관리자 아이디</td>
@@ -63,7 +63,7 @@ table {
 	<td style="width:25%;">${adminname }</td>
 </tr>
 <tr>
-	<td colspan="6"><textarea id="content" name="content" style="width: 100%; height: 300px; padding: 10px;"></textarea></td>
+	<td colspan="6"><textarea id="content" name="content" style="width: 100%; height: 400px; padding: 10px;"></textarea></td>
 </tr>
 
 <!-- <tr> -->
