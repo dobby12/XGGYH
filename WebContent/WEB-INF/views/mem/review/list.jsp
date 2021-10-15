@@ -14,20 +14,19 @@
 
 <div class="text-right" id="umm..">
 			<p>
-			<a href="<%=request.getContextPath() %>/review/list">최신순</a>&nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp
-			<a href="umm..">조회순</a>
+			<a id="latest" href="<%=request.getContextPath() %>/review/list">최신순</a>&nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp
+			<a id="hit" href="<%=request.getContextPath() %>/review/list">조회순</a>
 </div>
 
-<table class="table table-hover table-condensed">
+<table class="table table-hover table-condensed table-center">
 
 <thead>
 <tr>
-	<th style="text-align: center; width: 10%">게시글 번호</th>
-	<th style="text-align: center; width: 20%">공연</th>
-	<th style="text-align: center; width: 42%">제목</th>
-	<th style="text-align: center; width: 10%">작성자</th>
-	<th style="text-align: center; width: 5%">조회수</th>
-	<th style="text-align: center; width: 10%">작성일</th>
+	<th style="width: 15%">게시글 번호</th>
+	<th style="width: 40%">제목</th>
+	<th style="width: 15%">작성자</th>
+	<th style="width: 15%">조회수</th>
+	<th style="width: 15%">작성일</th>
 </tr>
 </thead>
 
@@ -35,7 +34,6 @@
 <c:forEach items="${reviewList }" var="review">
 <tr>
 	<td>${review.reviewNo }</td>
-	<td>${showTitle }</td>
 	<td>
 		<a href="<%=request.getContextPath() %>/review/detail?reviewno=${review.reviewNo }">${review.reviewTitle }</a>
 	</td>

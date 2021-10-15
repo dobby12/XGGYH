@@ -24,16 +24,15 @@ table {
 			<a href="<%=request.getContextPath() %>/review/list">전체 보기</a>
 </div>
 
-<table class="table table-hover table-condensed">
+<table class="table table-hover table-condensed table-center">
 
 <thead>
 <tr>
-	<th style="text-align: center; width: 10%">게시글 번호</th>
-	<th style="text-align: center; width: 20%">공연</th>
-	<th style="text-align: center; width: 42%">제목</th>
-	<th style="text-align: center; width: 10%">작성자</th>
-	<th style="text-align: center; width: 5%">조회수</th>
-	<th style="text-align: center; width: 10%">작성일</th>
+	<th style="width: 15%">게시글 번호</th>
+	<th style="width: 40%">제목</th>
+	<th style="width: 15%">작성자</th>
+	<th style="width: 15%">조회수</th>
+	<th style="width: 15%">작성일</th>
 </tr>
 </thead>
 
@@ -41,7 +40,6 @@ table {
 </tbody>
 <tr>
 	<td>${review.reviewNo }</td>
-	<td>${review.showNo }</td>
 	<td>
 		<a href="<%=request.getContextPath() %>/review/detail?reviewno=${review.reviewNo }">${review.reviewTitle }</a>
 	</td>

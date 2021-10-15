@@ -5,10 +5,17 @@
 
 <c:import url="/WEB-INF/views/layout/header.jsp" />
 <script type="text/javascript" src="<%=request.getContextPath() %>/resources/se2/js/service/HuskyEZCreator.js" charset="utf-8"></script>
+
 <script type="text/javascript">
 function submitContents(elClickedObj){
+	
+	//#reviewContent에 반영
 	oEditors.getById["reviewContent"].exec("UPDATE_CONTENTS_FIELD", []);
-	try {elClickedObj.form.submit();} catch(e) {}
+	
+	try {
+		//<form>태그 submit
+		elClickedObj.form.submit();
+		} catch(e) {}
 	}
 </script>
 
@@ -16,6 +23,7 @@ function submitContents(elClickedObj){
 $(document).ready(function() {
 	
 	$("#btnWrite").click(function() {
+		submitContents( $("btnWrite") )
 		$("form").submit();
 	});
 	
@@ -45,10 +53,13 @@ $(document).ready(function() {
 <table class="table table-striped table-hover table-condensed">
 <tr><td class="info">닉네임</td><td>${memnick }</td></tr>
 <tr><td class="info">공연이름</td><td>${showDetail.showTitle }</td></tr>
-<tr><td class="info">별점</td><td><input type="text" name="reviewScore" style="width:100%"/></td></tr>
+<tr>
+	<td class="info">별점</td>
+	<td><input type="text" name="reviewScore" style="width:100%"/></td>
+</tr>
 <tr><td class="info">제목</td><td><input type="text" name="reviewTitle" style="width:100%"/></td></tr>
 <tr><td class="info" colspan="12">본문</td></tr>
-<tr><td colspan="2"><textarea id="content" name="reviewContent" style="width:100%"></textarea></td></tr>
+<tr><td colspan="2"><textarea id="reviewContent" name="reviewContent" style="width:100%"></textarea></td></tr>
 </table>
 
 <div>

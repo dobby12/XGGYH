@@ -5,11 +5,21 @@
 
 <c:import url="/WEB-INF/views/layout/header.jsp" />
 
+<script type="text/javascript" src="<%=request.getContextPath() %>/resources/se2/js/service/HuskyEZCreator.js" charset="utf-8"></script>
+<script type="text/javascript">
+function submitContents(elClickedObj){
+	oEditors.getById["reviewContent"].exec("UPDATE_CONTENTS_FIELD", []);
+	try {
+		elClickedObj.form.submit();
+		} catch(e) {}
+	}
+</script>
 
 <script type="text/javascript">
 $(document).ready(function() {
 	
 	$("#btnUpdate").click(function() {
+		submitContents( $("btnWrite") )
 		$("form").submit();
 	});
 	
@@ -79,7 +89,7 @@ $(document).ready(function() {
 <td class="info">별점</td><td colspan="3"><input type="text" name="reviewScore" style="width:100%" value="${updateReview.reviewScore }"/></td>
 </tr>
 <tr><td class="info"  colspan="4">본문</td></tr>
-<tr><td colspan="4"><input type="text" name="reviewContent" style="width:100%" value="${updateReview.reviewContent }" /></td></tr>
+<tr><td colspan="4"><textarea id="reviewContent" name="reviewContent" style="width:100%" >${updateReview.reviewContent }</textarea></td></tr>
 </table>
 
 <!-- 첨부파일 -->
@@ -106,6 +116,16 @@ $(document).ready(function() {
 </div>
 
 </div>
+
+<script type="text/javascript">
+var oEditors = [];
+nhn.husky.EZCreator.createInIFrame({
+ oAppRef: oEditors,
+ elPlaceHolder: "reviewContent",
+ sSkinURI: "<%=request.getContextPath()%>/resources/se2/SmartEditor2Skin.html",
+ fCreator: "createSEditor2"
+});
+</script>
 
 </body>
 </html>
