@@ -47,7 +47,7 @@ public class AdminReviewDetailController extends HttpServlet {
 		req.setAttribute("reviewFile", reviewFile);
 		
 		if(adminService.authorAdmin((String)req.getSession().getAttribute("adminid"))) {
-			req.getRequestDispatcher("/WEB-INF/views/admin/review/detai.jsp").forward(req, resp);
+			req.getRequestDispatcher("/WEB-INF/views/admin/review/detail.jsp").forward(req, resp);
 			return;
 		}
 		resp.sendRedirect("/admin");
