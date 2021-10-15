@@ -14,7 +14,7 @@
 
 <div style="text-align: right;"><br>
 	<a href="<%=request.getContextPath() %>/review/list">최신순</a>&nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp
-	<a href="<%=request.getContextPath() %>/review/listhit">조회순</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+	<a href="<%=request.getContextPath() %>/review/listhit">조회순</a>
 </div><br>
      
 <thead>

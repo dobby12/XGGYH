@@ -28,11 +28,11 @@ table {
 
 <thead>
 <tr>
-	<th style="width: 15%">게시글 번호</th>
-	<th style="width: 40%">제목</th>
-	<th style="width: 15%">작성자</th>
-	<th style="width: 15%">조회수</th>
-	<th style="width: 15%">작성일</th>
+	<th style="width: 10%">게시글 번호</th>
+	<th style="width: 60%">제목</th>
+	<th style="width: 10%">작성자</th>
+	<th style="width: 10%">조회수</th>
+	<th style="width: 10%">작성일</th>
 </tr>
 </thead>
 
