@@ -81,7 +81,7 @@ $(document).ready(function() {
 			</tr>
 			<tr>
 				<td colspan="2"><textarea name="mailcontent" id="mailcontent"
-						style="width: 100%; height: 200px;"></textarea></td>
+						style="width: 100%; height: 400px;"></textarea></td>
 			 </tr>
 		</table>
 	</form>
