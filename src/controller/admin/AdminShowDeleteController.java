@@ -30,7 +30,7 @@ public class AdminShowDeleteController extends HttpServlet {
 		adminShowService.setShowDelete(showno);
 		
 		if(adminService.authorAdmin((String)req.getSession().getAttribute("adminid"))) {
-			req.getRequestDispatcher("/WEB-INF/views/show/delete.jsp").forward(req, resp);
+			resp.sendRedirect("/admin/show/list");
 			return;
 		}
 		resp.sendRedirect("/admin");

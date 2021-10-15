@@ -30,7 +30,7 @@ public class AdminReviewDeleteController extends HttpServlet {
 		adminReviewService.setReviewDelete(reviewno);
 		
 		if(adminService.authorAdmin((String)req.getSession().getAttribute("adminid"))) {
-			req.getRequestDispatcher("/WEB-INF/views/admin/review/delete.jsp").forward(req, resp);
+			resp.sendRedirect("/admin/review/list");
 			return;
 		}
 		resp.sendRedirect("/admin");	

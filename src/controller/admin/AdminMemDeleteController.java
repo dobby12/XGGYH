@@ -30,7 +30,7 @@ public class AdminMemDeleteController extends HttpServlet {
 		adminMemberService.setMemDelete(memid);
 		
 		if(adminService.authorAdmin((String)req.getSession().getAttribute("adminid"))) {
-			req.getRequestDispatcher("/WEB-INF/views/admin/mem/delete.jsp").forward(req, resp);
+			resp.sendRedirect("/admin/mem/list");
 			return;
 		}
 		resp.sendRedirect("/admin");

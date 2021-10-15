@@ -19,7 +19,7 @@ tr, th, td {
 
 <h2>공지사항 관리</h2>
 <button id="btnWrite" onclick="location.href='/admin/notice/write';"style="margin: -25px 0 15px 0; float: right;">
-    작성하기
+    작성
 </button>
 <hr style="clear: both;">
 
