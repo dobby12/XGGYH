@@ -265,11 +265,12 @@ button {
 	outline:none;
 	border-radius: 5px;
 } 
-button:hover{ 
+
+button:hover { 
    background:#f2f2f2; 
    color:#D96459; 
 } 
-button:before,button:after{ 
+button:before,button:after { 
    content:''; 
    position:absolute; 
    top:0; 

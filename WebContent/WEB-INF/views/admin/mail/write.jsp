@@ -70,11 +70,11 @@ $(document).ready(function() {
 			
 			<tr>
 				<td>보내는 이</td>
-				<td>${adminMail }(공공연히)</td>
+				<td style="font-weight: bold;">${adminMail }(공공연히)</td>
 			</tr>
 			<tr>
 				<td>받는 이</td>
-				<td><input type="text" name="memmail" autocomplete="off" style="width:100%;"/></td>
+				<td td style="font-weight: bold;"><input type="text" name="memmail" autocomplete="off" style="width:100%;"/></td>
 			</tr>
 			<tr>
 				<td colspan="2"><input type="text" name="mailtitle" placeholder="제목" style="width:100%;" /></td>

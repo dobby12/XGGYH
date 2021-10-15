@@ -17,12 +17,6 @@ $(document).ready(function(){
 			return false;
 		}
 	})
-	
-	$("#btnList").click(function(){
-		
-		history.back();
-		
-	})
 
 })
 
@@ -63,8 +57,8 @@ table {
 	<td>${mem.memMail }</td>
 	<td>${mem.mailState }</td>
 	<td>${mem.memDate }</td>
-	<td><a href="<%=request.getContextPath() %>/admin/mem/review?memid=${mem.memId }"><button>작성한 리뷰 보기</button></a></td>	
-	<td><a href="<%=request.getContextPath() %>/admin/mem/delete?memid=${mem.memId }"><button>삭제</button></a></td>	
+	<td><a href="<%=request.getContextPath() %>/admin/mem/review?memid=${mem.memId }"><button class="btnBack" id="btnList">작성한 리뷰 보기</button></a></td>	
+	<td><a href="<%=request.getContextPath() %>/admin/mem/delete?memid=${mem.memId }"><button class="btnDelete" id="btnDelete">삭제</button></a></td>	
 </tr>
 </tbody>
 </c:forEach>
