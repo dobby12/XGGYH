@@ -86,7 +86,17 @@ $(document).ready(function() {
 <td class="info">공연 제목</td><td colspan="3">${showTitle }</td>
 </tr>
 <tr>
-<td class="info">별점</td><td colspan="3"><input type="text" name="reviewScore" style="width:100%" value="${updateReview.reviewScore }"/></td>
+	<td class="info">별점</td>
+	<td colspan="3">
+		<select name="reviewScore" style="text-align: center;">
+			<option value="${updateReview.reviewScore }" >점수를 선택해주세요</option>
+			<option>1</option>
+			<option>2</option>
+			<option>3</option>
+			<option>4</option>
+			<option>5</option>
+		</select>
+	</td>
 </tr>
 <tr><td class="info"  colspan="4">본문</td></tr>
 <tr><td colspan="4"><textarea id="reviewContent" name="reviewContent" style="width:100%" >${updateReview.reviewContent }</textarea></td></tr>
