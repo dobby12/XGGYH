@@ -27,9 +27,9 @@ public class ShowSearchController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     	
     	String showTitle = req.getParameter("keyword");
-    	String showKind = req.getParameter("kind");
+    	int showKind = Integer.parseInt(req.getParameter("kind"));
     	
-    	Paging paging = showService.getParameterPaging(req, showTitle, Integer.parseInt(showKind));
+    	Paging paging = showService.getParameterPaging(req, showTitle, showKind);
     	
     	List<XShow> searchShowList = showService.getSearchShowList(req, paging);
     	
