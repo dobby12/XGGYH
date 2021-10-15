@@ -20,36 +20,34 @@ $(document).ready(function() {
 <h1>공지사항 상세보기</h1>
 <hr>
 
-<table class="table table-bordered">
+<table class="table table-condensed table-bordered">
+
 <tr>
-<td>번호</td><td colspan="3">${viewNotice.noticeNo }</td>
+	<td class="item" style="width: 10%">번호</td>
+	<td rowspan="2" style="vertical-align: middle; font-weight: bold;">${viewNotice.noticeTitle }</td>
+	<td class="item" style="width: 10%">작성일</td>
 </tr>
 
 <tr>
-<td>제목</td><td colspan="3">${viewNotice.noticeTitle }</td>
+	<td>${viewNotice.noticeNo }</td>
+	<td>${viewNotice.noticeDate }</td>	
 </tr>
 
+<!-- 첨부파일 있을 시 tr 하나 추가 -->
+<c:if test="${not empty noticeFile }">
 <tr>
-<td>작성일</td><td colspan="3">${viewNotice.noticeDate }</td>
+	<td class="item" style="vertical-align: middle;">첨부파일</td>
+	<td style="vertical-align: middle;">${noticeFile.fileOriginName }</td>
+	<td><a href="/upload/${noticeFile.fileStoredName }" download="${noticeFile.fileOriginName }"><button class="btnSubmit">다운로드</button></a></td>
 </tr>
+</c:if>
 
-<tr><td colspan="4">본문</td></tr>
-
-<tr><td colspan="4">${viewNotice.noticeContent }</td></tr>
+<tr><td colspan="3" style="height: 400px; vertical-align: middle;">${viewNotice.noticeContent }</td></tr>
 
 </table>
 
-<!-- 첨부파일 -->
-<div>
-<c:if test="${not empty noticeFile }">
-<a href="/upload/${noticeFile.fileStoredName }" download="${noticeFile.fileOriginName }">${noticeFile.fileOriginName }</a>
-</c:if>
-</div>
+<button id="btnList" class="btnBack">목록</button>
 
-<div class="text-center">	
-	<button id="btnList" class="btn btn-primary">목록</button>
-</div>
-
-</div>
+</div><!-- .container end -->
 
 <c:import url="/WEB-INF/views/layout/footer.jsp" />
