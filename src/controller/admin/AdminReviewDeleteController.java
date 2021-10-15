@@ -10,13 +10,16 @@ import javax.servlet.http.HttpServletResponse;
 
 import dto.XReview;
 import service.face.AdminReviewService;
+import service.face.AdminService;
 import service.impl.AdminReviewServiceImpl;
+import service.impl.AdminServiceImpl;
 
 @WebServlet("/admin/review/delete")
 public class AdminReviewDeleteController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	private AdminReviewService adminReviewService = new AdminReviewServiceImpl();
+	private AdminService adminService = new AdminServiceImpl();
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -26,7 +29,12 @@ public class AdminReviewDeleteController extends HttpServlet {
 		
 		adminReviewService.setReviewDelete(reviewno);
 		
-		resp.sendRedirect("/admin/review/list");
+		if(adminService.authorAdmin((String)req.getSession().getAttribute("adminid"))) {
+			req.getRequestDispatcher("/WEB-INF/views/admin/review/delete.jsp").forward(req, resp);
+			return;
+		}
+		resp.sendRedirect("/admin");	
+		
 	}
 	
 

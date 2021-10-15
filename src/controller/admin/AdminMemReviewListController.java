@@ -13,8 +13,10 @@ import dto.XMem;
 import dto.XReview;
 import service.face.AdminMemberService;
 import service.face.AdminReviewService;
+import service.face.AdminService;
 import service.impl.AdminMemberServiceImpl;
 import service.impl.AdminReviewServiceImpl;
+import service.impl.AdminServiceImpl;
 import util.Paging;
 
 @WebServlet("/admin/mem/review")
@@ -23,6 +25,7 @@ public class AdminMemReviewListController extends HttpServlet {
 	
 	private AdminReviewService adminReviewService = new AdminReviewServiceImpl();
 	private AdminMemberService adminMemberService = new AdminMemberServiceImpl();
+	private AdminService adminService = new AdminServiceImpl();
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -41,9 +44,13 @@ public class AdminMemReviewListController extends HttpServlet {
 		
 		req.setAttribute("linkUrl", "/admin/mem/review");
 		
-		System.out.println(memReviewList);
+//		System.out.println(memReviewList);
 		
-		req.getRequestDispatcher("/WEB-INF/views/admin/mem/review.jsp").forward(req, resp);
+		if(adminService.authorAdmin((String)req.getSession().getAttribute("adminid"))) {
+			req.getRequestDispatcher("/WEB-INF/views/admin/mem/review.jsp").forward(req, resp);
+			return;
+		}
+		resp.sendRedirect("/admin");
 		
 	
 	}

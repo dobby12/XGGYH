@@ -10,7 +10,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import dto.XFile;
 import dto.XShow;
+import service.face.AdminService;
 import service.face.AdminShowService;
+import service.impl.AdminServiceImpl;
 import service.impl.AdminShowServiceImpl;
 
 @WebServlet("/admin/show/detail")
@@ -18,6 +20,7 @@ public class AdminShowDetailController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	private AdminShowService adminShowService = new AdminShowServiceImpl();
+	private AdminService adminService = new AdminServiceImpl();
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -42,8 +45,11 @@ public class AdminShowDetailController extends HttpServlet {
 		//첨부파일 정보 전달
 		req.setAttribute("showFile", showFile);
 		
-		req.getRequestDispatcher("/WEB-INF/views/admin/show/detail.jsp").forward(req, resp);
-		
+		if(adminService.authorAdmin((String)req.getSession().getAttribute("adminid"))) {
+			req.getRequestDispatcher("/WEB-INF/views/admin/show/detail.jsp").forward(req, resp);
+			return;
+		}
+		resp.sendRedirect("/admin");		
 		
 		
 		
