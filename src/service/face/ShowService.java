@@ -51,6 +51,18 @@ public interface ShowService {
 	 */
 	public Paging getParameterPaging(HttpServletRequest req, int kindNo);
 	
+
+	/**
+	 * 요청파라미터 curPage를 구한다
+	 * XShow테이블과 curPage값을 이용하여 Paging객체를 구하여 반환한다
+	 * 
+	 * @param req - 요청정보 객체
+	 * @param showTitle
+	 * @param kindNo
+	 * @return
+	 */
+	public Paging getParameterPaging(HttpServletRequest req, String showTitle, int kindNo);
+	
 	/**
 	 * 요청파라미터 얻기
 	 * 
@@ -95,4 +107,6 @@ public interface ShowService {
 	 * @return - 공연장 이름
 	 */
 	public String getHallName(XShow showInfo);
+
+	public List<XShow> getSearchShowList(HttpServletRequest req, Paging paging);
 }

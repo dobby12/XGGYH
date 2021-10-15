@@ -76,6 +76,28 @@ public class ShowServiceImpl implements ShowService {
 
 		return paging;
 	}
+	
+	//공연 이름으로 골라낸 리스트 수 추가해서 페이징 객체 생성
+	@Override
+	public Paging getParameterPaging(HttpServletRequest req, String showTitle, int kindNo) {
+		String param = req.getParameter("curPage");
+		int curPage = 0;
+		
+		// 한번에 몇개씩 보여줄건지
+		int listCount = 6;
+		
+		if(param != null && !"".equals(param)) {
+			curPage = Integer.parseInt(param);
+		} else {
+			System.out.println("[WARNING] curPage값이 null이거나 비어있습니다");
+		}
+
+		int totalCount = showDao.selectCntByshowTitle(JDBCTemplate.getConnection(), showTitle, kindNo);
+
+		Paging paging = new Paging(totalCount, curPage, listCount);
+
+		return paging;
+	}
 
 	@Override
 	public XShow getShowNo(HttpServletRequest req) {
@@ -128,5 +150,13 @@ public class ShowServiceImpl implements ShowService {
 	@Override
 	public String getHallName(XShow showInfo) {
 		return showDao.selectHallNameByHallNo(JDBCTemplate.getConnection(), showInfo);
+	}
+
+	@Override
+	public List<XShow> getSearchShowList(HttpServletRequest req, Paging paging) {
+		String showKind = (String)req.getParameter("kind");
+		String keyword = (String)req.getParameter("keyword");
+
+		return showDao.selectShowSearchByshowTitle(JDBCTemplate.getConnection(), keyword, Integer.parseInt(showKind), paging);
 	}
 }
