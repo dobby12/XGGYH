@@ -40,8 +40,5 @@ public class JjimDeleteController extends HttpServlet {
 			System.out.println("찜 목록 삭제 실패");
 		else
 			System.out.println("찜 목록 삭제 성공");
-		
-		//요건 링크 바꿔야됨
-		resp.sendRedirect("/main");
 	}
 }

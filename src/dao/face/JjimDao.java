@@ -33,6 +33,14 @@ public interface JjimDao {
 	 * @return XJjim 테이블의 정보를 삭제 했는지 아닌지 여부
 	 */
 	public int deleteJjim(Connection conn, String memId, String showNo);
+	
+	/**
+	 * @param connection - DB 연결 객체
+	 * @param memId - 유저 아이디
+	 * @param showNo - 공연 번호
+	 * @return memId와 showNo로 DB를 조회한 결과가 있는지 여부
+	 */
+	public boolean selectXJjimByMemIdShowNo(Connection conn, String memId, int showNo);
 
 	/**
 	 * 

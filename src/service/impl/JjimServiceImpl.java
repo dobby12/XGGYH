@@ -90,4 +90,9 @@ public class JjimServiceImpl implements JjimService {
 		return isDeleted;
 	}
 	
+	@Override
+	public boolean getisJjim(String memId, int showNo) {
+		
+		return jjimDao.selectXJjimByMemIdShowNo(JDBCTemplate.getConnection(), memId, showNo);
+	}
 }

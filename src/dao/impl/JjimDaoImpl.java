@@ -199,4 +199,40 @@ public class JjimDaoImpl implements JjimDao {
 
 		return isDeleted;
 	}
+	
+	@Override
+	public boolean selectXJjimByMemIdShowNo(Connection conn, String memId, int showNo) {
+		// SQL 작성
+		String sql = "";
+		sql += "SELECT * FROM xjjim";
+		sql += " WHERE mem_id = ? AND show_no = ?";
+
+		// 총 게시글 수
+		boolean isSelected = false;
+
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, memId);
+			ps.setInt(2, showNo);
+			rs = ps.executeQuery();
+
+			if(rs.next())
+			{
+				System.out.println("이미 찜했음");
+				
+			}
+			else {
+				System.out.println("게시글 찜 안했었음");
+				isSelected = true;
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+		}
+
+		return isSelected;
+	}
 }

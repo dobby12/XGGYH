@@ -21,6 +21,36 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
+<script type="text/javascript">
+
+function insertJjim() {
+	var isJjimed = ${isJjim};
+	
+	if(isJjimed == true){		
+		alert('찜 목록에 추가 되었습니다.');
+		location.href= '/mem/jjim?showNo=' + '${showDetail.showNo}' + '&memId=' + '${memId}';
+	}
+	else{
+		alert('이미 찜한 공연입니다.');
+	}
+}
+
+function deleteJjim() {
+	var isJjimed = ${isJjim};
+	
+	if(isJjimed == false){
+		alert('찜 목록에서 삭제 되었습니다.');
+		location.href= '/mem/jjim/delete?showNo=' + '${showDetail.showNo}' + '&memId=' + '${memId}';
+		${isJjim}.setAttribute(true);
+		window.history.back();
+	}
+	else{
+		alert('찜하지 않은 공연입니다.');
+	}
+}
+
+</script>
+
 <style type="text/css">
 .detailInfo {
 	width: 500px;
@@ -57,22 +87,19 @@
 	float: right;
 	clear: both;
 }
-
 </style>
 
 </head>
 <body>
 
 	<c:import url="/WEB-INF/views/layout/header.jsp" />
-	
+
 	<div class="detailButton">
 		<a href="<%=request.getContextPath() %>/review/list">공연 리뷰 더보기</a>
 		<button onclick="location.href='<%=request.getContextPath()%>/show?kindNo=${showDetail.kindNo}';">공연목록</button>
-	<c:if test="${login}">
 		<button onclick="location.href='<%=request.getContextPath()%>/review/write?showNo=${showDetail.showNo}';">리뷰 작성</button>
-		<button onclick="location.href='<%=request.getContextPath()%>/mem/jjim?showNo=${showDetail.showNo}&memId=${memid}';">이 공연 찜하기</button>
-		<button onclick="location.href='<%=request.getContextPath()%>/mem/jjim/delete?showNo=${showDetail.showNo}&memId=${memid}';">찜한 공연 삭제하기</button>
-	</c:if>
+		<button onclick="insertJjim();">이 공연 찜하기</button>
+		<button onclick="deleteJjim();">찜한 공연 삭제하기</button>
 	</div>
 
 	<div class="container">
@@ -81,8 +108,9 @@
 		<hr>
 
 		<div class="photoEx">
-		<img class="poster" src='http://drive.google.com/uc?export=view&id=1UCDamPPObCPN9BY8Iz2WjsgiY8m80K2b' />
-		<br>
+			<img class="poster"
+				src='http://drive.google.com/uc?export=view&id=1UCDamPPObCPN9BY8Iz2WjsgiY8m80K2b' />
+			<br>
 		</div>
 
 		<div class="detailInfo">
@@ -104,8 +132,8 @@
 
 		<div class="content">${showDetail.showContent }</div>
 	</div>
-	
+
 	<c:import url="/WEB-INF/views/layout/footer.jsp" />
-	
+
 </body>
 </html>

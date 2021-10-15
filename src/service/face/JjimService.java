@@ -50,4 +50,12 @@ public interface JjimService {
 	 * @return int - 삭제에 성공 했는지 실패 했는지 여부를 반환함
 	 */
 	int setJjimDelete(String memId, String showNo);
+	
+	/**
+	 * 찜 여부를 true, false로 반환하는 메소드
+	 * @param memId - 현재 로그인한 유저의 아이디
+	 * @param showNo - 현재 상세보기 한 공연 정보의 공연번호
+	 * @return 유저가 이미 찜을 했는지 안했는지 여부
+	 */
+	boolean getisJjim(String memId, int showNo);
 }
