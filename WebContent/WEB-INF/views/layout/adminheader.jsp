@@ -103,7 +103,7 @@ ul.nav > li {
 	float: left;
 
 	/* 줄간격을 이용한 높이 조절 */
-	line-height: 30px;
+	line-height: 35px;
 	
 	/* 테두리를 이용한 메뉴 항목 구분선 만들기 */
 /* 	border-right: 1px solid #f2f2f2; */

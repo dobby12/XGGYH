@@ -29,10 +29,10 @@
 		<input type="text" id="mempw" name="mempw"/><br><%-- @@@type="password" --%>
 	</div>
 </div>
+<br>
 	<button>LOGIN</button>
 </form>
 
-<hr>
 
 
 
@@ -47,10 +47,8 @@
 
 
 
-<hr>
 <!------------------------------------------------------>
 
-<hr>
 
 <ul>
 	<li onclick="kakaoLogin();">

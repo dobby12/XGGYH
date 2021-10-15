@@ -344,7 +344,7 @@ a:hover {
 
 <div id="header" class="fixed-top">
 <ul class="nav">
-	<li id="logoA"><a href="<%=request.getContextPath() %>/admin"><img id="logo_header" src="/resources/file/logo_line.png" /></a></li>
+	<li id="logoA"><a href="<%=request.getContextPath() %>/main"><img id="logo_header" src="/resources/file/logo_line.png" /></a></li>
 	<li><a href="<%=request.getContextPath() %>/show">공연정보</a></li>
 	<li><a href="<%=request.getContextPath() %>/show?kindNo=1">뮤지컬</a></li>
 	<li><a href="<%=request.getContextPath() %>/show?kindNo=4">오페라</a></li>

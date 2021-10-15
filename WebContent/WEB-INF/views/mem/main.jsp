@@ -11,10 +11,9 @@
 <c:if test="${empty login || not login }">
 로그인 상태 아님
 <hr>
-	<strong>로그인 하지 않았을 때 보여질 영역</strong><br>
+	<strong>로그인 하지 않았을 때 보여질 영역</strong><br><br>
 	<a href="<%=request.getContextPath() %>/join"><button>JOIN</button></a>
 	<a href="<%=request.getContextPath() %>/login"><button>LOGIN</button></a>
-<hr>
 </c:if>
 
 <c:if test="${login }">
@@ -23,7 +22,6 @@
 <hr>
 	<strong>로그인 한 상태일 때 보여질 영역</strong><br><br>
 	<a href="<%=request.getContextPath() %>/logout"><button>LOGOUT</button></a>
-<hr>
 </c:if>
 
 </div><!-- .container end -->

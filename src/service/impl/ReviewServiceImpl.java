@@ -477,16 +477,17 @@ public class ReviewServiceImpl implements ReviewService {
 		
 		int fileno = getFile(reviewno).getFileNo();
 		
+		if( fileDao.deleteFile(conn, fileno) > 0 ) {
+			JDBCTemplate.commit(conn);
+		} else {
+			JDBCTemplate.rollback(conn);
+		}
+
 		if( reviewDao.delete(conn, reviewno) > 0 ) {
 			JDBCTemplate.commit(conn);
 		} else {
 			JDBCTemplate.rollback(conn);
 		}
 		
-		if( fileDao.deleteFile(conn, fileno) > 0 ) {
-			JDBCTemplate.commit(conn);
-		} else {
-			JDBCTemplate.rollback(conn);
-		}
 	}
 }
