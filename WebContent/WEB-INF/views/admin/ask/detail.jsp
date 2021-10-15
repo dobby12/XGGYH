@@ -97,15 +97,15 @@ th {
 </tr>
 
 <tr>
-	<td style="background-color: #d99771; width: 12.5%">문의번호</td>
+	<td class="item" style="width: 12.5%">문의번호</td>
 	<td style="width: 5%">${xask.askNo }</td>
-	<td style="background-color: #d99771; width: 15%">닉네임</td>
+	<td class="item" style="width: 15%">닉네임</td>
 	<td style="width: 10%">${nick }</td>
-	<td style="background-color: #d99771; width: 12.5%">문의유형</td>
+	<td class="item" style="width: 12.5%">문의유형</td>
 	<td style="width: 10%">${xask.askKind }</td>
-	<td style="background-color: #d99771; width: 7.5%">답변여부</td>
+	<td class="item"style="width: 7.5%">답변여부</td>
 	<td style="width: 5%">${xask.askState }</td>
-	<td style="background-color: #d99771; width: 7.5%">작성일</td>
+	<td class="item" style="width: 7.5%">작성일</td>
 	<td style="width: 15%">${xask.askDate }</td>
 </tr>
 

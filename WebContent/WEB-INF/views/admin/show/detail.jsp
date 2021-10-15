@@ -60,26 +60,26 @@ input[type=text] {
 	<td colspan="10" style="font-size: 30px; font-weight: bold; width: 100%; padding: 5px; height: 50px;">${viewShow.showTitle }</td>
 </tr>
 <tr>
-<td style="background: rgba(217, 151, 113, 0.5);">작성자</td><td>${viewShow.adminId }</td>
+<td class="item">작성자</td><td>${viewShow.adminId }</td>
 
-<td style="background: rgba(217, 151, 113, 0.5);">공연 종류</td><td>${showKind }</td>
+<td class="item">공연 종류</td><td>${showKind }</td>
 
-<td style="background: rgba(217, 151, 113, 0.5);">공연 장르</td><td>${showGenre }</td>
+<td class="item">공연 장르</td><td>${showGenre }</td>
 
-<td style="background: rgba(217, 151, 113, 0.5);">관람등급</td><td>${viewShow.showAge }</td>
+<td class="item">관람등급</td><td>${viewShow.showAge }</td>
 
-<td style="background: rgba(217, 151, 113, 0.5);">작성일</td><td>${viewShow.showDate }</td>
+<td class="item">작성일</td><td>${viewShow.showDate }</td>
 </tr>
 <tr>
-<td style="background: rgba(217, 151, 113, 0.5);">공연장</td><td>${showHall }</td>
+<td class="item">공연장</td><td>${showHall }</td>
 
-<td style="background: rgba(217, 151, 113, 0.5);">감독</td><td>${viewShow.showDirector }</td>
+<td class="item">감독</td><td>${viewShow.showDirector }</td>
 
-<td style="background: rgba(217, 151, 113, 0.5);">배우</td><td>${viewShow.showActor }</td>
+<td class="item">배우</td><td>${viewShow.showActor }</td>
 
-<td style="background: rgba(217, 151, 113, 0.5);">시작일</td><td>${viewShow.showStart }</td>
+<td class="item">시작일</td><td>${viewShow.showStart }</td>
 
-<td style="background: rgba(217, 151, 113, 0.5);">종료일</td><td>${viewShow.showEnd }</td>
+<td class="item">종료일</td><td>${viewShow.showEnd }</td>
 
 
 </tr>
