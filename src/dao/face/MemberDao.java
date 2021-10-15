@@ -61,4 +61,11 @@ public interface MemberDao {
 	 */
 	public int updateMem(Connection conn, XMem mem);
 
+	/**
+	 * 
+	 * @param conn
+	 * @param memId
+	 * @return
+	 */
+	public int deleteMem(Connection conn, XMem mem);
 }

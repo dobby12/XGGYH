@@ -222,4 +222,29 @@ public class MemberDaoImpl implements MemberDao {
 		
 		return res;
 	}
+
+	@Override
+	public int deleteMem(Connection conn, XMem mem) {
+
+		String sql = "";
+		sql += "DELETE xmem";
+		sql += " WHERE mem_id = ?";
+
+		int res = -1;
+
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, mem.getMemId());
+
+			res = ps.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(ps);
+		}
+
+		return res;
+
+	}
 }

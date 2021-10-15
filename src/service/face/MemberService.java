@@ -77,5 +77,10 @@ public interface MemberService {
 	 */
 	public int updateMem(HttpServletRequest req);
 
+	/**
+	 * 
+	 * @param memId
+	 */
+	public void setMemDelete(XMem memId);
 
 }
