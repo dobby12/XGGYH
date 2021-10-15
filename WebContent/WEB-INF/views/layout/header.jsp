@@ -327,6 +327,10 @@ td, th, textarea {
 	vertical-align: middle;
 }
 
+.table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
+   background-color: rgba(217, 151, 113, 0.5)
+}
+
 a {
 	color: black;
 }

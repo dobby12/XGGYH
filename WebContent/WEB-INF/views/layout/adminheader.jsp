@@ -222,7 +222,7 @@ ul.nav > li > ul > li {
 ul.nav > li:hover > ul > li {
 	height: 30px; /* 컨텐츠영역 높이 되돌리기 */
 	font-size: 12px; /* 글자 크기 되돌리기 */
-	line-height: 40px; /* 줄간격 되돌리기 */
+	line-height: 30px; /* 줄간격 되돌리기 */
 	
 	
 }

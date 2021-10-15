@@ -92,8 +92,6 @@ input[type=text] {
 	border: 1px solid rgba(217, 151, 113, 0.5);
 	height: 24.48px;
 }
-.table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
-   background-color: rgba(217, 151, 113, 0.5)
 </style>
 
 <div class="container">
