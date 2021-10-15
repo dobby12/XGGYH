@@ -19,45 +19,45 @@ public class ReviewDaoImpl implements ReviewDao {
 	private PreparedStatement ps = null;
 	private ResultSet rs = null;
 	
-	@Override
-	public List<XReview> selectAll(Connection conn) {
-		
-		String sql = "";
-		sql += "SELECT * FROM xreview";
-		sql += " ORDER BY review_no DESC";
-		
-		List<XReview> reviewList = new ArrayList<>();
-		
-		try {
-			ps = conn.prepareStatement(sql);
-			
-			rs = ps.executeQuery();
-			
-			while(rs.next()) {
-				XReview r = new XReview();
-				
-				r.setReviewNo( rs.getInt("reviewNo") );
-				r.setShowNo( rs.getInt("showNo") );
-				r.setFileNo( rs.getInt("fileNo") );
-				r.setMemId( rs.getString("MemId") );
-				r.setReviewTitle( rs.getString("reviewTitle") );
-				r.setReviewContent( rs.getString("reviewContent") );
-				r.setReviewDate( rs.getDate("reviewDate") );
-				r.setReviewScore( rs.getInt("reviewScore") );
-				r.setReviewHit( rs.getInt("reviewHit") );
-				
-				reviewList.add(r);
-			}
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			JDBCTemplate.close(rs);
-			JDBCTemplate.close(ps);
-		}
-		
-		return reviewList;
-	}
+//	@Override
+//	public List<XReview> selectAll(Connection conn) {
+//		
+//		String sql = "";
+//		sql += "SELECT * FROM xreview";
+//		sql += " ORDER BY review_no DESC";
+//		
+//		List<XReview> reviewList = new ArrayList<>();
+//		
+//		try {
+//			ps = conn.prepareStatement(sql);
+//			
+//			rs = ps.executeQuery();
+//			
+//			while(rs.next()) {
+//				XReview r = new XReview();
+//				
+//				r.setReviewNo( rs.getInt("reviewNo") );
+//				r.setShowNo( rs.getInt("showNo") );
+//				r.setFileNo( rs.getInt("fileNo") );
+//				r.setMemId( rs.getString("MemId") );
+//				r.setReviewTitle( rs.getString("reviewTitle") );
+//				r.setReviewContent( rs.getString("reviewContent") );
+//				r.setReviewDate( rs.getDate("reviewDate") );
+//				r.setReviewScore( rs.getInt("reviewScore") );
+//				r.setReviewHit( rs.getInt("reviewHit") );
+//				
+//				reviewList.add(r);
+//			}
+//			
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		} finally {
+//			JDBCTemplate.close(rs);
+//			JDBCTemplate.close(ps);
+//		}
+//		
+//		return reviewList;
+//	}
 	
 	@Override
 	public List<XReview> selectAll(Connection conn, Paging paging) {

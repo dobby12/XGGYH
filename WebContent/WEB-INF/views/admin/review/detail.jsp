@@ -41,24 +41,29 @@ table {
 <h2>리뷰 상세보기</h2>
 <hr>
 
-<table class="table table-condensed table-bordered " >
+<table class="table table-condensed table-bordered" >
 
 <tr>
-<td colspan="20">${viewReview.reviewTitle }</td>
+<td colspan="8" style="font-size: 30px; font-weight: bold; width: 100%; padding: 5px; height: 50px;">${viewReview.reviewTitle }</td>
 </tr>
 
 <tr>
-<td colspan="4" >회원 아이디</td><td colspan="4">${viewReview.memId }</td>
-<td colspan="4">회원 닉네임</td><td colspan="4">${memNick }</td>
-<td colspan="2">조회수</td><td colspan="2">${viewReview.reviewHit }</td>
+	<td class="item" colspan="2" >회원 아이디</td><td colspan="3">${viewReview.memId }</td>
+	<td class="item" colspan="1">조회수</td><td colspan="2">${viewReview.reviewHit }</td>
 </tr>
 
 <tr>
-<td colspan="3">작성일</td><td colspan="3">${viewReview.reviewDate }</td>
-<td class="3">공연 제목</td><td colspan="5">${showTitle }</td>
-<td colspan="2">별점</td><td colspan="2">${viewReview.reviewScore }</td>
+	<td class="item" colspan="2">회원 닉네임</td><td colspan="3">${memNick }</td>
+	<td class="item" colspan="1">작성일</td><td colspan="1">${viewReview.reviewDate }</td>
 
-<tr><td colspan="20">${viewReview.reviewContent }</td></tr>
+<tr>
+	<td class="item" colspan="2">공연 제목</td><td colspan="3">${showTitle }</td>
+	<td class="item" colspan="1">평점</td><td colspan="1">${viewReview.reviewScore }</td>
+</tr>
+
+<tr>
+	<td colspan="8" style="width: 100%; height: 300px; padding: 10px; vertical-align: middle;">${viewReview.reviewContent }</td>
+</tr>
 
 </table>
 

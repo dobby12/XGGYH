@@ -34,15 +34,9 @@ $(document).ready(function() {
 });
 </script>
 
-<style type="text/css">
-#content {
-	width: 98%;
-}
-</style>
-
 <div class="container text-center">
 
-<h3 class="pull-left">작성하기</h3>
+<h3>리뷰 작성하기</h3>
 <hr>
 
 <div>
@@ -50,29 +44,35 @@ $(document).ready(function() {
 
 <input type="hidden" name="showNo" value="${showDetail.showNo }" />
 
-<table class="table table-striped table-hover table-condensed">
-<tr><td class="info">닉네임</td><td>${memnick }</td></tr>
-<tr><td class="info">공연이름</td><td>${showDetail.showTitle }</td></tr>
+<table class="table table-hover table-condensed">
 <tr>
-	<td class="info">평점</td>
-	<td>
+	<td class="item" colspan="1">닉네임</td><td colspan="2">${memnick }</td>
+	<td class="item" colspan="1">공연이름</td><td style="width: 55%;" colspan="3">${showDetail.showTitle }</td>
+	<td class="item" colspan ="1">평점</td>
+	<td colspan="1">
 		<select name="reviewScore" style="text-align: center;">
-			<option>평점을 선택해주세요</option>
-			<option value="★">1</option>
-			<option value="★★">2</option>
-			<option value="★★★">3</option>
-			<option value="★★★★">4</option>
-			<option value="★★★★★">5</option>
+			<option>평점 선택</option>
+			<option value="1">★</option>
+			<option value="2">★★</option>
+			<option value="3">★★★</option>
+			<option value="4">★★★★</option>
+			<option value="5">★★★★★</option>
 		</select>
 	</td>
 </tr>
-<tr><td class="info">제목</td><td><input type="text" name="reviewTitle" style="width:100%"/></td></tr>
-<tr><td class="info" colspan="12">본문</td></tr>
-<tr><td colspan="2"><textarea id="reviewContent" name="reviewContent" style="width:100%"></textarea></td></tr>
+
+<tr>
+	<td class="item" colspan="9"><input type="text" name="reviewTitle" style="width:100%" placeholder="제목" /></td>
+</tr>
+
+<tr>
+	<td colspan="9" style="width: 100%; padding: 10px; vertical-align: middle;">
+	<textarea id="reviewContent" name="reviewContent" style="width:100%; height:400px;"></textarea></td>
+</tr>
 </table>
 
 <div>
-첨부파일 <input type="file" name="file" />
+<input style="padding: 10px;" type="file" name="file" />
 </div>
 
 </form>
