@@ -51,12 +51,12 @@ $(document).ready(function() {
 	<td class="item" colspan ="1">평점</td>
 	<td colspan="1">
 		<select name="reviewScore" style="text-align: center;">
-			<option>평점 선택</option>
-			<option>1</option>
-			<option>2</option>
-			<option>3</option>
-			<option>4</option>
-			<option>5</option>
+			<option disabled>평점 선택</option>
+			<option value="1">★</option>
+			<option value="2">★★</option>
+			<option value="3">★★★</option>
+			<option value="4">★★★★</option>
+			<option value="5">★★★★★</option>
 		</select>
 	</td>
 </tr>
