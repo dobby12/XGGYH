@@ -9,7 +9,6 @@
 
 <c:if test="${loginfail }"><%-- 로그인 실패를 전달 받았을 때 --%>
 @@@로그인에 실패하였습니다. 아이디와 패스워드를 확인하세요.
-<button id="btnBack">뒤로가기</button>
 </c:if>
 
 <c:if test="${empty login }"><%-- 로그인이 아닐 때 --%>

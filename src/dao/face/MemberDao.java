@@ -101,5 +101,13 @@ public interface MemberDao {
 	 */
 	public int updateMemKakaoByMemmail(Connection conn, String kakaoagree);
 
+	/**
+	 * 
+	 * @param conn
+	 * @param mem
+	 * @return
+	 */
+	public int insertMemWithKakao(Connection conn, XMem mem);
+
 	
 }

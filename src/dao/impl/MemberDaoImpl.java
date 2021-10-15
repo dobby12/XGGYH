@@ -340,4 +340,32 @@ public class MemberDaoImpl implements MemberDao {
 		return res;
 		
 	}
+	
+	@Override
+	public int insertMemWithKakao(Connection conn, XMem mem) {
+
+		String sql = "INSERT INTO XMEM ( mem_id, mem_pw, mem_nick, mem_mail, mail_state, genre_no, kakao) VALUES ( ?, ?, ?, ?, ?, ?, 'y')";
+		
+		int res = 0;
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			
+			ps.setString(1, mem.getMemId());
+			ps.setString(2, mem.getMemPw());
+			ps.setString(3, mem.getMemNick());
+			ps.setString(4, mem.getMemMail());
+			ps.setString(5, mem.getMailState());
+			ps.setInt(6, mem.getGenreNo());
+			
+			System.out.println(mem);
+			res = ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(ps);
+		}
+		
+		return res;
+	}
 }

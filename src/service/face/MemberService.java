@@ -110,6 +110,12 @@ public interface MemberService {
 	 */
 	public void setKakaoByMemmail(String kakaoagree);
 
+	/**
+	 * 
+	 * @param mem
+	 */
+	public void setMemWithKakao(XMem mem);
+
 	
 	
 }

@@ -189,4 +189,16 @@ public class MemberServiceImpl implements MemberService {
 		}
 	}
 	
+	@Override
+	public void setMemWithKakao(XMem mem) {
+		Connection conn = JDBCTemplate.getConnection();
+		
+		if( memberDao.insertMemWithKakao(conn, mem) > 0 ) {
+			JDBCTemplate.commit(conn);
+		} else {
+			JDBCTemplate.rollback(conn);
+		}
+		
+	}
+	
 }

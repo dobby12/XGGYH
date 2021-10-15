@@ -11,10 +11,15 @@ import service.face.MemberService;
 import service.impl.MemberServiceImpl;
 
 @WebServlet("/kakao")
-public class MemberKakaoController extends HttpServlet {
+public class MemberKakaoLoginController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private MemberService memberService = new MemberServiceImpl();
 
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.getRequestDispatcher("/WEB-INF/views/mem/login.jsp").forward(req, resp);
+	}
+	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
@@ -29,6 +34,8 @@ public class MemberKakaoController extends HttpServlet {
 		} else if(req.getParameter("kakaojoin")!=null) {
 			String kakaojoin = req.getParameter("kakaojoin");
 			System.out.println("소셜 로그인한 미가입자 이메일 : " + kakaojoin);
+			req.setAttribute("kakaojoin", kakaojoin);
+			req.getRequestDispatcher("/WEB-INF/views/mem/join/kakaojoin.jsp").forward(req, resp);
 		}
 		
 	}

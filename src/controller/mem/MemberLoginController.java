@@ -43,7 +43,11 @@ public class MemberLoginController extends HttpServlet {
 				session.setAttribute("memid", memberService.getMem(mem).getMemId());
 				session.setAttribute("memnick", memberService.getMem(mem).getMemNick());
 				System.out.println("로그인 후 돌아갈 페이지 : "+req.getParameter("ref"));
-				resp.sendRedirect(req.getParameter("ref"));
+				if(req.getParameter("ref")==null || "".equals(req.getParameter("ref"))) {
+					resp.sendRedirect("/");					
+				} else {
+					resp.sendRedirect(req.getParameter("ref"));					
+				}
 			} else {
 				System.out.println("@@@1-3 실패");
 				session.setAttribute("loginfail", true);
