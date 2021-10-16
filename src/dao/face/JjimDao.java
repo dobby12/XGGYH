@@ -51,4 +51,14 @@ public interface JjimDao {
 	 */
 	public List<XShow> selectShowByMemId(Connection conn, Paging paging, String memid);
 
+	
+	/**
+	 * paging없이 리스트 받기
+	 * 
+	 * @param conn
+	 * @param memid
+	 * @return List<XShow>
+	 */
+	public List<XShow> selectShowByMemId(Connection conn, String memid);
+
 }

@@ -45,11 +45,6 @@ table {
     outline: none;
 }
 
-.search:active {
-	background: fff;
-
-}
-
 
 </style>
 

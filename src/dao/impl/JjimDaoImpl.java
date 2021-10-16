@@ -166,6 +166,54 @@ public class JjimDaoImpl implements JjimDao {
 		
 		return showList;
 	}
+	
+	@Override
+	public List<XShow> selectShowByMemId(Connection conn, String memid) {
+		String sql = "";
+		sql += "SELECT * FROM (";
+		sql += "	SELECT * FROM XSHOW";
+		sql += "	WHERE show_no IN (";
+		sql += "		SELECT show_no FROM XJJIM";
+		sql += "		WHERE mem_id = ?))";
+		
+		List<XShow> showList = new ArrayList<>(); 
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, memid);
+
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				XShow show = new XShow();
+
+				show.setShowNo(rs.getInt("show_no"));
+				show.setFileNo(rs.getInt("file_no"));
+				show.setAdminId(rs.getString("admin_id"));
+				show.setKindNo(rs.getInt("kind_no"));
+				show.setGenreNo(rs.getInt("genre_no"));
+				show.setHallNo(rs.getInt("hall_no"));
+				show.setShowTitle(rs.getString("show_title"));
+				show.setShowContent(rs.getString("show_content"));
+				show.setShowDate(rs.getDate("show_date"));
+				show.setShowAge(rs.getString("show_age"));
+				show.setShowDirector(rs.getString("show_director"));
+				show.setShowActor(rs.getString("show_actor"));
+				show.setShowStart(rs.getDate("show_start"));
+				show.setShowEnd(rs.getDate("show_end"));
+
+				showList.add(show);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+		}
+		
+		return showList;
+	}
 
 	@Override
 	public int deleteJjim(Connection conn, String memId, String showNo) {

@@ -79,6 +79,11 @@ public class JjimServiceImpl implements JjimService {
 	}
 	
 	@Override
+	public List<XShow> getShowNoByMemId(String memid) {
+	
+		return jjimDao.selectShowByMemId(JDBCTemplate.getConnection(), memid);
+	}
+	@Override
 	public int setJjimDelete(String memId, String showNo) {
 		int isDeleted = jjimDao.deleteJjim(JDBCTemplate.getConnection(), memId, showNo);
 
