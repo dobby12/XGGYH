@@ -54,6 +54,14 @@ html, body {
 	display: block;
 	text-align: center;
 	background-color: #F2F2F2;
+	
+	overflow: hidden;
+}
+
+#footer_part {
+	width: 1000px;
+	height: 100%;
+	margin: 0 auto;
 }
 
 body, ul.nav > li > a  {
@@ -70,6 +78,8 @@ body, ul.nav > li > a  {
 	display: block;
 	text-align: center;
 	margin: 0 0 25px 0;
+	
+	overflow: hidden;
 }
 
 #logo_header {
@@ -83,7 +93,6 @@ body, ul.nav > li > a  {
 	width: 120px;
 	
 	float: left;
-	margin: 10px 0 0 300px;
 }
 
 
@@ -96,8 +105,10 @@ ul.nav {
 	list-style-type: none;
 	
 	/* 기본 여백 제거 */
+	width: 1000px;
 	padding: 0;
-	margin: 0 250px 0 200px;	
+	
+	margin: 0 auto;	
 }
 
 
@@ -105,7 +116,7 @@ ul.nav {
 ul.nav > li {
 
 	/* 서브메뉴(absolute)의 위치 기준점 설정하기 */
-	position: relative;
+	position: inline-block;
 	
 	/* 수평으로 일렬 배치하기 */
 	float: left;
@@ -380,8 +391,8 @@ textarea:focus, input:focus {
 	<li><a href="<%=request.getContextPath() %>/show?kindNo=3">콘서트</a></li>
 	<li><a href="<%=request.getContextPath() %>/show?kindNo=2">연극</a></li>
 	<li><a href="<%=request.getContextPath() %>/mypage/myjjim">내가 찜한 콘텐츠</a></li>
-	<li><a href="<%=request.getContextPath() %>/review/list">리뷰 게시판</a></li>
-	
+	<li><a href="<%=request.getContextPath() %>/review/list">리뷰 게시판</a>
+
 	<c:if test="${not empty login }">
 		<li id="outlog" style="float: right;"><a href="<%=request.getContextPath() %>/logout"><span class="glyphicon glyphicon-off" aria-hidden="true"></span></a></li>		
 		<li id="pagemy" style="float: right;"><a href="<%=request.getContextPath() %>/mypage">마이페이지</a></li>

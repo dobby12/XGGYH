@@ -46,6 +46,14 @@ html, body {
 	text-align: center;
 	background-color: #F2F2F2;
 	margin: 25px 0 0 0;
+	
+	overflow: hidden;
+}
+
+#footer_part {
+	width: 1000px;
+	height: 100%;
+	margin: 0 auto;
 }
 
 body, ul.nav > li > a  {
@@ -58,11 +66,14 @@ body, ul.nav > li > a  {
 	
 	background: #f2f2f2;
 	height: 60px;
-	width: 1920x;
+	width: 100%;
 	display: block;
 	text-align: center;
 	margin: 0 0 25px 0;
+	
+/* 	overflow: hidden; */
 }
+
 
 #logo_header {
 	width: 90px;
@@ -75,8 +86,8 @@ body, ul.nav > li > a  {
 	width: 120px;
 	
 	float: left;
-	margin: 10px 0 0 300px;
 }
+
 
 
 /* ------------------------------------------------ */
@@ -88,8 +99,9 @@ ul.nav {
 	list-style-type: none;
 	
 	/* 기본 여백 제거 */
+	width: 1000px;
 	padding: 0;
-	margin: 0 0 0 200px;	
+	margin: 0 auto;	
 }
 
 
@@ -152,14 +164,10 @@ ul.nav > li > ul {
 	/* 서브메뉴영역의 너비 */
 	width: 100px;
 	
-	
 	z-index: 1;
-	
 	
 	text-align: center;
 }
-
-/*  */
 
 ul.nav > li:hover > a {
 	text-decoration: none;
@@ -168,8 +176,8 @@ ul.nav > li:hover > a {
 	text-decoration:none;
  	border-bottom: 2px solid #D96459; 
  	padding-bottom:3px; 
-}
 
+}
 
 #logoA > a:hover, #logoA> a:before,#logoA> a:after {
  	border-bottom: 0px; 
@@ -325,10 +333,6 @@ table {
 
 td, th, textarea {
 	text-align: center;
-	vertical-align: middle;
-}
-
-.table>tbody>tr>td {
 	vertical-align: middle;
 }
 
