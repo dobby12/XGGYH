@@ -35,6 +35,7 @@ public class AdminNoticeDeleteController extends HttpServlet {
 		XNotice notice = adminNoticeService.getNoticeDetail(noticeno);
 		HttpSession session = req.getSession();
 		if(!notice.getAdminId().equals(session.getAttribute("adminid"))) {			
+			resp.sendRedirect("/admin/notice/list");
 			return;
 		}
 		

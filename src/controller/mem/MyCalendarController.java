@@ -1,9 +1,6 @@
 package controller.mem;
 
 import java.io.IOException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -14,9 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import dto.XShow;
 import service.face.JjimService;
-import service.face.ShowService;
 import service.impl.JjimServiceImpl;
-import service.impl.ShowServiceImpl;
 
 @WebServlet("/mycalendar")
 public class MyCalendarController extends HttpServlet {
@@ -33,6 +28,8 @@ public class MyCalendarController extends HttpServlet {
 		List<XShow> showList = jjimService.getShowNoByMemId(memid);
 		
 		System.out.println(showList);
+		
+		req.setAttribute("memid", memid);
 
 		req.setAttribute("showList", showList);
 		
