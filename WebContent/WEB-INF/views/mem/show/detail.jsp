@@ -61,9 +61,15 @@
 
 <script type="text/javascript">
 	function insertJjim() {
-		var isJjimed = ${isJjim};
+		var isJjimed = $
+		{
+			isJjim
+		}
+		;
 
-		if (<%=session.getAttribute("login")%> == null) {
+		if (
+<%=session.getAttribute("login")%>
+	== null) {
 			alert("로그인 후 이용 가능한 서비스입니다. 로그인 해주세요.");
 			location.href = '/login';
 		} else {
@@ -78,17 +84,23 @@
 	}
 
 	function deleteJjim() {
-		var isJjimed = ${isJjim};
-		if (<%=session.getAttribute("login")%> == null) {
+		var isJjimed = $
+		{
+			isJjim
+		}
+		;
+		if (
+<%=session.getAttribute("login")%>
+	== null) {
 			alert("로그인 후 이용 가능한 서비스입니다. 로그인 해주세요.");
 			location.href = '/login';
 		}
-		
-		else{
+
+		else {
 			if (isJjimed == false) {
 				alert('찜 목록에서 삭제 되었습니다.');
-				location.href = '/mem/jjim/delete?showNo=' + '${showDetail.showNo}'
-						+ '&memId=' + '${memid}';
+				location.href = '/mem/jjim/delete?showNo='
+						+ '${showDetail.showNo}' + '&memId=' + '${memid}';
 				window.history.back();
 				location.reload();
 			} else {
@@ -126,20 +138,37 @@
 		</div>
 
 		<div class="detailInfo">
-			공연 번호 : ${showDetail.showNo} <br> 카테고리 : ${showKindName} <br>
-			장르 : ${showGenreName} <br> 공연장 : <a
-				href="<%=request.getContextPath() %>/hall/detail?hallNo=${showDetail.hallNo }">
-				${showHallName} </a> <br> 작성일 : ${showDetail.showDate} <br> 연령
-			제한 : ${showDetail.showAge} <br> 감독 : ${showDetail.showDirector}
-			<br> 출연 배우 : ${showDetail.showActor} <br> 상연 시작일 :
-			${showDetail.showStart} <br> 상연 종료일 : ${showDetail.showEnd} <br>
+			공연 번호 : ${showDetail.showNo} <br> 
+			카테고리 : ${showKindName} <br>
+			장르 : ${showGenreName} <br> 
+			공연장 : <a href="<%=request.getContextPath() %>/hall/detail?hallNo=${showDetail.hallNo }">${showHallName} </a> <br> 
+			작성일 : ${showDetail.showDate} <br> 
+			연령제한 : ${showDetail.showAge} <br> 
+			감독 : ${showDetail.showDirector}<br> 
+			출연 배우 : ${showDetail.showActor} <br> 
+			공연 평점 : ${showScoreAvg}
+			상연 시작일 : ${showDetail.showStart} <br> 
+			상연 종료일 : ${showDetail.showEnd} <br>
 		</div>
 
 		<div class="content">${showDetail.showContent }</div>
 	</div>
 
-	<c:import url="/WEB-INF/views/layout/footer.jsp" />
+	<h3>이 공연의 리뷰</h3>
+	<br>
+	<table class="table table-hover table-condensed table-bordered" style="width: 200px;">
 
+		<thead>
+			<tr>
+				<td>공연 제목</td>
+				<td>공연기간</td>
+				<td></td>
+			</tr>
+		</thead>
+		
+	</table>
+
+		<c:import url="/WEB-INF/views/layout/footer.jsp" />
 </body>
 
 </html>
