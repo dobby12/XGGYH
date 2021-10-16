@@ -14,6 +14,7 @@ import service.face.MemberService;
 import service.face.ShowService;
 import service.impl.MemberServiceImpl;
 import service.impl.ShowServiceImpl;
+import util.Paging;
 
 /**
  * Servlet implementation class ShowSuggestController
@@ -29,6 +30,7 @@ public class ShowSuggestController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		HttpSession session = null;
+		int genreNo = 0;
 		
 		if(req.getSession() != null)
 		{
@@ -43,6 +45,17 @@ public class ShowSuggestController extends HttpServlet {
 		
 		if(memberService.loginMem(mem)) {
 			session.setAttribute("genreno", memberService.getMem(mem).getGenreNo());
+			
+			genreNo = (int)session.getAttribute("genreno");
+			
+			System.out.println(genreNo);
 		}
+		else
+		{
+			System.out.println("로그인 정보를 가져오는데 실패했습니다.");
+			return;
+		}
+		
+	//	Paging paging = showService.getParameterPaging(req, genreNo);
 	}
 }

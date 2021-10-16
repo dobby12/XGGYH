@@ -66,7 +66,7 @@ function insertJjim() {
 	
 	if(isJjimed == true){		
 		alert('찜 목록에 추가 되었습니다.');
-		location.href= '/mem/jjim?showNo=' + '${showDetail.showNo}' + '&memId=' + '${memId}';
+		location.href= '/mem/jjim?showNo=' + '${showDetail.showNo}' + '&memId=' + '${memid}';
 	}
 	else{
 		alert('이미 찜한 공연입니다.');
@@ -78,7 +78,7 @@ function deleteJjim() {
 	
 	if(isJjimed == false){
 		alert('찜 목록에서 삭제 되었습니다.');
-		location.href= '/mem/jjim/delete?showNo=' + '${showDetail.showNo}' + '&memId=' + '${memId}';
+		location.href= '/mem/jjim/delete?showNo=' + '${showDetail.showNo}' + '&memId=' + '${memid}';
 		//${isJjim}.setAttribute(true);
 		window.history.back();
 	}
@@ -130,35 +130,5 @@ function deleteJjim() {
 	<c:import url="/WEB-INF/views/layout/footer.jsp" />
 
 </body>
-
-<script type="text/javascript">
-
-function insertJjim() {
-	var isJjimed = ${isJjim};
-	
-	if(isJjimed == true){		
-		alert('찜 목록에 추가 되었습니다.');
-		location.href= '/mem/jjim?showNo=' + '${showDetail.showNo}' + '&memId=' + '${memId}';
-	}
-	else{
-		alert('이미 찜한 공연입니다.');
-	}
-}
-
-function deleteJjim() {
-	var isJjimed = ${isJjim};
-	
-	if(isJjimed == false){
-		alert('찜 목록에서 삭제 되었습니다.');
-		location.href= '/mem/jjim/delete?showNo=' + '${showDetail.showNo}' + '&memId=' + '${memId}';
-		//${isJjim}.setAttribute(true);
-		window.history.back();
-	}
-	else{
-		alert('찜하지 않은 공연입니다.');
-	}
-}
-
-</script>
 
 </html>

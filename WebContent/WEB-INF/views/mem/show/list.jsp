@@ -67,6 +67,15 @@
 <h1>공연 정보 게시판( ${kindName} )</h1>
 <hr>
 
+<div>
+
+<form action="<%=request.getContextPath() %>/show/memgenre" method="get">
+<input type="hidden" id="kind" name="kind" value="${kindNo}"/>
+</form>
+
+</div>
+<c:import url="/WEB-INF/views/mem/show/suggest.jsp" />
+
 <div class="main_list">
 		<div class="list_start">
 			<c:forEach items="${showList }" var="showList">
@@ -95,6 +104,7 @@
 	<button>검색</button>
 </form>
 </div>
+
 
 <c:import url="/WEB-INF/views/layout/parameterPaging.jsp" />
 
