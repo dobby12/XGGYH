@@ -32,7 +32,7 @@ $(document).ready(function() {
  	
  	<div>
  		<label>아이디</label>
- 		<label>${myinfo.memId }</label>
+ 		<label>${mem.memId }</label>
  	</div>
  	<div>
  		<label>공공연히에서 탈퇴하시겠습니까?</label>

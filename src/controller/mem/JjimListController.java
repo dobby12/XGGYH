@@ -36,6 +36,15 @@ public class JjimListController extends HttpServlet {
 		
 		req.setAttribute("linkUrl", "/mypage/myjjim");
 		
+		//로그인 되어있지 않으면 리다이렉트 
+		if( req.getSession().getAttribute("login") == null
+				|| !(boolean)req.getSession().getAttribute("login") ) {
+			
+			resp.sendRedirect("/");
+			
+			return;
+		}
+		
 		req.getRequestDispatcher("/WEB-INF/views/mem/mypage/myjjim.jsp").forward(req, resp);		
 
 	}
