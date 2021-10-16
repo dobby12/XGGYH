@@ -3,13 +3,7 @@
     
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<!-- jQuery 2.2.4 -->
-<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-
-<!-- 부트스트랩 3 -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<c:import url="/WEB-INF/views/layout/header.jsp" />
 
 <style>
 .main_list {
@@ -46,10 +40,6 @@
 
 </style>
 
-<body>
-
-<c:import url="/WEB-INF/views/layout/header.jsp" />
-
 <div class="container">
 
 <h2>내가 찜한 콘텐츠</h2>
@@ -73,5 +63,3 @@
 <c:import url="/WEB-INF/views/layout/paging.jsp" />
 
 <c:import url="/WEB-INF/views/layout/footer.jsp" />
-
-</body>
