@@ -38,11 +38,15 @@ public class MemberJoinController extends HttpServlet {
 		System.out.println(param);
 		
 		// 회원가입
-		memberService.join(param);
+		try {
+			memberService.join(param);
+			
+			resp.getWriter().print(true);
+		} catch(Exception e) {
+			resp.getWriter().print(false);
+		}
 		
-		// 메인으로 리다이렉션
-		resp.sendRedirect("/main");
-		
+		return;
 	}
 
 }

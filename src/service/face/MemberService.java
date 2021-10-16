@@ -42,6 +42,22 @@ public interface MemberService {
 	 * @param param - 회원가입 정보 객체
 	 */
 	public void join(XMem param);
+	
+	/**
+	 * 아이디 중복체크
+	 * 
+	 * @param memid - 입력된 아이디
+	 * @return boolean - 아이디 중복 여부
+	 */
+	public boolean checkId(String memid);
+
+	/**
+	 * 이메일 중복체크
+	 * 
+	 * @param memmail - 입력된 이메일
+	 * @return boolean - 이메일 중복 여부
+	 */
+	public boolean checkEmail(String memmail);
 
 	/**
 	 * 
@@ -116,6 +132,5 @@ public interface MemberService {
 	 */
 	public void setMemWithKakao(XMem mem);
 
-	
-	
+
 }
