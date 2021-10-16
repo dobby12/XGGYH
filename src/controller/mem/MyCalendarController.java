@@ -33,7 +33,7 @@ public class MyCalendarController extends HttpServlet {
 
 		req.setAttribute("showList", showList);
 		
-		req.getRequestDispatcher("/WEB-INF/views/mem/mycalendar.jsp").forward(req, resp);
+		req.getRequestDispatcher("/WEB-INF/views/mem/mycalendar/mycalendar.jsp").forward(req, resp);
 		
 		
 		

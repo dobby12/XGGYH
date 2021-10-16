@@ -12,7 +12,7 @@ $(document).ready(function(){
 		var answer = confirm("회원을 정말 삭제하시겠습니까?")
 		
 		if( answer == true ){
-			location.href = "<%=request.getContextPath() %>/admin/review/delete?reviewno=${viewReview.reviewNo }";
+			location.href = "<%=request.getContextPath() %>/admin/mem/delete?memid=${mem.memId }";
 		} else {
 			return false;
 		}

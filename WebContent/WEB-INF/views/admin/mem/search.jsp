@@ -5,6 +5,23 @@
 
 <c:import url="/WEB-INF/views/layout/adminheader.jsp" />
 
+<script>
+$(document).ready(function(){
+	$("#btnDelete").click(function(){
+		
+		var answer = confirm("회원을 정말 삭제하시겠습니까?")
+		
+		if( answer == true ){
+			location.href = "<%=request.getContextPath() %>/admin/mem/delete?memid=${mem.memId }";
+		} else {
+			return false;
+		}
+	})
+
+})
+
+</script>
+
 <style type="text/css">
 
 table {
@@ -40,8 +57,8 @@ table {
 	<td>${mem.memMail }</td>
 	<td>${mem.mailState }</td>
 	<td>${mem.memDate }</td>
-	<td><a href="<%=request.getContextPath() %>/admin/mem/review?memid=${mem.memId }"><button>작성한 리뷰 보기</button></a></td>	
-	<td><a href="<%=request.getContextPath() %>/admin/mem/delete?memid=${mem.memId }"><button>삭제</button></a></td>	
+	<td><a href="<%=request.getContextPath() %>/admin/mem/review?memid=${mem.memId }"><button class="btnBack" id="btnList">작성한 리뷰 보기</button></a></td>	
+	<td><button class="btnDelete" id="btnDelete">삭제</button></td>	
 </tr>
 </tbody>
 </c:forEach>
@@ -51,5 +68,18 @@ table {
 
 </div>
 <c:import url="/WEB-INF/views/layout/parameterPaging.jsp" />
+
+<div style="text-align: center; margin: 0 0 25px 0;" >
+<form action="<%=request.getContextPath() %>/admin/mem/search" method="get">
+	
+	<select id="searchtype" name="searchtype">
+		<option id="search" class="search" value="memid">회원 아이디</option> 
+		<option id="search" class="search" value="memnick">회원 닉네임</option>
+	</select>
+
+	<input type="text" id="keyword" name="keyword" placeholder="검색어를 입력하세요"/>
+	<button>검색</button>
+</form>
+</div>
 
 <c:import url="/WEB-INF/views/layout/footer.jsp" />

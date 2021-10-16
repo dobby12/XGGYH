@@ -37,6 +37,22 @@ document.addEventListener('DOMContentLoaded', function() {
 
 </script>
 
+<script>
+$(document).ready(function () {
+	
+	$('buttonDelete').on('click', function () {
+	
+		
+	
+	
+	})
+	
+	
+	
+})
+
+</script>
+
 
 <style>
 .fc-event-title-container {
@@ -90,7 +106,12 @@ document.addEventListener('DOMContentLoaded', function() {
 	<tr>
 		<td>${show.showTitle }</td>
 		<td>${show.showStart } ~ ${show.showEnd }</td>
-		<td><a href="<%=request.getContextPath() %>/mem/jjim/delete?showNo=${show.showNo }&memId=${memid}"><button>찜 해제</button></a></td>
+		
+		<td>
+		<a href="<%=request.getContextPath() %>/mem/jjim/delete?showNo=${show.showNo }&memId=${memid }">
+		<button id="btnDelete" class="btnDelete">찜 해제</button></a>
+		</td>
+		
 	</tr>
 </tbody>
 </c:forEach>
