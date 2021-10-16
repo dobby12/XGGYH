@@ -63,6 +63,8 @@ public interface ShowDao {
 	 */
 	public int selectCntByshowTitle(Connection conn, String showTitle, int kindNo);
 	
+	public int selectCntBymemGenre(Connection conn, int kindNo, int memGenre);
+	
 	/**
 	 * 특정 게시글 조회
 	 * 
@@ -101,7 +103,5 @@ public interface ShowDao {
 	public List<XShow> selectShowSearchByshowTitle(Connection conn, String keyword, int kindNo, Paging paging);
 
 	public List<XShow> selectShowSearchByMemgenre(Connection conn, XMem memInfo, int kindNo, Paging paging);
-
-	
 
 }

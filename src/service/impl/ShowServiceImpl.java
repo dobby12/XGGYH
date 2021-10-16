@@ -78,6 +78,27 @@ public class ShowServiceImpl implements ShowService {
 		return paging;
 	}
 	
+	@Override
+	public Paging getParameterPaging(HttpServletRequest req, int kindNo, int memGenre) {
+		String param = req.getParameter("curPage");
+		int curPage = 0;
+		
+		// 한번에 몇개씩 보여줄건지
+		int listCount = 5;
+		
+		if(param != null && !"".equals(param)) {
+			curPage = Integer.parseInt(param);
+		} else {
+			System.out.println("[WARNING] suggest curPage값이 null이거나 비어있습니다");
+		}
+
+		int totalCount = showDao.selectCntBymemGenre(JDBCTemplate.getConnection(), kindNo, memGenre);
+
+		Paging paging = new Paging(totalCount, curPage, listCount);
+
+		return paging;
+	}
+	
 	//공연 이름으로 골라낸 리스트 수 추가해서 페이징 객체 생성
 	@Override
 	public Paging getParameterPaging(HttpServletRequest req, String showTitle, int kindNo) {

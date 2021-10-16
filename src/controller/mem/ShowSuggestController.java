@@ -29,26 +29,32 @@ public class ShowSuggestController extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		System.out.println("/show/memgenre [GET]");
 		
-		XMem mem = null;
+		XMem mem = new XMem();
 		XMem memInfo = null;
-		int genreNo = 0;
-		int kindNo = Integer.parseInt(req.getParameter("kind"));
 		
-		mem = memberService.getLoginMem(req);
+		int genreNo = 0;
+		String suggestkind = req.getParameter("suggestkind").trim();
+		int kindNo = Integer.parseInt(suggestkind);
+		
+		mem.setMemId((String)req.getSession().getAttribute("memid"));
+		System.out.println(mem);
 		
 		if(mem != null)
 		{
+			System.out.println("로그인 성공");
+			
 			memInfo = memberService.getMem(mem);
 			
 			if(memInfo != null) {
 				genreNo = memInfo.getGenreNo();
 				
-				System.out.println(genreNo);
+				System.out.println("genreNo = " + genreNo);
 			}
 			else
 			{
-				System.out.println("로그인 정보를 가져오는데 실패했습니다.");
+				System.out.println("세션 정보를 가져오는데 실패했습니다.");
 				return;
 			}
 		}
@@ -56,12 +62,12 @@ public class ShowSuggestController extends HttpServlet {
 			System.out.println("로그인 실패");
 		}
 		
-		Paging paging = showService.getParameterPaging(req, genreNo);
+		Paging paging = showService.getParameterPaging(req, kindNo, genreNo);
 		
-		List<XShow> showList = showService.getShowMemGenreList(memInfo, kindNo, paging);
+		List<XShow> suggestshowList = showService.getShowMemGenreList(memInfo, kindNo, paging);
 		
 		//XShow 테이블의 전체 정보를 가진 showList 객체를 "showList"라는 이름을 가진 요소로 설정
-		req.setAttribute("showList", showList);
+		req.setAttribute("suggestshowList", suggestshowList);
 		
 		//페이징 정보 MODEL값 전달
 		req.setAttribute("paging", paging);

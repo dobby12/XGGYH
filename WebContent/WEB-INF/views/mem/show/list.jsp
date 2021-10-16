@@ -67,12 +67,6 @@
 <h1>공연 정보 게시판( ${kindName} )</h1>
 <hr>
 
-<div>
-<form action="<%=request.getContextPath() %>/show/memgenre" method="get">
-<input type="hidden" id="kind" name="kind" value="${kindNo}"/>
-</form>
-</div>
-
 <c:if test="${ login ne null }">
 	<c:import url="/WEB-INF/views/mem/show/suggest.jsp" />
 </c:if>
@@ -107,6 +101,8 @@
 	<button>검색</button>
 </form>
 </div>
+
+<a href="<%=request.getContextPath() %>/show/memgenre?suggestkind=${kindNo}">asdasd</a>
 
 
 <c:import url="/WEB-INF/views/layout/parameterPaging.jsp" />

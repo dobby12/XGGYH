@@ -272,6 +272,37 @@ public class ShowDaoImpl implements ShowDao {
 	}
 
 	@Override
+	public int selectCntBymemGenre(Connection conn, int kindNo, int memGenre) {
+		// SQL 작성
+		String sql = "";
+		sql += "SELECT count(*) FROM XShow ";
+		sql += "WHERE kind_no = ? AND genre_no = ?";
+
+		// 총 게시글 수
+		int count = 0;
+
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, kindNo);
+			ps.setInt(2, memGenre);
+
+			rs = ps.executeQuery();
+
+			while (rs.next()) {
+				count = rs.getInt(1);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+		}
+
+		return count;
+	}
+
+	@Override
 	public XShow selectShowByShowno(Connection conn, XShow showNo) {
 		String sql = "";
 		sql += "SELECT * FROM XShow";
@@ -466,7 +497,7 @@ public class ShowDaoImpl implements ShowDao {
 		sql += "			show_no, file_no, admin_id, kind_no, genre_no, hall_no, show_title";
 		sql += "			, show_content, show_date, show_age, show_director, show_actor, show_start, show_end";
 		sql += "		FROM XShow";
-		sql += "		WHERE kind_no = ? AND show_genre = ?";
+		sql += "		WHERE kind_no = ? AND genre_no = ?";
 		sql += "		ORDER BY show_no DESC";
 		sql += "	) X";
 		sql += " ) XShow";
