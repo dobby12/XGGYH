@@ -28,7 +28,7 @@
 <td class="info">작성일</td><td colspan="3">${viewReview.reviewDate }</td>
 </tr>
 <tr>
-<td class="info">공연 제목</td><td colspan="3">${showTitle }</td>
+<td class="info">공연 제목</td><td colspan="3"><a href="<%=request.getContextPath()%>/show/detail?showNo=${viewReview.showNo }" >${showTitle }</a></td>
 </tr>
 <tr>
 <td class="info">별점 평균</td><td colspan="3">${AvgReview }</td>

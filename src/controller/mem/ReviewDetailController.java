@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import dto.XFile;
 import dto.XReview;
-import dto.XShow;
 import service.face.ReviewService;
 import service.impl.ReviewServiceImpl;
 
@@ -32,18 +31,10 @@ public class ReviewDetailController extends HttpServlet {
 		//조회결과값 전달
 		req.setAttribute("viewReview", viewReview);
 		
-		
-		
-		XShow showNo = reviewService.getShowNo(req);
-		//평균 전달
-		
-		int showno = showNo.getShowNo();
-		System.out.println(showno);
+		//** 평점 평균값 구하기 **
+		int showno = viewReview.getShowNo();
 		req.setAttribute("AvgReview", reviewService.getAvgReviewScoreByShowNo(showno));
 		
-		
-	
-
 		//닉네임 전달
 		req.setAttribute("memNick", reviewService.getMemNick(viewReview));
 		
