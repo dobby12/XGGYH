@@ -187,10 +187,6 @@ ul.nav > li > ul {
  	padding-bottom:3px;
 }
 
-#logoA {
-	margin-right: 30px;
-}
-
 #outlog {
 	padding-top: 1px;
 }
@@ -344,10 +340,11 @@ table {
 	width: 1000px;
 }
 
-td, th, textarea {
-	text-align: center;
+.table>tbody>tr>td, .table>tbody>tr>th {
 	vertical-align: middle;
+	text-align: center;
 }
+
 
 .table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
    background-color: rgba(217, 151, 113, 0.5)
@@ -374,6 +371,11 @@ input:-webkit-autofill:active {
 textarea:focus, input:focus {
     outline: none;
 }
+
+.item {
+	background-color: rgba(217, 151, 113, 0.5);
+}
+
 
 </style>
 

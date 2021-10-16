@@ -184,11 +184,6 @@ ul.nav > li:hover > a {
  	padding-bottom:3px; 
 }
 
-#logoA {
-	margin-right: 30px;
-}
-
-
 ul.nav > li > a:before {
 	content: '';
 	border-bottom: 2px solid #D96459;
@@ -331,9 +326,9 @@ table {
 	width: 1000px;
 }
 
-td, th, textarea {
-	text-align: center;
+.table>tbody>tr>td, .table>tbody>tr>th {
 	vertical-align: middle;
+	text-align: center;
 }
 
 a {
@@ -356,6 +351,10 @@ input:-webkit-autofill:active {
 /* input이나 textarea에 focus줘도 겉에 테두리 생기지 않도록 함 */
 textarea:focus, input:focus {
     outline: none;
+}
+
+.item {
+	background-color: rgba(217, 151, 113, 0.5);
 }
 
 </style>
