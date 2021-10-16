@@ -66,9 +66,11 @@ public class ReviewDaoImpl implements ReviewDao {
 		sql += "SELECT * FROM (";
 		sql += "	SELECT rownum rnum, X.* FROM (";
 		sql += "		SELECT";
-		sql += "			review_no, show_no, file_no, mem_id, review_title";
-		sql += "			, review_content, review_date, review_score, review_hit";
-		sql += "		FROM xreview";
+		sql += "			R.review_no, R.show_no, R.file_no, R.mem_id, R.review_title";
+		sql += "			, R.review_content, R.review_date, R.review_score, R.review_hit, S.show_title";
+		sql += "		FROM xreview R";
+		sql += "		RIGHT OUTER JOIN xshow S";
+		sql += "			ON R.show_no = s.show_no";
 		sql += "		ORDER BY review_no DESC";
 		sql += "	) X";
 		sql += " ) XREVIEW";
@@ -89,12 +91,13 @@ public class ReviewDaoImpl implements ReviewDao {
 				review.setReviewNo( rs.getInt("review_no") );
 				review.setShowNo( rs.getInt("show_no") );
 				review.setFileNo( rs.getInt("file_no") );
-				review.setMemId( rs.getString("Mem_id") );
+				review.setMemId( rs.getString("mem_id") );
 				review.setReviewTitle( rs.getString("review_title") );
 				review.setReviewContent( rs.getString("review_content") );
 				review.setReviewDate( rs.getDate("review_date") );
 				review.setReviewScore( rs.getInt("review_score") );
 				review.setReviewHit( rs.getInt("review_hit") );
+				review.setShowTitle( rs.getString("show_title"));
 
 				reviewList.add(review);
 			}
@@ -116,9 +119,11 @@ public class ReviewDaoImpl implements ReviewDao {
 		sql += "SELECT * FROM (";
 		sql += "	SELECT rownum rnum, X.* FROM (";
 		sql += "		SELECT";
-		sql += "			review_no, show_no, file_no, mem_id, review_title";
-		sql += "			, review_content, review_date, review_score, review_hit";
-		sql += "		FROM xreview";
+		sql += "			R.review_no, R.show_no, R.file_no, R.mem_id, R.review_title";
+		sql += "			, R.review_content, R.review_date, R.review_score, R.review_hit, S.show_title";
+		sql += "		FROM xreview R";
+		sql += "		RIGHT OUTER JOIN xshow S";
+		sql += "			ON R.show_no = s.show_no";
 		sql += "		ORDER BY review_hit DESC";
 		sql += "	) X";
 		sql += " ) XREVIEW";
@@ -139,12 +144,13 @@ public class ReviewDaoImpl implements ReviewDao {
 				review.setReviewNo( rs.getInt("review_no") );
 				review.setShowNo( rs.getInt("show_no") );
 				review.setFileNo( rs.getInt("file_no") );
-				review.setMemId( rs.getString("Mem_id") );
+				review.setMemId( rs.getString("mem_id") );
 				review.setReviewTitle( rs.getString("review_title") );
 				review.setReviewContent( rs.getString("review_content") );
 				review.setReviewDate( rs.getDate("review_date") );
 				review.setReviewScore( rs.getInt("review_score") );
 				review.setReviewHit( rs.getInt("review_hit") );
+				review.setShowTitle( rs.getString("show_title"));
 
 				reviewList.add(review);
 			}
