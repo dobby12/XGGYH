@@ -37,6 +37,15 @@ public class MemberAskDetailController extends HttpServlet {
 		req.setAttribute("detailAsk", detailAsk);
 		req.setAttribute("AskComment", AskComment);
 		
+		//로그인 되어있지 않으면 리다이렉트 
+		if( req.getSession().getAttribute("login") == null
+				|| !(boolean)req.getSession().getAttribute("login") ) {
+			
+			resp.sendRedirect("/");
+			
+			return;
+		}
+		
 		//VIEW 지정 및 응답 - forward
 		req.getRequestDispatcher("/WEB-INF/views/mem/mypage/ask/detail.jsp").forward(req, resp);
 		

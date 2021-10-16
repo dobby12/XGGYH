@@ -31,6 +31,15 @@ public class MemberUpdateController extends HttpServlet {
 
 		//조회결과값 전달
 		req.setAttribute("updateMem", updateMem);
+		
+		//로그인 되어있지 않으면 리다이렉트 
+		if( req.getSession().getAttribute("login") == null
+				|| !(boolean)req.getSession().getAttribute("login") ) {
+			
+			resp.sendRedirect("/");
+			
+			return;
+		}
 
 		req.getRequestDispatcher("/WEB-INF/views/mem/mypage/mem/update.jsp").forward(req, resp);		
 

@@ -30,6 +30,15 @@ public class MemberDetailController extends HttpServlet {
 		
 		req.setAttribute("myinfo", myinfo);
 		
+		//로그인 되어있지 않으면 리다이렉트 
+		if( req.getSession().getAttribute("login") == null
+				|| !(boolean)req.getSession().getAttribute("login") ) {
+			
+			resp.sendRedirect("/");
+			
+			return;
+		}
+		
 		req.getRequestDispatcher("/WEB-INF/views/mem/mypage/mem/detail.jsp").forward(req, resp);
 
 	}
