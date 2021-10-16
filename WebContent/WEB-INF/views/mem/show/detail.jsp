@@ -114,8 +114,7 @@ function deleteJjim() {
 		</div>
 
 		<div class="detailInfo">
-			공연 번호 : ${showDetail.showNo} <br> 작성자(관리자 아이디) :
-			${showDetail.adminId} <br> 카테고리 : ${showKindName} <br> 장르 :
+			공연 번호 : ${showDetail.showNo} <br> 카테고리 : ${showKindName} <br> 장르 :
 			${showGenreName} <br> 공연장 : <a
 				href="<%=request.getContextPath() %>/hall/detail?hallNo=${showDetail.hallNo }">
 				${showHallName} </a> <br> 작성일 : ${showDetail.showDate} <br> 연령
