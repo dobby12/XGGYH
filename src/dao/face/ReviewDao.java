@@ -202,6 +202,14 @@ public interface ReviewDao {
 	 */
 	public int deleteFileno(Connection conn, XReview review);
 
+	/**
+	 * XReview의 showno로 조회하여 reviewScore의 평균값을 구한다
+	 * @param conn
+	 * @param showno 공연 번호
+	 * @return 공연 평균값
+	 */
+	public XReview selectAvgReviewScoreByShowNo(Connection conn, int showNo);
+
 
 }
 

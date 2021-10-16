@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import dto.XFile;
 import dto.XReview;
+import dto.XShow;
 import service.face.ReviewService;
 import service.impl.ReviewServiceImpl;
 
@@ -30,6 +31,10 @@ public class ReviewDetailController extends HttpServlet {
 		
 		//조회결과값 전달
 		req.setAttribute("viewReview", viewReview);
+		
+		
+
+		
 
 		//닉네임 전달
 		req.setAttribute("memNick", reviewService.getMemNick(viewReview));

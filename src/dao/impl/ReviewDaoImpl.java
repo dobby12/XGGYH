@@ -788,4 +788,57 @@ public class ReviewDaoImpl implements ReviewDao {
 		
 		return res;
 	}
+	
+	@Override
+	public XReview selectAvgReviewScoreByShowNo(Connection conn, int showNo) {
+
+		String sql = "";
+		sql += "SELECT SUM(review_score) FROM xreview";
+		sql += " WHERE show_no = ?";
+		
+		XReview avg = null;
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, showNo.getShowNo());
+			rs = ps.executeQuery();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+		}
+		
+		return avg;
+	}
+	
+//	@Override
+//	public String selectShowTitleByShowNo(Connection conn, XReview viewReview) {
+//		
+//		String sql = "";
+//		sql += "SELECT show_title FROM xshow";
+//		sql += " WHERE show_no = ?";
+//		
+//		String showTitle = null;
+//		
+//		try {
+//			ps = conn.prepareStatement(sql);
+//			ps.setInt(1, viewReview.getShowNo());
+//			
+//			rs = ps.executeQuery();
+//			
+//			while(rs.next()) {
+//				showTitle = rs.getString("show_title");
+//			}
+//			
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		} finally {
+//			JDBCTemplate.close(rs);
+//			JDBCTemplate.close(ps);
+//		}
+//		
+//		return showTitle;
+//	}
 }
