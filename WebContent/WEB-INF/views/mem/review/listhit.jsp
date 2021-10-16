@@ -6,17 +6,17 @@
 <c:import url="/WEB-INF/views/layout/header.jsp" />
 
 <div class="container" >
-<h3 class="pull-left">Review</h3>
-<hr>
+<h2>리뷰 목록</h2>
 <br>
+
+<div style="float: right; margin: -20px 0 0 0;">
+	<a href="<%=request.getContextPath() %>/review/list">최신순</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+	<a href="<%=request.getContextPath() %>/review/listhit">조회순</a>
+</div>
+<hr style="clear: both;">
 
 <table id="inventory" class="table table-hover table-condensed table-center">
 
-<div style="text-align: right;"><br>
-	<a href="<%=request.getContextPath() %>/review/list">최신순</a>&nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp
-	<a href="<%=request.getContextPath() %>/review/listhit">조회순</a>
-</div><br>
-     
 <thead>
 <tr style="cursor: pointer;">
 	<th style="width: 10%">게시글 번호</th>
@@ -33,6 +33,8 @@
 	<td>${review.reviewNo }</td>
 	<td>
 		<a href="<%=request.getContextPath() %>/review/detail?reviewno=${review.reviewNo }">${review.reviewTitle }</a>
+		<c:if test="${review.fileNo ne 0 }">&nbsp;&nbsp;<span class="glyphicon glyphicon-floppy-disk
+		" aria-hidde="true"></span></c:if>
 	</td>
 	<td>${review.memId }</td>
 	<td>${review.reviewHit }</td>

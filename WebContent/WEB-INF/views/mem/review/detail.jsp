@@ -7,34 +7,29 @@
 
 <div class="container">
 
-<h3 class="pull-left">Review</h3>
+<h2>리뷰 보기</h2>
 <hr>
 
-<table class="table table-bordered">
+<table class="table table-condensed table-bordered">
 <tr>
-<td class="info">글번호</td><td colspan="3">${viewReview.reviewNo }</td>
 </tr>
 <tr>
-<td class="info">제목</td><td colspan="3">${viewReview.reviewTitle }</td>
+	<td>글번호</td><td>${viewReview.reviewNo }</td>
+	<td colspan="" style="width: 80%">${viewReview.reviewTitle }</td>
 </tr>
 <tr>
-<td class="info">아이디</td><td>${viewReview.memId }</td>
-<td class="info">닉네임</td><td>${memNick }</td>
+	<td>아이디</td><td>${viewReview.memId }</td>
+	<td>닉네임</td><td>${memNick }</td>
+	<td>조회수</td><td>${viewReview.reviewHit }</td>	
+	
+	<td>작성일</td><td>${viewReview.reviewDate }</td>
+	<td>공연 제목</td><td>${showTitle }</td>
+	<td>평점</td><td>${viewReview.reviewScore }</td>
 </tr>
+
 <tr>
-<td class="info">조회수</td><td>${viewReview.reviewHit }</td>
+	<td colspan="6">${viewReview.reviewContent }</td>
 </tr>
-<tr>
-<td class="info">작성일</td><td colspan="3">${viewReview.reviewDate }</td>
-</tr>
-<tr>
-<td class="info">공연 제목</td><td colspan="3">${showTitle }</td>
-</tr>
-<tr>
-<td class="info">평점</td><td colspan="3">${viewReview.reviewScore }</td>
-</tr>
-<tr><td class="info"  colspan="4">본문</td></tr>
-<tr><td colspan="4">${viewReview.reviewContent }</td></tr>
 </table>
 
 <div>

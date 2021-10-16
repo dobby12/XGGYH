@@ -66,7 +66,7 @@ body, ul.nav > li > a  {
 	
 	background: #f2f2f2;
 	height: 60px;
-	width: 1920x;
+	width: 100%;
 	display: block;
 	text-align: center;
 	margin: 0 0 25px 0;
@@ -160,19 +160,13 @@ ul.nav > li > ul {
 	/* 서브메뉴영역의 너비 */
 	width: 100px;
 	
+	z-index: 1;
+	
 	text-align: center;
 }
 
 /*  */
-ul.nav > li > a:hover {
-	text-decoration: none;
-	color:#D96459;
-	background-color: #f2f2f2;
-	text-decoration:none;
- 	border-bottom: 2px solid #D96459; 
- 	padding-bottom:3px; 
 
-}
 
 #logoA > a:hover, #logoA> a:before, #logoA> a:after,
 #outlog > a:hover, #outlog> a:before, #outlog> a:after,
@@ -230,6 +224,15 @@ ul.nav > li > ul > li {
 	
 	list-style-type: none;
 	
+}
+
+ul.nav > li:hover > a {
+	text-decoration: none;
+	color:#D96459;
+	background-color: #f2f2f2;
+	text-decoration:none;
+ 	border-bottom: 2px solid #D96459; 
+ 	padding-bottom:3px; 
 }
 
 /* 메인메뉴 항목에 마우스 올릴 경우 다시 보이도록 설정 */
@@ -376,7 +379,7 @@ textarea:focus, input:focus {
 	<li><a href="<%=request.getContextPath() %>/show?kindNo=4">오페라</a></li>
 	<li><a href="<%=request.getContextPath() %>/show?kindNo=3">콘서트</a></li>
 	<li><a href="<%=request.getContextPath() %>/show?kindNo=2">연극</a></li>
-	<li><a href="#">내가 찜한 콘텐츠</a></li>
+	<li><a href="<%=request.getContextPath() %>/mypage/myjjim">내가 찜한 콘텐츠</a></li>
 	<li><a href="<%=request.getContextPath() %>/review/list">리뷰 게시판</a></li>
 	
 	<c:if test="${not empty login }">

@@ -58,15 +58,15 @@ td {
 </tr>
 
 <tr>
-	<td style="background-color: #ccc; width: 12.5%">문의번호</td>
+	<td class="item" style="width: 12.5%">문의번호</td>
 	<td style="width: 5%">${detailAsk.askNo }</td>
-	<td style="background-color: #ccc; width: 15%">아이디</td>
+	<td class="item" style="width: 15%">아이디</td>
 	<td style="width: 10%">${detailAsk.memId }</td>
-	<td style="background-color: #ccc; width: 12.5%">문의유형</td>
+	<td class="item" style="width: 12.5%">문의유형</td>
 	<td style="width: 10%">${detailAsk.askKind }</td>
-	<td style="background-color: #ccc; width: 7.5%">답변여부</td>
+	<td class="item" style="width: 7.5%">답변여부</td>
 	<td style="width: 5%">${detailAsk.askState }</td>
-	<td style="background-color: #ccc; width: 7.5%">작성일</td>
+	<td class="item" style="width: 7.5%">작성일</td>
 	<td style="width: 15%">${detailAsk.askDate }</td>
 </tr>
 
@@ -79,10 +79,20 @@ td {
 
 <table style="width: 1000px; text-align: center; margin: 0 auto; border-collapse: collapse;">
 
+<c:if test="${not empty AskComment.commentContent }">
 <tr>
 	<td>${AskComment.commentContent }</td>
 </tr>
+</c:if>
+
+<c:if test="${empty AskComment.commentContent }">
+<tr>
+	<td><br><strong>아직 문의에 대한 답변이 없습니다.</strong><br></td>
+</tr>
+</c:if>
 
 </table>
+<br><br>
+<a href="<%=request.getContextPath() %>/mypage/myask"><button id="btnList" class="btnBack">목록</button></a>
 
 </div>

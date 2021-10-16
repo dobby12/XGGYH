@@ -152,19 +152,24 @@ ul.nav > li > ul {
 	/* 서브메뉴영역의 너비 */
 	width: 100px;
 	
+	
+	z-index: 1;
+	
+	
 	text-align: center;
 }
 
 /*  */
-ul.nav > li > a:hover {
+
+ul.nav > li:hover > a {
 	text-decoration: none;
 	color:#D96459;
 	background-color: #f2f2f2;
 	text-decoration:none;
  	border-bottom: 2px solid #D96459; 
  	padding-bottom:3px; 
-
 }
+
 
 #logoA > a:hover, #logoA> a:before,#logoA> a:after {
  	border-bottom: 0px; 
@@ -320,6 +325,10 @@ table {
 
 td, th, textarea {
 	text-align: center;
+	vertical-align: middle;
+}
+
+.table>tbody>tr>td {
 	vertical-align: middle;
 }
 
