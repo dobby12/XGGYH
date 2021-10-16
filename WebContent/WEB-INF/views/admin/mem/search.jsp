@@ -58,7 +58,7 @@ table {
 	<td>${mem.mailState }</td>
 	<td>${mem.memDate }</td>
 	<td><a href="<%=request.getContextPath() %>/admin/mem/review?memid=${mem.memId }"><button class="btnBack" id="btnList">작성한 리뷰 보기</button></a></td>	
-	<td><button class="btnDelete" id="btnDelete">삭제</button></td>	
+	<td><a href="<%=request.getContextPath() %>/admin/mem/delete?memid=${mem.memId }"><button class="btnDelete" id="btnDelete">삭제</button></a></td>	
 </tr>
 </tbody>
 </c:forEach>
