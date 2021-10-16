@@ -38,9 +38,19 @@ $(document).ready(function() {
 		var answer = confirm("공연 정보를 등록하시겠습니까?");
 		
 		if( answer == true ){
+			
+			var fileCheck = document.getElementById("input-file").value;
+			
+			if( !fileCheck ){
+				
+				alert("공연 파일을 업로드해주세요!");
+				return false;
+			} else {
+				
 			submitContents( $("#btnWrite") )
 			
-			$("form").submit();	
+			$("form").submit();					
+			}
 		} else {
 			return false;
 		}
