@@ -79,6 +79,36 @@ public class MemberServiceImpl implements MemberService {
 			JDBCTemplate.rollback(conn);
 		}
 	}
+	
+	@Override
+	public boolean checkId(String memid) {
+		Connection conn = JDBCTemplate.getConnection();
+		
+		XMem member = memberDao.selectMemByMemid(conn, memid);
+		
+		if (member != null) {
+			// 이미 존재하는 아이디
+			return true;
+		} else {
+			// 존재하지 않는 아이디
+			return false;
+		}
+	}
+	
+	@Override
+	public boolean checkEmail(String memmail) {
+		Connection conn = JDBCTemplate.getConnection();
+		
+		String memid = memberDao.selectMemidByMemmail(conn, memmail);
+		
+		if (memid != null) {
+			// 이미 존재하는 이메일
+			return true;
+		} else {
+			// 존재하지 않는 이메일
+			return false;
+		}
+	}
 
 	@Override
 	public String getMemid(String parameter) {
