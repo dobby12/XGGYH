@@ -35,8 +35,7 @@ public class ShowSuggestController extends HttpServlet {
 		XMem memInfo = null;
 		
 		int genreNo = 0;
-		String suggestkind = req.getParameter("suggestkind").trim();
-		int kindNo = Integer.parseInt(suggestkind);
+		int kindNo = Integer.parseInt(req.getParameter("suggestkind").trim());
 		
 		mem.setMemId((String)req.getSession().getAttribute("memid"));
 		System.out.println(mem);
