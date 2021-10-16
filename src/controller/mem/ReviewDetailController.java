@@ -33,8 +33,15 @@ public class ReviewDetailController extends HttpServlet {
 		req.setAttribute("viewReview", viewReview);
 		
 		
-
 		
+		XShow showNo = reviewService.getShowNo(req);
+		//평균 전달
+		
+		int showno = 0;
+		req.setAttribute("AvgReview", getAvgReviewScoreByShowNo(showno));
+		
+		
+	
 
 		//닉네임 전달
 		req.setAttribute("memNick", reviewService.getMemNick(viewReview));

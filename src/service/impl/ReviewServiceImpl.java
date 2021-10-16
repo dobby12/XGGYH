@@ -512,7 +512,7 @@ public class ReviewServiceImpl implements ReviewService {
 	}
 	
 	@Override
-	public XReview getAvgReviewScoreByShowNo(int showNo) {
+	public double getAvgReviewScoreByShowNo(int showNo) {
 		return reviewDao.selectAvgReviewScoreByShowNo(JDBCTemplate.getConnection(), showNo);
 	}
 }

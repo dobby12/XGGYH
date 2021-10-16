@@ -790,18 +790,22 @@ public class ReviewDaoImpl implements ReviewDao {
 	}
 	
 	@Override
-	public XReview selectAvgReviewScoreByShowNo(Connection conn, int showNo) {
+	public double selectAvgReviewScoreByShowNo(Connection conn, int showNo) {
 
 		String sql = "";
-		sql += "SELECT SUM(review_score) FROM xreview";
+		sql += "SELECT AVG(review_score) FROM xreview";
 		sql += " WHERE show_no = ?";
 		
-		XReview avg = null;
+		double avg = 0;
 		
 		try {
 			ps = conn.prepareStatement(sql);
-			ps.setInt(1, showNo.getShowNo());
+			ps.setInt(1, showNo );
 			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				avg = rs.getInt(1);
+			}
 			
 		} catch (SQLException e) {
 			e.printStackTrace();

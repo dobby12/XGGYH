@@ -178,7 +178,7 @@ public interface ReviewService {
 	 * @param showno - 조회할 공연
 	 * @return - 평균값
 	 */
-	public XReview getAvgReviewScoreByShowNo(int showNo);
+	public double getAvgReviewScoreByShowNo(int showNo);
 
 }
 

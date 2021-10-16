@@ -208,7 +208,7 @@ public interface ReviewDao {
 	 * @param showno 공연 번호
 	 * @return 공연 평균값
 	 */
-	public XReview selectAvgReviewScoreByShowNo(Connection conn, int showNo);
+	public double selectAvgReviewScoreByShowNo(Connection conn, int showNo);
 
 
 }
