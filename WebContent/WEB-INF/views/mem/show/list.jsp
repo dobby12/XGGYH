@@ -77,6 +77,8 @@
 	<c:import url="/WEB-INF/views/mem/show/suggest.jsp" />
 </c:if>
 
+<h2> ${kindName} 게시판 </h2>
+
 <div class="main_list">
 		<div class="list_start">
 			<c:forEach items="${showList }" var="showList">

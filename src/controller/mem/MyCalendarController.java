@@ -33,6 +33,7 @@ public class MyCalendarController extends HttpServlet {
 
 		req.setAttribute("showList", showList);
 		
+
 		//로그인 되어있지 않으면 리다이렉트 
 		if( req.getSession().getAttribute("login") == null
 				|| !(boolean)req.getSession().getAttribute("login") ) {
@@ -41,8 +42,14 @@ public class MyCalendarController extends HttpServlet {
 			
 			return;
 		}		
-		
-		req.getRequestDispatcher("/WEB-INF/views/mem/mycalendar.jsp").forward(req, resp);
 
+		req.getRequestDispatcher("/WEB-INF/views/mem/mycalendar/mycalendar.jsp").forward(req, resp);
+		
+		
+		
+		
+		
 	}
+	
+	
 }

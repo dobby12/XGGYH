@@ -274,10 +274,41 @@ button {
 	border-radius: 5px;
 } 
 
+button.btnBack {
+	background: #F2F2F2;
+	color: #595959;
+}
+
+button.btnSubmit {
+	background: #608C5E;
+	color: #f2f2f2;
+}
+
+button.btnDelete {
+	background: #d99771;
+	color: #f2f2f2;
+}
+
 button:hover { 
    background:#f2f2f2; 
    color:#D96459; 
 } 
+
+button.btnBack:hover {
+	background: #595959;
+	color: #F2F2F2;
+}
+
+button.btnSubmit:hover { 
+   background:#f2f2f2; 
+   color:#608C5E; 
+} 
+
+button.btnDelete:hover { 
+   background:#f2f2f2; 
+   color:#d99771;
+} 
+
 button:before,button:after { 
    content:''; 
    position:absolute; 
@@ -288,20 +319,34 @@ button:before,button:after {
    background: #d96459; 
    transition:400ms ease all; 
 }
-  
-button:after { 
+
+button.btnBack:before, button.btnBack:after {
+  	background: #f2f2f2;
+} 
+
+button.btnSubmit:before, button.btnSubmit:after {
+  	background: #608C5E; 
+}
+ 
+button.btnDelete:before, button.btnDelete:after {
+  	background: #d99771;
+} 
+
+button:after, button.btnBack:after, button.btnDelete:after, button.btnSubmit:after { 
    right:inherit; 
    top:inherit; 
    left:0; 
    bottom:0; 
 } 
 
-button:hover:before,button:hover:after { 
+button:hover:before,button:hover:after,
+button.btnBack:hover:before, button.btnBack:hover:after,
+button.btnDelete:hover:before, button.btnDelete:hover:after,
+button.btnSubmit:hover:before, button.btnSubmit:hover:after { 
    width:100%; 
    transition:800ms ease all;
 }
- 
- 
+
 /* ------------------------------------------------ */
 /* body */
 

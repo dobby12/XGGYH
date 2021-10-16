@@ -37,10 +37,14 @@ public class MemberKakaoJoinController extends HttpServlet {
 		mem.setMailState(req.getParameter("memstate"));
 		mem.setGenreNo(Integer.parseInt(req.getParameter("genreno")));
 		
-		memberService.setMemWithKakao(mem);
+		try {
+			memberService.setMemWithKakao(mem);			
+			resp.getWriter().print(true);
+		} catch(Exception e) {
+			resp.getWriter().print(false);	
+		}
+		return;
 		
-		resp.sendRedirect("/login");
-
 	}
 
 }

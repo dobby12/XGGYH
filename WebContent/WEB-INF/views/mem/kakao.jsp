@@ -8,21 +8,23 @@
 <h1>KAKAO</h1>
 
 <c:if test="${socialagree }"><%-- 일반 가입자 + 소셜 미동의  --%>
-@@@${kakao } 계정은 가입되어 있으나 소셜 로그인에 동의하지 않으셨습니다. 동의하시겠습니까?
+${kakao }<br>
+가입되어 있으나 카카오 계정과 연동하지 않으셨습니다.<br>
 <form action="<%=request.getContextPath() %>/kakao" method="post">
 <input type="hidden" name="kakaoagree" value="${kakao }"/>
 <input type="hidden" name="ref" value="${header.referer }" /><%-- 로그인을 요청한 페이지 == 로그인 후 돌아갈 페이지 --%>
-@@@동의문
-<button>@@@소셜 로그인에 대한 동의서를 모두 읽었습니다.</button>
+로그인을 위해 카카오 계정 로그인 상태 정보를 사용하게 되며 탈퇴 시까지 연동이 유지됩니다.<br><br>
+<button>카카오 계정 연동 동의하기</button>
 </form>
 </c:if>
 
 <c:if test="${socialjoin }"><%-- 미가입자 --%>
 <form action="<%=request.getContextPath() %>/kakao" method="post">
 <input type="hidden" name="kakaojoin" value="${kakao }"/>
-@@@가입 정보가 없습니다. 소셜 로그인을 통해 공공연희를 이용하실 수 있도록 가입하쉴?
-${kakao }
-<button>@@@가입하기</button>
+${kakao }<br>
+가입 정보가 없습니다. 카카오 계정 연동을 통해 공공연희를 이용하실 수 있도록 가입하시겠습니까?<br>
+로그인을 위해 카카오 계정 로그인 상태 정보를 사용하게 되며 탈퇴 시까지 연동이 유지됩니다.<br><br>
+<button>카카오 계정 연동 동의와 가입하기</button>
 </form>
 </c:if>
 
