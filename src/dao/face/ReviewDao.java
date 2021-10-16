@@ -194,6 +194,14 @@ public interface ReviewDao {
 	 */
 	public List<XReview> selectReviewSearchByReviewTitle(Connection conn, String keyword, Paging paging);
 
+	/**
+	 * review_no로 조회하여 xreivew의 file_no만 null로 바꾼다
+	 * @param conn
+	 * @param review
+	 * @return
+	 */
+	public int deleteFileno(Connection conn, XReview review);
+
 
 }
 

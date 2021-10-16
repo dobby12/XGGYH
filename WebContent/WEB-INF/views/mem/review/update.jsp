@@ -44,6 +44,7 @@ $(document).ready(function() {
 	$("#delFile").click(function() {
 		$("#beforeFile").toggle();
 		$("#afterFile").toggle();
+		$("#fileDelete").attr('value', 'fileDelete');
 	})
 
 });
@@ -113,6 +114,7 @@ $(document).ready(function() {
 	<div id="afterFile">
 		새 첨부파일:
 		<input type="file" name="file" />
+		<input type="hidden" name="fileDelete" id="fileDelete" value=""/>
 	</div>
 </div>
 

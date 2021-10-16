@@ -355,6 +355,9 @@ public class ReviewServiceImpl implements ReviewService {
 		
 		//첨부파일정보 DTO
 		XFile reviewFile = null;
+
+		//@@@ update.jsp에서 #fileDelete가 클릭 되었는지 확인할 
+		String fileDelete = null;
 		
 		//파일업로드가 형식에맞는지
 		boolean isMultipart = false;
@@ -420,6 +423,8 @@ public class ReviewServiceImpl implements ReviewService {
 					review.setReviewScore( Integer.parseInt(value) );
 				} else if ( "showNo".equals(key) ) {
 					review.setShowNo( Integer.parseInt(value) );
+				} else if ( "fileDelete".equals(key) ) { //@@@
+					fileDelete = value;
 				}
 			} //if( item.isFormField() ) end
 			
@@ -450,9 +455,20 @@ public class ReviewServiceImpl implements ReviewService {
 			} //if( !item.isFormField() ) end
 		} //while( iter.hasNext() ) end
 		
+		System.out.println("@@@fileDelete : "+fileDelete);
+
 		Connection conn = JDBCTemplate.getConnection();
 		
-		//첨부파일정보 있을경우
+		//fileDelete를 클릭한 경우
+		if(fileDelete != null) {
+			if(reviewDao.deleteFileno(conn, review) > 0) {
+				JDBCTemplate.commit(conn);
+			} else {
+				JDBCTemplate.rollback(conn);				
+			}
+		}
+		
+		//첨부파일정보 있을경우 == fileDelete를 클릭했다면 무시하게 됨
 		if(reviewFile != null) {
 			int fileno = fileDao.selectNextFileno(conn);
 			reviewFile.setFileNo(fileno);

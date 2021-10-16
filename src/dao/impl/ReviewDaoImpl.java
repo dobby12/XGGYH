@@ -706,6 +706,7 @@ public class ReviewDaoImpl implements ReviewDao {
 		sql += " SET review_title = ?";
 		sql += " , review_content = ?";
 		sql += " , review_score = ?";
+		System.out.println("$$$$$$$$$$$$$$$"+review.getFileNo());
 		if(review.getFileNo() == 0) {
 			sql += " WHERE review_no = ?";
 		} else {
@@ -761,6 +762,26 @@ public class ReviewDaoImpl implements ReviewDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			
+		} finally {
+			JDBCTemplate.close(ps);
+		}
+		
+		return res;
+	}
+	
+	@Override
+	public int deleteFileno(Connection conn, XReview review) {
+
+		String sql = "UPDATE XREVIEW SET FILE_NO='' WHERE REVIEW_NO=?";
+		
+		int res = -1;
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, review.getReviewNo());
+			res = ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
 		} finally {
 			JDBCTemplate.close(ps);
 		}
