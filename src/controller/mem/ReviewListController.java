@@ -28,20 +28,6 @@ public class ReviewListController extends HttpServlet {
 		
 		List<XReview> reviewList = reviewService.getList(paging);
 		
-
-		System.out.println("reviewList : " + reviewList);
-		XReview reviewNo = reviewService.getReviewNo(req);
-		XReview viewReview = reviewService.view(reviewNo);
-		System.out.println("reviewNo : " + reviewNo);
-		System.out.println("viewReview : " + viewReview);
-		req.setAttribute("viewReview", viewReview);
-		req.setAttribute("memNick", reviewService.getMemNick(viewReview));
-		req.setAttribute("showTitle", reviewService.getShowTitle(viewReview));
-
-		
-		
-		
-		
 		req.setAttribute("reviewList", reviewList);
 		
 		req.setAttribute("paging", paging);
