@@ -27,7 +27,8 @@ document.addEventListener('DOMContentLoaded', function() {
               id: '${item.showNo}',
               title: '${item.showTitle}',
               start: '${item.showStart}',
-              end: '${item.showEnd}'
+              end: '${item.showEnd}',
+              allDay: true
             },
             </c:forEach>
       	]
