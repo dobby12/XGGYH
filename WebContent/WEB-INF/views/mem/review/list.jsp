@@ -19,8 +19,9 @@
 
 <thead>
 <tr style="cursor: pointer;">
-	<th style="width: 20%">게시글 번호</th>
-	<th style="width: 50%">제목</th>
+	<th style="width: 10%">게시글 번호</th>
+	<th style="width: 25%">공연</th>
+	<th style="width: 35%">제목</th>
 	<th style="width: 10%">작성자</th>
 	<th style="width: 10%">조회수</th>
 	<th style="width: 10%">작성일</th>
@@ -31,6 +32,7 @@
 <c:forEach items="${reviewList }" var="review">
 <tr>
 	<td>${review.reviewNo }</td>
+	<td>${review.showNo }</td>
 	<td style="text-align: left">
 		<a href="<%=request.getContextPath() %>/review/detail?reviewno=${review.reviewNo }">${review.reviewTitle }</a>
 		<c:if test="${review.fileNo ne 0 }">&nbsp;&nbsp;<span class="glyphicon glyphicon-floppy-disk
