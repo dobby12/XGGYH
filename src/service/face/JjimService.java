@@ -44,8 +44,8 @@ public interface JjimService {
 	public List<XShow> getShowNoByMemId(Paging paging, String memid);
 
 	/**
-	 * 멤버 id로 찜한 showList를 반환 
-	 * 	 * 
+	 * 
+	 * 	 
 	 * @param memid
 	 * @return List<XShow>
 	 */
@@ -66,5 +66,5 @@ public interface JjimService {
 	 * @return 유저가 이미 찜을 했는지 안했는지 여부
 	 */
 	boolean getisJjim(String memId, int showNo);
-
+	
 }

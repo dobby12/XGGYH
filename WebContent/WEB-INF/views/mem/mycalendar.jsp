@@ -20,21 +20,17 @@ document.addEventListener('DOMContentLoaded', function() {
 	var calendar = new FullCalendar.Calendar(calendarEl, {
 		initialView : 'dayGridMonth' ,
 		timeZone: 'UTC',
+		
 		events: [
-		    {
-		      id: 'gongyeon1',
-		      title: 'my event',
-		      start: '2021-10-15',
-		      end: '2021-10-18'
-		    }, 
-		    {
-		    	id: 'gongyeon2',
-		    	title: 'gongyeon2',
-		    	start: '2021-10-13',
-		    	end: '2021-10-16'
-		    	
-		    }
-		  ]
+            <c:forEach items="${showList }" var="item">
+            {
+              id: '${item.showNo}',
+              title: '${item.showTitle}',
+              start: '${item.showStart}',
+              end: '${item.showEnd}'
+            },
+            </c:forEach>
+      	]
 
 	});
 	calendar.render();
@@ -45,24 +41,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
 </script>
 
-
 <body>
 
 <div id="container" class="container">
 
 <div style ="width: 1000px; height: 800px;" id="calendar"></div>
-
-
-<table>
-<c:forEach items="${showList }" var="show">
-<tr>
-	<td>${show.showTitle }</td>
-	<td>${show.showStart }</td>
-	<td>${show.showEnd }</td>
-	
-</tr>
-</c:forEach>
-</table>
 
 </div>
 </body>
