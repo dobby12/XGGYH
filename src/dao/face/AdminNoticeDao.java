@@ -79,6 +79,14 @@ public interface AdminNoticeDao {
 	 */
 	public List<XNotice> selectNoticeAll(Connection connection, Paging paging);
 
+	/**
+	 * 
+	 * @param conn
+	 * @param notice
+	 * @return
+	 */
+	public int deleteFileno(Connection conn, XNotice notice);
+
 
 	
 }
