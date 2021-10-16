@@ -37,8 +37,9 @@ public class ReviewDetailController extends HttpServlet {
 		XShow showNo = reviewService.getShowNo(req);
 		//평균 전달
 		
-		int showno = 0;
-		req.setAttribute("AvgReview", getAvgReviewScoreByShowNo(showno));
+		int showno = showNo.getShowNo();
+		System.out.println(showno);
+		req.setAttribute("AvgReview", reviewService.getAvgReviewScoreByShowNo(showno));
 		
 		
 	
