@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import common.JDBCTemplate;
 import dao.face.ShowDao;
 import dao.impl.ShowDaoImpl;
+import dto.XMem;
 import dto.XShow;
 import service.face.ShowService;
 import util.Paging;
@@ -158,5 +159,10 @@ public class ShowServiceImpl implements ShowService {
 		String keyword = (String)req.getParameter("keyword");
 
 		return showDao.selectShowSearchByshowTitle(JDBCTemplate.getConnection(), keyword, Integer.parseInt(showKind), paging);
+	}
+
+	@Override
+	public List<XShow> getShowMemGenreList(XMem memInfo, int kindNo, Paging paging) {
+		return showDao.selectShowSearchByMemgenre(JDBCTemplate.getConnection(), memInfo, kindNo, paging);
 	}
 }

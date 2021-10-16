@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import dto.XMem;
 import dto.XShow;
 import util.Paging;
 
@@ -63,6 +64,8 @@ public interface ShowService {
 	 */
 	public Paging getParameterPaging(HttpServletRequest req, String showTitle, int kindNo);
 	
+	
+	public Paging getParameterPaging(HttpServletRequest req, int kindNo, int memGenre);
 	/**
 	 * 요청파라미터 얻기
 	 * 
@@ -110,5 +113,5 @@ public interface ShowService {
 
 	public List<XShow> getSearchShowList(HttpServletRequest req, Paging paging);
 	
-	//public List<XShow> getShowMemGenreList();
+	public List<XShow> getShowMemGenreList(XMem memInfo, int kindNo, Paging paging);
 }

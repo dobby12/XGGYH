@@ -18,23 +18,13 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
 <style type="text/css">
-.main_list {
-    width: 1100px;
-    margin: 0 auto;
-}
-
-.list_start {
-    text-align: center;
-}
-
-.list_detail {
-    display: inline-block;
-    width: 300px;
-    height: 350px;
-    margin-bottom: 40px;
-    margin-right: 20px;
-    margin-left: 20px;
-    text-align: center;
+.posterSuggest {
+    width: 175px;
+    height: 230px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    border:1px solid black;
 }
 
 </style>
@@ -45,12 +35,18 @@
 <h1>${memid} 님을 위한 추천공연</h1>
 
 <div class="main_list">
-	<div class="list_start">
-		<div class="list_detail">
+		<div class="list_start">
+			<c:forEach items="${showList }" var="showList">
+			<div class="list_detail">
 			
+			<a href="<%=request.getContextPath() %>/show/detail?showNo=${showList.showNo }"> 
+			<img class="posterSuggest" src='http://drive.google.com/uc?export=view&id=1UCDamPPObCPN9BY8Iz2WjsgiY8m80K2b' /><br>
+			${showList.showTitle} <br> ${showList.showDirector }
+			</a>
 			
+			</div>
+			</c:forEach>
 		</div>
-	</div>
 </div>
 
 <hr>

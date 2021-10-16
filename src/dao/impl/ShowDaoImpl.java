@@ -9,6 +9,7 @@ import java.util.List;
 
 import common.JDBCTemplate;
 import dao.face.ShowDao;
+import dto.XMem;
 import dto.XShow;
 import util.Paging;
 
@@ -419,6 +420,65 @@ public class ShowDaoImpl implements ShowDao {
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, kindNo);
 			ps.setNString(2, keyword);
+			ps.setInt(3, paging.getStartNo());
+			ps.setInt(4, paging.getEndNo());
+
+			rs = ps.executeQuery();
+
+			while (rs.next()) {
+				XShow showInfo = new XShow();
+
+				showInfo.setShowNo(rs.getInt("show_no"));
+				showInfo.setFileNo(rs.getInt("file_no"));
+				showInfo.setAdminId(rs.getString("admin_id"));
+				showInfo.setKindNo(rs.getInt("kind_no"));
+				showInfo.setGenreNo(rs.getInt("genre_no"));
+				showInfo.setHallNo(rs.getInt("hall_no"));
+				showInfo.setShowTitle(rs.getString("show_title"));
+				showInfo.setShowContent(rs.getString("show_content"));
+				showInfo.setShowDate(rs.getDate("show_date"));
+				showInfo.setShowAge(rs.getString("show_age"));
+				showInfo.setShowDirector(rs.getString("show_director"));
+				showInfo.setShowActor(rs.getString("show_actor"));
+				showInfo.setShowStart(rs.getDate("show_start"));
+				showInfo.setShowEnd(rs.getDate("show_end"));
+
+				// 리스트에 결과값 저장
+				showList.add(showInfo);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+		}
+
+		return showList;
+	}
+
+	@Override
+	public List<XShow> selectShowSearchByMemgenre(Connection conn, XMem memInfo, int kindNo, Paging paging) {
+		String sql = "";
+		sql += "SELECT * FROM (";
+		sql += "	SELECT rownum rnum, X.* FROM (";
+		sql += "		SELECT";
+		sql += "			show_no, file_no, admin_id, kind_no, genre_no, hall_no, show_title";
+		sql += "			, show_content, show_date, show_age, show_director, show_actor, show_start, show_end";
+		sql += "		FROM XShow";
+		sql += "		WHERE kind_no = ? AND show_genre = ?";
+		sql += "		ORDER BY show_no DESC";
+		sql += "	) X";
+		sql += " ) XShow";
+		sql += " WHERE rnum BETWEEN ? AND ?";
+
+		// 결과 저장할 List
+		List<XShow> showList = new ArrayList<>();
+
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, kindNo);
+			ps.setInt(2, memInfo.getGenreNo());
 			ps.setInt(3, paging.getStartNo());
 			ps.setInt(4, paging.getEndNo());
 

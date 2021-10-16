@@ -3,6 +3,7 @@ package dao.face;
 import java.sql.Connection;
 import java.util.List;
 
+import dto.XMem;
 import dto.XShow;
 import util.Paging;
 
@@ -98,6 +99,8 @@ public interface ShowDao {
 	public String selectHallNameByHallNo(Connection conn, XShow showInfo);
 
 	public List<XShow> selectShowSearchByshowTitle(Connection conn, String keyword, int kindNo, Paging paging);
+
+	public List<XShow> selectShowSearchByMemgenre(Connection conn, XMem memInfo, int kindNo, Paging paging);
 
 	
 
