@@ -109,4 +109,6 @@ public interface ShowService {
 	public String getHallName(XShow showInfo);
 
 	public List<XShow> getSearchShowList(HttpServletRequest req, Paging paging);
+	
+	//public List<XShow> getShowMemGenreList();
 }

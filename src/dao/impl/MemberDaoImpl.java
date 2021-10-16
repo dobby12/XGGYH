@@ -49,7 +49,7 @@ public class MemberDaoImpl implements MemberDao {
 		
 		XMem res = null;
 		
-		String sql = "SELECT MEM_ID, MEM_NICK FROM XMEM WHERE MEM_ID=?";
+		String sql = "SELECT MEM_ID, MEM_NICK, GENRE_NO FROM XMEM WHERE MEM_ID=?";
 		
 		try {
 			ps = connection.prepareStatement(sql);
@@ -59,6 +59,7 @@ public class MemberDaoImpl implements MemberDao {
 				res = new XMem();
 				res.setMemId(rs.getString("mem_id"));
 				res.setMemNick(rs.getString("mem_nick"));
+				res.setGenreNo(rs.getInt("genre_no"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
