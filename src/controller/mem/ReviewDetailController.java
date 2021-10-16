@@ -30,7 +30,11 @@ public class ReviewDetailController extends HttpServlet {
 		
 		//조회결과값 전달
 		req.setAttribute("viewReview", viewReview);
-
+		
+		//** 평점 평균값 구하기 **
+		int showno = viewReview.getShowNo();
+		req.setAttribute("AvgReview", reviewService.getAvgReviewScoreByShowNo(showno));
+		
 		//닉네임 전달
 		req.setAttribute("memNick", reviewService.getMemNick(viewReview));
 		

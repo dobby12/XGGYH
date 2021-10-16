@@ -19,7 +19,7 @@ public class JjimController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	private JjimService jjimService = new JjimServiceImpl();
-	
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		this.doPost(req, resp);
@@ -30,27 +30,27 @@ public class JjimController extends HttpServlet {
 		System.out.println("/mem/jjim [POST]");
 		
 		XJjim jjim = jjimService.getJjimInfo(req);
-		
-		System.out.println(jjim);
-		
-		if(req.getSession().getAttribute("login") == null || !(boolean)req.getSession().getAttribute("login"))
-		{
+
+		if (req.getSession().getAttribute("login") == null || !(boolean) req.getSession().getAttribute("login")) {
 			System.out.println("로그인 안됨");
 			return;
-		}
-		else {
+		} else {
 			System.out.println(req.getParameter("memId"));
 			System.out.println(req.getParameter("showNo"));
 			System.out.println("로그인 정보 가져오기 성공");
-			
+
 			int insertAble = jjimService.setJjim(jjim);
-			
-			if(insertAble == 0)
+
+			if (insertAble == 0)
 				System.out.println("찜 목록 추가 실패");
 			else
 				System.out.println("찜 목록 추가 성공");
 		}
+
 		
+
+		System.out.println("jjim : " + jjim);
+
 		resp.sendRedirect("/show/detail?showNo=" + req.getParameter("showNo"));
 	}
 }

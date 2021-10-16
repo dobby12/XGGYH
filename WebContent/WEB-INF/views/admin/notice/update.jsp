@@ -17,6 +17,28 @@ $(document).ready(function(){
 	$("#btnBack").click(function(){
 		history.go(-1);
 	});
+	
+
+	//파일이 있을 경우
+	if(${not empty file }) {
+		$("#beforeFile").show();
+		$("#afterFile").hide();
+	}
+	
+	//파일이 없을 경우
+	if(${empty file }) {
+		$("#beforeFile").hide();
+		$("#afterFile").show();
+	}
+	
+	//파일 삭제 버튼(X) 처리
+	$("#delFile").click(function() {
+		$("#beforeFile").toggle();
+		$("#afterFile").toggle();
+		$("#fileDelete").attr('value', 'fileDelete');
+	})
+
+	
 });
 </script>
 
@@ -66,7 +88,8 @@ $(document).ready(function(){
 	</div>
 	<br>
 	<div id="afterFile">
-		<input type="file" name="file" />새 파일 첨부 시 기존 파일은 삭제됩니다.
+		<input type="file" name="file" />
+		<input type="hidden" name="fileDelete" id="fileDelete" value=""/>
 	</div>
 </div>
 

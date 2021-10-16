@@ -218,6 +218,7 @@ public class AdminNoticeServiceImpl implements AdminNoticeService {
 
 		XNotice notice = null;	//@@@삽입하려는 게시판 객체로 바꾸기 ex) XReview review = null;
 		XFile file = null;
+		String fileDelete = null;
 		
 		boolean isMultipart = false;
 		isMultipart = ServletFileUpload.isMultipartContent(req);
@@ -278,6 +279,8 @@ public class AdminNoticeServiceImpl implements AdminNoticeService {
 					notice.setNoticeContent(value);	//@@@ex) review.setReviewContent(value);
 				} else if("no".equals(key)) {
 					notice.setNoticeNo(Integer.parseInt(value));
+				} else if ( "fileDelete".equals(key) ) { //@@@
+					fileDelete = value;
 				}
 			}
 
@@ -317,6 +320,15 @@ public class AdminNoticeServiceImpl implements AdminNoticeService {
 		
 		Connection conn = JDBCTemplate.getConnection();
 
+		//fileDelete를 클릭한 경우
+		if(fileDelete != null) {
+			if(adminNoticeDao.deleteFileno(conn, notice) > 0) {
+				JDBCTemplate.commit(conn);
+			} else {
+				JDBCTemplate.rollback(conn);				
+			}
+		}
+		
 		//첨부파일 정보가 있을 경우 (아래의 게시글 처리보다 위에 있어야만 합니다! PK, FK 관계 때문에)
 		if(file != null) {
 			int fileno = fileDao.selectNextFileno(conn);

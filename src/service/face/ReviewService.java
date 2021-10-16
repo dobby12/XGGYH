@@ -172,8 +172,13 @@ public interface ReviewService {
 	 */
 	public List<XReview> searchReviewList(HttpServletRequest req, Paging paging);
 
-
-
+	/**
+	 * showno를 통해 reviewScore의 평균값을 구함
+	 * 
+	 * @param showno - 조회할 공연
+	 * @return - 평균값
+	 */
+	public double getAvgReviewScoreByShowNo(int showNo);
 
 }
 

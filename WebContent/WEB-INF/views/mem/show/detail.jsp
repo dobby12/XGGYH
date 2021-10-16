@@ -60,33 +60,42 @@
 </style>
 
 <script type="text/javascript">
+	function insertJjim() {
+		var isJjimed = ${isJjim};
 
-function insertJjim() {
-	var isJjimed = ${isJjim};
-	
-	if(isJjimed == true){		
-		alert('찜 목록에 추가 되었습니다.');
-		location.href= '/mem/jjim?showNo=' + '${showDetail.showNo}' + '&memId=' + '${memId}';
+		if (<%=session.getAttribute("login")%> == null) {
+			alert("로그인 후 이용 가능한 서비스입니다. 로그인 해주세요.");
+			location.href = '/login';
+		} else {
+			if (isJjimed == true) {
+				alert('찜 목록에 추가 되었습니다.');
+				location.href = '/mem/jjim?showNo=' + '${showDetail.showNo}'
+						+ '&memId=' + '${memid}';
+			} else {
+				alert('이미 찜한 공연입니다.');
+			}
+		}
 	}
-	else{
-		alert('이미 찜한 공연입니다.');
-	}
-}
 
-function deleteJjim() {
-	var isJjimed = ${isJjim};
-	
-	if(isJjimed == false){
-		alert('찜 목록에서 삭제 되었습니다.');
-		location.href= '/mem/jjim/delete?showNo=' + '${showDetail.showNo}' + '&memId=' + '${memId}';
-		//${isJjim}.setAttribute(true);
-		window.history.back();
+	function deleteJjim() {
+		var isJjimed = ${isJjim};
+		if (<%=session.getAttribute("login")%> == null) {
+			alert("로그인 후 이용 가능한 서비스입니다. 로그인 해주세요.");
+			location.href = '/login';
+		}
+		
+		else{
+			if (isJjimed == false) {
+				alert('찜 목록에서 삭제 되었습니다.');
+				location.href = '/mem/jjim/delete?showNo=' + '${showDetail.showNo}'
+						+ '&memId=' + '${memid}';
+				//${isJjim}.setAttribute(true);
+				window.history.back();
+			} else {
+				alert('찜하지 않은 공연입니다.');
+			}
+		}
 	}
-	else{
-		alert('찜하지 않은 공연입니다.');
-	}
-}
-
 </script>
 
 </head>
@@ -95,9 +104,12 @@ function deleteJjim() {
 	<c:import url="/WEB-INF/views/layout/header.jsp" />
 
 	<div class="detailButton">
-		<a href="<%=request.getContextPath() %>/review/list">공연 리뷰 더보기</a>
-		<button onclick="location.href='<%=request.getContextPath()%>/show?kindNo=${showDetail.kindNo}';">공연목록</button>
-		<button onclick="location.href='<%=request.getContextPath()%>/review/write?showNo=${showDetail.showNo}';">리뷰 작성</button>
+		<a href="<%=request.getContextPath()%>/review/list">공연 리뷰 더보기</a>
+		<button
+			onclick="location.href='<%=request.getContextPath()%>/show?kindNo=${showDetail.kindNo}';">공연목록</button>
+		<button
+			onclick="location.href='<%=request.getContextPath()%>/review/write?showNo=${showDetail.showNo}';">리뷰
+			작성</button>
 		<button onclick="insertJjim();">이 공연 찜하기</button>
 		<button onclick="deleteJjim();">찜한 공연 삭제하기</button>
 	</div>
@@ -114,9 +126,8 @@ function deleteJjim() {
 		</div>
 
 		<div class="detailInfo">
-			공연 번호 : ${showDetail.showNo} <br> 작성자(관리자 아이디) :
-			${showDetail.adminId} <br> 카테고리 : ${showKindName} <br> 장르 :
-			${showGenreName} <br> 공연장 : <a
+			공연 번호 : ${showDetail.showNo} <br> 카테고리 : ${showKindName} <br>
+			장르 : ${showGenreName} <br> 공연장 : <a
 				href="<%=request.getContextPath() %>/hall/detail?hallNo=${showDetail.hallNo }">
 				${showHallName} </a> <br> 작성일 : ${showDetail.showDate} <br> 연령
 			제한 : ${showDetail.showAge} <br> 감독 : ${showDetail.showDirector}
@@ -130,35 +141,5 @@ function deleteJjim() {
 	<c:import url="/WEB-INF/views/layout/footer.jsp" />
 
 </body>
-
-<script type="text/javascript">
-
-function insertJjim() {
-	var isJjimed = ${isJjim};
-	
-	if(isJjimed == true){		
-		alert('찜 목록에 추가 되었습니다.');
-		location.href= '/mem/jjim?showNo=' + '${showDetail.showNo}' + '&memId=' + '${memId}';
-	}
-	else{
-		alert('이미 찜한 공연입니다.');
-	}
-}
-
-function deleteJjim() {
-	var isJjimed = ${isJjim};
-	
-	if(isJjimed == false){
-		alert('찜 목록에서 삭제 되었습니다.');
-		location.href= '/mem/jjim/delete?showNo=' + '${showDetail.showNo}' + '&memId=' + '${memId}';
-		//${isJjim}.setAttribute(true);
-		window.history.back();
-	}
-	else{
-		alert('찜하지 않은 공연입니다.');
-	}
-}
-
-</script>
 
 </html>

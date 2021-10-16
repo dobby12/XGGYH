@@ -283,6 +283,7 @@ public class AdminNoticeDaoImpl implements AdminNoticeDao {
 	@Override
 	public int deleteNotice(Connection conn, int noticeno) {
 
+		System.out.println(noticeno);
 		String sql = "DELETE XNOTICE WHERE NOTICE_NO=?";
 		int res = -1;
 
@@ -295,7 +296,7 @@ public class AdminNoticeDaoImpl implements AdminNoticeDao {
 		} finally {
 			JDBCTemplate.close(ps);
 		}
-
+		System.out.println(res);
 		return res;
 	}
 
@@ -372,6 +373,24 @@ public class AdminNoticeDaoImpl implements AdminNoticeDao {
 
 
 
+	@Override
+	public int deleteFileno(Connection conn, XNotice notice) {
+		String sql = "UPDATE XNOTICE SET FILE_NO='' WHERE NOTICE_NO=?";
+		
+		int res = -1;
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, notice.getNoticeNo());
+			res = ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(ps);
+		}
+		
+		return res;
+	}
 
 
 

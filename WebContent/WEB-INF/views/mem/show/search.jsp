@@ -84,17 +84,7 @@
 
 </div>
 
-<div style="text-align: center; margin: 0 0 25px 0;" >
-<form action="<%=request.getContextPath() %>/show/search" method="get">
-	<select id="searchtype" name="searchtype">
-		<option value="showTitle">제목</option>
-		<option value="showTitle">공연장 이름</option>
-	</select>
-	<input type="text" id="keyword" name="keyword" placeholder="공연 제목을 입력하세요."/>
-	<input type="hidden" name="kind" value="${kindNo}"/>
-	<button>검색</button>
-</form>
-</div>
+<button onclick="location.href='<%=request.getContextPath()%>/show?kindNo=${showDetail.kindNo}';">공연목록</button>
 
 <c:import url="/WEB-INF/views/layout/parameterPaging.jsp" />
 
