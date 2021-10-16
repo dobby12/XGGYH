@@ -372,7 +372,9 @@ public class AdminNoticeServiceImpl implements AdminNoticeService {
 
 		Connection conn = JDBCTemplate.getConnection();
 		
-		int fileno = getFile(noticeno).getFileNo();
+//		int fileno = getFile(noticeno).getFileNo();
+		int fileno = getNoticeDetail(noticeno).getFileNo();
+		System.out.println(fileno);
 		
 		if(adminNoticeDao.deleteNotice(conn, noticeno) > 0) {
 			JDBCTemplate.commit(conn);
