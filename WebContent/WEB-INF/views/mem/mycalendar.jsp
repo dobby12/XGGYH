@@ -5,9 +5,6 @@
 
 <c:import url="/WEB-INF/views/layout/header.jsp" />
 
-<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-<script type="text/javascript" src="/resources/js/httpRequest.js"></script>
-
 <!-- fullcalendar CDN -->
 <link href='/resources/fullcalendar/lib/main.css' rel='stylesheet' />
 <script src='/resources/fullcalendar/lib/main.js'></script>
@@ -36,18 +33,73 @@ document.addEventListener('DOMContentLoaded', function() {
 	});
 	calendar.render();
 	
-	
-
 });
 
 </script>
 
+
+<style>
+.fc-event-title-container {
+	background-color: #D96459;
+	
+}
+
+.fc-h-event {
+	border: 0px;
+}
+
+
+.first {
+    border: 1px solid red;
+    float: left;
+}
+
+.second{
+    border: 1px solid green;
+    float: right;
+  
+}
+
+
+
+</style>
+
 <body>
 
-<div id="container" class="container">
 
-<div style ="width: 1000px; height: 800px;" id="calendar"></div>
+<div class="container">
 
-</div>
-</body>
-</html>
+<div class="first" style ="width: 600px; height: 1200px;" id="calendar"></div>
+
+<div class="second">
+
+<h3>내가 찜한 공연</h3>
+<br>
+<table class="table table-hover table-condensed table-bordered" style="width: 500px;">
+
+<thead>
+	<tr>
+		<td>공연 제목</td>
+		<td>공연기간</td>
+		<td></td>
+	</tr>
+</thead>
+
+<c:forEach items="${showList }" var="show">
+</tbody>
+	<tr>
+		<td>${show.showTitle }</td>
+		<td>${show.showStart } ~ ${show.showEnd }</td>
+		<td><a href="<%=request.getContextPath() %>/mem/jjim/delete?showNo=${show.showNo }&memId=${memid}"><button>찜 해제</button></a></td>
+	</tr>
+</tbody>
+</c:forEach>
+
+</table>
+</div> <!-- div second end -->
+</div> <!-- div container end -->
+
+
+
+<c:import url="/WEB-INF/views/layout/footer.jsp" />
+

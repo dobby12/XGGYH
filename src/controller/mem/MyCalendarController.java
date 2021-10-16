@@ -28,6 +28,8 @@ public class MyCalendarController extends HttpServlet {
 		List<XShow> showList = jjimService.getShowNoByMemId(memid);
 		
 		System.out.println(showList);
+		
+		req.setAttribute("memid", memid);
 
 		req.setAttribute("showList", showList);
 		
