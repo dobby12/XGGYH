@@ -44,25 +44,22 @@ table {
 <table class="table table-condensed table-bordered" >
 
 <tr>
-<td colspan="8" style="font-size: 30px; font-weight: bold; width: 100%; padding: 5px; height: 50px;">${viewReview.reviewTitle }</td>
+<td colspan="6" style="font-size: 30px; font-weight: bold; width: 100%; padding: 5px; height: 50px;">${viewReview.reviewTitle }</td>
 </tr>
 
 <tr>
-	<td class="item" colspan="2" >회원 아이디</td><td colspan="3">${viewReview.memId }</td>
-	<td class="item" colspan="1">조회수</td><td colspan="2">${viewReview.reviewHit }</td>
+	<td class="item">회원 아이디</td><td>${viewReview.memId }</td>
+	<td class="item">조회수</td><td>${viewReview.reviewHit }</td>
+	<td class="item">회원 닉네임</td><td>${memNick }</td>
+</tr>	
+<tr>	
+	<td class="item">작성일</td><td>${viewReview.reviewDate }</td>
+	<td class="item">공연 제목</td><td>${showTitle }</td>
+	<td class="item">평점</td><td>${viewReview.reviewScore }</td>
 </tr>
 
 <tr>
-	<td class="item" colspan="2">회원 닉네임</td><td colspan="3">${memNick }</td>
-	<td class="item" colspan="1">작성일</td><td colspan="1">${viewReview.reviewDate }</td>
-
-<tr>
-	<td class="item" colspan="2">공연 제목</td><td colspan="3">${showTitle }</td>
-	<td class="item" colspan="1">평점</td><td colspan="1">${viewReview.reviewScore }</td>
-</tr>
-
-<tr>
-	<td colspan="8" style="width: 100%; height: 300px; padding: 10px; vertical-align: middle;">${viewReview.reviewContent }</td>
+	<td colspan="6" style="width: 100%; height: 300px; padding: 10px; vertical-align: middle;">${viewReview.reviewContent }</td>
 </tr>
 
 </table>
@@ -76,7 +73,7 @@ table {
 
 <div class="button">
 	<a href="<%=request.getContextPath() %>/admin/review/delete?reviewno=${viewReview.reviewNo }"><button id="btnDelete" class="btnDelete">삭제</button></a>
-	<button id="btnList">목록으로 돌아가기</button>
+	<button id="btnList" class="btnBack">목록</button>
 	
 </div>
 

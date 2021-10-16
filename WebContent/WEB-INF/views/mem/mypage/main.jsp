@@ -52,6 +52,7 @@ $(document).ready(function() {
 <style type="text/css">
 
 th {
+	text-align: center;
 	padding-bottom: 20px;
 }
 
@@ -60,8 +61,17 @@ td {
 }
 
 button {
-	width: 50%;
-	height: 100px;
+	width: 150px;
+	height: 75px;
+	background: #d99771;
+}
+
+button:hover {
+	background: #f2f2f2;
+	color: #d99771;
+}
+button:before,button:after {
+	background: #d99771;
 }
 
 </style>
@@ -70,38 +80,38 @@ button {
 
 <h2>마이 페이지</h2>
 <hr>
-<br>
 
 <h3><%=nick %>님 안녕하세요!</h3>
 
 <br>
-
 <table>
 	<tr>
-		<th>회원정보</th>
-		<th>회원활동</th>
-		<th>고객센터</th>
+		<th><h4>회원정보</h4></th>
+		<th><h4>회원활동</h4></th>
+		<th><h4>고객센터</h4></th>
 		
 	</tr>
 	
 	<tr>
-		<td><button type="button" id="myinfo" class="btn-fill-s">계정 관리</button></td>
-		<td><button type="button" id="myrev" class="btn-fill-s">내가 리뷰한 공연</button></td>
-		<td><button type="button" id="notice" class="btn-fill-s">공지사항</button></td>
+		<td><button type="button" id="myinfo">계정 관리</button></td>
+		<td><button type="button" id="myrev">내가 리뷰한 공연</button></td>
+		<td><button type="button" id="notice">공지사항</button></td>
 	</tr>
 	
 	<tr>
-		<td><button type="button" id="userdel" class="btn-fill-s">회원 탈퇴</button></td>
-		<td><button type="button" id="myjim" class="btn-fill-s">내가 찜한 공연</button></td>
-		<td><button type="button" id="askwrite" class="btn-fill-s">1:1문의</button></td>
+		<td><button type="button" id="userdel">회원 탈퇴</button></td>
+		<td><button type="button" id="myjim">내가 찜한 공연</button></td>
+		<td><button type="button" id="askwrite">1:1문의</button></td>
 	</tr>
 	
 	<tr>
 		<td></td>
-		<td><button type="button" id="mycal" class="btn-fill-s">마이 캘린더</button></td>
-		<td><button type="button" id="asklist" class="btn-fill-s">문의내역</button></td>
+		<td><button type="button" id="mycal">마이 캘린더</button></td>
+		<td><button type="button" id="asklist">문의내역</button></td>
 	</tr>
 
 </table>
 
 </div>
+
+<c:import url="/WEB-INF/views/layout/footer.jsp" />

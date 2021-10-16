@@ -32,11 +32,10 @@ table {
 <table style="clear: both;" class="table table-hover table-condensed">
 <thead>
 <tr>
-	<th style="text-align: center; width: 7.5%">공연번호</th>
-	<th style="text-align: center; width: 15%">작성일</th>
-	<th style="text-align: center; width: 42.5%">제목</th>
-	<th style="text-align: center; width: 10%">관리자</th>
-	<th style="text-align: center; width: 30%">공연 기간</th>
+	<th style="text-align: center; width: 10%">공연번호</th>
+	<th style="text-align: center; width: 15%">관리자</th>
+	<th style="text-align: center; width: 50%">제목</th>
+	<th style="text-align: center; width: 25%">공연 기간</th>
 </tr>
 </thead>
 
@@ -44,12 +43,11 @@ table {
 <% for(int i=0 ; i<list.size(); i++) { %>
 <tr>
 	<td><%= list.get(i).getShowNo() %></td>
-	<td><%= list.get(i).getShowDate() %></td>
+	<td><%= list.get(i).getAdminId() %></td>
 	<td><a href="<%=request.getContextPath() %>/admin/show/detail?showno=<%=list.get(i).getShowNo() %>">
 			<%= list.get(i).getShowTitle() %>
 		</a>
 	</td>
-	<td><%= list.get(i).getAdminId() %></td>
 	<td><%= list.get(i).getShowStart() %> ~ <%= list.get(i).getShowEnd() %></td>
 </tr>
 <%} %>

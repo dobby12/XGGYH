@@ -85,7 +85,6 @@ table {
 </table>
 
 </div>
-<c:import url="/WEB-INF/views/layout/paging.jsp" />
 
 <div style="text-align: center; margin: 0 0 25px 0;" >
 <form action="<%=request.getContextPath() %>/admin/mem/search" method="get">
@@ -99,5 +98,7 @@ table {
 	<button>검색</button>
 </form>
 </div>
+
+<c:import url="/WEB-INF/views/layout/paging.jsp" />
 
 <c:import url="/WEB-INF/views/layout/footer.jsp" />
