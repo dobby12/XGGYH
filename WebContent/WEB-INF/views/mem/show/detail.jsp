@@ -89,8 +89,8 @@
 				alert('찜 목록에서 삭제 되었습니다.');
 				location.href = '/mem/jjim/delete?showNo=' + '${showDetail.showNo}'
 						+ '&memId=' + '${memid}';
-				//${isJjim}.setAttribute(true);
 				window.history.back();
+				location.reload();
 			} else {
 				alert('찜하지 않은 공연입니다.');
 			}

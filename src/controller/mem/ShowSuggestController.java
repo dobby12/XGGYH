@@ -56,6 +56,8 @@ public class ShowSuggestController extends HttpServlet {
 			return;
 		}
 		
-	//	Paging paging = showService.getParameterPaging(req, genreNo);
+		Paging paging = showService.getParameterPaging(req, genreNo);
+		
+		req.getRequestDispatcher("/WEB-INF/views/mem/show/suggest.jsp").forward(req, resp);
 	}
 }

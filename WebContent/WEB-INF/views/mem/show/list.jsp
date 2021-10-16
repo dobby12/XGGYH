@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>공연의 모든 것, 공공연히</title>
 
 <!-- jQuery 2.2.4 -->
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
@@ -68,13 +68,14 @@
 <hr>
 
 <div>
-
 <form action="<%=request.getContextPath() %>/show/memgenre" method="get">
 <input type="hidden" id="kind" name="kind" value="${kindNo}"/>
 </form>
-
 </div>
-<c:import url="/WEB-INF/views/mem/show/suggest.jsp" />
+
+<c:if test="${ login ne null }">
+	<c:import url="/WEB-INF/views/mem/show/suggest.jsp" />
+</c:if>
 
 <div class="main_list">
 		<div class="list_start">
