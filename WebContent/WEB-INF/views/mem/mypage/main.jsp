@@ -31,7 +31,7 @@ $(document).ready(function() {
 	});
 	
 	$("#mycal").click(function() {
-		location.href="<%=request.getContextPath() %>";
+		location.href="<%=request.getContextPath() %>/mycalendar";
 	});
 	
 	$("#notice").click(function() {
