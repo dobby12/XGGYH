@@ -30,8 +30,8 @@ table {
 </tr>
 </thead>
 
+<tbody>
 <c:forEach items="${reviewList }" var="review">
-</tbody>
 <tr>
 
 	<td>${review.reviewNo }</td>
@@ -40,8 +40,8 @@ table {
 	<td>${review.reviewDate }</td>
 	<td>${review.reviewHit }</td>
 </tr>
-</tbody>
 </c:forEach>
+</tbody>
 
 
 </table>
