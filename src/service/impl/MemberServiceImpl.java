@@ -96,6 +96,21 @@ public class MemberServiceImpl implements MemberService {
 	}
 	
 	@Override
+	public boolean checkNick(String memnick) {
+		Connection conn = JDBCTemplate.getConnection();
+		
+		XMem member = memberDao.selectMemByMemid(conn, memnick);
+		
+		if (member != null) {
+			// 이미 존재하는 닉네임
+			return true;
+		} else {
+			// 존재하지 않는 닉네임
+			return false;
+		}
+	}
+	
+	@Override
 	public boolean checkEmail(String memmail) {
 		Connection conn = JDBCTemplate.getConnection();
 		

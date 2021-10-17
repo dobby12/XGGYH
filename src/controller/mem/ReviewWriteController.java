@@ -32,6 +32,17 @@ public class ReviewWriteController extends HttpServlet {
 			
 			return;
 		}
+		System.out.println("@" + req.getParameter("showNo"));
+		System.out.println("@" + req.getSession().getAttribute("memid"));
+		
+		if(reviewService.getReviewOverlap(req)) {
+			
+			System.out.println("1공연 2리뷰 작성시도");
+			
+			resp.sendRedirect("/show/detail?showNo=" + req.getParameter("showNo"));
+			
+			return;
+		}
 		
 		XShow showNo = showService.getShowNo(req);
 		

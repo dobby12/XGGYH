@@ -176,8 +176,6 @@ ul.nav > li > ul {
 	text-align: center;
 }
 
-/*  */
-
 
 #logoA > a:hover, #logoA> a:before, #logoA> a:after,
 #outlog > a:hover, #outlog> a:before, #outlog> a:after,
@@ -275,7 +273,7 @@ ul.nav > li > ul > li > a:hover {
 
 /* ------------------------------------------------ */
 /* 버튼 */
-button { 
+button, input[type=button] { 
 	background:#D96459; 
 	color:#fff; 
 	border:none; 
@@ -304,7 +302,7 @@ button.btnDelete {
 	color: #f2f2f2;
 }
 
-button:hover { 
+button:hover, input[type=button]:hover { 
    background:#f2f2f2; 
    color:#D96459; 
 } 
@@ -324,7 +322,7 @@ button.btnDelete:hover {
    color:#d99771;
 } 
 
-button:before,button:after { 
+button:before,button:after, input[type=button]:before, input[type=button]:after { 
    content:''; 
    position:absolute; 
    top:0; 
@@ -347,7 +345,7 @@ button.btnDelete:before, button.btnDelete:after {
   	background: #d99771;
 } 
 
-button:after, button.btnBack:after, button.btnDelete:after, button.btnSubmit:after { 
+button:after, button.btnBack:after, button.btnDelete:after, button.btnSubmit:after, input[type=button]:after { 
    right:inherit; 
    top:inherit; 
    left:0; 
@@ -357,7 +355,8 @@ button:after, button.btnBack:after, button.btnDelete:after, button.btnSubmit:aft
 button:hover:before,button:hover:after,
 button.btnBack:hover:before, button.btnBack:hover:after,
 button.btnDelete:hover:before, button.btnDelete:hover:after,
-button.btnSubmit:hover:before, button.btnSubmit:hover:after { 
+button.btnSubmit:hover:before, button.btnSubmit:hover:after,
+input[type=button]:hover:before, input[type=button]:hover:after { 
    width:100%; 
    transition:800ms ease all;
 }
@@ -439,7 +438,7 @@ textarea:focus, input:focus {
 	<li><a href="<%=request.getContextPath() %>/show?kindNo=4">오페라</a></li>
 	<li><a href="<%=request.getContextPath() %>/show?kindNo=3">콘서트</a></li>
 	<li><a href="<%=request.getContextPath() %>/show?kindNo=2">연극</a></li>
-	<li><a href="<%=request.getContextPath() %>/mypage/myjjim">내가 찜한 콘텐츠</a></li>
+	<li><a href="<%=request.getContextPath() %>/mypage/myjjim">내가 찜한 공연</a></li>
 	<li><a href="<%=request.getContextPath() %>/review/list">리뷰 게시판</a>
 
 	<c:if test="${not empty login }">

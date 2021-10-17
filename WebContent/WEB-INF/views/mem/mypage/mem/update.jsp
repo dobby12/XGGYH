@@ -27,84 +27,6 @@ async function ajaxPost(url, data) {
 	})
 }
 
-//이메일 형식 검사
-function checkEmail() {
-	$("#valid-feedback-email").css("display", "none");
-	var memmail = $("#memmail");
-	const emailFormCheck = RegExp(/^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*[.][a-zA-Z]{2,3}$/);
-	
-	if (emailFormCheck.test(memmail.val()) == false) {
-		memmail.addClass("is-invalid");
-		memmail.removeClass("is-valid");
-		// memmail.focus();
-		
-		$("#invalid-feedback-emailcheck").css("display", "none");
-		$("#invalid-feedback-email").css("display", "block");
-		
-		return false;
-	} else {
-		memmail.addClass("is-valid");
-		memmail.removeClass("is-invalid");
-		
-		$("#invalid-feedback-emailcheck").css("display", "none");
-		$("#invalid-feedback-email").css("display", "none");
-		
-		return true;
-	}
-}
-
-//이메일 중복 검사
-async function checkEmailExist() {
-	var memmail = $("#memmail");
-	
-	if (checkEmail() == false) {
-		return;
-	}
-	
-	if (memmail_prior == memmail.val()) {
-		//중복되는 이메일 없음
-		memmail.removeClass("is-invalid");
-		memmail.addClass("is-valid");
-		
-		$("#valid-feedback-email").css("display", "block");
-		$("#invalid-feedback-emailcheck").css("display", "none");
-		$("#invalid-feedback-email").css("display", "none");
-		
-		return true;
-	}
-	
-	try {
-		const result = await ajaxPost('/join/emailcheck', {memmail: memmail.val()});
-		
-		if (result == "false") {
-			//중복되는 이메일 없음
-			memmail.removeClass("is-invalid");
-			memmail.addClass("is-valid");
-			
-			$("#valid-feedback-email").css("display", "block");
-			$("#invalid-feedback-emailcheck").css("display", "none");
-			$("#invalid-feedback-email").css("display", "none");
-			
-			//이메일 체크 패스
-			return true;
-		} else {
-			// 중복되는 이메일 있음
-			memmail.removeClass("is-valid");
-			memmail.addClass("is-invalid");
-			
-			$("#valid-feedback-email").css("display", "none");
-			$("#invalid-feedback-emailcheck").css("display", "block");
-			$("#invalid-feedback-email").css("display", "none");
-			
-			//이메일 체크 패스못함
-			return false;
-		}
-	} catch (e) {
-		console.log(e);
-		alert("에러가 발생했습니다.");
-	}
-}
-
 //닉네임 공백 검사
 function checkNick() {
 	var memnick = $("#memnick");
@@ -112,7 +34,6 @@ function checkNick() {
 	if (memnick.val() == "") {
 		memnick.addClass("is-invalid");
 		memnick.removeClass("is-valid");
-		memnick.focus();
 		
 		return false;
 	} else {
@@ -123,6 +44,59 @@ function checkNick() {
 	}
 }
 
+//닉네임 중복 검사
+async function checkNickExist() {
+	var memnick = $("#memnick");
+	
+	if (checkNick() == false) {
+		return;
+	}
+	
+	//현재 사용하는 닉네임도 가능하게 해주기
+	if (memnick_prior == memnick.val()) {
+		//중복되는 닉네임 없음
+		memnick.removeClass("is-invalid");
+		memnick.addClass("is-valid");
+		
+		$("#valid-feedback-nick").css("display", "block");
+		$("#invalid-feedback-nickcheck").css("display", "none");
+		$("#invalid-feedback-nick").css("display", "none");
+		
+		return true;
+	}
+	
+	try {
+		const result = await ajaxPost('/join/nickcheck', {memnick: memnick.val()});
+		
+		if (result == "false") {
+			//중복되는 닉네임 없음
+			memnick.removeClass("is-invalid");
+			memnick.addClass("is-valid");
+			
+			$("#valid-feedback-nick").css("display", "block");
+			$("#invalid-feedback-nickcheck").css("display", "none");
+			$("#invalid-feedback-nick").css("display", "none");
+			
+			//닉네임 체크 패스
+			return true;
+		} else {
+			// 중복되는 닉네임 있음
+			memnick.removeClass("is-valid");
+			memnick.addClass("is-invalid");
+			
+			$("#valid-feedback-nick").css("display", "none");
+			$("#invalid-feedback-nickcheck").css("display", "block");
+			$("#invalid-feedback-nick").css("display", "none");
+			
+			//이메일 체크 패스못함
+			return false;
+		}
+	} catch (e) {
+		console.log(e);
+		alert("에러가 발생했습니다.");
+	}
+}
+
 //비밀번호 공백 검사
 function checkPw() {
 	var mempw = $("#mempw");
@@ -130,7 +104,6 @@ function checkPw() {
 	if (mempw.val() == "") {
 		mempw.addClass("is-invalid");
 		mempw.removeClass("is-valid");
-		mempw.focus();
 		
 		return false;
 	} else {
@@ -148,7 +121,6 @@ function checkPw2() {
 	
 	if (mempw.val() != mempw2.val()) {
 		mempw2.addClass("is-invalid");
-		mempw2.focus();
 
 		return false;
 	} else {
@@ -170,15 +142,13 @@ function checkPw2() {
 async function checked() {
 	var isvalid = true;
 	
- 	if (checkEmail() == false) isvalid = false;
-	else if (await checkEmailExist() == false) isvalid = false;
-	else $("#valid-feedback-email").css("display", "block");
-	
 	if (checkPw2() == false) isvalid = false;
 	
 	if (checkPw() == false) isvalid = false;
 	
 	if (checkNick() == false) isvalid = false;
+	else if (await checkNickExist() == false) isvalid = false;
+	else $("#valid-feedback-nick").css("display", "block");
 	
 	return isvalid;
 }
@@ -212,7 +182,7 @@ async function submit() {
 }
 
 $(document).ready(function(){
-	memmail_prior = '<c:out value="${updateMem.memMail}"/>';
+	memnick_prior = '<c:out value="${updateMem.memNick}"/>';
 	
 	//수정 전 이메일수신여부 선택
 	var mailState = '<c:out value="${updateMem.mailState}"/>';
@@ -224,9 +194,9 @@ $(document).ready(function(){
 	genreBtnId = "#genreno_" + genreNo;
 	$(genreBtnId).prop("checked", true);
 	
-	//이메일 중복체크
-	$("#memmail").blur(function() {
-		checkEmailExist();
+	//닉네임 중복체크
+	$("#memnick").blur(function() {
+		checkNickExist();
 	})
 	
 	//수정 버튼 클릭 시 form submit
@@ -387,11 +357,16 @@ button.btnSubmit:hover:before, button.btnSubmit:hover:after {
 	<div class="input-form col-md-6 mx-auto">
 		<p></p>
 		<form id="update-form">
-			<input type="hidden" id="memid" name="memid" value="${updateMem.memId }" />
+			<div class="mb-3">
+				<label class="mem" for="memid">아이디</label><span class="text-muted">&nbsp;(4~12자리의 영문 소문자, 숫자, 특수문자 [_,-]만 입력 가능합니다.)</span>
+				<input type="text" class="form-control" id="memid" name="memid" value="${updateMem.memId }" readonly>
+			</div>
 			<div class="mb-3">
 				<label class="mem" for="memnick">닉네임</label>
-				<input type="text" class="form-control" id="memnick" name="memnick" value="${updateMem.memNick }" oninput="checkNick()">
-				<div class="invalid-feedback">닉네임을 입력해주세요.</div>
+				<input type="text" class="form-control" id="memnick" name="memnick" value="${updateMem.memNick }"oninput="checkNick()">
+				<div class="valid-feedback" id="valid-feedback-nick" style="display: none;">사용 가능한 닉네임입니다.</div>
+				<div class="invalid-feedback" id="invalid-feedback-nick">닉네임을 입력해주세요.</div>
+				<div class="invalid-feedback" id="invalid-feedback-nickcheck" style="display: none;">이미 존재하는 닉네임입니다.</div>
 			</div>
 			
 			<hr>
@@ -413,10 +388,7 @@ button.btnSubmit:hover:before, button.btnSubmit:hover:after {
 			<div class="row">
 			<div class="col-md-6 mb-3">
 				<label class="mem" for="memmail">이메일</label>
-				<input type="email" class="form-control" id="memmail" name="memmail" value="${updateMem.memMail }" oninput="checkEmail()">
-				<div class="valid-feedback" id="valid-feedback-email" style="display: none;">사용 가능한 이메일입니다.</div>
-				<div class="invalid-feedback" id="invalid-feedback-email">이메일을 형식에 맞춰서 입력해주세요.</div>
-				<div class="invalid-feedback" id="invalid-feedback-emailcheck">이미 존재하는 이메일입니다.</div>
+				<input type="email" class="form-control" id="memmail" name="memmail" value="${updateMem.memMail }" readonly>
 			</div>
 
 			<div class="col-md-6 mb-3">

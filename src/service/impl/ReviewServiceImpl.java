@@ -515,4 +515,13 @@ public class ReviewServiceImpl implements ReviewService {
 	public double getAvgReviewScoreByShowNo(int showNo) {
 		return reviewDao.selectAvgReviewScoreByShowNo(JDBCTemplate.getConnection(), showNo);
 	}
+
+	@Override
+	public boolean getReviewOverlap(HttpServletRequest req) {
+		if(reviewDao.selectCntReviewByShowNoAndMemId(JDBCTemplate.getConnection(), req)==1){
+			return true;
+		} else {
+			return false;
+		}
+	}
 }

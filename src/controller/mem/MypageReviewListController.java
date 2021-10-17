@@ -1,6 +1,7 @@
 package controller.mem;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -31,6 +32,14 @@ public class MypageReviewListController extends HttpServlet {
 		
 		//로그인한 회원아이디가 작성한 리스트 객체
 		List<XReview> memidReviewList = reviewService.getReviewListByMemid(paging, memid);
+		
+		ArrayList<String> showTitle = new ArrayList<>();
+		for (int i = 0; i < memidReviewList.size(); i++) {
+			showTitle.add(reviewService.getShowTitle(memidReviewList.get(i)));
+		}
+		
+		req.setAttribute("showTitle", showTitle);
+		
 		req.setAttribute("memidReviewList", memidReviewList);
 		
 		req.setAttribute("paging", paging);

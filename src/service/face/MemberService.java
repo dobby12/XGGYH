@@ -52,6 +52,14 @@ public interface MemberService {
 	public boolean checkId(String memid);
 
 	/**
+	 * 닉네임 중복체크
+	 * 
+	 * @param memnick - 입력된 닉네임
+	 * @return boolean - 닉네임 중복 여부
+	 */
+	public boolean checkNick(String memnick);	
+	
+	/**
 	 * 이메일 중복체크
 	 * 
 	 * @param memmail - 입력된 이메일
@@ -131,6 +139,5 @@ public interface MemberService {
 	 * @param mem
 	 */
 	public void setMemWithKakao(XMem mem);
-
 
 }
