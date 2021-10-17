@@ -54,11 +54,12 @@ $(document).ready(function() {
 #content {
 	width: 98%;
 }
+
 </style>
 
 <div class="container">
 
-<h3 class="pull-left">글 수정</h3>
+<h3>글 수정</h3>
 <hr>
 
 <div>
@@ -66,41 +67,64 @@ $(document).ready(function() {
 
 <input type="hidden" name="reviewNo" value="${updateReview.reviewNo }" />
 
-<table class="table table-bordered">
+<table class="table table-condensed table-bordered">
+
 <tr>
-<td>글번호</td><td colspan="3">${updateReview.reviewNo }</td>
+	<td>No. ${updateReview.reviewNo }</td>
+	<td colspan="9"><input style="width: 100%;" type="text" name="reviewTitle" value="${updateReview.reviewTitle }"/></td>
 </tr>
+
 <tr>
-<td>제목</td><td colspan="3"><input type="text" name="reviewTitle" style="width:100%" value="${updateReview.reviewTitle }"/></td>
-</tr>
-<tr>
-<td>아이디</td><td>${updateReview.memId }</td>
-<td>닉네임</td><td>${memNick }</td>
-</tr>
-<tr>
-<td>조회수</td><td>${updateReview.reviewHit }</td>
-</tr>
-<tr>
-<td>작성일</td><td colspan="3">${updateReview.reviewDate }</td>
-</tr>
-<tr>
-<td>공연 제목</td><td colspan="3">${showTitle }</td>
-</tr>
-<tr>
-	<td>별점</td>
-	<td colspan="3">
-		<select name="reviewScore" style="text-align: center;">
-			<option>${updateReview.reviewScore }</option>
-			<option value="1">★</option>
-			<option value="2">★★</option>
-			<option value="3">★★★</option>
-			<option value="4">★★★★</option>
-			<option value="5">★★★★★</option>
+	<td class="item">닉네임</td><td>${memNick }</td>
+	<td class="item">공연 제목</td><td>${showTitle }</td>
+
+	<td class="item">평점</td>
+	<td>
+		<select name="reviewScore">
+			<c:if test="${updateReview.reviewScore == 1 }">
+				<option value="1" selected>★</option>
+				<option value="2">★★</option>
+				<option value="3">★★★</option>
+				<option value="4">★★★★</option>
+				<option value="5">★★★★★</option>
+			</c:if>
+			<c:if test="${updateReview.reviewScore == 2 }">
+				<option value="1">★</option>
+				<option value="2" selected>★★</option>
+				<option value="3">★★★</option>
+				<option value="4">★★★★</option>
+				<option value="5">★★★★★</option>
+			</c:if>
+			<c:if test="${updateReview.reviewScore == 3 }">
+				<option value="1">★</option>
+				<option value="2">★★</option>
+				<option value="3" selected>★★★</option>
+				<option value="4">★★★★</option>
+				<option value="5">★★★★★</option>
+			</c:if>
+			<c:if test="${updateReview.reviewScore == 4 }">
+				<option value="1">★</option>
+				<option value="2">★★</option>
+				<option value="3">★★★</option>
+				<option value="4" selected>★★★★</option>
+				<option value="5">★★★★★</option>
+			</c:if>
+			<c:if test="${updateReview.reviewScore == 5 }">
+				<option value="1" style="">★</option>
+				<option value="2">★★</option>
+				<option value="3">★★★</option>
+				<option value="4">★★★★</option>
+				<option value="5" selected>★★★★★</option>
+			</c:if>
 		</select>
 	</td>
+	
+	<td class="item">조회수</td><td>${updateReview.reviewHit }</td>
+	<td class="item">작성일</td><td>${updateReview.reviewDate }</td>
 </tr>
-<tr><td colspan="4">본문</td></tr>
-<tr><td colspan="4"><textarea id="reviewContent" name="reviewContent" style="width:100%" >${updateReview.reviewContent }</textarea></td></tr>
+
+<tr>
+	<td colspan="10"><textarea id="reviewContent" name="reviewContent" style="width:100%; height: 400px;" >${updateReview.reviewContent }</textarea></td></tr>
 </table>
 
 <!-- 첨부파일 -->
@@ -123,8 +147,8 @@ $(document).ready(function() {
 </div>
 
 <div class="text-center">	
-	<button type="button" id="btnUpdate">수정</button>
-	<button type="button" id="btnCancel">취소</button>
+	<button type="button" id="btnUpdate" class="btnSubmit">수정</button>
+	<button type="button" id="btnCancel" class="btnBack">취소</button>
 </div>
 
 </div>
