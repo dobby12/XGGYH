@@ -58,6 +58,16 @@ public interface ReviewService {
 	
 	/**
 	 * 페이징 객체 생성
+	 * XReview테이블과 curPage값과 listCount를 이용하여 Paging객체를 구하여 반환한다
+	 * 
+	 * @param req - 요청정보 객체
+	 * @param listCount - 한번에 몇개 보여줄지 결정하는 매개변수
+	 * @return 페이징 계산이 완료된 Paging 객체
+	 */
+	public Paging getPaging(HttpServletRequest req, int listCount, int showNo);
+	
+	/**
+	 * 페이징 객체 생성
 	 * 
 	 * @param req - 요청정보 객체
 	 * @param memid
@@ -186,7 +196,6 @@ public interface ReviewService {
 	 * @return boolean
 	 */
 	public boolean getReviewOverlap(HttpServletRequest req);
-
 }
 
 

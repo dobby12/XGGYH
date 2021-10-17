@@ -52,6 +52,15 @@ public interface ReviewDao {
 	public List<XReview> selectAllByMemid(Connection conn, Paging paging, String memid);
 	
 	/**
+	 * XReview테이블 memid 조회
+	 * 
+	 * @param paging - 페이징 정보 객체
+	 * @param conn - DB연결 객체
+	 * @param memid
+	 * @return List<XReview> - XReview테이블 memid 조회 결과 리스트
+	 */
+
+	/**
 	 * 총 게시글 수 조회
 	 * 
 	 * @param conn - DB연결 객체
@@ -220,7 +229,7 @@ public interface ReviewDao {
 	 */
 	public int selectCntReviewByShowNoAndMemId(Connection connection, HttpServletRequest req);
 
-
+	public int selectCntAllByShowNo(Connection connection, int showNo);
 }
 
 

@@ -1,12 +1,15 @@
 package controller.mem;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dto.XReview;
 import dto.XShow;
 import service.face.JjimService;
 import service.face.ReviewService;
@@ -14,6 +17,7 @@ import service.face.ShowService;
 import service.impl.JjimServiceImpl;
 import service.impl.ReviewServiceImpl;
 import service.impl.ShowServiceImpl;
+import util.Paging;
 
 /**
  * Servlet implementation class ShowDetailController
@@ -37,9 +41,13 @@ public class ShowDetailController extends HttpServlet {
 		String genreName = showService.getGenreName(showDetail);
 		String hallName = showService.getHallName(showDetail);
 		
+		Paging paging = reviewService.getPaging(req, 5, showDetail.getShowNo());
+		
 		boolean isJjim = jjimService.getisJjim((String)req.getSession().getAttribute("memid"), showNo.getShowNo());
 		
 		double scoreAvg = reviewService.getAvgReviewScoreByShowNo(showNo.getShowNo());
+		
+		//List<XReview> reviewList = reviewService.getListDateBy(paging);
 		
 		req.setAttribute("showKindName", kindName);
 		req.setAttribute("showGenreName", genreName);

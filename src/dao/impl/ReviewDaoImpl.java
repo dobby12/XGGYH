@@ -844,5 +844,32 @@ public class ReviewDaoImpl implements ReviewDao {
 		}
 		return res;
 	}
+	
+	@Override
+	public int selectCntAllByShowNo(Connection connection, int showNo) {
+		int res = -1;
+		
+		String sql = "";
+		sql += "SELECT count(*) FROM XREVIEW ";
+		sql += "WHERE show_no = ? ";
+		sql += "ORDER BY review_date;";
+		
+		try {
+			ps = connection.prepareStatement(sql);
+			ps.setInt(1, showNo);
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				res = rs.getInt(1);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+		}
+		return res;
+	}
 
 }
