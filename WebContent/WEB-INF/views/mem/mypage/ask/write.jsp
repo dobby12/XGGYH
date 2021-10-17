@@ -5,13 +5,44 @@
 
 <c:import url="/WEB-INF/views/layout/header.jsp" />
 
-<!-- jQuery 2.2.4 -->
-<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath() %>/resources/se2/js/service/HuskyEZCreator.js" charset="utf-8"></script>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />  
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>  
+<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
+
+<script type="text/javascript">
+
+function submitContents(elClickedObj){
+	
+	//에디터의 내용을 #content에 반영
+	oEditors.getById["content"].exec("UPDATE_CONTENTS_FIELD", []);
+	
+	try {
+		//<form>태그의 submit 수행
+		elClickedObj.form.submit();
+		
+	} catch(e) {}
+}
+
+</script>
+
+
 <script type="text/javascript">
 $(document).ready(function() {
 	
 	$("#btnWrite").click(function() {
-		$("form").submit();
+		
+		var answer = confirm("문의를 작성하시겠습니까?");
+		
+		if( answer == true ){
+			submitContents( $("#btnWrite") );
+			
+			$("form").submit();			
+		} else {
+			
+			return false;
+		}
+		
 	});
 	
 	$("#btnCancel").click(function() {
@@ -31,23 +62,24 @@ $(document).ready(function() {
 <div class="container">
 
 <h3>1:1문의</h3>
-<hr>
+<br>
 
 <div>
 <form action="<%=request.getContextPath() %>/mypage/myask/write" method="post">
 
-<table class="table table-bordered">
+<table class="table table-condensed table-bordered">
+
 <tr>
-	<td class="info">작성자</td>
-	<td>${memnick }</td>
+	<td class="item" style="width: 10%">제목</td>
+	<td colspan="3">
+		<input type="text" id="title" name="title" style="width: 100%; height: 30px;" placeholder="문의 제목을 입력해주세요."/>
+	</td>
 </tr>
 <tr>
-	<td class="info">제목</td>
-	<td><input type="text" name="title" style="width:100%"/></td>
-</tr>
-<tr>
-	<td class="info">문의유형</td>
-	<td>
+	<td class="item">작성자</td>
+	<td style="width: 40%">${memnick }</td>
+	<td class="item" style="width: 10%">문의유형</td>
+	<td style="width: 40%;">
 		<select id="kind" name="kind" class="kind" >
 			<option value="회원정보">회원정보</option>
 			<option value="공연정보">공연정보</option>
@@ -55,23 +87,33 @@ $(document).ready(function() {
 		</select>
 	</td>
 </tr>
+
 <tr>
-	<td class="info" colspan="2">본문</td>
-</tr>
-<tr>
-	<td colspan="2"><textarea id="content" name="content"></textarea></td>
+	<td colspan="4"><textarea id="content" name="content" style="height: 400px;"></textarea></td>
 </tr>
 </table>
 
 </form>
 </div>
 
-<div class="text-center">	
-	<button type="button" id="btnWrite" class="btn btn-info">작성</button>
-	<button type="button" id="btnCancel" class="btn btn-danger">취소</button>
+<div>	
+	<button type="button" id="btnWrite" class="btnSubmit">작성</button>
+	<button type="button" id="btnCancel" class="btnBack">취소</button>
 </div>
 
 <!-- .container -->
 </div>
+
+<script type="text/javascript">
+
+var oEditors = [];
+nhn.husky.EZCreator.createInIFrame({
+	oAppRef: oEditors,
+	elPlaceHolder: "content",
+	sSkinURI: "/resources/se2/SmartEditor2Skin.html",
+	fCreator: "createSEditor2"
+});
+
+</script>
 
 <c:import url="/WEB-INF/views/layout/footer.jsp" />

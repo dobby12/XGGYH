@@ -63,15 +63,6 @@ td {
 button {
 	width: 150px;
 	height: 75px;
-	background: #d99771;
-}
-
-button:hover {
-	background: #f2f2f2;
-	color: #d99771;
-}
-button:before,button:after {
-	background: #d99771;
 }
 
 </style>
@@ -97,13 +88,13 @@ button:before,button:after {
 		<td><button type="button" id="myrev">내가 리뷰한 공연</button></td>
 		<td><button type="button" id="notice">공지사항</button></td>
 	</tr>
-	
+
 	<tr>
 		<td><button type="button" id="userdel">회원 탈퇴</button></td>
 		<td><button type="button" id="myjim">내가 찜한 공연</button></td>
 		<td><button type="button" id="askwrite">1:1문의</button></td>
 	</tr>
-	
+
 	<tr>
 		<td></td>
 		<td><button type="button" id="mycal">마이 캘린더</button></td>

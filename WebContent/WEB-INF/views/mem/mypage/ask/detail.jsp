@@ -87,7 +87,7 @@ td {
 
 <c:if test="${empty AskComment.commentContent }">
 <tr>
-	<td><br><strong>아직 문의에 대한 답변이 없습니다.</strong><br></td>
+	<td><br><strong>아직 문의에 대한 답변이 없습니다.</strong></td>
 </tr>
 </c:if>
 

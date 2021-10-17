@@ -5,6 +5,7 @@
 
 <c:import url="/WEB-INF/views/layout/adminheader.jsp" />
 
+<!-- 스마트에디터 -->
 <script type="text/javascript" src="<%=request.getContextPath() %>/resources/se2/js/service/HuskyEZCreator.js" charset="utf-8"></script>
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />  
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>  
@@ -12,14 +13,12 @@
 
 <script type="text/javascript">
 
-//<form>태그에 submit이 수행되면 스마트에디터에 작성한 내용을 <textarea>에 반영
 function submitContents(elClickedObj){
 	
 	//에디터의 내용을 #content에 반영
 	oEditors.getById["showContent"].exec("UPDATE_CONTENTS_FIELD", []);
 	
 	try {
-		
 		//<form>태그의 submit 수행
 		elClickedObj.form.submit();
 		
@@ -110,7 +109,7 @@ input[type=text] {
 <br>
 
 <div>
-<form action="/admin/show/write" method="post" enctype="multipart/form-data">
+<form action="<%=request.getContextPath() %>/admin/show/write" method="post" enctype="multipart/form-data">
 
 <table class="table table-condensed table-striped table-bordered">
 

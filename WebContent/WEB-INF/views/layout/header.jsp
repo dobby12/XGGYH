@@ -386,7 +386,8 @@ table {
 	width: 1000px;
 }
 
-.table>tbody>tr>td, .table>tbody>tr>th {
+
+.table>tbody>tr>td, .table>tbody>tr>th, th {
 	vertical-align: middle;
 	text-align: center;
 }

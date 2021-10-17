@@ -15,7 +15,7 @@
 </div>
 <hr style="clear: both;">
      
-<table id="inventory" class="table table-hover table-condensed" style="clear: both;">
+<table class="table table-hover table-condensed" style="clear: both;">
 
 <thead>
 <tr>
@@ -31,7 +31,7 @@
 <c:forEach items="${reviewList }" var="review">
 <tr>
 	<td>${review.reviewNo }</td>
-	<td style="text-align: left">
+	<td>
 		<a href="<%=request.getContextPath() %>/review/detail?reviewno=${review.reviewNo }">${review.reviewTitle }</a>
 		<c:if test="${review.fileNo ne 0 }">&nbsp;&nbsp;<span class="glyphicon glyphicon-floppy-disk
 		" aria-hidden="true"></span></c:if>
