@@ -35,7 +35,7 @@
 </div>
 
 <br>
-<button class="btnSubmit">LOGIN</button>
+<button>LOGIN</button>
 </form>
 
 </c:if>

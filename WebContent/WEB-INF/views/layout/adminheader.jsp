@@ -426,6 +426,7 @@ textarea:focus, input:focus {
 			<li><a href="<%=request.getContextPath() %>/admin/mail/mem/list">회원 메일 발송</a></li>
 		</ul>
 	</li>
+	<li style="float: right;"><a href="<%=request.getContextPath() %>/main">홈페이지</a></li>
 </ul>
 </div>
 
