@@ -23,7 +23,8 @@ table {
 <thead>
 <tr>
 	<th style="text-align: center; width: 8%">리뷰 번호</th>
-	<th style="text-align: center; width: 59%">제목</th>
+	<th style="text-align: center; width: 20%">제목</th>
+	<th style="text-align: center; width: 39%">제목</th>
 	<th style="text-align: center; width: 13%">작성자</th>
 	<th style="text-align: center; width: 12%">작성 날짜</th>
 	<th style="text-align: center; width: 8%">조회수</th>
@@ -31,10 +32,11 @@ table {
 </thead>
 
 <tbody>
-<c:forEach items="${reviewList }" var="review">
+<c:forEach items="${reviewList }" var="review" varStatus="status">
 <tr>
 
 	<td>${review.reviewNo }</td>
+	<td>${showTitle[status.index] }</td>
 	<td><a href="<%=request.getContextPath() %>/admin/review/detail?reviewno=${review.reviewNo }">${review.reviewTitle }</a>
 		<c:if test="${review.fileNo ne 0 }">&nbsp;&nbsp;<span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span></c:if>
 	</td>

@@ -27,19 +27,21 @@ table {
 <c:if test="${not empty memidReviewList }">
 <thead>
 <tr>
-	<th style="text-align: center; width: 10%">번호</th>
-	<th style="text-align: center; width: 50%">제목</th>
+	<th style="text-align: center; width: 10%">번호</th>	
+	<th style="text-align: center; width: 20%">공연제목</th>
+	<th style="text-align: center; width: 30%">제목</th>
 	<th style="text-align: center; width: 20%">별점</th>
 	<th style="text-align: center; width: 10%">작성일</th>
 	<th style="text-align: center; width: 10%">조회수</th>
 </tr>
 </thead>
 
-<c:forEach items="${memidReviewList }" var="review">
+<c:forEach items="${memidReviewList }" var="review" varStatus="status">
 </tbody>
 <tr>
 
 	<td>${review.reviewNo }</td>
+	<td>${showTitle[status.index] }</td>
 	<td><a href="<%=request.getContextPath() %>/review/detail?reviewno=${review.reviewNo }">${review.reviewTitle }</a></td>
 	<td>
 		<c:if test="${review.reviewScore == 1 }">
