@@ -151,8 +151,8 @@ button:hover:before,button:hover:after {
 	
 	<%-- 아이디 비밀번호 찾기 --%>
 	<div class="find-join">
-	<a href="<%=request.getContextPath() %>/find"><span style="color:#888;">아이디 찾기</span></a>ㅣ
-	<a href="<%=request.getContextPath() %>/find"><span style="color:#888;">비밀번호 찾기</span></a>ㅣ
+	<a href="<%=request.getContextPath() %>/member/find"><span style="color:#888;">아이디 찾기</span></a>ㅣ
+	<a href="<%=request.getContextPath() %>/member/find"><span style="color:#888;">비밀번호 찾기</span></a>ㅣ
 	<a href="<%=request.getContextPath() %>/join"><span style="color:#888;">회원가입</span></a>
 	</div>
 </form>
