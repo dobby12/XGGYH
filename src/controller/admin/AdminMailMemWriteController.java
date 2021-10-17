@@ -59,8 +59,10 @@ public class AdminMailMemWriteController extends HttpServlet {
 		Gson gson = new Gson();
 		
 		List<String> list = new ArrayList<>();
-		List<String> mailList = gson.fromJson(req.getParameter("result"), list.getClass());
-		
+		System.out.println(req.getParameter("marshalResult"));
+		List<String> mailList = gson.fromJson(req.getParameter("marshalResult"), list.getClass());
+		System.out.println("---111---");
+		System.out.println(req.getParameter("marshalResult"));
 //		String[] mailList = jsonString.toArray(new String[jsonString.size()]);
 //		
 //

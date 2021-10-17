@@ -47,4 +47,20 @@ public class AdminMailMemListController extends HttpServlet {
 		resp.sendRedirect("/admin");
 	
 	}
+	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setAttribute("adminMail", "gonggongyeonhee@gmail.com");
+		System.out.println("LIST#################"+req.getParameter("marshalResult"));
+		req.setAttribute("marshalResult", req.getParameter("marshalResult"));
+		
+		if(adminService.authorAdmin((String)req.getSession().getAttribute("adminid"))) {
+			req.getRequestDispatcher("/WEB-INF/views/admin/mail/mem/write.jsp").forward(req, resp);
+			return;
+		}
+		resp.sendRedirect("/admin");
+	}
+
 }
+
+

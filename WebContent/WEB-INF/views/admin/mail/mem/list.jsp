@@ -28,7 +28,7 @@ function getCheckboxValue(event)  {
 		}
 	  }
 		var marshalResult = JSON.stringify(result);
-		document.getElementById('result').value=marshalResult;
+		document.getElementById('marshalResult').value=marshalResult;
 	}
 
 </script>
@@ -95,8 +95,8 @@ function getCheckboxValue(event)  {
 
 
 
-<form action="<%=request.getContextPath() %>/admin/mail/mem/write" method="post">
-<input type="text" id="result" name="result" value="${marshalResult }"/>
+<form action="<%=request.getContextPath() %>/admin/mail/mem/list" method="post">
+<input type="text" id="marshalResult" name="marshalResult" value="${marshalResult }"/>
 <button>send</button>
 </form>
 

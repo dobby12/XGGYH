@@ -14,6 +14,16 @@ table {
 
 </style>
 
+<script>       
+
+//java로 check한 대상의 메일 주소 jsonText로 담아 보내기
+function mashalling(event)  {
+ 		var marshalResult = '${marshalResult}'
+		document.getElementById('marshalResult').value=marshalResult;
+	}
+
+</script>
+
 <script type="text/javascript">
 
 //<form>태그에 submit이 수행되면 스마트에디터에 작성한 내용을 <textarea>에 반영
@@ -37,7 +47,7 @@ $(document).ready(function() {
 	
 	//작성버튼 동작
 	$("#btnWrite").click(function() {
-		
+		mashalling(event)
 		var answer = confirm("메일을 발송하시겠습니까?");
 		
 		if( answer == true ){
@@ -63,7 +73,7 @@ $(document).ready(function() {
 
 <h2>메일 보내기</h2>
 
-	<form action="<%=request.getContextPath() %>/admin/mail/write" method="post">
+	<form action="<%=request.getContextPath() %>/admin/mail/mem/write" method="post">
 		<table class="table table-condensed table-bordered">
 			
 			<tr>
@@ -72,7 +82,7 @@ $(document).ready(function() {
 			</tr>
 			<tr>
 				<td class="item">받는 이</td>
-				<td style="font-weight: bold;">${memMail }<input type="hidden" name="memmail" value ="${memMail }" /></td>
+				<td style="font-weight: bold;">${marshalResult }<input type="hidden" id="marshalResult" name="marshalResult" value ="" /></td>
 			</tr>
 			<tr>
 				<td colspan="2"><input type="text" name="mailtitle" placeholder="제목" style="width:100%;" /></td>
