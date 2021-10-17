@@ -42,7 +42,7 @@
 
 <div class="container">
 
-<h2>내가 찜한 콘텐츠</h2>
+<h2>내가 찜한 공연</h2>
 <hr>
 
 <div class="main_list">
@@ -52,8 +52,12 @@
 			
 			<a href="<%=request.getContextPath() %>/show/detail?showNo=${show.showNo }"> 
 			<img class="poster" src='http://drive.google.com/uc?export=view&id=1UCDamPPObCPN9BY8Iz2WjsgiY8m80K2b' /><br>
-			${show.showTitle} <br> ${show.showDate }
-			</a>
+			<br>
+			${show.showTitle}
+			<br></a>
+			<br>
+			<a href="<%=request.getContextPath() %>/mem/jjim/delete?showNo=${show.showNo }&memId=${memid }&from=myjjim">
+			<button id="btnDelete" class="btnDelete">찜 해제</button></a>
 			</div>
 			</c:forEach>
 		</div>

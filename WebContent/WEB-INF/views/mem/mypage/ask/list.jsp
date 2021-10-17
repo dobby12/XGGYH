@@ -17,7 +17,7 @@ table {
 
 <div class="container">
 
-<h2>나의 문의내역</h2>
+<h2>문의내역</h2>
 <hr>
 
 <table class="table table-hover table-condensed">

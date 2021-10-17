@@ -85,7 +85,7 @@ button {
 	
 	<tr>
 		<td><button type="button" id="myinfo">계정 관리</button></td>
-		<td><button type="button" id="myrev">내가 리뷰한 공연</button></td>
+		<td><button type="button" id="myrev">내가 작성한 리뷰</button></td>
 		<td><button type="button" id="notice">공지사항</button></td>
 	</tr>
 
