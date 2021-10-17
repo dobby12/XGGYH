@@ -137,10 +137,10 @@
 	</tr>
 </thead>
 
-<c:forEach items="${reviewList }" var="review">
+<c:forEach items="${reviewList}" var="review">
 </tbody>
 	<tr>
-		<td>${review.showTitle }</td>
+		<td>${review.reviewTitle }</td>
 		<td><a href="<%=request.getContextPath() %>/review/detail?reviewno=${review.reviewNo }">${review.reviewTitle }</a></td>
 		<td>${review.memId }</td>
 		<td>${review.reviewDate }</td>

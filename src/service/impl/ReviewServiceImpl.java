@@ -129,6 +129,8 @@ public class ReviewServiceImpl implements ReviewService {
 		
 		int totalCount = reviewDao.selectCntAllByShowNo(JDBCTemplate.getConnection(), showNo);
 		
+		System.out.println(showNo);
+		
 		Paging paging = new Paging(totalCount, curPage, listCount);
 		
 		return paging;

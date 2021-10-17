@@ -63,6 +63,8 @@ public interface ShowDao {
 	 */
 	public int selectCntByshowTitle(Connection conn, String showTitle, int kindNo);
 	
+	public int selectCntByShowTitle(Connection connection, String showTitle);
+	
 	public int selectCntBymemGenre(Connection conn, int kindNo, int memGenre);
 	
 	/**
@@ -101,7 +103,13 @@ public interface ShowDao {
 	public String selectHallNameByHallNo(Connection conn, XShow showInfo);
 
 	public List<XShow> selectShowSearchByshowTitle(Connection conn, String keyword, int kindNo, Paging paging);
+	
+	public List<XShow> selectAllShowSearchByshowTitle(Connection connection, String keyword, Paging paging);
 
 	public List<XShow> selectShowSearchByMemgenre(Connection conn, XMem memInfo, int kindNo, Paging paging);
+
+	
+
+	
 
 }

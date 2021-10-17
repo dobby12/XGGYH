@@ -27,15 +27,30 @@ public class ShowSearchController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     	
     	String showTitle = req.getParameter("keyword");
-    	int showKind = Integer.parseInt(req.getParameter("kind"));
+    	int showKind = Integer.parseInt(req.getParameter("kind").trim());
     	
-    	Paging paging = showService.getParameterPaging(req, showTitle, showKind);
+    	Paging paging = null;
+    	List<XShow> searchShowList =null;
     	
-    	List<XShow> searchShowList = showService.getSearchShowList(req, paging);
+    	if(showKind != 0)
+    	{
+    		paging = showService.getParameterPaging(req, showTitle, showKind);
+        	searchShowList = showService.getSearchShowList(req, paging);
+    	}
+    	else
+    	{
+    		paging = showService.getParameterPaging(req, showTitle);
+    		searchShowList = showService.getSearchShowList(req, paging);
+    	}
     	
     	req.setAttribute("keyword", showTitle);
-    	req.setAttribute("showList", searchShowList);
-		req.setAttribute("paging", paging);
+    	
+    	if(paging != null && searchShowList != null)
+    	{
+    		req.setAttribute("showList", searchShowList);
+    		req.setAttribute("paging", paging);
+    	}
+    	
 		req.setCharacterEncoding("UTF-8");
 		req.setAttribute("linkUrl", "/show/search?kind=" + req.getParameter("kind") + "&keyword=" + req.getParameter("keyword"));
 		

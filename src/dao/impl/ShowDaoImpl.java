@@ -270,6 +270,36 @@ public class ShowDaoImpl implements ShowDao {
 
 		return count;
 	}
+	
+	@Override
+	public int selectCntByShowTitle(Connection connection, String showTitle) {
+		// SQL 작성
+				String sql = "";
+				sql += "SELECT count(*) FROM XShow ";
+				sql += "WHERE show_title like ?";
+
+				// 총 게시글 수
+				int count = 0;
+
+				try {
+					ps = connection.prepareStatement(sql);
+					ps.setString(1, showTitle);
+
+					rs = ps.executeQuery();
+
+					while (rs.next()) {
+						count = rs.getInt(1);
+					}
+
+				} catch (SQLException e) {
+					e.printStackTrace();
+				} finally {
+					JDBCTemplate.close(rs);
+					JDBCTemplate.close(ps);
+				}
+
+				return count;
+	}
 
 	@Override
 	public int selectCntBymemGenre(Connection conn, int kindNo, int memGenre) {
@@ -512,6 +542,64 @@ public class ShowDaoImpl implements ShowDao {
 			ps.setInt(2, memInfo.getGenreNo());
 			ps.setInt(3, paging.getStartNo());
 			ps.setInt(4, paging.getEndNo());
+
+			rs = ps.executeQuery();
+
+			while (rs.next()) {
+				XShow showInfo = new XShow();
+
+				showInfo.setShowNo(rs.getInt("show_no"));
+				showInfo.setFileNo(rs.getInt("file_no"));
+				showInfo.setAdminId(rs.getString("admin_id"));
+				showInfo.setKindNo(rs.getInt("kind_no"));
+				showInfo.setGenreNo(rs.getInt("genre_no"));
+				showInfo.setHallNo(rs.getInt("hall_no"));
+				showInfo.setShowTitle(rs.getString("show_title"));
+				showInfo.setShowContent(rs.getString("show_content"));
+				showInfo.setShowDate(rs.getDate("show_date"));
+				showInfo.setShowAge(rs.getString("show_age"));
+				showInfo.setShowDirector(rs.getString("show_director"));
+				showInfo.setShowActor(rs.getString("show_actor"));
+				showInfo.setShowStart(rs.getDate("show_start"));
+				showInfo.setShowEnd(rs.getDate("show_end"));
+
+				// 리스트에 결과값 저장
+				showList.add(showInfo);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+		}
+
+		return showList;
+	}
+
+	@Override
+	public List<XShow> selectAllShowSearchByshowTitle(Connection connection, String keyword, Paging paging) {
+		String sql = "";
+		sql += "SELECT * FROM (";
+		sql += "	SELECT rownum rnum, X.* FROM (";
+		sql += "		SELECT";
+		sql += "			show_no, file_no, admin_id, kind_no, genre_no, hall_no, show_title";
+		sql += "			, show_content, show_date, show_age, show_director, show_actor, show_start, show_end";
+		sql += "		FROM XShow";
+		sql += "		WHERE show_title like ?";
+		sql += "		ORDER BY show_no DESC";
+		sql += "	) X";
+		sql += " ) XShow";
+		sql += " WHERE rnum BETWEEN ? AND ?";
+
+		// 결과 저장할 List
+		List<XShow> showList = new ArrayList<>();
+
+		try {
+			ps = connection.prepareStatement(sql);
+			ps.setNString(1, keyword);
+			ps.setInt(2, paging.getStartNo());
+			ps.setInt(3, paging.getEndNo());
 
 			rs = ps.executeQuery();
 
