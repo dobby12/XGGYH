@@ -30,21 +30,17 @@
 	<td class="item">작성일</td>
 	<td>${notice.noticeDate }</td>
 </tr>
+<c:if test="${notice.fileNo ne 0 }">
+	<tr>
+		<td class="item">첨부파일</td>
+		<td colspan="5"><a href="/upload/${file.fileStoredName }" download="${file.fileOriginName }">${file.fileOriginName }</a></td>
+	</tr>
+</c:if>
 <tr>
 	<td id="content" colspan="6" style="height: 300px;">${notice.noticeContent }</td>
 </tr>
 </thead>
 </table>
-
-<c:if test="${notice.fileNo ne 0 }">
-@@@첨부 파일 있을 때 보여질 영역<br>
-<a href="/upload/${file.fileStoredName }" download="${file.fileOriginName }">${file.fileOriginName }</a>
-</c:if>
-<c:if test="${notice.fileNo eq 0 }">
-<br>
-첨부파일이 없습니다.
-<br>
-</c:if>
 
 <br>
 <a href="<%=request.getContextPath() %>/admin/notice/list"><button class="btnBack">목록</button></a>
