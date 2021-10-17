@@ -1,12 +1,15 @@
 package controller.admin;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.google.gson.Gson;
 
 import service.face.AdminMailService;
 import service.face.AdminService;
@@ -50,10 +53,16 @@ public class AdminMailMemWriteController extends HttpServlet {
 		String memMail = (String)req.getParameter("memmail");
 		String mailTitle = req.getParameter("mailtitle");
 		String mailContent = req.getParameter("mailcontent");
-		
-		System.out.println("memmail");
+		System.out.println("-------------------------------------------");		
+		Gson gson = new Gson();
+		ArrayList<String> list = new ArrayList<>();
+		ArrayList jsonString = gson.fromJson(req.getParameter("result"), list.getClass());
+		System.out.println(jsonString);//변수에 들어 있는 내용 확인
+		System.out.println(jsonString.getClass().getName());//변수타입
+		System.out.println("-------------------------------------------");
+//		System.out.println("memmail");
 
-		adminMailService.sendMail(memMail, mailTitle, mailContent);
+//		adminMailService.sendMail(memMail, mailTitle, mailContent);
 
 	}
 

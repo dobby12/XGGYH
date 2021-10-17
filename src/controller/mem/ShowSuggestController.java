@@ -37,6 +37,8 @@ public class ShowSuggestController extends HttpServlet {
 		int genreNo = 0;
 		int kindNo = Integer.parseInt(req.getParameter("suggestkind").trim());
 		
+		System.out.println(kindNo);
+		
 		mem.setMemId((String)req.getSession().getAttribute("memid"));
 		System.out.println(mem);
 		

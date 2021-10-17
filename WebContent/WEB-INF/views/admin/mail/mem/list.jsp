@@ -32,6 +32,22 @@ function deSelect(){
     }  
 }             
 
+//java로 check한 대상의 메일 주소 jsonText로 담아 보내기
+var result = new Array();
+function getCheckboxValue(event)  {
+	  if(event.target.checked)  {
+	    result.push(event.target.value);
+	  } else {
+		for(let i=0; i<result.length; i++){
+			if(result[i]===event.target.value){
+				result.splice(i,1);	
+			}
+		}
+	  }
+		var marshalResult = JSON.stringify(result);
+		document.getElementById('result').value=marshalResult;
+	}
+
 </script>
 
 <div class="container">
@@ -57,7 +73,7 @@ function deSelect(){
 <tbody>
 <c:forEach items="${memList }" var="mem">
 <tr>
-	<td><form><input type="checkbox" name="chk" value="${mem.memMail }"/></form></td>
+	<td><input type='checkbox' name='memmem' value='${mem.memMail }' onclick='getCheckboxValue(event)'/></td>
 	<td>${mem.memId }</td>
 	<td>${mem.memNick }</td>
 	<td>${mem.memMail }</td>
@@ -93,5 +109,14 @@ function deSelect(){
 	<button id="buttonSearch">검색</button>
 </form>
 </div>
+
+
+
+<form action="<%=request.getContextPath() %>/admin/mail/mem/write" method="post">
+<input type="text" id="result" name="result" value="${marshalResult }"/>
+<button>send</button>
+</form>
+
+
 
 <c:import url="/WEB-INF/views/layout/footer.jsp" />
