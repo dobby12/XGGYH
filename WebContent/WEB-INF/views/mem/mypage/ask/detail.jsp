@@ -23,25 +23,27 @@ td {
 
 #answer {
 	width: 1000px;
+	height: auto;
+	margin: 0 auto;
 	padding: 10px;
 	text-align: center;
 	vertical-align: middle;
-	overflow: auto; /* 자동 스크롤 */
 	
 	border: 1px solid #ccc;
 	border-collapse: collapse;
 }
 
-#cont {
+.cont {
 	background-color: #F2F2F2;
-	height:70px;
-	width: 100%;
+	min-height: 70px;
+	width: 90%;
 	padding:10px;
+	margin: 0 auto;
 	
 	display: table;
 }
 
-#cont p {
+.cont p {
 	display: table-cell;
 	text-align: center;
 	vertical-align:middle;
@@ -73,26 +75,24 @@ td {
 <tr>
 	<td colspan="10" style="height: 300px; border: 1px solid #ccc;">${detailAsk.askContent }</td>
 </tr>
-
-
 </table>
 
-<table style="width: 1000px; text-align: center; margin: 0 auto; border-collapse: collapse;">
+
+<div id="answer">
 
 <c:if test="${not empty AskComment.commentContent }">
-<tr>
-	<td>${AskComment.commentContent }</td>
-</tr>
+	<div class="cont"><p>${AskComment.commentContent }</p></div>
 </c:if>
 
 <c:if test="${empty AskComment.commentContent }">
-<tr>
-	<td><br><strong>아직 문의에 대한 답변이 없습니다.</strong></td>
-</tr>
+	<div class="cont" style="background: #fff"><p><strong>아직 문의에 대한 답변이 없습니다.</strong></p></div>
 </c:if>
 
-</table>
+
+</div><!-- #answer end -->
 <br><br>
 <a href="<%=request.getContextPath() %>/mypage/myask"><button id="btnList" class="btnBack">목록</button></a>
 
-</div>
+</div><!-- .container end -->
+
+<c:import url="/WEB-INF/views/layout/footer.jsp" />

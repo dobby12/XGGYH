@@ -3,14 +3,6 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>     
 
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-
 <c:import url="/WEB-INF/views/layout/header.jsp" />
 
 <script>
@@ -18,41 +10,57 @@
 
 </script>
 
+<style type="text/css">
+
+.item {
+	width: 15%;
+}
+
+</style>
+
 <div class="container">
 
 <h1>공연장 정보 페이지</h1>
 <hr>
 
-<table class="table table-bordered">
+<table class="table table-bordered table-condensed">
 
 <tr>
-<td class="info">공연장 이름</td><td >${hallInfo.hallName }</td>
+	<td class="item">공연장 이름</td>
+	<td>${hallInfo.hallName }</td>
 </tr>
 
 <tr>
-<td class="info">공연장 주소</td><td >${hallInfo.hallAddress }</td>
+	<td class="item">주소</td>
+	<td>${hallInfo.hallAddress }</td>
 </tr>
 
 <tr>
-<td class="info">공연장 전화번호</td><td >${hallInfo.hallCall }</td>
+	<td class="item">전화번호</td>
+	<td >${hallInfo.hallCall }</td>
 </tr>
 
 <tr>
-<td class="info">공연장 링크</td><td > <a href="${hallInfo.hallLink}">${hallInfo.hallLink}</a> </td>
+	<td class="item">홈페이지</td>
+	<td ><a href="${hallInfo.hallLink}">${hallInfo.hallLink}</a></td>
 </tr>
 
 <tr>
-<td class="info">공연장 위치</td><td >${hallInfo.hallLocation }</td>
-</tr>
-
-<tr>
-<td class="info">공연장 오시는길</td><td >${hallInfo.hallNavigation }</td>
+	<td class="item">지역</td>
+	<td>${hallInfo.hallLocation }</td>
 </tr>
 
 </table>
 
+
 <%-- 지도 영역입니다. 좋은 자리 찾아서 넣어주세요. --%>
-<div id="map" style="width:500px;height:400px;"></div>
+<div id="map" style="width:700px;height:400px; float: left;"></div>
+
+<div style="width: 400px; height: 400px; float: right;">
+	<p><strong>공연장 오시는 길</strong></p>
+	<br><br>
+	<p>${hallInfo.hallNavigation }</p>
+</div>
 
 </div>
 <%-- 카카오 지도 api --%>
@@ -98,6 +106,3 @@ geocoder.addressSearch('${hallInfo.hallAddress }', function(result, status) {
 
 </script>
 <%-- 카카오 지도 api --%>
-
-</body>
-</html>
