@@ -22,14 +22,14 @@ public class MemberDeleteController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		System.out.println("/mypage/myinfo/delete [GET]");
-		
+
 		//로그인한 회원아이디
 		String memid = (String)req.getSession().getAttribute("memid");
 		
 		XMem mem = memberService.getMyInfo(memid);
 		System.out.println(mem);
-
-		memberService.setMemDelete(mem);
+		
+		req.setAttribute("mem", mem);
 		
 		//로그인 되어있지 않으면 리다이렉트 
 		if( req.getSession().getAttribute("login") == null
@@ -46,11 +46,16 @@ public class MemberDeleteController extends HttpServlet {
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+		//로그인한 회원아이디
+		String memid = (String)req.getSession().getAttribute("memid");
+		
+		XMem mem = memberService.getMyInfo(memid);
+		memberService.setMemDelete(mem);
 		
 		HttpSession session = req.getSession();
 		session.invalidate();
 		resp.sendRedirect("/");
 		
 	}
-	
 }
