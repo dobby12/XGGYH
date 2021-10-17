@@ -27,7 +27,8 @@
 		<td class="item" style="width: 7.5%%">공연 제목</td>
 		<td style="width: 20%"><a href="<%=request.getContextPath()%>/show/detail?showNo=${viewReview.showNo }" >${showTitle }</a></td>
 		<td class="item" style="width: 5%">평점</td>
-		<td style="width: 20%"><c:if test="${viewReview.reviewScore == 1 }">
+		<td style="width: 20%">
+			<c:if test="${viewReview.reviewScore == 1 }">
 				<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
 			</c:if>
 			<c:if test="${viewReview.reviewScore == 2 }">

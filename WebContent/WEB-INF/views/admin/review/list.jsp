@@ -35,7 +35,9 @@ table {
 <tr>
 
 	<td>${review.reviewNo }</td>
-	<td><a href="<%=request.getContextPath() %>/admin/review/detail?reviewno=${review.reviewNo }">${review.reviewTitle }</a></td>
+	<td><a href="<%=request.getContextPath() %>/admin/review/detail?reviewno=${review.reviewNo }">${review.reviewTitle }</a>
+		<c:if test="${review.fileNo ne 0 }">&nbsp;&nbsp;<span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span></c:if>
+	</td>
 	<td>${review.memId }</td>
 	<td>${review.reviewDate }</td>
 	<td>${review.reviewHit }</td>

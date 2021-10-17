@@ -57,6 +57,12 @@ table {
 	<td class="item">공연 제목</td><td>${showTitle }</td>
 	<td class="item">평점</td><td>${viewReview.reviewScore }</td>
 </tr>
+<c:if test="${not empty reviewFile }">
+<tr>
+	<td class="item">첨부파일</td>
+	<td colspan="5"><a href="/upload/${reviewFile.fileStoredName }" >${reviewFile.fileOriginName }</a></td>
+</tr>
+</c:if>
 
 <tr>
 	<td colspan="6" style="width: 100%; height: 300px; padding: 10px; vertical-align: middle;">${viewReview.reviewContent }</td>
@@ -64,16 +70,9 @@ table {
 
 </table>
 
-<!-- 첨부파일 -->
-<div>
-<c:if test="${not empty reviewFile }">
-첨부파일 : ${reviewFile.fileOriginName }
-</c:if>
-</div>
-
 <div class="button">
-	<a href="<%=request.getContextPath() %>/admin/review/delete?reviewno=${viewReview.reviewNo }"><button id="btnDelete" class="btnDelete">삭제</button></a>
 	<button id="btnList" class="btnBack">목록</button>
+	<a href="<%=request.getContextPath() %>/admin/review/delete?reviewno=${viewReview.reviewNo }"><button id="btnDelete" class="btnDelete">삭제</button></a>
 	
 </div>
 
