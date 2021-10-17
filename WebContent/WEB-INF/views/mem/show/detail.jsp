@@ -46,11 +46,7 @@
 
 <script type="text/javascript">
 	function insertJjim() {
-		var isJjimed = $
-		{
-			isJjim
-		}
-		;
+		var isJjimed = ${isJjim};
 
 		if (
 <%=session.getAttribute("login")%>
@@ -69,11 +65,7 @@
 	}
 
 	function deleteJjim() {
-		var isJjimed = $
-		{
-			isJjim
-		}
-		;
+		var isJjimed = ${isJjim};
 		if (<%=session.getAttribute("login")%> == null) {
 			alert("로그인 후 이용 가능한 서비스입니다. 로그인 해주세요.");
 			location.href = '/login';
