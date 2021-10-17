@@ -28,6 +28,23 @@ table {
 	text-align: center;
 }
 
+#searchtype {
+	border: solid 1px #d96459; 
+    border-radius: 5px;
+    height: 30px;
+    vertical-align: middle;
+    text-align: center;
+    width: 120px;
+    padding: 3px 5px 3px 10px;
+    -webkit-appearance: none;                                 /* 네이티브 외형 감추기 */
+	-moz-appearance: none;
+	appearance: none;
+}
+
+#searchtype:focus {
+    outline: none;
+}
+
 </style>
 
 <div class="container">
@@ -37,6 +54,12 @@ table {
 
 <table class="table table-hover table-condensed">
 
+
+<c:if test="${empty searchMemList }">
+	<h3>검색 결과가 없습니다.</h3>
+</c:if>
+
+<c:if test="${not empty searchMemList }">
 <thead>
 <tr>
 	<th style="text-align: center; width: 15%">회원 아이디</th>
@@ -48,7 +71,6 @@ table {
 	<th style="text-align: center; width: 7%">　　　</th>
 </tr>
 </thead>
-
 <c:forEach items="${searchMemList }" var="mem">
 </tbody>
 <tr>
@@ -62,6 +84,7 @@ table {
 </tr>
 </tbody>
 </c:forEach>
+</c:if>
 
 
 </table>
@@ -81,7 +104,10 @@ table {
 </form>
 </div>
 
+<c:if test="${not empty searchMemList }">
 <c:import url="/WEB-INF/views/layout/parameterPaging.jsp" />
+</c:if>
+
 
 
 <c:import url="/WEB-INF/views/layout/footer.jsp" />

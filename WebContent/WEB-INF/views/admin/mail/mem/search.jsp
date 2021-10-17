@@ -11,15 +11,37 @@ table {
 	text-align: center;
 }
 
+#searchtype {
+	border: solid 1px #d96459; 
+    border-radius: 5px;
+    height: 30px;
+    vertical-align: middle;
+    text-align: center;
+    width: 120px;
+    padding: 3px 5px 3px 10px;
+    -webkit-appearance: none;                                 /* 네이티브 외형 감추기 */
+	-moz-appearance: none;
+	appearance: none;
+}
+
+#searchtype:focus {
+    outline: none;
+
 </style>
 
 <div class="container">
 
-<h2>메일 보내기 - 검색된 회원들</h2>
+<h2>메일 보내기 - 검색 결과</h2>
 <hr>
 
 <table class="table table-hover table-condensed">
 
+
+<c:if test="${empty searchMemList }">
+	<h3>검색 결과가 없습니다.</h3>
+</c:if>
+
+<c:if test="${not empty searchMemList }">
 <thead>
 <tr>	
 	<th style="text-align: center; width: 15%">회원 아이디</th>
@@ -45,12 +67,27 @@ table {
 </tr>
 </tbody>
 </c:forEach>
+</c:if>
 
 
 
 </table>
 
 </div>
+
+<c:if test="${not empty searchMemList }">
 <c:import url="/WEB-INF/views/layout/parameterPaging.jsp" />
+</c:if>
+
+<div style="text-align: center; margin: 0 0 25px 0;" >
+<form action="<%=request.getContextPath() %>/admin/mail/mem/search" method="get">
+	<select id="searchtype" name="searchtype">
+		<option value="memid">회원 아이디</option> 
+		<option value="memnick">회원 닉네임</option>
+	</select>
+	<input type="text" id="keyword" name="keyword" placeholder="검색어를 입력하세요"/>
+	<button id="buttonSearch">검색</button>
+</form>
+</div>
 
 <c:import url="/WEB-INF/views/layout/footer.jsp" />

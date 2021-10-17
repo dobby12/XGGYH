@@ -15,11 +15,17 @@ table {
 
 <div class="container">
 
-<h2>회원작성 리뷰 페이지</h2>
+<input type="hidden" name="memid" value="{memReviewList.memId }" />
+<h2>${memid} 님이 작성한 리뷰</h2>
 <hr>
 
 <table class="table table-hover table-condensed">
 
+<c:if test="${empty memReviewList }">
+	<h3>검색 결과가 없습니다</h3>
+</c:if>
+
+<c:if test="${not empty memReviewList }">
 <thead>
 <tr>
 	<th style="text-align: center; width: 8%">리뷰 번호</th>
@@ -42,11 +48,14 @@ table {
 </tr>
 </tbody>
 </c:forEach>
-
+</c:if>
 
 </table>
 
 </div>
+
+<c:if test="${not empty reviewMemList }">
 <c:import url="/WEB-INF/views/layout/paging.jsp" />
+</c:if>
 
 <c:import url="/WEB-INF/views/layout/footer.jsp" />

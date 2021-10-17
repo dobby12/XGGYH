@@ -40,8 +40,13 @@ table {
 	<td>${mem.memMail }</td>
 	<td>${mem.mailState }</td>
 	<td>${mem.memDate }</td>
+	<c:if test="${mem.mailState == 'y' }">
 	<td><a href="<%=request.getContextPath() %>/admin/mail/mem/write?memmail=${mem.memMail }"><button>메일 보내기</button></a></td>	
-
+	</c:if>
+	<c:if test="${mem.mailState =='n' }">
+	<td><input type="button" disabled value="메일 수신거부" /></td>
+	</c:if>
+	
 </tr>
 </tbody>
 </c:forEach>

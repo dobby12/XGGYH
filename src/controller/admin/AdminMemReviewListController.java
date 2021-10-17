@@ -39,10 +39,12 @@ public class AdminMemReviewListController extends HttpServlet {
 		List<XReview> memReviewList = adminReviewService.getReviewListByMem(paging, reviewMem);
 		
 		req.setAttribute("memReviewList", memReviewList);
-		
+				
 		req.setAttribute("paging", paging);
 		
 		req.setAttribute("linkUrl", "/admin/mem/review");
+		
+		req.setAttribute("memid", req.getParameter("memid"));
 		
 //		System.out.println(memReviewList);
 		
