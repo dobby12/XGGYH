@@ -1,6 +1,7 @@
 package controller.admin;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -12,8 +13,10 @@ import javax.servlet.http.HttpServletResponse;
 import dto.XReview;
 import service.face.AdminReviewService;
 import service.face.AdminService;
+import service.face.ReviewService;
 import service.impl.AdminReviewServiceImpl;
 import service.impl.AdminServiceImpl;
+import service.impl.ReviewServiceImpl;
 import util.Paging;
 
 
@@ -23,6 +26,8 @@ public class AdminReviewListController extends HttpServlet {
 
 	private AdminReviewService adminReviewService = new AdminReviewServiceImpl();
 	private AdminService adminService = new AdminServiceImpl();
+	private ReviewService reviewService = new ReviewServiceImpl();
+
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -43,6 +48,13 @@ public class AdminReviewListController extends HttpServlet {
 		
 		//게시글 전체 조회
 		List<XReview> reviewList = adminReviewService.getReviewList(paging);
+		
+		ArrayList<String> showTitle = new ArrayList<>();
+		for (int i = 0; i < reviewList.size(); i++) {
+			showTitle.add(reviewService.getShowTitle(reviewList.get(i)));
+		}
+		
+		req.setAttribute("showTitle", showTitle);
 		
 		req.setAttribute("reviewList", reviewList);
 		
