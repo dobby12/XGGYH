@@ -66,13 +66,13 @@ $(document).ready(function () {
 
 
 .first {
-    border: 1px solid red;
     float: left;
 }
 
 .second{
-    border: 1px solid green;
     float: right;
+    height: 500px;
+    overflow: auto;
   
 }
 

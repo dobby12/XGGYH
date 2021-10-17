@@ -38,7 +38,7 @@ $(document).ready(function() {
 <tr>
 	<td class="item" style="vertical-align: middle;">첨부파일</td>
 	<td style="vertical-align: middle;">${noticeFile.fileOriginName }</td>
-	<td><a href="/upload/${noticeFile.fileStoredName }" download="${noticeFile.fileOriginName }"><button class="btnSubmit">다운로드</button></a></td>
+	<td><a href="/upload/${noticeFile.fileStoredName }" download="${noticeFile.fileOriginName }"><button>다운로드</button></a></td>
 </tr>
 </c:if>
 
