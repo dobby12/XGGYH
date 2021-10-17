@@ -44,7 +44,7 @@ $(document).ready(function() {
 
 <input type="hidden" name="showNo" value="${showDetail.showNo }" />
 
-<table class="table table-hover table-condensed">
+<table class="table table-condensed">
 <tr>
 	<td class="item" colspan="1">닉네임</td><td colspan="2">${memnick }</td>
 	<td class="item" colspan="1">공연이름</td><td style="width: 55%;" colspan="3">${showDetail.showTitle }</td>
