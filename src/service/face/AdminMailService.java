@@ -12,5 +12,13 @@ public interface AdminMailService {
 	 * @param mailContent - 메일 내용
 	 */
 	public void sendMail(List<String> mailList, String mailTitle, String mailContent);
+
+	/**
+	 * 
+	 * @param mailForPw
+	 * @param mailTitle
+	 * @param mailContent
+	 */
+	public void sendMail(String mailForPw, String mailTitle, String mailContent);
 	
 }
