@@ -8,14 +8,14 @@
 <style>
 
 .container {
-	width: 30%
+	width: 20%
 }
 
 </style>
 
 <div class="container">
 
-<h2>${myinfo.memNick } 님의 회원정보</h2>
+<h2>${myinfo.memNick }님의 회원정보</h2>
 <hr>
 
 <table class="table table-bordered">
