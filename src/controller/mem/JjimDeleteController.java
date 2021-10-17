@@ -49,6 +49,11 @@ public class JjimDeleteController extends HttpServlet {
 			return;
 		}
 		
+		if("myjjim".equals(from)) {
+			resp.sendRedirect("/mypage/myjjim");
+			return;
+		}
+		
 		if("detail".equals(from)) {
 			resp.sendRedirect("/show/detail?showNo=" + req.getParameter("showNo"));
 			return;

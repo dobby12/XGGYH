@@ -20,12 +20,18 @@ table {
 
 <table class="table table-hover table-condensed">
 
+<c:if test="${empty memidReviewList }">
+	<h3>작성한 리뷰가 없습니다. 리뷰를 작성해주세요.</h3>
+</c:if>
+
+<c:if test="${not empty memidReviewList }">
 <thead>
 <tr>
 	<th style="text-align: center; width: 10%">번호</th>
-	<th style="text-align: center; width: 70%">제목</th>
-	<th style="text-align: center; width: 10%">작성 날짜</th>
-	<th style="text-align: center; width: 10%">평점</th>
+	<th style="text-align: center; width: 50%">제목</th>
+	<th style="text-align: center; width: 20%">별점</th>
+	<th style="text-align: center; width: 10%">작성일</th>
+	<th style="text-align: center; width: 10%">조회수</th>
 </tr>
 </thead>
 
@@ -35,12 +41,38 @@ table {
 
 	<td>${review.reviewNo }</td>
 	<td><a href="<%=request.getContextPath() %>/review/detail?reviewno=${review.reviewNo }">${review.reviewTitle }</a></td>
-	<td>${review.reviewDate }</td>
-	<td>${review.reviewScore }</td>
+	<td>
+		<c:if test="${review.reviewScore == 1 }">
+			<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+		</c:if>
+		<c:if test="${review.reviewScore == 2 }">
+			<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+			<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+		</c:if>
+		<c:if test="${review.reviewScore == 3 }">
+			<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+			<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+			<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+		</c:if>
+		<c:if test="${review.reviewScore == 4 }">
+			<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+			<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+			<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+			<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+		</c:if>
+		<c:if test="${review.reviewScore == 5 }">
+			<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+			<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+			<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+			<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+			<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+		</c:if></td>
+		<td>${review.reviewDate }</td>
+		<td>${review.reviewHit }</td>
 </tr>
 </tbody>
 </c:forEach>
-
+</c:if>
 
 </table>
 
