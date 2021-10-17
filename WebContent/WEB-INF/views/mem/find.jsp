@@ -59,11 +59,6 @@ $(document).ready(function(){
 
 </style>
 
-
-
-
-
-
 <div class="container">
 <h2>아이디/비밀번호 찾기</h2>
 
@@ -80,15 +75,15 @@ $(document).ready(function(){
 <h4><strong>아이디 찾기</strong></h4>
 <h6>가입할 때 등록한 메일 주소를 입력하고 아이디찾기 버튼을 클릭해주세요.</h6>
 <input type="email" id="memidmail" name="mailForId" placeholder="you@example.com" oninput="checkEmail()" />
-<input type="button" class="btn" id="btnFindid" value="아이디 찾기" />
+<button id="btnFindid">아이디 찾기</button>
 </div>
 
 <div class="findpw">
 <br><br><br><br>
-<h4><strong>패스워드 재설정</strong></h4>
+<h4><strong>비밀번호 재설정</strong></h4>
 <h6>회원 정보에 입력한 이메일로 임시 비밀번호를 발급 받을 수 있습니다.</h6>
 <input type="email" id="mempwmail" name="mailForPw" placeholder="you@example.com" oninput="checkEmail()">
-<input type="button" class="btn" id="btnFindpw" value="비밀번호 재설정" />
+<button id="btnFindpw">비밀번호 재설정</button>
 </div>
 
 </div>
