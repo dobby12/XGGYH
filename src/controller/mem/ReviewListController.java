@@ -29,14 +29,10 @@ public class ReviewListController extends HttpServlet {
 		
 		List<XReview> reviewList = reviewService.getList(paging);
 		
-		System.out.println(reviewList);
-		
 		ArrayList<String> showTitle = new ArrayList<>();
 		for (int i = 0; i < reviewList.size(); i++) {
 			showTitle.add(reviewService.getShowTitle(reviewList.get(i)));
 		}
-		
-		System.out.println(showTitle);
 		
 		req.setAttribute("showTitle", showTitle);
 		

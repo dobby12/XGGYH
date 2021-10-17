@@ -1,6 +1,7 @@
 package controller.mem;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -27,6 +28,13 @@ public class ReviewListHitController extends HttpServlet {
 		System.out.println("ReviewListController [GET] - " + paging);
 		
 		List<XReview> reviewList = reviewService.getListhit(paging);
+		
+		ArrayList<String> showTitle = new ArrayList<>();
+		for (int i = 0; i < reviewList.size(); i++) {
+			showTitle.add(reviewService.getShowTitle(reviewList.get(i)));
+		}
+		
+		req.setAttribute("showTitle", showTitle);
 		
 		req.setAttribute("reviewList", reviewList);
 		
