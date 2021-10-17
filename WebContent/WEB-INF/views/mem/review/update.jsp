@@ -68,26 +68,26 @@ $(document).ready(function() {
 
 <table class="table table-bordered">
 <tr>
-<td class="info">글번호</td><td colspan="3">${updateReview.reviewNo }</td>
+<td>글번호</td><td colspan="3">${updateReview.reviewNo }</td>
 </tr>
 <tr>
-<td class="info">제목</td><td colspan="3"><input type="text" name="reviewTitle" style="width:100%" value="${updateReview.reviewTitle }"/></td>
+<td>제목</td><td colspan="3"><input type="text" name="reviewTitle" style="width:100%" value="${updateReview.reviewTitle }"/></td>
 </tr>
 <tr>
-<td class="info">아이디</td><td>${updateReview.memId }</td>
-<td class="info">닉네임</td><td>${memNick }</td>
+<td>아이디</td><td>${updateReview.memId }</td>
+<td>닉네임</td><td>${memNick }</td>
 </tr>
 <tr>
-<td class="info">조회수</td><td>${updateReview.reviewHit }</td>
+<td>조회수</td><td>${updateReview.reviewHit }</td>
 </tr>
 <tr>
-<td class="info">작성일</td><td colspan="3">${updateReview.reviewDate }</td>
+<td>작성일</td><td colspan="3">${updateReview.reviewDate }</td>
 </tr>
 <tr>
-<td class="info">공연 제목</td><td colspan="3">${showTitle }</td>
+<td>공연 제목</td><td colspan="3">${showTitle }</td>
 </tr>
 <tr>
-	<td class="info">별점</td>
+	<td>별점</td>
 	<td colspan="3">
 		<select name="reviewScore" style="text-align: center;">
 			<option>${updateReview.reviewScore }</option>
@@ -99,7 +99,7 @@ $(document).ready(function() {
 		</select>
 	</td>
 </tr>
-<tr><td class="info"  colspan="4">본문</td></tr>
+<tr><td colspan="4">본문</td></tr>
 <tr><td colspan="4"><textarea id="reviewContent" name="reviewContent" style="width:100%" >${updateReview.reviewContent }</textarea></td></tr>
 </table>
 

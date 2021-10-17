@@ -36,7 +36,11 @@ public class ReviewWriteController extends HttpServlet {
 		System.out.println("@" + req.getSession().getAttribute("memid"));
 		
 		if(reviewService.getReviewOverlap(req)) {
-			System.out.println("너 이미 이 공연 썼어 멍청아");
+			
+			System.out.println("1공연 2리뷰 작성시도");
+			
+			resp.sendRedirect("/show/detail?showNo=" + req.getParameter("showNo"));
+			
 			return;
 		}
 		
