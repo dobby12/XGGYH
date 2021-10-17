@@ -32,7 +32,7 @@
 			<c:forEach items="${suggestshowList }" var="suggestshowList">
 			
 			<div class="list_detail">
-			<a href="<%=request.getContextPath() %>/show/memgenre?showNo=${suggestshowList.showNo }"> 
+			<a href="<%=request.getContextPath() %>/show/detail?showNo=${suggestshowList.showNo }"> 
 			<img class="posterSuggest" src='http://drive.google.com/uc?export=view&id=1UCDamPPObCPN9BY8Iz2WjsgiY8m80K2b' /><br>
 			${suggestshowList.showTitle} <br> ${suggestshowList.showDirector }
 			</a>
