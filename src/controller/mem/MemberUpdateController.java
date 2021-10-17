@@ -49,9 +49,15 @@ public class MemberUpdateController extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		System.out.println("/mypage/myinfo/update  [POST]");
 
-		memberService.updateMem(req);
+		try {
+			memberService.updateMem(req);
+			
+			resp.getWriter().print(true);
+		} catch(Exception e) {
+			resp.getWriter().print(false);
+		}
 		
-		resp.sendRedirect("/mypage/myinfo");
+		return;
 	}
 	
 }

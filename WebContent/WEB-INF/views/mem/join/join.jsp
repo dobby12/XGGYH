@@ -404,7 +404,7 @@ function checkOnlyOne(element) {
 	<div class="input-form-backgroud row">
 	<div class="input-form col-md-6 mx-auto">
 		<a href="<%=request.getContextPath() %>/main"><img id="logo_header" class="logoA" src="/resources/file/logo_line.png" /></a>
-		<p>
+		<p></p>
 		<!-- <h5 style="text-align: center;"><label>회원가입</label></h5>  -->
 		<!--  <form action="<%=request.getContextPath() %>/join" method="post" onsubmit="return checked()">-->
 		<form id="join-form">
@@ -481,7 +481,7 @@ function checkOnlyOne(element) {
           </div>
           
 			<div class="mb-4"></div>
-			<button type="button" id="btnJoin" >가입</button>
+			<button type="button" id="btnSumbit" >가입</button>
 			<button type="button" id="btnCancel">취소</button>
 		</form>
 	</div>
