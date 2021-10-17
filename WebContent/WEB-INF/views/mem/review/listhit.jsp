@@ -20,7 +20,6 @@
 <thead>
 <tr>
 	<th style="width: 10%">번호</th>
-	<th style="width: 15%">공연</th>
 	<th style="width: 45%">제목</th>
 	<th style="width: 10%">작성자</th>
 	<th style="width: 10%">조회수</th>
@@ -32,7 +31,6 @@
 <c:forEach items="${reviewList }" var="review">
 <tr>
 	<td>${review.reviewNo }</td>
-	<td>${review.showTitle }</td>
 	<td style="text-align: left">
 		<a href="<%=request.getContextPath() %>/review/detail?reviewno=${review.reviewNo }">${review.reviewTitle }</a>
 		<c:if test="${review.fileNo ne 0 }">&nbsp;&nbsp;<span class="glyphicon glyphicon-floppy-disk

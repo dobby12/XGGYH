@@ -19,7 +19,7 @@ public class XReview {
 	public String toString() {
 		return "XReview [reviewNo=" + reviewNo + ", showNo=" + showNo + ", fileNo=" + fileNo + ", memId=" + memId
 				+ ", reviewTitle=" + reviewTitle + ", reviewContent=" + reviewContent + ", reviewDate=" + reviewDate
-				+ ", reviewScore=" + reviewScore + ", reviewHit=" + reviewHit + ", showTitle=" + showTitle + "]";
+				+ ", reviewScore=" + reviewScore + ", reviewHit=" + reviewHit + "]";
 	}
 
 	public int getReviewNo() {
@@ -92,14 +92,6 @@ public class XReview {
 
 	public void setReviewHit(int reviewHit) {
 		this.reviewHit = reviewHit;
-	}
-
-	public String getShowTitle() {
-		return showTitle;
-	}
-
-	public void setShowTitle(String showTitle) {
-		this.showTitle = showTitle;
 	}
 
 }
