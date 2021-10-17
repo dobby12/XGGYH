@@ -67,11 +67,11 @@ $(document).ready(function() {
 		<table class="table table-condensed table-bordered">
 			
 			<tr>
-				<td>보내는 이</td>
+				<td class="item">보내는 이</td>
 				<td style="font-weight: bold;">${adminMail }(공공연히)</td>
 			</tr>
 			<tr>
-				<td>받는 이</td>
+				<td class="item">받는 이</td>
 				<td style="font-weight: bold;">${memMail }<input type="hidden" name="memmail" value ="${memMail }" /></td>
 			</tr>
 			<tr>

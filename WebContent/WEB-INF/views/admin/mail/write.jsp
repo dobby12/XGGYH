@@ -66,14 +66,14 @@ $(document).ready(function() {
 <h2>메일 보내기</h2>
 
 	<form action="<%=request.getContextPath() %>/admin/mail/write" method="post">
-		<table class="table table-condensed table-bordered table-striped">
+		<table class="table table-condensed table-bordered">
 			
 			<tr>
-				<td>보내는 이</td>
+				<td class="item">보내는 이</td>
 				<td style="font-weight: bold;">${adminMail }(공공연히)</td>
 			</tr>
 			<tr>
-				<td>받는 이</td>
+				<td class="item">받는 이</td>
 				<td td style="font-weight: bold;"><input type="text" name="memmail" autocomplete="off" style="width:100%;"/></td>
 			</tr>
 			<tr>
