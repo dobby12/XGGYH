@@ -20,7 +20,9 @@
 <thead>
 <tr>
 	<th style="width: 10%">번호</th>
-	<th style="width: 45%">제목</th>
+	<th style="width: 20%">공연제목</th>
+	<th style="width: 25%">제목</th>
+<!-- 	<th style="width: 45%">제목</th> -->
 	<th style="width: 10%">작성자</th>
 	<th style="width: 10%">조회수</th>
 	<th style="width: 10%">작성일</th>
@@ -28,7 +30,7 @@
 </thead>
 
 <tbody>
-<c:forEach items="${reviewList }" var="review">
+<c:forEach items="${reviewList }" var="review" varStatus="status">
 <tr>
 	<td>${review.reviewNo }</td>
 	<td>
@@ -36,10 +38,12 @@
 		<c:if test="${review.fileNo ne 0 }">&nbsp;&nbsp;<span class="glyphicon glyphicon-floppy-disk
 		" aria-hidden="true"></span></c:if>
 	</td>
+	<td>${showTitle[status.index] }</td>
 	<td>${review.memId }</td>
 	<td>${review.reviewHit }</td>
 	<td>${review.reviewDate }</td>
 </tr>
+
 </c:forEach>
 </tbody>
 </table>
