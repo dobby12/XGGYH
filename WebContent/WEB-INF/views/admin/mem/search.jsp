@@ -71,8 +71,8 @@ table {
 	<th style="text-align: center; width: 7%">　　　</th>
 </tr>
 </thead>
+<tbody>
 <c:forEach items="${searchMemList }" var="mem">
-</tbody>
 <tr>
 	<td>${mem.memId }</td>
 	<td>${mem.memNick }</td>
@@ -82,8 +82,8 @@ table {
 	<td><a href="<%=request.getContextPath() %>/admin/mem/review?memid=${mem.memId }"><button class="btnBack" id="btnList">작성한 리뷰 보기</button></a></td>	
 	<td><a href="<%=request.getContextPath() %>/admin/mem/delete?memid=${mem.memId }"><button class="btnDelete" id="btnDelete">삭제</button></a></td>	
 </tr>
-</tbody>
 </c:forEach>
+</tbody>
 </c:if>
 
 

@@ -13,6 +13,27 @@ table {
 
 </style>
 
+<script>
+
+function selects(){  
+    var ele=document.getElementsByName('chk');  
+    for(var i=0; i<ele.length; i++){  
+        if(ele[i].type=='checkbox')  
+            ele[i].checked=true;  
+    }  
+} 
+
+function deSelect(){  
+    var ele=document.getElementsByName('chk');  
+    for(var i=0; i<ele.length; i++){  
+        if(ele[i].type=='checkbox')  
+            ele[i].checked=false;  
+          
+    }  
+}             
+
+</script>
+
 <div class="container">
 
 <h2>메일 보내기 화면</h2>
@@ -21,10 +42,11 @@ table {
 <table class="table table-hover table-condensed">
 
 <thead>
-<tr>	
-	<th style="text-align: center; width: 15%">회원 아이디</th>
-	<th style="text-align: center; width: 15%">회원 닉네임</th>
-	<th style="text-align: center; width: 20%">회원 메일 주소</th>
+<tr>
+	<th style="text-align: center; width: 6%">전체 <input type="checkbox" id="checkAll" name="checkAll"></th>
+	<th style="text-align: center; width: 13%">회원 아이디</th>
+	<th style="text-align: center; width: 13%">회원 닉네임</th>
+	<th style="text-align: center; width: 18%">회원 메일 주소</th>
 	<th style="text-align: center; width: 10%">메일 수신 여부</th>
 	<th style="text-align: center; width: 15%">가입 날짜</th>
 	<th style="text-align: center; width: 15%">　　　</th>
@@ -32,27 +54,31 @@ table {
 </tr>
 </thead>
 
+<tbody>
 <c:forEach items="${memList }" var="mem">
-</tbody>
 <tr>
+	<td><form><input type="checkbox" name="chk" value="${mem.memMail }"/></form></td>
 	<td>${mem.memId }</td>
 	<td>${mem.memNick }</td>
 	<td>${mem.memMail }</td>
 	<td>${mem.mailState }</td>
 	<td>${mem.memDate }</td>
+	
 	<c:if test="${mem.mailState == 'y' }">
 	<td><a href="<%=request.getContextPath() %>/admin/mail/mem/write?memmail=${mem.memMail }"><button>메일 보내기</button></a></td>	
 	</c:if>
+	
 	<c:if test="${mem.mailState =='n' }">
 	<td><input type="button" disabled value="메일 수신거부" /></td>
 	</c:if>
 	
 </tr>
-</tbody>
 </c:forEach>
+</tbody>
 
 
 </table>
+
 
 </div>
 <c:import url="/WEB-INF/views/layout/paging.jsp" />
