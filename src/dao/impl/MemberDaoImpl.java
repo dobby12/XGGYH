@@ -211,6 +211,7 @@ public class MemberDaoImpl implements MemberDao {
 			ps.setString(6, mem.getMemId());
 			
 			System.out.println("[TEST update]\n" + mem);
+			System.out.println(mem.getMemId());
 
 			res = ps.executeUpdate();
 			
