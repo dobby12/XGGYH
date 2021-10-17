@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import common.JDBCTemplate;
 import dao.face.ReviewDao;
 import dto.XFile;
@@ -815,6 +817,33 @@ public class ReviewDaoImpl implements ReviewDao {
 		}
 		
 		return avg;
+	}
+
+	@Override
+	public int selectCntReviewByShowNoAndMemId(Connection connection, HttpServletRequest req) {
+		
+		int res = -1;
+		
+		String sql = "select count(*) from xreview where show_no=? and mem_id=?";
+		
+		try {
+			ps = connection.prepareStatement(sql);
+			ps.setInt(1, Integer.parseInt(req.getParameter("showNo")));
+			ps.setString(2, (String)req.getSession().getAttribute("memid"));
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				res = rs.getInt(1);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+		}
+		System.out.println("@"+res);
+		return res;
 	}
 
 }

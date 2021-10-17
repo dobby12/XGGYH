@@ -180,6 +180,13 @@ public interface ReviewService {
 	 */
 	public double getAvgReviewScoreByShowNo(int showNo);
 
+	/**
+	 * req로 전달된 show_no와 mem_id로 작성한 글이 있다면 true
+	 * @param req
+	 * @return boolean
+	 */
+	public boolean getReviewOverlap(HttpServletRequest req);
+
 }
 
 

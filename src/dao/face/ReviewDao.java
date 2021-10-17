@@ -3,6 +3,8 @@ package dao.face;
 import java.sql.Connection;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import dto.XFile;
 import dto.XReview;
 import dto.XShow;
@@ -209,6 +211,14 @@ public interface ReviewDao {
 	 * @return 공연 평균값
 	 */
 	public double selectAvgReviewScoreByShowNo(Connection conn, int showNo);
+
+	/**
+	 * XReview에서 showno와 memid가 모두 일치하는 행의 개수를 반환 
+	 * @param connection
+	 * @param req
+	 * @return
+	 */
+	public int selectCntReviewByShowNoAndMemId(Connection connection, HttpServletRequest req);
 
 
 }
