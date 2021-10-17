@@ -495,7 +495,7 @@ public class ReviewServiceImpl implements ReviewService {
 		
 		Connection conn = JDBCTemplate.getConnection();
 		
-		int fileno = getFile(reviewno).getFileNo();
+		int fileno = getReviewDetail(reviewno).getFileNo();
 		
 		if( fileDao.deleteFile(conn, fileno) > 0 ) {
 			JDBCTemplate.commit(conn);
