@@ -3,7 +3,17 @@
 <c:import url="/WEB-INF/views/layout/header.jsp" />
 <!------------------------------------------------------>
 
-<h1>FIND ID/PW</h1>
+<style>
+.container {
+	width: 400px;
+}
+</style>
+
+
+<div class="container">
+<br><br><br><br><br><br><br><br>
+<h2>아이디/비밀번호 찾기</h2>
+<hr>
 <c:if test="${id }">
 	<c:if test="${noMailId ne null }">
 	${noMailId }<br>
@@ -18,9 +28,11 @@
 	${noMailPw }
 	</c:if>
 	<c:if test="${noMailPw eq null }">
-	PW 재발급 메일이 발송되었습니다. 재발급된 비밀번호로 로그인 후 비밀번호를 변경하세요.	
+	 임시 비밀번호가 전송되었습니다. 이메일을 확인해주세요!	
 	</c:if>
 </c:if>
-
+<br><br><br>
+<a href="<%=request.getContextPath() %>/member/find"><button>이전으로 돌아가기</button></a>
+</div>
 
 <c:import url="/WEB-INF/views/layout/footer.jsp" />
