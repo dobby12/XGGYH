@@ -154,9 +154,8 @@ function checkId() {
 	const idFormCheck = RegExp(/^[a-z0-9-_]{4,12}$/);
 	
 	if (idFormCheck.test(memid.val()) == false) {
-		memid.addClass("is-invalid");
-		memid.removeClass("is-valid");
-		// memid.focus();
+		memid.addClass("is-invalid"); //오류
+		memid.removeClass("is-valid"); //가능
 		
 		$("#invalid-feedback-idcheck").css("display", "none");
 		$("#invalid-feedback-id").css("display", "block");
@@ -239,7 +238,6 @@ function checkEmail() {
 	if (emailFormCheck.test(memmail.val()) == false) {
 		memmail.addClass("is-invalid");
 		memmail.removeClass("is-valid");
-		// memmail.focus();
 		
 		$("#invalid-feedback-emailcheck").css("display", "none");
 		$("#invalid-feedback-email").css("display", "block");
@@ -298,19 +296,67 @@ async function checkEmailExist() {
 
 //닉네임 공백 검사
 function checkNick() {
+	
+	$("#valid-feedback-nick").css("display", "none");
+	
 	var memnick = $("#memnick");
 	
 	if (memnick.val() == "") {
 		memnick.addClass("is-invalid");
 		memnick.removeClass("is-valid");
-		memnick.focus();
+		
+		$("#invalid-feedback-nickcheck").css("display", "none");
+		$("#invalid-feedback-nick").css("display", "block");
 		
 		return false;
 	} else {
 		memnick.addClass("is-valid");
 		memnick.removeClass("is-invalid");
 		
+		$("#invalid-feedback-nickcheck").css("display", "none");
+		$("#invalid-feedback-nick").css("display", "none");
+		
 		return true;
+	}
+}
+
+//닉네임 중복 검사
+async function checkNickExist() {
+	var memnick = $("#memnick");
+	
+	if (checkNick() == false) {
+		return;
+	}
+	
+	try {
+		const result = await ajaxPost('/join/nickcheck', {memnick: memnick.val()});
+		
+		if (result == "false") {
+			//중복되는 닉네임 없음
+			memnick.removeClass("is-invalid");
+			memnick.addClass("is-valid");
+			
+			$("#valid-feedback-nick").css("display", "block");
+			$("#invalid-feedback-nickcheck").css("display", "none");
+			$("#invalid-feedback-nick").css("display", "none");
+			
+			//닉네임 체크 패스
+			return true;
+		} else {
+			// 중복되는 닉네임 있음
+			memnick.removeClass("is-valid");
+			memnick.addClass("is-invalid");
+			
+			$("#valid-feedback-nick").css("display", "none");
+			$("#invalid-feedback-nickcheck").css("display", "block");
+			$("#invalid-feedback-nick").css("display", "none");
+			
+			//이메일 체크 패스못함
+			return false;
+		}
+	} catch (e) {
+		console.log(e);
+		alert("에러가 발생했습니다.");
 	}
 }
 
@@ -321,7 +367,6 @@ function checkPw() {
 	if (mempw.val() == "") {
 		mempw.addClass("is-invalid");
 		mempw.removeClass("is-valid");
-		mempw.focus();
 		
 		return false;
 	} else {
@@ -370,6 +415,8 @@ async function checked() {
 	if (checkPw() == false) isvalid = false;
 	
 	if (checkNick() == false) isvalid = false;
+	else if (await checkNickExist() == false) isvalid = false;
+	else $("#valid-feedback-nick").css("display", "block");
 	
 	if (checkId() == false) isvalid = false;
  	else if (await checkIdExist() == false) isvalid = false;
@@ -422,6 +469,11 @@ $(document).ready(function() {
 		checkIdExist();
 	})
 	
+	//닉네임 중복체크
+	$("#memnick").blur(function() {
+		checkNickExist();
+	})
+	
 	//이메일 중복체크
 	$("#memmail").blur(function() {
 		checkEmailExist();
@@ -465,7 +517,9 @@ function checkOnlyOne(element) {
 			<div class="mb-3">
 				<label class="mem" for="memnick">닉네임</label>
 				<input type="text" class="form-control" id="memnick" name="memnick" oninput="checkNick()">
-				<div class="invalid-feedback">닉네임을 입력해주세요.</div>
+				<div class="valid-feedback" id="valid-feedback-nick" style="display: none;">사용 가능한 닉네임입니다.</div>
+				<div class="invalid-feedback" id="invalid-feedback-nick">닉네임을 입력해주세요.</div>
+				<div class="invalid-feedback" id="invalid-feedback-nickcheck" style="display: none;">이미 존재하는 닉네임입니다.</div>
 			</div>
 			
 			<hr>
