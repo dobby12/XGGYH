@@ -91,6 +91,11 @@ public class ReviewServiceImpl implements ReviewService {
 		
 	}
 	
+	@Override
+	public List<XReview> getListDateByShowNo(Paging paging, int showNo) {
+		return reviewDao.selectAllByShowNo(JDBCTemplate.getConnection(), paging, showNo);
+	}
+	
 
 	
 	@Override
@@ -122,7 +127,7 @@ public class ReviewServiceImpl implements ReviewService {
 			System.out.println("[WARNING] curPage값이 null이거나 비어있습니다");
 		}
 		
-		int totalCount = reviewDao.selectCntAllByTitle(JDBCTemplate.getConnection(), showNo);
+		int totalCount = reviewDao.selectCntAllByShowNo(JDBCTemplate.getConnection(), showNo);
 		
 		Paging paging = new Paging(totalCount, curPage, listCount);
 		
@@ -206,7 +211,6 @@ public class ReviewServiceImpl implements ReviewService {
 	public XReview getReviewDetail(int reviewno) {
 		return reviewDao.selectReviewToReviewno(JDBCTemplate.getConnection(), reviewno);
 	}
-	
 	
 	
 	

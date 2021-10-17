@@ -122,21 +122,31 @@
 		상연 종료일 : ${showDetail.showEnd} <br>
 	</div>
 
-	<div class="content">${showDetail.showContent }</div>
+	<p class="content">${showDetail.showContent }</p>
 </div>
 
 <h3>이 공연의 리뷰</h3>
 <br>
-<table class="table table-hover table-condensed table-bordered" style="width: 200px;">
+<table>
+<thead>
+	<tr>
+		<td>공연 제목</td>
+		<td>제목</td>
+		<td>작성자</td>
+		<td>작성일</td>
+	</tr>
+</thead>
 
-	<thead>
-		<tr>
-			<td>공연 제목</td>
-			<td>공연기간</td>
-			<td></td>
-		</tr>
-	</thead>
-	
+<c:forEach items="${reviewList }" var="review">
+</tbody>
+	<tr>
+		<td>${review.showTitle }</td>
+		<td><a href="<%=request.getContextPath() %>/review/detail?reviewno=${review.reviewNo }">${review.reviewTitle }</a></td>
+		<td>${review.memId }</td>
+		<td>${review.reviewDate }</td>
+	</tr>
+</tbody>
+</c:forEach>
 </table>
 
 	<c:import url="/WEB-INF/views/layout/footer.jsp" />

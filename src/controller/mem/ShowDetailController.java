@@ -47,7 +47,7 @@ public class ShowDetailController extends HttpServlet {
 		
 		double scoreAvg = reviewService.getAvgReviewScoreByShowNo(showNo.getShowNo());
 		
-		//List<XReview> reviewList = reviewService.getListDateBy(paging);
+		List<XReview> reviewList = reviewService.getListDateByShowNo(paging, showDetail.getShowNo());
 		
 		req.setAttribute("showKindName", kindName);
 		req.setAttribute("showGenreName", genreName);
@@ -55,6 +55,7 @@ public class ShowDetailController extends HttpServlet {
 		req.setAttribute("showDetail", showDetail);
 		req.setAttribute("isJjim", isJjim);
 		req.setAttribute("showScoreAvg", scoreAvg);
+		req.setAttribute("reviewList", reviewList);
 		
 		//요청 보내기
 		req.getRequestDispatcher("/WEB-INF/views/mem/show/detail.jsp").forward(req, resp);

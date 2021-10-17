@@ -112,6 +112,57 @@ public class ReviewDaoImpl implements ReviewDao {
 	}
 	
 	@Override
+	public List<XReview> selectAllByShowNo(Connection conn, Paging paging, int showNo) {
+		String sql = "";
+		sql += "SELECT * FROM (";
+		sql += "	SELECT rownum rnum, X.* FROM (";
+		sql += "		SELECT";
+		sql += "			review_no, show_no, file_no, mem_id, review_title";
+		sql += "			, review_content, review_date, review_score, review_hit";
+		sql += "		FROM xreview";
+		sql += "		WHERE show_no = ?";
+		sql += "		ORDER BY review_date DESC";
+		sql += "	) X";
+		sql += " ) XREVIEW";
+		sql += " WHERE rnum BETWEEN ? AND ?";
+
+		List<XReview> reviewList = new ArrayList<>(); 
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, showNo);
+			ps.setInt(2, paging.getStartNo());
+			ps.setInt(3, paging.getEndNo());
+			
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				XReview review = new XReview();
+				
+				review.setReviewNo( rs.getInt("review_no") );
+				review.setShowNo( rs.getInt("show_no") );
+				review.setFileNo( rs.getInt("file_no") );
+				review.setMemId( rs.getString("Mem_id") );
+				review.setReviewTitle( rs.getString("review_title") );
+				review.setReviewContent( rs.getString("review_content") );
+				review.setReviewDate( rs.getDate("review_date") );
+				review.setReviewScore( rs.getInt("review_score") );
+				review.setReviewHit( rs.getInt("review_hit") );
+
+				reviewList.add(review);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+		}
+		
+		return reviewList;
+	}
+	
+	@Override
 	public List<XReview> selectAllHit(Connection conn, Paging paging) {
 		
 		String sql = "";
@@ -513,6 +564,8 @@ public class ReviewDaoImpl implements ReviewDao {
 		return memNick;
 	}
 	
+	
+	
 	@Override
 	public String selectShowTitleByShowNo(Connection conn, XReview viewReview) {
 		
@@ -852,11 +905,11 @@ public class ReviewDaoImpl implements ReviewDao {
 		String sql = "";
 		sql += "SELECT count(*) FROM XREVIEW ";
 		sql += "WHERE show_no = ? ";
-		sql += "ORDER BY review_date;";
 		
 		try {
 			ps = connection.prepareStatement(sql);
 			ps.setInt(1, showNo);
+			
 			rs = ps.executeQuery();
 			
 			while(rs.next()) {
@@ -869,7 +922,10 @@ public class ReviewDaoImpl implements ReviewDao {
 			JDBCTemplate.close(rs);
 			JDBCTemplate.close(ps);
 		}
+		
 		return res;
 	}
+
+
 
 }

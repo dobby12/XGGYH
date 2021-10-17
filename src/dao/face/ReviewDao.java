@@ -230,6 +230,8 @@ public interface ReviewDao {
 	public int selectCntReviewByShowNoAndMemId(Connection connection, HttpServletRequest req);
 
 	public int selectCntAllByShowNo(Connection connection, int showNo);
+
+	public List<XReview> selectAllByShowNo(Connection conn, Paging paging, int showNo);
 }
 
 

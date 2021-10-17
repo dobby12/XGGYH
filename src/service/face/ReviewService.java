@@ -196,6 +196,8 @@ public interface ReviewService {
 	 * @return boolean
 	 */
 	public boolean getReviewOverlap(HttpServletRequest req);
+
+	public List<XReview> getListDateByShowNo(Paging paging, int showNo);
 }
 
 
