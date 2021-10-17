@@ -1,5 +1,6 @@
 package service.impl;
 
+import java.util.List;
 import java.util.Properties;
 
 import javax.mail.Address;
@@ -9,13 +10,14 @@ import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+
 import service.face.AdminMailService;
 import util.mail.MailAuth;
 
 public class AdminMailServiceImpl implements AdminMailService {
 	
 	@Override
-	public void sendMail(String memMail, String mailTitle, String mailContent) {
+	public void sendMail(List<String> mailList, String mailTitle, String mailContent) {
 		 
 		Properties p = new Properties();
 		
@@ -42,9 +44,15 @@ public class AdminMailServiceImpl implements AdminMailService {
 
 			Address fromAddr = new InternetAddress("gonggongyeonhee@gmail.com"); 
 			msg.setFrom(fromAddr);
-
-			Address toAddr = new InternetAddress(memMail); 
-			msg.addRecipient(Message.RecipientType.TO, toAddr);
+			
+//			Address toAddr = new InternetAddress(memMail); 
+			
+			InternetAddress[] addArray = new InternetAddress[mailList.size()];
+			for(int i=0; i<mailList.size(); i++) {
+				addArray[i] = new InternetAddress((String) mailList.get(i));
+			}
+			
+			msg.addRecipients(Message.RecipientType.TO, addArray);
 			msg.setContent(message, "text/html; charset=EUC-KR");
 
 			Transport.send(msg);

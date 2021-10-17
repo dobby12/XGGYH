@@ -13,24 +13,7 @@ table {
 
 </style>
 
-<script>
-
-function selects(){  
-    var ele=document.getElementsByName('chk');  
-    for(var i=0; i<ele.length; i++){  
-        if(ele[i].type=='checkbox')  
-            ele[i].checked=true;  
-    }  
-} 
-
-function deSelect(){  
-    var ele=document.getElementsByName('chk');  
-    for(var i=0; i<ele.length; i++){  
-        if(ele[i].type=='checkbox')  
-            ele[i].checked=false;  
-          
-    }  
-}             
+<script>       
 
 //java로 check한 대상의 메일 주소 jsonText로 담아 보내기
 var result = new Array();
@@ -59,7 +42,7 @@ function getCheckboxValue(event)  {
 
 <thead>
 <tr>
-	<th style="text-align: center; width: 6%">전체 <input type="checkbox" id="checkAll" name="checkAll"></th>
+	<th style="text-align: center; width: 6%"></th>
 	<th style="text-align: center; width: 13%">회원 아이디</th>
 	<th style="text-align: center; width: 13%">회원 닉네임</th>
 	<th style="text-align: center; width: 18%">회원 메일 주소</th>

@@ -1,5 +1,7 @@
 package service.face;
 
+import java.util.List;
+
 public interface AdminMailService {
 
 	/**
@@ -9,6 +11,6 @@ public interface AdminMailService {
 	 * @param mailTitle - 메일 제목
 	 * @param mailContent - 메일 내용
 	 */
-	public void sendMail(String memMail, String mailTitle, String mailContent);
+	public void sendMail(List<String> mailList, String mailTitle, String mailContent);
 	
 }
