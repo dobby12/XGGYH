@@ -43,6 +43,12 @@ public class JjimDeleteController extends HttpServlet {
 		
 		System.out.println(req.getRequestURL());
 		
+		String from = req.getParameter("from");
+		if("mycalendar".equals(from)) {
+			resp.sendRedirect("/mycalendar");
+			return;
+		}
+		
 		resp.sendRedirect("/mypage/myjjim");
 	}
 }

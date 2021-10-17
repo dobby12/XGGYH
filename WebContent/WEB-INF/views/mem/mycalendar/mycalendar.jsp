@@ -108,7 +108,7 @@ $(document).ready(function () {
 		<td>${show.showStart } ~ ${show.showEnd }</td>
 		
 		<td>
-		<a href="<%=request.getContextPath() %>/mem/jjim/delete?showNo=${show.showNo }&memId=${memid }">
+		<a href="<%=request.getContextPath() %>/mem/jjim/delete?showNo=${show.showNo }&memId=${memid }&from=mycalendar">
 		<button id="btnDelete" class="btnDelete">찜 해제</button></a>
 		</td>
 		
