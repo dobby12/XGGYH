@@ -64,7 +64,7 @@ public class MemberFindController extends HttpServlet {
 				memberService.setMempwUpdate(mailForPw, uuidPw);
 				
 				//보낼 메일 제목
-				String mailTitle = "[공공연희] 재설정한 "+idForMail+"님의 패스워드";
+				String mailTitle = "[공공연히] 재설정한 "+idForMail+"님의 패스워드";
 				
 				//보낼 메일 내용
 				String mailContent = "안녕하세요. 귀하의 비밀번호는 ["+uuidPw+"]으로 변경되었습니다.";

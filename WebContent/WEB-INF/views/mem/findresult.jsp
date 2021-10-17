@@ -16,10 +16,10 @@
 <hr>
 <c:if test="${id }">
 	<c:if test="${noMailId ne null }">
-	${noMailId }<br>
+	${noMailId }
 	</c:if>
 	<c:if test="${noMailId eq null }">
-	ID 찾기 결과 : ${findid }
+	가입하신 아이디는 ${findid } 입니다.
 	</c:if>
 </c:if>
 
