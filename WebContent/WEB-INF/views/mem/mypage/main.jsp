@@ -72,14 +72,14 @@ button {
 <h2>마이 페이지</h2>
 <hr>
 
-<h3><%=nick %>님 안녕하세요!</h3>
+<h3><strong><%=nick %>님 안녕하세요!</strong></h3>
 
 <br>
 <table>
 	<tr>
-		<th><h4>회원정보</h4></th>
-		<th><h4>회원활동</h4></th>
-		<th><h4>고객센터</h4></th>
+		<th><h4><strong>회원정보</strong></h4></th>
+		<th><h4><strong>회원활동</strong></h4></th>
+		<th><h4><strong>고객센터</strong></h4></th>
 		
 	</tr>
 	
