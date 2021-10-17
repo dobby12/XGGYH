@@ -2,6 +2,33 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:import url="/WEB-INF/views/layout/header.jsp" />
 <!------------------------------------------------------>
+<script>
+//이메일 형식 검사
+function checkEmail() {
+	$("#valid-feedback-email").css("display", "none");
+	var memmail = $("#memmail");
+	const emailFormCheck = RegExp(/^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*[.][a-zA-Z]{2,3}$/);
+	
+	if (emailFormCheck.test(memmail.val()) == false) {
+		memmail.addClass("is-invalid");
+		memmail.removeClass("is-valid");
+		// memmail.focus();
+		
+		$("#invalid-feedback-emailcheck").css("display", "none");
+		$("#invalid-feedback-email").css("display", "block");
+		
+		return false;
+	} else {
+		memmail.addClass("is-valid");
+		memmail.removeClass("is-invalid");
+		
+		$("#invalid-feedback-emailcheck").css("display", "none");
+		$("#invalid-feedback-email").css("display", "none");
+		
+		return true;
+	}
+}
+</script>
 <script type="text/javascript">
 $(document).ready(function(){
 	$("#btnFindid").click(function(){$("form").submit()})
@@ -13,15 +40,21 @@ $(document).ready(function(){
 
 
 <form action="<%=request.getContextPath() %>/member/find" method="post">
-@@@영문 입력 검사 합시다용@@@<br>
-js로 둘 중에 하나만 전송할 수 있게 합시다요<br>
 
-ID 찾기 : <input type="text" name="mailForId" placeholder="이메일 주소를 입력하세요.">
-<button type="button" id="btnFindid">ID찾기</button>
+<div class="col-md-6 mb-3">
+	<label class="mem" for="memmail">아이디 찾기</label>
+	<input type="email" class="form-control" id="memmail" name="mailForId" placeholder="you@example.com" oninput="checkEmail()">
+</div>
+<button type="button" id="btnFindid">아이디 찾기</button>
+
 <br><br><br>
 
-PW 찾기 : <input type="text" name="mailForPw" placeholder="이메일 주소를 입력하세요.">
-<button type="button" id="btnFindpw">PW찾기</button>
+<div class="col-md-6 mb-3">
+	<label class="mem" for="memmail">패스워드 재설정</label>
+	<input type="email" class="form-control" id="memmail" name="mailForPw" placeholder="you@example.com" oninput="checkEmail()">
+</div>
+<button type="button" id="btnFindpw">패스워드 재설정</button>
+
 </form>
 
 
