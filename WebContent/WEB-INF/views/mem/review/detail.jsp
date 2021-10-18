@@ -75,7 +75,7 @@
 </div><br><br>
 
 <div class="button">
-	<a href="<%=request.getContextPath() %>/review/list"><button id="btnList" class="btnBack">목록</button></a>
+	<button onclick="history.back()" id="btnList" class="btnBack">목록</button>
 	<c:if test="${memid eq viewReview.memId }">
 		<a href="<%=request.getContextPath() %>/review/update?reviewno=${viewReview.reviewNo }"><button id="btnUpdate" class="btnUpdate">수정</button></a>
 		<a href="<%=request.getContextPath() %>/review/delete?reviewno=${viewReview.reviewNo }"><button id="btnDelete" class="btnDelete">삭제</button></a>
