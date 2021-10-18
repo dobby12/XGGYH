@@ -225,9 +225,13 @@ function checkOnlyOne(element) {
 body {
 	min-height: 100vh;
 	background-color: #FFFFFF;
-	font-size: 16px;
+	font-size: 14px;
 	text-align: center;
 	font-family: 'IBM Plex Sans KR', sans-serif;
+}
+
+.nav {
+display: list-item;
 }
 
 .mem {
@@ -241,6 +245,7 @@ div.mb-3 {
 }
 
 .input-form {
+	font-size: 15px;
 	width: 400px;
 	margin: 60px;
 	padding: 32px;
@@ -249,13 +254,15 @@ div.mb-3 {
 input[type=text],input[type=password],input[type=email] {
     vertical-align: middle;
     padding: 6 36 6 12;
-    text-align: left;
     color: #6c757d;
-   	font-size: 16px;
-    width: 100%;
-	height: 38px;
+   	font-size: inherit;
+	height: 30px;
 	border: 1px solid #ced4da;
 	border-radius: .25rem;
+}
+
+input.keyword {
+
 }
 
 /* ------------------------------------------------ */
@@ -363,11 +370,11 @@ button.btnSubmit:hover:before, button.btnSubmit:hover:after {
 		<form id="update-form">
 			<div class="mb-3">
 				<label class="mem" for="memid">아이디</label><span class="text-muted">&nbsp;(4~12자리의 영문 소문자, 숫자, 특수문자 [_,-]만 입력 가능합니다.)</span>
-				<input type="text" class="form-control" id="memid" name="memid" value="${updateMem.memId }" readonly>
+				<input type="text" style="text-align : left" class="form-control" id="memid" name="memid" value="${updateMem.memId }" readonly>
 			</div>
 			<div class="mb-3">
 				<label class="mem" for="memnick">닉네임</label>
-				<input type="text" class="form-control" id="memnick" name="memnick" value="${updateMem.memNick }"oninput="checkNick()">
+				<input type="text" style="text-align : left" class="form-control" id="memnick" name="memnick" value="${updateMem.memNick }"oninput="checkNick()">
 				<div class="valid-feedback" id="valid-feedback-nick" style="display: none;">사용 가능한 닉네임입니다.</div>
 				<div class="invalid-feedback" id="invalid-feedback-nick">닉네임을 입력해주세요.</div>
 				<div class="invalid-feedback" id="invalid-feedback-nickcheck" style="display: none;">이미 존재하는 닉네임입니다.</div>
