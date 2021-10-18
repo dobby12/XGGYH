@@ -3,6 +3,20 @@
 <c:import url="/WEB-INF/views/layout/header.jsp" />
 <!------------------------------------------------------>
 
+<script>
+$(document).ready(function() {
+	$("#btnList").click(function(){
+		
+		history.back();
+		
+	})
+
+})
+
+
+
+</script>
+
 <style>
 .container {
 	width: 400px;
@@ -32,7 +46,7 @@
 	</c:if>
 </c:if>
 <br><br><br>
-<a href="<%=request.getContextPath() %>/member/find"><button>이전으로 돌아가기</button></a>
+<a href="<%=request.getContextPath() %>/member/find"><button id="btnBack">이전으로 돌아가기</button></a>
 </div>
 
 <c:import url="/WEB-INF/views/layout/footer.jsp" />
