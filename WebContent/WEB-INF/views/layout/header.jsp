@@ -474,7 +474,7 @@ textarea:focus, input:focus {
 	<li id="search" style="float: right;">
 		<form action="<%=request.getContextPath() %>/show/search" method="get">
 			<input type="text" id="keyword" name="keyword" placeholder="공연 제목을 검색하세요." style="margin: -6px 0 0 0; border: 1px solid #f2f2f2;" autocomplete="off"/>
-			<input type="hidden" id="kind" name="kind" value="${kindNo=0}"/><!-- !!!전체 검색을 하려면 kindNo=0으로 해야하나요? -->
+			<input type="hidden" id="kindNo" name="kindNo" value="${kindNo=0}"/><!-- !!!전체 검색을 하려면 kindNo=0으로 해야하나요? -->
 			<button class="btnBack" style="margin: 13px 0 0 -5px;"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
 		</form>
 	</li>

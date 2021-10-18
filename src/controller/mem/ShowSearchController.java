@@ -26,7 +26,7 @@ public class ShowSearchController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     	
-    	String showTitle = req.getParameter("keyword");
+    	String showTitle = req.getParameter("keyword").trim();
     	int showKind = Integer.parseInt(req.getParameter("kindNo").trim());
     	
     	System.out.println("showKind : " + showKind);

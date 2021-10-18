@@ -253,7 +253,7 @@ public class ShowDaoImpl implements ShowDao {
 		try {
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, kindNo);
-			ps.setString(2, showTitle);
+			ps.setString(2, "%" + showTitle + "%");
 
 			rs = ps.executeQuery();
 
@@ -283,7 +283,7 @@ public class ShowDaoImpl implements ShowDao {
 
 				try {
 					ps = connection.prepareStatement(sql);
-					ps.setString(1, showTitle);
+					ps.setString(1, "%" + showTitle + "%");
 
 					rs = ps.executeQuery();
 
@@ -480,7 +480,7 @@ public class ShowDaoImpl implements ShowDao {
 		try {
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, kindNo);
-			ps.setNString(2, keyword);
+			ps.setString(2, "%" + keyword + "%");
 			ps.setInt(3, paging.getStartNo());
 			ps.setInt(4, paging.getEndNo());
 
@@ -597,7 +597,7 @@ public class ShowDaoImpl implements ShowDao {
 
 		try {
 			ps = connection.prepareStatement(sql);
-			ps.setNString(1, "%" + keyword + "%");
+			ps.setString(1, "%" + keyword + "%");
 			ps.setInt(2, paging.getStartNo());
 			ps.setInt(3, paging.getEndNo());
 

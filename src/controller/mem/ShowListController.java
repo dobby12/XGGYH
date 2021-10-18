@@ -40,6 +40,8 @@ public class ShowListController extends HttpServlet {
 		
 		int kindNo = showService.getKindNo(req);
 		
+		System.out.println("showlistcontroller kindno : " + kindNo); //값 있음
+		
 		String kindName = showService.getkindName(kindNo);
 		
 		List<XShow> showList = null;
