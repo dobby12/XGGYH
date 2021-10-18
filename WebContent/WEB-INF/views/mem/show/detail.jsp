@@ -259,7 +259,8 @@ table {
 </c:forEach>
 
 </div><!-- #reviews end -->
-<div id="link"><a href="<%=request.getContextPath()%>/review/list">공연 리뷰 더보기</a></div>
+
+<div id="link"><a href="<%=request.getContextPath()%>/review/search?searchtype=showNo&keyword=${showDetail.showNo }">공연 리뷰 더보기</a></div>
 
 </div><!-- #content end -->
 
