@@ -41,13 +41,15 @@ public class ShowDetailController extends HttpServlet {
 		String genreName = showService.getGenreName(showDetail);
 		String hallName = showService.getHallName(showDetail);
 		
-		Paging paging = reviewService.getPaging(req, 5, showDetail.getShowNo());
-		
 		boolean isJjim = jjimService.getisJjim((String)req.getSession().getAttribute("memid"), showNo.getShowNo());
 		
 		double scoreAvg = reviewService.getAvgReviewScoreByShowNo(showNo.getShowNo());
 		
-		List<XReview> reviewList = reviewService.getListDateByShowNo(paging, showDetail.getShowNo());
+		Paging paging = reviewService.getPaging(req, 5, showNo.getShowNo());
+		List<XReview> reviewList = reviewService.getListDateByShowNo(paging, showNo.getShowNo());
+		
+		for(XReview r : reviewList)
+			System.out.println("reviewList = " + r);
 		
 		req.setAttribute("showKindName", kindName);
 		req.setAttribute("showGenreName", genreName);
@@ -56,6 +58,10 @@ public class ShowDetailController extends HttpServlet {
 		req.setAttribute("isJjim", isJjim);
 		req.setAttribute("showScoreAvg", scoreAvg);
 		req.setAttribute("reviewList", reviewList);
+		
+		if("alert".equals(req.getParameter("from"))) {
+			req.setAttribute("alert", "이미 리뷰를 작성한 공연입니다.");
+		}
 		
 		//요청 보내기
 		req.getRequestDispatcher("/WEB-INF/views/mem/show/detail.jsp").forward(req, resp);

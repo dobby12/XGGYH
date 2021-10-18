@@ -64,6 +64,8 @@ public interface ShowService {
 	 */
 	public Paging getParameterPaging(HttpServletRequest req, String showTitle, int kindNo);
 	
+	public Paging getParameterPaging(HttpServletRequest req, String showTitle);
+	
 	
 	public Paging getParameterPaging(HttpServletRequest req, int kindNo, int memGenre);
 	/**

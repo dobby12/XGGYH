@@ -79,6 +79,27 @@ public class ShowServiceImpl implements ShowService {
 	}
 	
 	@Override
+	public Paging getParameterPaging(HttpServletRequest req, String showTitle) {
+		String param = req.getParameter("curPage");
+		int curPage = 0;
+		
+		// 한번에 몇개씩 보여줄건지
+		int listCount = 6;
+		
+		if(param != null && !"".equals(param)) {
+			curPage = Integer.parseInt(param);
+		} else {
+			System.out.println("[WARNING] curPage값이 null이거나 비어있습니다");
+		}
+
+		int totalCount = showDao.selectCntByShowTitle(JDBCTemplate.getConnection(), showTitle);
+
+		Paging paging = new Paging(totalCount, curPage, listCount);
+
+		return paging;
+	}
+	
+	@Override
 	public Paging getParameterPaging(HttpServletRequest req, int kindNo, int memGenre) {
 		String param = req.getParameter("curPage");
 		int curPage = 0;
@@ -176,8 +197,13 @@ public class ShowServiceImpl implements ShowService {
 
 	@Override
 	public List<XShow> getSearchShowList(HttpServletRequest req, Paging paging) {
-		String showKind = (String)req.getParameter("kind");
-		String keyword = (String)req.getParameter("keyword");
+		String showKind = (String)req.getParameter("kind").trim();
+		String keyword = (String)req.getParameter("keyword").trim();
+		
+		if(Integer.parseInt(showKind) == 0)
+		{
+			return showDao.selectAllShowSearchByshowTitle(JDBCTemplate.getConnection(), keyword, paging);
+		}
 
 		return showDao.selectShowSearchByshowTitle(JDBCTemplate.getConnection(), keyword, Integer.parseInt(showKind), paging);
 	}
@@ -186,4 +212,6 @@ public class ShowServiceImpl implements ShowService {
 	public List<XShow> getShowMemGenreList(XMem memInfo, int kindNo, Paging paging) {
 		return showDao.selectShowSearchByMemgenre(JDBCTemplate.getConnection(), memInfo, kindNo, paging);
 	}
+
+
 }
