@@ -37,18 +37,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 </script>
 
-<script>
-$(document).ready(function () {
-	
-	$('buttonDelete').on('click', function () {
-	
-	
-	})
-	
-})
-
-</script>
-
 
 <style>
 .fc-event-title-container {
@@ -60,17 +48,18 @@ $(document).ready(function () {
 	border: 0px;
 }
 
-
-
-
 .first {
     float: left;
+    margin: 90px 0 0 0;
+    
 }
 
-.second{
-    float: right;
-    height: 500px;
-    overflow: auto;
+.second {
+	float: right;
+	height: 700px;
+	overflow: auto;
+	margin: 90px 0 0 0;
+    
   
 }
 
@@ -81,8 +70,10 @@ $(document).ready(function () {
 
 
 <div class="container">
+<h2>마이 캘린더</h2>
+<hr>
 
-<div class="first" style ="width: 600px; height: 1200px;" id="calendar"></div>
+<div class="first" style ="width: 600px; height: 700px;" id="calendar"></div>
 
 <div class="second">
 
@@ -122,7 +113,7 @@ $(document).ready(function () {
 </c:if>
 
 <c:if test="${empty showList}">
-<div class="third>" style="width: 500px">
+<div class="third" style="width: 500px">
 <br><br><br><br><br><br>
 <h3>찜한 공연이 없습니다.</h3>
 <br>

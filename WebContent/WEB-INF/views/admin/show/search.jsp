@@ -21,7 +21,7 @@ table {
 
 <div class="container" style="text-align: center;">
 
-<h2>공연 목록 검색 결과</h2>
+<h3><strong>${keyword }</strong> 에 대한 공연 제목 검색 결과</h3>
 <button id="btnWrite" onclick="location.href='/admin/show/write';"style="margin: -25px 0 15px 0; float: right;">
 	작성하기
 </button>
