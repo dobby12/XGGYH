@@ -48,9 +48,16 @@ table {
 </style>
 
 <div class="container">
+<c:if test="${searchtype eq 'memid'}">
+<h3><strong>${keyword }</strong> 에 대한 회원 아이디 검색 결과</h3>
+</c:if>
+<c:if test="${searchtype eq 'memnick'}">
+<h3><strong>${keyword }</strong> 에 대한 회원 닉네임 검색 결과</h3>
+</c:if>
 
-<h2>회원정보 검색 결과</h2>
+
 <hr>
+
 
 <table class="table table-hover table-condensed">
 
@@ -58,6 +65,7 @@ table {
 <c:if test="${empty searchMemList }">
 	<h3>검색 결과가 없습니다.</h3>
 </c:if>
+
 
 <c:if test="${not empty searchMemList }">
 <thead>

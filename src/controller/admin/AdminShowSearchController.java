@@ -41,6 +41,8 @@ public class AdminShowSearchController extends HttpServlet {
 		
 		req.setAttribute("linkUrl", "/admin/show/search?keyword=" + req.getParameter("keyword"));
 		
+		req.setAttribute("keyword", req.getParameter("keyword"));
+		
 //		System.out.println("linkUrl : admin/show/search?searchtype=" + req.getParameter("searchtype") + "&keyword=" + req.getParameter("keyword"));
 		
 		if(adminService.authorAdmin((String)req.getSession().getAttribute("adminid"))) {

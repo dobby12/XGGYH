@@ -40,6 +40,9 @@ public class AdminMemSearchController extends HttpServlet {
 		
 		req.setAttribute("linkUrl", "/admin/mem/search?searchtype=" + req.getParameter("searchtype") + "&keyword=" + req.getParameter("keyword"));
 		
+		req.setAttribute("searchtype", req.getParameter("searchtype"));
+		req.setAttribute("keyword", req.getParameter("keyword"));
+		
 //		System.out.println("linkUrl : admin/mem/search?searchtype=" + req.getParameter("searchtype") + "&keyword=" + req.getParameter("keyword"));
 		
 		if(adminService.authorAdmin((String)req.getSession().getAttribute("adminid"))) {
