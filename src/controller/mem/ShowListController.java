@@ -124,6 +124,8 @@ public class ShowListController extends HttpServlet {
 		//종류 정보 MODEL값 전달
 		req.setAttribute("kindNo", kindNo);
 		
+		req.setAttribute("userNick", req.getSession().getAttribute("memnick"));
+		
 		// /show/list 라는 url을 "linkUrl" 이라는 이름을 가진 요소로 설정 (페이징을 위해 넣은 객체)
 		req.setAttribute("linkUrl", "/show?kindNo=" + kindNo);
 		

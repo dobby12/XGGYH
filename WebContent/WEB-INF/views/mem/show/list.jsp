@@ -84,6 +84,9 @@ $(document).ready(function(){
 
 <%-- 이 아래 있는 영역은 지태가 작성한 코드인데, 로그인한 사용자의 genreno에 해당하는 공연만 보여주는 곳입니다. 로그인 하지 않았을 땐 보여지지 않습니다. --%>
 <c:if test="${not empty loginIdGenreno }">
+
+<h3>${memnick}님을 위한 추천 공연</h3>
+
 <div class="main_list">
 	<div class="list_start">
 		<c:forEach items="${fiveShowList }" var="showList" varStatus="status">
@@ -107,7 +110,7 @@ $(document).ready(function(){
 </c:if>
 <%-- 이 위에 있는 영역은 지태가 작성한 코드인데, 로그인한 사용자의 genreno에 해당하는 공연만 보여주는 곳입니다. 로그인 하지 않았을 땐 보여지지 않습니다. --%>
 
-<%-- <h2> ${kindName} 게시판 </h2> --%>
+<h3>${kindName} 공연 정보</h3>
 <div class="main_list">
 		<div class="list_start">
 			<c:forEach items="${showList }" var="showList" varStatus="status">
