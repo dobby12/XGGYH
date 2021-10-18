@@ -111,7 +111,13 @@ $(document).ready(function(){
 			
 			<a href="<%=request.getContextPath() %>/show/detail?showNo=${showList.showNo }">
 			<c:set var="ran"><%= java.lang.Math.round(java.lang.Math.random() * 7+1) %></c:set>
+			<c:set var="ranAll"><%= java.lang.Math.round(java.lang.Math.random() * 31+1) %></c:set>
+			<c:if test="${not empty imgKind }">
 			<img class="poster" id="poster" src="/resources/file/show_poster/${imgKind }${ran }.jpg"/><br>
+			</c:if>
+			<c:if test="${empty imgKind }">
+			<img class="poster" id="poster" src="/resources/file/show_poster/${ranAll }.jpg"/><br>
+			</c:if>
 			${showList.showTitle} <br> ${showList.showDirector }
 			</a>
 			
