@@ -40,9 +40,6 @@ public class ReviewSearchController extends HttpServlet {
 		req.setAttribute("keyword", req.getParameter("keyword"));
 		
 		req.getRequestDispatcher("/WEB-INF/views/mem/review/search.jsp").forward(req, resp);
-		
-		req.setAttribute("searchtype", req.getParameter("searchtype"));
-		req.setAttribute("keyword", req.getParameter("keyword"));
 	
 	}
 }

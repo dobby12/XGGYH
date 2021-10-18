@@ -38,7 +38,6 @@
 		<c:if test="${review.fileNo ne 0 }">&nbsp;&nbsp;<span class="glyphicon glyphicon-floppy-disk
 		" aria-hidden="true"></span></c:if>
 	</td>
-<%-- 	<td>${review.memId }</td> --%>
 	<td>${memNick[status.index] }</td>
 	<td>${review.reviewHit }</td>
 	<td>${review.reviewDate }</td>

@@ -338,7 +338,9 @@ public class ReviewDaoImpl implements ReviewDao {
 
 		try {
 			ps = conn.prepareStatement(sql);
-			ps.setString(1, "%" + keyword + "%");
+			if( "reviewTitle".equals(searchtype) ) {
+				ps.setString(1, "%" + keyword + "%");
+			}
 			rs = ps.executeQuery();
 
 			while(rs.next()) {
