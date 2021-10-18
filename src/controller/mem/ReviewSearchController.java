@@ -24,9 +24,8 @@ public class ReviewSearchController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {		
 		
 		Paging paging = reviewService.getParameterPaging(req);
-		System.out.println("AdminMemberListController [GET] - " + paging);
+		System.out.println("ReviewSearchController [GET] - " + paging);
 
-		//전달 파라미터 searchtype, keyword를 통해서 searchMember객체를 반환
 		List<XReview> searchReviewList = reviewService.searchReviewList(req, paging);
 				
 		req.setAttribute("searchReviewList", searchReviewList);
@@ -37,7 +36,13 @@ public class ReviewSearchController extends HttpServlet {
 		
 		req.setAttribute("linkUrl", "/review/search?searchtype=" + req.getParameter("searchtype") + "&keyword=" + req.getParameter("keyword"));
 		
+		req.setAttribute("searchtype", req.getParameter("searchtype"));
+		req.setAttribute("keyword", req.getParameter("keyword"));
+		
 		req.getRequestDispatcher("/WEB-INF/views/mem/review/search.jsp").forward(req, resp);
+		
+		req.setAttribute("searchtype", req.getParameter("searchtype"));
+		req.setAttribute("keyword", req.getParameter("keyword"));
 	
 	}
 }

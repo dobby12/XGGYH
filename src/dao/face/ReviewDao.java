@@ -232,6 +232,8 @@ public interface ReviewDao {
 	public int selectCntAllByShowNo(Connection connection, int showNo);
 
 	public List<XReview> selectAllByShowNo(Connection conn, Paging paging, int showNo);
+
+	public List<XReview> selectReviewSearchByShowNo(Connection conne, String keyword, Paging paging);
 }
 
 
