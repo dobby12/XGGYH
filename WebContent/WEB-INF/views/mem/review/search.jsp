@@ -11,11 +11,29 @@ table {
 	text-align: center;
 }
 
+#searchtype {
+	border: solid 1px #d96459; 
+    border-radius: 5px;
+    height: 30px;
+    vertical-align: middle;
+    text-align: center;
+    width: 120px;
+    padding: 3px 5px 3px 10px;
+    -webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+}
+
+#searchtype:focus {
+    outline: none;
+}
+
+
 </style>
 
 <div class="container">
 
-<h3 class="pull-left">게시글 검색 결과</h3>
+<h3><strong>${keyword }</strong> 에 대한 검색 결과</h3>
 <hr>
 <br>
 
@@ -52,8 +70,16 @@ table {
 
 
 </table>
-
-<c:import url="/WEB-INF/views/layout/parameterPaging.jsp" />
+<div style="text-align: center; margin: 0 0 25px 0;" >
+<form action="<%=request.getContextPath() %>/review/search" method="get">
+	<select id="searchtype" name="searchtype">
+		<option id="search" class="search" value="reviewTitle">제목</option> 
+	</select>
+	<input type="text" id="keyword" name="keyword" placeholder="공연후기를 검색해보세요!"/>
+	<button>검색</button>
+</form>
 </div>
+</div>
+<c:import url="/WEB-INF/views/layout/parameterPaging.jsp" />
 
 <c:import url="/WEB-INF/views/layout/footer.jsp" />

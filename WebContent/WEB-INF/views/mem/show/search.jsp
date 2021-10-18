@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>공연의 모든 것, 공공연히</title>
 
 <!-- jQuery 2.2.4 -->
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
@@ -64,7 +64,7 @@
 
 <div class="container">
 
-<h2>'${keyword}' 검색 결과</h2>
+<h3><strong>${keyword }</strong> 에 대한 검색 결과</h3>
 <hr>
 
 <div class="main_list">
@@ -83,6 +83,7 @@
 		</div>
 </div>
 
+<br>
 <button onclick="history.back()">공연목록</button>
 </div>
 

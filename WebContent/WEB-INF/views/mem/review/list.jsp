@@ -52,12 +52,14 @@
 
 <div style="text-align: center; margin: 0 0 25px 0;" >
 <form action="<%=request.getContextPath() %>/review/search" method="get">
+<%--
 	<select id="searchtype" name="searchtype">
 		<option id="search" class="search" value="reviewTitle">제목</option> 
-		<option id="search" class="search" value="showNo">공연</option> 
+ 		<option id="search" class="search" value="showNo">공연</option>
 	</select>
-	<input type="text" id="keyword" name="keyword" placeholder="공연후기를 검색해보세요!"/>
-	<button>검색</button>
+--%>
+<input type="text" id="keyword" name="keyword" placeholder="공연후기를 검색해보세요!"/>
+<button>검색</button>
 </form>
 </div>
 
