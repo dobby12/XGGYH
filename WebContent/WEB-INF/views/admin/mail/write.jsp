@@ -16,7 +16,16 @@ table {
 }
 
 </style>
-
+<script>
+//특수문자(<, >, \) 입력 방지 네이버SE2에는 적용 안 되므로 글 내용 작성에는 영향 없음
+function characterCheck(obj){
+ 	var regExp = /[<>\\]/gi; 
+	if( regExp.test(obj.value) ){
+		alert("일부 특수문자는 입력하실수 없습니다.");
+		obj.value = obj.value.substring( 0 , obj.value.length - 1 );
+		}
+}
+</script>
 <script type="text/javascript">
 
 //<form>태그에 submit이 수행되면 스마트에디터에 작성한 내용을 <textarea>에 반영
