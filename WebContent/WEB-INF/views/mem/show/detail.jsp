@@ -22,6 +22,31 @@ $(document).ready(function(){
 
 })
 
+function imgSrc(){
+	var imgSrc;
+	var kind = '${showKindName}'
+	var i = Math.floor(Math.random()*8)+1
+	console.log(i)
+	if(kind == '연극') {
+		imgSrc = '/resources/file/show_poster/ac'+ i + '.jpg';
+	} else if(kind == '뮤지컬') {
+		imgSrc = '/resources/file/show_poster/mu'+ i + '.jpg';
+	} else if(kind == '콘서트') {
+		imgSrc = '/resources/file/show_poster/co'+ i + '.jpg';
+	} else if(kind == '오페라') {
+		imgSrc = '/resources/file/show_poster/op'+ i + '.jpg';
+	}
+	return imgSrc;
+}
+
+function putImg(){
+	document.getElementById('poster').src=imgSrc()
+}
+
+
+$(document).ready(function(){
+	putImg(); //first image
+})
 </script>
 
 
@@ -155,7 +180,7 @@ table {
 
 <!-- 포스터 -->
 <div class="photoEx">
-	<img class="poster" src='http://drive.google.com/uc?export=view&id=1UCDamPPObCPN9BY8Iz2WjsgiY8m80K2b' />
+		<img class="poster" id="poster" src="" />
 </div>
 
 <!-- 공연 정보 -->
@@ -191,7 +216,7 @@ table {
 
 <div id="content">
 <div id="detailInfo2">
-	<strong>${showScoreAvg }</strong>
+	<strong><span class="glyphicon glyphicon-star" aria-hidden="true"></span>${showScoreAvg }</strong>
 	<hr>
 	<br>
 	${showDetail.showContent }
@@ -206,7 +231,32 @@ table {
 		<td>${review.memId }</td>
 	</tr>
 	<tr>
-		<td colspan="2">${review.reviewContent }</td>
+		<td colspan="2">
+		<c:if test="${review.reviewScore == 1 }">
+			<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+		</c:if>
+		<c:if test="${review.reviewScore == 2 }">
+			<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+			<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+		</c:if>
+		<c:if test="${review.reviewScore == 3 }">
+			<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+			<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+			<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+		</c:if>
+		<c:if test="${review.reviewScore == 4 }">
+			<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+			<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+			<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+			<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+		</c:if>
+		<c:if test="${review.reviewScore == 5 }">
+			<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+			<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+			<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+			<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+			<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+		</c:if></td>
 	</tr>
 </table>
 </c:forEach>
