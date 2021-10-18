@@ -84,7 +84,7 @@
 
 </div>
 
-<button onclick="location.href='<%=request.getContextPath()%>/show?kindNo=${showDetail.kindNo}';">공연목록</button>
+<button onclick="history.back()">공연목록</button>
 
 <c:import url="/WEB-INF/views/layout/parameterPaging.jsp" />
 
