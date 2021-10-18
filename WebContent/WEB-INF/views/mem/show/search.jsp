@@ -42,8 +42,8 @@
 }
 
 .poster {
-    width: 250px;
-    height: 280px;
+    width: 240px;
+    height: 360px;
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -64,7 +64,7 @@
 
 <div class="container">
 
-<h1>게시글 검색 결과 ( ${keyword} )</h1>
+<h2>'${keyword}' 검색 결과</h2>
 <hr>
 
 <div class="main_list">
@@ -73,8 +73,9 @@
 			<div class="list_detail">
 			
 			<a href="<%=request.getContextPath() %>/show/detail?showNo=${showList.showNo }"> 
-			<img class="poster" src='http://drive.google.com/uc?export=view&id=1UCDamPPObCPN9BY8Iz2WjsgiY8m80K2b' /><br>
-			${showList.showTitle} <br> ${showList.showDirector }
+			<c:set var="ranAll"><%= java.lang.Math.round(java.lang.Math.random() * 31+1) %></c:set>
+			<img class="poster" id="poster" src="/resources/file/show_poster/${ranAll }.jpg"/><br>
+			${showList.showTitle} <br> ${showList.showStart }~${showList.showEnd }
 			</a>
 			
 			</div>
@@ -82,9 +83,9 @@
 		</div>
 </div>
 
+<button onclick="history.back()">공연목록</button>
 </div>
 
-<button onclick="history.back()">공연목록</button>
 
 <c:import url="/WEB-INF/views/layout/parameterPaging.jsp" />
 

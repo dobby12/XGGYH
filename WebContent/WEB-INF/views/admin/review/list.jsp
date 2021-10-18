@@ -23,7 +23,7 @@ table {
 <thead>
 <tr>
 	<th style="text-align: center; width: 8%">리뷰 번호</th>
-	<th style="text-align: center; width: 20%">제목</th>
+	<th style="text-align: center; width: 20%">공연 제목</th>
 	<th style="text-align: center; width: 39%">제목</th>
 	<th style="text-align: center; width: 13%">작성자</th>
 	<th style="text-align: center; width: 12%">작성 날짜</th>
