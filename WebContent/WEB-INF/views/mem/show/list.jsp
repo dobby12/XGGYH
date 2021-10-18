@@ -57,6 +57,38 @@
 
 </style>
 
+<script>
+function imgSrc(){
+    var imgSrc;
+    var kind = '${kindName}'
+    var i = Math.floor(Math.random()*8)+1
+    console.log(i)
+    if(kind == '연극') {
+        imgSrc = '/resources/file/show_poster/ac'+ i + '.jpg';
+    } else if(kind == '뮤지컬') {
+        imgSrc = '/resources/file/show_poster/mu'+ i + '.jpg';
+    } else if(kind == '콘서트') {
+        imgSrc = '/resources/file/show_poster/co'+ i + '.jpg';
+    } else if(kind == '오페라') {
+        imgSrc = '/resources/file/show_poster/op'+ i + '.jpg';
+    }
+    return imgSrc;
+}
+
+function putImg(){
+    document.getElementById('poster').src=imgSrc()
+}
+
+var imgList = [];
+$(document).ready(function(){
+	<c:forEach items="${showList}" var="item">
+// 	putImg();
+	imgList.push(imgSrc)
+	console.log(imgList)
+	</c:forEach>
+})
+</script>
+
 </head>
 <body>
 
@@ -72,14 +104,14 @@
 </c:if>
 
 <h2> ${kindName} 게시판 </h2>
-
 <div class="main_list">
 		<div class="list_start">
-			<c:forEach items="${showList }" var="showList">
+			<c:forEach items="${showList }" var="showList" varStatus="status">
 			<div class="list_detail">
 			
-			<a href="<%=request.getContextPath() %>/show/detail?showNo=${showList.showNo }"> 
-			<img class="poster" src='http://drive.google.com/uc?export=view&id=1UCDamPPObCPN9BY8Iz2WjsgiY8m80K2b' /><br>
+			<a href="<%=request.getContextPath() %>/show/detail?showNo=${showList.showNo }">
+			<c:set var="ran"><%= java.lang.Math.round(java.lang.Math.random() * 7+1) %></c:set>
+			<img class="poster" id="poster" src="/resources/file/show_poster/${imgKind }${ran }.jpg"/><br>
 			${showList.showTitle} <br> ${showList.showDirector }
 			</a>
 			

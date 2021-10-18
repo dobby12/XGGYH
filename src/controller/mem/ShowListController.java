@@ -61,6 +61,16 @@ public class ShowListController extends HttpServlet {
 		//종류 정보 MODEL값 전달
 		req.setAttribute("kindNo", kindNo);
 		
+		if(kindNo==1) {
+			req.setAttribute("imgKind", "mu");
+		} else if(kindNo==2) {
+			req.setAttribute("imgKind", "ac");
+		} else if(kindNo==3) {
+			req.setAttribute("imgKind", "co");
+		} else if(kindNo==4) {
+			req.setAttribute("imgKind", "op");
+		}
+		
 		// /show/list 라는 url을 "linkUrl" 이라는 이름을 가진 요소로 설정 (페이징을 위해 넣은 객체)
 		req.setAttribute("linkUrl", "/show?kindNo=" + kindNo);
 		
