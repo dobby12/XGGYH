@@ -37,9 +37,7 @@ public class ReviewWriteController extends HttpServlet {
 		
 		if(reviewService.getReviewOverlap(req)) {
 			
-			System.out.println("1공연 2리뷰 작성시도");
-			
-			resp.sendRedirect("/show/detail?showNo=" + req.getParameter("showNo"));
+			resp.sendRedirect("/show/detail?showNo=" + req.getParameter("showNo") + "&from=alert");
 			
 			return;
 		}

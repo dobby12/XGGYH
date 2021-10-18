@@ -5,6 +5,12 @@
 
 <c:import url="/WEB-INF/views/layout/header.jsp" />
 
+<script>
+if('${alert}'!=''){
+	alert('${alert}')
+	location.href='/show/detail?showNo=${showDetail.showNo}'
+}
+</script>
 
 <style type="text/css">
 .detailInfo {

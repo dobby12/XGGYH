@@ -59,6 +59,10 @@ public class ShowDetailController extends HttpServlet {
 		req.setAttribute("showScoreAvg", scoreAvg);
 		req.setAttribute("reviewList", reviewList);
 		
+		if("alert".equals(req.getParameter("from"))) {
+			req.setAttribute("alert", "이미 리뷰를 작성한 공연입니다.");
+		}
+		
 		//요청 보내기
 		req.getRequestDispatcher("/WEB-INF/views/mem/show/detail.jsp").forward(req, resp);
 	}
