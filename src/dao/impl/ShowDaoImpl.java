@@ -597,7 +597,7 @@ public class ShowDaoImpl implements ShowDao {
 
 		try {
 			ps = connection.prepareStatement(sql);
-			ps.setNString(1, keyword);
+			ps.setNString(1, "%" + keyword + "%");
 			ps.setInt(2, paging.getStartNo());
 			ps.setInt(3, paging.getEndNo());
 

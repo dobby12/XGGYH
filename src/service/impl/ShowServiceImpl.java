@@ -197,8 +197,8 @@ public class ShowServiceImpl implements ShowService {
 
 	@Override
 	public List<XShow> getSearchShowList(HttpServletRequest req, Paging paging) {
-		String showKind = (String)req.getParameter("kind").trim();
-		String keyword = (String)req.getParameter("keyword").trim();
+		String showKind = (String)req.getParameter("kindNo").trim();
+		String keyword = (String)req.getParameter("keyword");
 		
 		if(Integer.parseInt(showKind) == 0)
 		{

@@ -27,7 +27,10 @@ public class ShowSearchController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     	
     	String showTitle = req.getParameter("keyword");
-    	int showKind = Integer.parseInt(req.getParameter("kind").trim());
+    	int showKind = Integer.parseInt(req.getParameter("kindNo").trim());
+    	
+    	System.out.println("showKind : " + showKind);
+    	System.out.println("showTitle : " + showTitle);
     	
     	Paging paging = null;
     	List<XShow> searchShowList =null;
@@ -44,12 +47,11 @@ public class ShowSearchController extends HttpServlet {
     	}
     	
     	req.setAttribute("keyword", showTitle);
+    	req.setAttribute("showList", searchShowList);
+    	req.setAttribute("paging", paging);
     	
-    	if(paging != null && searchShowList != null)
-    	{
-    		req.setAttribute("showList", searchShowList);
-    		req.setAttribute("paging", paging);
-    	}
+    	for(XShow x : searchShowList)
+    		System.out.println("x");
     	
 		req.setCharacterEncoding("UTF-8");
 		req.setAttribute("linkUrl", "/show/search?kind=" + req.getParameter("kind") + "&keyword=" + req.getParameter("keyword"));

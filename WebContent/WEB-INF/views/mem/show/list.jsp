@@ -136,10 +136,9 @@ $(document).ready(function(){
 <form action="<%=request.getContextPath() %>/show/search" method="get">
 	<select class="searchtype" name="searchtype">
 		<option value="showTitle">제목</option>
-		<option value="hallName">공연장 이름</option>
 	</select>
 	<input type="text" id="keyword" name="keyword" placeholder="공연 제목을 입력하세요."/>
-	<input type="hidden" id="kind" name="kind" value="${kindNo}"/>
+	<input type="hidden" id="kindNo" name="kindNo" value="${kindNo}"/>
 	<button>검색</button>
 </form>
 </div>
