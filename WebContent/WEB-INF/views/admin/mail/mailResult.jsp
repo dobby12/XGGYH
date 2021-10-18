@@ -28,7 +28,7 @@ $(document).ready(function() {
 <br><br><br><br><br><br><br><br>
 <h3>메일 전송이 완료되었습니다</h3>
 <br><br><br>
-<a href="<%=request.getContextPath() %>/admin/mem/mail/list"><button id="btnBack">이전으로 돌아가기</button></a>
+<a href="<%=request.getContextPath() %>/admin/mail/mem/list"><button id="btnBack">이전으로 돌아가기</button></a>
 </div>
 
 <c:import url="/WEB-INF/views/layout/footer.jsp" />

@@ -52,7 +52,7 @@ public class AdminMailServiceImpl implements AdminMailService {
 				addArray[i] = new InternetAddress((String) mailList.get(i));
 			}
 			
-			msg.addRecipients(Message.RecipientType.TO, addArray);
+			msg.addRecipients(Message.RecipientType.BCC, addArray);
 			msg.setContent(message, "text/html; charset=EUC-KR");
 
 			Transport.send(msg);
