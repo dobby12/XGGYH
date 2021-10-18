@@ -43,7 +43,7 @@
 
 .poster {
     width: 240px;
-    height: 300px;
+    height: 360px;
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -98,9 +98,31 @@ $(document).ready(function(){
 <h1>공연 정보 게시판( ${kindName} )</h1>
 <hr>
 
-<c:if test="${ login ne null }">
-	<c:import url="/WEB-INF/views/mem/show/suggest.jsp" />
+<%-- 이 아래 있는 영역은 지태가 작성한 코드인데, 로그인한 사용자의 genreno에 해당하는 공연만 보여주는 곳입니다. 로그인 하지 않았을 땐 보여지지 않습니다. --%>
+<hr>
+<c:if test="${not empty loginIdGenreno }">
+<div class="main_list">
+	<div class="list_start">
+		<c:forEach items="${fiveShowList }" var="showList" varStatus="status">
+		<div class="list_detail">
+			<a href="<%=request.getContextPath() %>/show/detail?showNo=${showList.showNo }">
+			<c:set var="ran"><%= java.lang.Math.round(java.lang.Math.random() * 7+1) %></c:set>
+			<c:set var="ranAll"><%= java.lang.Math.round(java.lang.Math.random() * 31+1) %></c:set>
+			<c:if test="${not empty imgKind }">
+			<img class="poster" id="poster" src="/resources/file/show_poster/${imgKind }${ran }.jpg"/><br>
+			</c:if>
+			<c:if test="${empty imgKind }">
+			<img class="poster" id="poster" src="/resources/file/show_poster/${ranAll }.jpg"/><br>
+			</c:if>
+			${showList.showTitle} <br> ${showList.showDirector }
+			</a>
+		</div>
+		</c:forEach>
+	</div>
+</div>
 </c:if>
+<hr>
+<%-- 이 위에 있는 영역은 지태가 작성한 코드인데, 로그인한 사용자의 genreno에 해당하는 공연만 보여주는 곳입니다. 로그인 하지 않았을 땐 보여지지 않습니다. --%>
 
 <h2> ${kindName} 게시판 </h2>
 <div class="main_list">

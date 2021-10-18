@@ -213,5 +213,9 @@ public class ShowServiceImpl implements ShowService {
 		return showDao.selectShowSearchByMemgenre(JDBCTemplate.getConnection(), memInfo, kindNo, paging);
 	}
 
+	@Override
+	public List<XShow> getShowGenrenoList(int loginIdGenreno) {
+		return showDao.selectShowByGenreno(JDBCTemplate.getConnection(), loginIdGenreno);
+	}
 
 }

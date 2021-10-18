@@ -1,6 +1,8 @@
 package controller.mem;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -9,8 +11,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dto.XMem;
 import dto.XShow;
+import service.face.MemberService;
 import service.face.ShowService;
+import service.impl.MemberServiceImpl;
 import service.impl.ShowServiceImpl;
 import util.Paging;
 
@@ -23,6 +28,8 @@ public class ShowListController extends HttpServlet {
 	
 	//ShowListController에서만 사용할 ShowService 객체
 	private ShowService showService = new ShowServiceImpl();
+	
+	private MemberService memberService = new MemberServiceImpl();
 	
 	@Override
 		protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -62,6 +69,41 @@ public class ShowListController extends HttpServlet {
 			req.setAttribute("kindName", kindName);
 		}
 		
+		String loginId = (String)req.getSession().getAttribute("memid");
+		
+		if(loginId!=null) {
+		
+			System.out.println("로그인 되어 있는 id : " + loginId);
+			
+			XMem mem = new XMem();
+			
+			mem.setMemId(loginId);
+					
+			int loginIdGenreno = memberService.getMem(mem).getGenreNo();
+			
+			System.out.println("로그인 되어 있는 id가 선택한 genreno : " + loginIdGenreno);
+			
+			req.setAttribute("loginIdGenreno", loginIdGenreno);
+			
+			List<XShow> fiveShowList = showService.getShowGenrenoList(loginIdGenreno);
+			
+			Collections.shuffle(fiveShowList);
+
+			if(fiveShowList.size()>5) {
+				List<XShow> fiveShowListCut = new ArrayList<>();				
+				fiveShowListCut.add(fiveShowList.get(1));
+				fiveShowListCut.add(fiveShowList.get(2));
+				fiveShowListCut.add(fiveShowList.get(3));
+				fiveShowListCut.add(fiveShowList.get(4));
+				fiveShowListCut.add(fiveShowList.get(5));
+				req.setAttribute("fiveShowList", fiveShowListCut);								
+			} else {
+				req.setAttribute("fiveShowList", fiveShowList);				
+			}
+			
+			
+			
+		}
 		//XShow 테이블의 전체 정보를 가진 showList 객체를 "showList"라는 이름을 가진 요소로 설정
 		req.setAttribute("showList", showList);
 		
@@ -73,6 +115,7 @@ public class ShowListController extends HttpServlet {
 		
 		// /show/list 라는 url을 "linkUrl" 이라는 이름을 가진 요소로 설정 (페이징을 위해 넣은 객체)
 		req.setAttribute("linkUrl", "/show?kindNo=" + kindNo);
+		
 		
 		//요청 보내기
 		req.getRequestDispatcher("/WEB-INF/views/mem/show/list.jsp").forward(req, resp);

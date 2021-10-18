@@ -634,4 +634,50 @@ public class ShowDaoImpl implements ShowDao {
 
 		return showList;
 	}
+	
+	
+	@Override
+	public List<XShow> selectShowByGenreno(Connection connection, int loginIdGenreno) {
+
+		String sql = "SELECT show_no, file_no, admin_id, kind_no, genre_no, hall_no, show_title, show_content, show_date, show_age, show_director, show_actor, show_start, show_end FROM XShow"
+				+ " WHERE GENRE_NO=?";
+		List<XShow> showList = new ArrayList<>();
+
+		try {
+			ps = connection.prepareStatement(sql);
+			ps.setInt(1, loginIdGenreno);
+
+			rs = ps.executeQuery();
+
+			while (rs.next()) {
+				XShow showInfo = new XShow();
+
+				showInfo.setShowNo(rs.getInt("show_no"));
+				showInfo.setFileNo(rs.getInt("file_no"));
+				showInfo.setAdminId(rs.getString("admin_id"));
+				showInfo.setKindNo(rs.getInt("kind_no"));
+				showInfo.setGenreNo(rs.getInt("genre_no"));
+				showInfo.setHallNo(rs.getInt("hall_no"));
+				showInfo.setShowTitle(rs.getString("show_title"));
+				showInfo.setShowContent(rs.getString("show_content"));
+				showInfo.setShowDate(rs.getDate("show_date"));
+				showInfo.setShowAge(rs.getString("show_age"));
+				showInfo.setShowDirector(rs.getString("show_director"));
+				showInfo.setShowActor(rs.getString("show_actor"));
+				showInfo.setShowStart(rs.getDate("show_start"));
+				showInfo.setShowEnd(rs.getDate("show_end"));
+
+				// 리스트에 결과값 저장
+				showList.add(showInfo);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+		}
+
+		return showList;
+	}
 }
