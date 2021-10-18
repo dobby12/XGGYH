@@ -6,11 +6,12 @@
 
 <div class="container">
 
-<h1>ADMIN MAIN + LOGIN</h1>
+<a href="<%=request.getContextPath() %>/admin"><img id="logo_header" class="logoA" src="/resources/file/logo_square.png" height: /></a>
+<h1>관리자 로그인</h1>
 
 
 <c:if test="${empty adminlogin || not adminlogin }">
-로그인 상태 아님
+로그인이 필요한 페이지입니다.
 
 <br>
 
