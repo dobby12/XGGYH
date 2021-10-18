@@ -120,10 +120,11 @@ button:hover:before,button:hover:after {
 	<div class="input-form col-md-6 mx-auto">
 
 <%-- 로그인 실패를 전달 받았을 때 --%>
-<%-- <c:if test="${loginfail }">
-	@@@로그인에 실패하였습니다. 아이디와 패스워드를 확인하세요.
-</c:if> --%>
-
+<script>
+<c:if test="${loginfail }">
+	alert("아이디와 비밀번호를 다시 확인해 주세요.")
+</c:if>
+</script>
 <%-- 로그인이 아닐 때 --%>
 <c:if test="${empty login }">
 <a href="<%=request.getContextPath() %>/main"><img id="logo_header" class="logoA" src="/resources/file/logo_line.png" /></a>

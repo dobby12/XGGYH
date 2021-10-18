@@ -59,7 +59,16 @@ public class ShowListController extends HttpServlet {
 			//showService에서 XShow 테이블의 정보를 가진 리스트를 받아옴
 			paging = showService.getPaging(req);
 			showList = showService.getShowList(paging);
-			req.setAttribute("kindName", "전체 페이지");
+			List<String> welcomeMsg = new ArrayList<>();
+			welcomeMsg.add("공연의 모든 것");
+			welcomeMsg.add("이번 주는 이런 공연 어떠세요");
+			welcomeMsg.add("좋은 사람과 좋은 공연");
+			welcomeMsg.add("굿모닝, 굿애프터눈, 굿나잇");
+			welcomeMsg.add("쉬어가는 날");
+			welcomeMsg.add("금강산도 식후공연");
+			welcomeMsg.add("봄, 여름, 가을, 겨울");
+			Collections.shuffle(welcomeMsg);
+			req.setAttribute("kindName", welcomeMsg.get(1)+", 공공연히");
 		}
 		else
 		{

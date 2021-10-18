@@ -107,7 +107,7 @@ $(document).ready(function(){
 </c:if>
 <%-- 이 위에 있는 영역은 지태가 작성한 코드인데, 로그인한 사용자의 genreno에 해당하는 공연만 보여주는 곳입니다. 로그인 하지 않았을 땐 보여지지 않습니다. --%>
 
-<h2> ${kindName} 게시판 </h2>
+<%-- <h2> ${kindName} 게시판 </h2> --%>
 <div class="main_list">
 		<div class="list_start">
 			<c:forEach items="${showList }" var="showList" varStatus="status">
