@@ -8,6 +8,14 @@
 <script>
 //8b6ff5cc45fa05d18d5d5a27810f38f8
 
+$(document).ready(function(){
+	
+	$("#btnBack").click(){
+		
+		history.go(-1);
+	}
+})
+
 </script>
 
 <style type="text/css">
@@ -16,13 +24,25 @@
 	width: 15%;
 }
 
+#info {
+	width: 600px;
+	height: 400px;
+	float: right;
+	margin: 0 auto;
+}
+
+table {
+	width: 100%;
+	height: 100%;
+}
+
 </style>
 
 <div class="container">
 
-<h1>공연장 정보 페이지</h1>
+<h2>공연장 정보 페이지</h2>
 <hr>
-
+<div id="info">
 <table class="table table-bordered table-condensed">
 
 <tr>
@@ -51,18 +71,15 @@
 </tr>
 
 </table>
-
+</div>
 
 <%-- 지도 영역입니다. 좋은 자리 찾아서 넣어주세요. --%>
-<div id="map" style="width:700px;height:400px; float: left;"></div>
+<div id="map" style="width:500px; height:400px; float: left;"></div>
 
-<div style="width: 400px; height: 400px; float: right;">
-	<p><strong>공연장 오시는 길</strong></p>
-	<br><br>
-	<p>${hallInfo.hallNavigation }</p>
-</div>
+<div style="width: 100%; height: 30px; background: #fff; clear: both;"></div>
+<button class="btnBack" id="btnBack">뒤로 가기</button>
 
-</div>
+</div><!-- .container end -->
 <%-- 카카오 지도 api --%>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8b6ff5cc45fa05d18d5d5a27810f38f8&libraries=services,clusterer,drawing"></script>
 
@@ -106,3 +123,5 @@ geocoder.addressSearch('${hallInfo.hallAddress }', function(result, status) {
 
 </script>
 <%-- 카카오 지도 api --%>
+
+<c:import url="/WEB-INF/views/layout/footer.jsp" />
