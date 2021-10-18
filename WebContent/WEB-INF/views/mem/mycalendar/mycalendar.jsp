@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <c:forEach items="${showList }" var="show">
 </tbody>
 	<tr>
-		<td>${show.showTitle }</td>
+		<td><a href="<%=request.getContextPath() %>/show/detail?showNo=${show.showNo }">${show.showTitle }</a></td>
 		<td>${show.showStart } ~ ${show.showEnd }</td>
 		
 		<td>
