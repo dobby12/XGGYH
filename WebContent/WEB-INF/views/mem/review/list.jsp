@@ -19,8 +19,8 @@
 
 <thead>
 <tr>
-	<th style="width: 10%">번호</th>
-	<th style="width: 20%">공연제목</th>
+	<th style="width: 10%">리뷰 번호</th>
+	<th style="width: 20%">공연 제목</th>
 	<th style="width: 40%">제목</th>
 	<th style="width: 10%">작성자</th>
 	<th style="width: 10%">조회수</th>
@@ -38,7 +38,8 @@
 		<c:if test="${review.fileNo ne 0 }">&nbsp;&nbsp;<span class="glyphicon glyphicon-floppy-disk
 		" aria-hidden="true"></span></c:if>
 	</td>
-	<td>${review.memId }</td>
+<%-- 	<td>${review.memId }</td> --%>
+	<td>${memNick[status.index] }</td>
 	<td>${review.reviewHit }</td>
 	<td>${review.reviewDate }</td>
 </tr>
@@ -53,7 +54,8 @@
 <div style="text-align: center; margin: 0 0 25px 0;" >
 <form action="<%=request.getContextPath() %>/review/search" method="get">
 	<select id="searchtype" name="searchtype">
-		<option value="reviewTitle">제목</option> 
+		<option id="search" class="search" value="reviewTitle">제목</option> 
+		<option id="search" class="search" value="showNo">공연</option> 
 	</select>
 	<input type="text" id="keyword" name="keyword" placeholder="공연후기를 검색해보세요!"/>
 	<button>검색</button>

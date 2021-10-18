@@ -173,7 +173,7 @@ table {
 
 <div class="container">
 
- 	<h2>공연 상세 정보( ${showDetail.showTitle} )</h2>
+ 	<h2>${showDetail.showTitle}</h2>
 	<hr>
 
 <div id="info"><!-- 폭 줄여주는 용도 -->
@@ -186,9 +186,6 @@ table {
 <!-- 공연 정보 -->
 <div id="detailInfo1">
 	<table>
-		<tr>
-			<td>공연 번호 : </td><td style="text-align: left;">${showDetail.showNo}</td>
-		</tr>
 		<tr>
 			<td>카테고리 : </td><td style="text-align: left;">${showKindName}</td>				
 		</tr>
@@ -216,7 +213,7 @@ table {
 
 <div id="content">
 <div id="detailInfo2">
-	<strong><span class="glyphicon glyphicon-star" aria-hidden="true"></span>${showScoreAvg }</strong>
+	<strong><span class="glyphicon glyphicon-star" aria-hidden="true"></span>&nbsp;${showScoreAvg }</strong>
 	<hr>
 	<br>
 	${showDetail.showContent }
@@ -262,7 +259,8 @@ table {
 </c:forEach>
 
 </div><!-- #reviews end -->
-<div id="link"><a href="<%=request.getContextPath()%>/review/list">공연 리뷰 더보기</a></div>
+
+<div id="link"><a href="<%=request.getContextPath()%>/review/search?searchtype=showNo&keyword=${showDetail.showNo }">공연 리뷰 더보기</a></div>
 
 </div><!-- #content end -->
 

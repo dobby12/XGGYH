@@ -58,7 +58,11 @@ public class ReviewServiceImpl implements ReviewService {
 		String searchtype = (String)req.getParameter("searchtype");
 		String keyword = (String)req.getParameter("keyword");
 
-		return reviewDao.selectReviewSearchByReviewTitle(JDBCTemplate.getConnection(), keyword, paging);
+		if("showNo".equals(searchtype)) {
+			return reviewDao.selectReviewSearchByShowNo(JDBCTemplate.getConnection(), keyword, paging);
+		} else {
+			return reviewDao.selectReviewSearchByReviewTitle(JDBCTemplate.getConnection(), keyword, paging);
+		}
 	}
 	
 	@Override

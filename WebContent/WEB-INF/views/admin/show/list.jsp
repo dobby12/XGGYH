@@ -32,7 +32,7 @@ table {
 <table style="clear: both;" class="table table-hover table-condensed">
 <thead>
 <tr>
-	<th style="text-align: center; width: 10%">공연번호</th>
+	<th style="text-align: center; width: 10%">공연 번호</th>
 	<th style="text-align: center; width: 15%">관리자</th>
 	<th style="text-align: center; width: 50%">제목</th>
 	<th style="text-align: center; width: 25%">공연 기간</th>

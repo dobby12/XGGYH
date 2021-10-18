@@ -121,7 +121,7 @@ button:hover:before,button:hover:after {
 
 <%-- 로그인 실패를 전달 받았을 때 --%>
 <%-- <c:if test="${loginfail }">
-@@@로그인에 실패하였습니다. 아이디와 패스워드를 확인하세요.
+	@@@로그인에 실패하였습니다. 아이디와 패스워드를 확인하세요.
 </c:if> --%>
 
 <%-- 로그인이 아닐 때 --%>
@@ -141,7 +141,7 @@ button:hover:before,button:hover:after {
 		<input type="password" class="form-control" id="mempw" name="mempw" placeholder="PASSWORD" />
 	</div>
 	
-	<div>
+	<div style="margin: 0 0 7px 0;">
 	<button style="width: 300px; height: 45px; margin: 0 auto;">로그인</button>
 	</div>
 	<%-- 카카오 로그인 --%>
@@ -150,7 +150,7 @@ button:hover:before,button:hover:after {
 	</div>
 	
 	<%-- 아이디 비밀번호 찾기 --%>
-	<div class="find-join">
+	<div class="find-join" style="margin: 15px 0 0 0;">
 	<a href="<%=request.getContextPath() %>/member/find"><span style="color:#888;">아이디 찾기</span></a>ㅣ
 	<a href="<%=request.getContextPath() %>/member/find"><span style="color:#888;">비밀번호 찾기</span></a>ㅣ
 	<a href="<%=request.getContextPath() %>/join"><span style="color:#888;">회원가입</span></a>
