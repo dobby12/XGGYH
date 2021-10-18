@@ -8,7 +8,7 @@
 <style>
 
 .container {
-	width: 20%
+	width: 30%
 }
 
 </style>

@@ -30,12 +30,11 @@
 }
 
 .poster {
-    width: 250px;
-    height: 280px;
+    width: 240px;
+    height: 360px;
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    border:1px solid black;
 }
 
 </style>
@@ -51,7 +50,7 @@
 			<div class="list_detail">
 			
 			<a href="<%=request.getContextPath() %>/show/detail?showNo=${show.showNo }"> 
-			<img class="poster" src='http://drive.google.com/uc?export=view&id=1UCDamPPObCPN9BY8Iz2WjsgiY8m80K2b' /><br>
+			<img id="poster" class="poster" src="/resources/file/show_poster/${show.fileNo }.jpg" /><br>
 			<br>
 			${show.showTitle}
 			<br></a>
