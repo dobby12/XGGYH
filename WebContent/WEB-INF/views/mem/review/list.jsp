@@ -38,7 +38,8 @@
 		<c:if test="${review.fileNo ne 0 }">&nbsp;&nbsp;<span class="glyphicon glyphicon-floppy-disk
 		" aria-hidden="true"></span></c:if>
 	</td>
-	<td>${review.memId }</td>
+<%-- 	<td>${review.memId }</td> --%>
+	<td>${memNick[status.index] }</td>
 	<td>${review.reviewHit }</td>
 	<td>${review.reviewDate }</td>
 </tr>
@@ -52,7 +53,7 @@
 
 <div style="text-align: center; margin: 0 0 25px 0;" >
 <form action="<%=request.getContextPath() %>/review/search" method="get">
-	<select id="searchtype" name="searchtype">
+	<select class="searchtype" name="searchtype">
 		<option value="reviewTitle">제목</option> 
 	</select>
 	<input type="text" id="keyword" name="keyword" placeholder="공연후기를 검색해보세요!"/>

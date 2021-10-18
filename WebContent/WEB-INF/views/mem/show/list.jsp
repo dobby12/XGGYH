@@ -134,7 +134,7 @@ $(document).ready(function(){
 
 <div style="text-align: center; margin: 25px 0 0 0;" >
 <form action="<%=request.getContextPath() %>/show/search" method="get">
-	<select id="searchtype" name="searchtype">
+	<select class="searchtype" name="searchtype">
 		<option value="showTitle">제목</option>
 		<option value="hallName">공연장 이름</option>
 	</select>

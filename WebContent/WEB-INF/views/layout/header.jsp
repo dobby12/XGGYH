@@ -364,7 +364,27 @@ input[type=button]:hover:before, input[type=button]:hover:after {
    transition:800ms ease all;
 }
 
- 
+/* ------------------------------------------------ */
+/* dropdown */
+
+
+.searchtype {
+	border: solid 1px #d96459; 
+    border-radius: 5px;
+    height: 30px;
+    vertical-align: middle;
+    text-align: center;
+    width: auto;
+    padding: 3px 10px 3px 10px;
+    -webkit-appearance: none;                                 /* 네이티브 외형 감추기 */
+	-moz-appearance: none;
+	appearance: none;
+}
+
+.searchtype:focus {
+    outline: none;
+}
+
 /* ------------------------------------------------ */
 /* body */
 
@@ -453,9 +473,9 @@ textarea:focus, input:focus {
 	</c:if>
 	<li id="search" style="float: right;">
 		<form action="<%=request.getContextPath() %>/show/search" method="get">
-			<input type="text" id="keyword" name="keyword" placeholder="공연 제목을 검색하세요." style="margin: -6px 0 0 0; border: 1px solid #f2f2f2;"/>
+			<input type="text" id="keyword" name="keyword" placeholder="공연 제목을 검색하세요." style="margin: -6px 0 0 0; border: 1px solid #f2f2f2;" autocomplete="off"/>
 			<input type="hidden" id="kind" name="kind" value="${kindNo=0}"/><!-- !!!전체 검색을 하려면 kindNo=0으로 해야하나요? -->
-			<button class="btnBack" style="margin: 15px 0 0 -5px;"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+			<button class="btnBack" style="margin: 13px 0 0 -5px;"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
 		</form>
 	</li>
 	

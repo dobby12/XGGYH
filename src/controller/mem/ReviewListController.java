@@ -34,7 +34,14 @@ public class ReviewListController extends HttpServlet {
 			showTitle.add(reviewService.getShowTitle(reviewList.get(i)));
 		}
 		
+		ArrayList<String> memNick = new ArrayList<>();
+		for( int i=0 ; i<reviewList.size() ; i++ ) {
+			memNick.add(reviewService.getMemNick(reviewList.get(i)));
+		}
+		
 		req.setAttribute("showTitle", showTitle);
+		
+		req.setAttribute("memNick", memNick);
 		
 		req.setAttribute("reviewList", reviewList);
 		

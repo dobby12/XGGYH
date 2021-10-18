@@ -348,6 +348,28 @@ button.btnSubmit:hover:before, button.btnSubmit:hover:after {
 }
 
 /* ------------------------------------------------ */
+/* dropdown */
+
+
+.searchtype {
+	border: solid 1px #d96459; 
+    border-radius: 5px;
+    height: 30px;
+    vertical-align: middle;
+    text-align: center;
+    width: auto;
+    padding: 3px 10px 3px 10px;
+    -webkit-appearance: none;                                 /* 네이티브 외형 감추기 */
+	-moz-appearance: none;
+	appearance: none;
+}
+
+.searchtype:focus {
+    outline: none;
+}
+
+
+/* ------------------------------------------------ */
 /* body */
 
 .container {
