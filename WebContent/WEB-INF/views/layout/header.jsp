@@ -144,7 +144,7 @@ ul.nav > li > a {
 	
 	/* 내부여백 */
 	/* 	-> a태그의 내부여백은 링크 클릭 가능한 영역 */
-	padding: 10px 15px;
+	padding: 10px 10px;
 	
 	/* 외부여백 */
 	/* 	-> a태그의 외부여백은 링크 클릭 불가능한 영역 */
@@ -154,6 +154,9 @@ ul.nav > li > a {
 
 }
 
+#logoA > a {
+	padding: 10px 15px;
+}
 
 /* 서브 메뉴 */
 ul.nav > li > ul {
@@ -433,14 +436,14 @@ textarea:focus, input:focus {
 <div id="header" class="fixed-top">
 <ul class="nav">
 	<li id="logoA"><a href="<%=request.getContextPath() %>/main"><img id="logo_header" src="/resources/file/logo_line.png" /></a></li>
-	<li><a href="<%=request.getContextPath() %>/show?kindNo=0">공연정보</a></li>
 	<li><a href="<%=request.getContextPath() %>/show?kindNo=1">뮤지컬</a></li>
 	<li><a href="<%=request.getContextPath() %>/show?kindNo=4">오페라</a></li>
 	<li><a href="<%=request.getContextPath() %>/show?kindNo=3">콘서트</a></li>
 	<li><a href="<%=request.getContextPath() %>/show?kindNo=2">연극</a></li>
-	<li><a href="<%=request.getContextPath() %>/mypage/myjjim">내가 찜한 공연</a></li>
 	<li><a href="<%=request.getContextPath() %>/review/list">리뷰 게시판</a>
-
+	<li><a href="<%=request.getContextPath() %>/mycalendar">마이 캘린더</a></li>
+	
+	
 	<c:if test="${not empty login }">
 		<li id="outlog" style="float: right;"><a href="<%=request.getContextPath() %>/logout"><span class="glyphicon glyphicon-off" aria-hidden="true"></span></a></li>		
 		<li id="pagemy" style="float: right;"><a href="<%=request.getContextPath() %>/mypage">마이페이지</a></li>
@@ -448,6 +451,14 @@ textarea:focus, input:focus {
 	<c:if test="${empty login }">
 		<li id="inlog" style="float: right;"><a href="<%=request.getContextPath() %>/login">로그인</a></li>
 	</c:if>
+	<li id="search" style="float: right;">
+		<form action="<%=request.getContextPath() %>/show/search" method="get">
+			<input type="text" id="keyword" name="keyword" placeholder="공연 제목을 검색하세요." style="margin: -6px 0 0 0; border: 1px solid #f2f2f2;"/>
+			<input type="hidden" id="kind" name="kind" value="${kindNo=0}"/><!-- !!!전체 검색을 하려면 kindNo=0으로 해야하나요? -->
+			<button class="btnBack" style="margin: 15px 0 0 -5px;"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+		</form>
+	</li>
+	
 </ul>
 </div>
 
