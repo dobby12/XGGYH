@@ -88,6 +88,7 @@ table {
 	height: 400px;
 }
 
+
 #content {
 	width: 100%;
 	height: 250px;
@@ -110,9 +111,26 @@ table {
 
 #reviews {
 	width: 350px;
-	height: 205px;
+	height: 180px;
 	overflow: auto;
 	float: right;
+}
+
+#rev {
+	width: 90%;
+	height: 50px;
+	background: #fff;
+}
+
+#link {
+	width: 350px;
+	height: 20px;
+	margin-top: 5px;
+	float: right;
+}
+
+#link > a {
+	color: #d96459;
 }
 
 .photoEx {
@@ -144,28 +162,28 @@ table {
 <div id="detailInfo1">
 	<table>
 		<tr>
-			<td>공연 번호 : </td><td>${showDetail.showNo}</td>
+			<td>공연 번호 : </td><td style="text-align: left;">${showDetail.showNo}</td>
 		</tr>
 		<tr>
-			<td>카테고리 : </td><td>${showKindName}</td>				
+			<td>카테고리 : </td><td style="text-align: left;">${showKindName}</td>				
 		</tr>
 		<tr>
-			<td>장르 : </td><td>${showGenreName}</td> 		
+			<td>장르 : </td><td style="text-align: left;">${showGenreName}</td> 		
 		</tr>
 		<tr>
-			<td>공연장 : </td><td><a href="<%=request.getContextPath() %>/hall/detail?hallNo=${showDetail.hallNo }">${showHallName} </a></td>
+			<td>공연장 : </td><td style="text-align: left;"><a href="<%=request.getContextPath() %>/hall/detail?hallNo=${showDetail.hallNo }" style="color: #d96459;">${showHallName} </a></td>
 		</tr>
 		<tr>
-			<td>연령 제한 : </td><td>${showDetail.showAge }</td>
+			<td>연령 제한 : </td><td style="text-align: left;">${showDetail.showAge }</td>
 		</tr>
 		<tr>
-			<td>감독 : </td><td>${showDetail.showDirector }</td>
+			<td>감독 : </td><td style="text-align: left;">${showDetail.showDirector }</td>
 		</tr>
 		<tr>
-			<td>출연 배우 : </td><td>${showDetail.showActor }</td>
+			<td>출연 배우 : </td><td style="text-align: left;">${showDetail.showActor }</td>
 		</tr>
 		<tr>
-			<td>공연 기간 : </td><td>${showDetail.showStart } ~ ${showDetail.showEnd }</td>
+			<td>공연 기간 : </td><td style="text-align: left;">${showDetail.showStart } ~ ${showDetail.showEnd }</td>
 		</tr>
 	</table>
 </div>
@@ -182,6 +200,7 @@ table {
 
 <div id="reviews">
 <c:forEach items="${reviewList}" var="review">
+<table id="rev" class="table table-condensed">
 	<tr>
 		<td><a href="<%=request.getContextPath() %>/review/detail?reviewno=${review.reviewNo }">${review.reviewTitle }</a></td>
 		<td>${review.memId }</td>
@@ -189,9 +208,11 @@ table {
 	<tr>
 		<td colspan="2">${review.reviewContent }</td>
 	</tr>
+</table>
 </c:forEach>
-<a href="<%=request.getContextPath()%>/review/list">공연 리뷰 더보기</a>
+
 </div><!-- #reviews end -->
+<div id="link"><a href="<%=request.getContextPath()%>/review/list">공연 리뷰 더보기</a></div>
 
 </div><!-- #content end -->
 
