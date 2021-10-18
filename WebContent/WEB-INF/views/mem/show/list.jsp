@@ -144,14 +144,6 @@ $(document).ready(function(){
 </form>
 </div>
 
-
-
-<c:if test="${param.kindNo ne 0}">
-<a href="<%=request.getContextPath() %>/show/memgenre?suggestkind=${kindNo}">asdasd</a>
-</c:if>
-
-
-
 <c:import url="/WEB-INF/views/layout/parameterPaging.jsp" />
 
 <c:import url="/WEB-INF/views/layout/footer.jsp" />
