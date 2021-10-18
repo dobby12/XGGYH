@@ -52,7 +52,6 @@ public class AdminMailMemWriteController extends HttpServlet {
 
 		req.setCharacterEncoding("utf-8");
 
-		String memMail = (String)req.getParameter("memmail");
 		String mailTitle = req.getParameter("mailtitle");
 		String mailContent = req.getParameter("mailcontent");
 		System.out.println("-------------------------------------------");		
@@ -75,6 +74,8 @@ public class AdminMailMemWriteController extends HttpServlet {
 //		System.out.println("memmail");
 
 		adminMailService.sendMail(mailList, mailTitle, mailContent);
+		
+		req.getRequestDispatcher("/WEB-INF/views/admin/mail/mailResult.jsp").forward(req, resp);
 
 	}
 

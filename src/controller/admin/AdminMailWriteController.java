@@ -45,6 +45,8 @@ public class AdminMailWriteController extends HttpServlet {
 		
 		adminMailService.sendMail(memMail, mailTitle, mailContent);
 		
+		req.getRequestDispatcher("/WEB-INF/views/admin/mail/mailResult.jsp").forward(req, resp);
+		
 	
 	}
 

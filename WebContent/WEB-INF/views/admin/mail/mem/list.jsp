@@ -13,8 +13,24 @@ table {
 
 #btnFloat {
 	float: left;
-	margin: 0 0 0 400px;
 	
+}
+
+#searchtype {
+	border: solid 1px #d96459; 
+    border-radius: 5px;
+    height: 30px;
+    vertical-align: middle;
+    text-align: center;
+    width: 120px;
+    padding: 3px 5px 3px 10px;
+    -webkit-appearance: none;                                 /* 네이티브 외형 감추기 */
+	-moz-appearance: none;
+	appearance: none;
+}
+
+#searchtype:focus {
+    outline: none;
 }
 
 </style>
@@ -81,14 +97,14 @@ function getCheckboxValue(event)  {
 </tbody>
 
 </table>
-</div>
-
 <div class="btnZone">
 <form action="<%=request.getContextPath() %>/admin/mail/mem/list" method="post">
 <input type="hidden" id="marshalResult" name="marshalResult" value="${marshalResult }"/>
-<button id="btnFloat">메일 보내기</button>
+<button id="btnFloat" class="btnDelete">메일 보내기</button>
 </form>
 </div>
+</div>
+
 
 <c:import url="/WEB-INF/views/layout/paging.jsp" />
 

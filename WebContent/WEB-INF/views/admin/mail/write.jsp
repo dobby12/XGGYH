@@ -74,7 +74,7 @@ $(document).ready(function() {
 			</tr>
 			<tr>
 				<td class="item">받는 이</td>
-				<td td style="font-weight: bold;"><input type="text" name="memmail" autocomplete="off" style="width:100%;"/></td>
+				<td style="font-weight: bold;"><input type="text" name="memmail" autocomplete="off" style="width:100%;"/></td>
 			</tr>
 			<tr>
 				<td colspan="2"><input type="text" name="mailtitle" placeholder="제목" style="width:100%;" /></td>
