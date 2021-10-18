@@ -42,12 +42,8 @@ $(document).ready(function () {
 	
 	$('buttonDelete').on('click', function () {
 	
-		
-	
 	
 	})
-	
-	
 	
 })
 
@@ -65,6 +61,8 @@ $(document).ready(function () {
 }
 
 
+
+
 .first {
     float: left;
 }
@@ -75,7 +73,6 @@ $(document).ready(function () {
     overflow: auto;
   
 }
-
 
 
 </style>
@@ -89,10 +86,11 @@ $(document).ready(function () {
 
 <div class="second">
 
+
+<c:if test="${not empty showList }">
 <h3>내가 찜한 공연</h3>
 <br>
 <table class="table table-hover table-condensed table-bordered" style="width: 500px;">
-
 <thead>
 	<tr>
 		<td>공연 제목</td>
@@ -114,9 +112,25 @@ $(document).ready(function () {
 		
 	</tr>
 </tbody>
+
+
+
 </c:forEach>
 
 </table>
+<c:import url="/WEB-INF/views/layout/parameterPaging.jsp" />
+</c:if>
+
+<c:if test="${empty showList}">
+<div class="third>" style="width: 500px">
+<br><br><br><br><br><br>
+<h3>찜한 공연이 없습니다.</h3>
+<br>
+<a href="<%=request.getContextPath() %>/main"><button class="btnSubmit">공연 찜하러 가기</button></a>
+
+</div>
+</c:if>
+
 </div> <!-- div second end -->
 </div> <!-- div container end -->
 

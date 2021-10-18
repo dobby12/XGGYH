@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import dto.XShow;
 import service.face.JjimService;
 import service.impl.JjimServiceImpl;
+import util.Paging;
 
 @WebServlet("/mycalendar")
 public class MyCalendarController extends HttpServlet {
@@ -25,9 +26,14 @@ public class MyCalendarController extends HttpServlet {
 		
 		String memid = (String)req.getSession().getAttribute("memid");
 		
-		List<XShow> showList = jjimService.getShowNoByMemId(memid);
+		Paging paging = jjimService.getPaging(req, memid);
+
+		
+		List<XShow> showList = jjimService.getShowNoByMemId(paging, memid);
 		
 		System.out.println(showList);
+		
+		req.setAttribute("paging", paging);
 		
 		req.setAttribute("memid", memid);
 
