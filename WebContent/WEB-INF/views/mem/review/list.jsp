@@ -19,8 +19,8 @@
 
 <thead>
 <tr>
-	<th style="width: 10%">번호</th>
-	<th style="width: 20%">공연제목</th>
+	<th style="width: 10%">리뷰 번호</th>
+	<th style="width: 20%">공연 제목</th>
 	<th style="width: 40%">제목</th>
 	<th style="width: 10%">작성자</th>
 	<th style="width: 10%">조회수</th>

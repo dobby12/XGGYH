@@ -15,21 +15,19 @@ tr, th, td {
 
 </style>
 
-<div class="container">
+<div class="container" style="text-align: center;">
 
 <h2>공지사항 관리</h2>
-<button id="btnWrite" onclick="location.href='/admin/notice/write';"style="margin: -25px 0 15px 0; float: right;">
-    작성
-</button>
+<button id="btnWrite" onclick="location.href='/admin/notice/write';"style="margin: -25px 0 15px 0; float: right;">작성</button>
+
 <hr style="clear: both;">
 
 <table style="clear: both;" class="table table-hover table-condensed">
-
 <thead>
 <tr>
-		<th style="width: 10%">번호</th>
+		<th style="width: 10%">공지 번호</th>
 		<th style="width: 60%">제목</th>
-<!-- 		<th>content</th> -->
+<%-- 		<th>content</th> --%>
 		<th style="width: 15%">작성자</th>
 		<th style="width: 20%">작성일</th>
 </tr>
@@ -51,6 +49,5 @@ tr, th, td {
 </div>
 
 <c:import url="/WEB-INF/views/layout/paging.jsp" />
-
 
 <c:import url="/WEB-INF/views/layout/footer.jsp" />

@@ -28,12 +28,12 @@ table {
 <table class="table table-hover table-condensed">
 <thead>
 <tr>
-	<th style="text-align: center; width: 7.5%">번호</th>
+	<th style="text-align: center; width: 7.5%">문의 번호</th>
 	<th style="text-align: center; width: 15%">작성자</th>
 	<th style="text-align: center; width: 50%">제목</th>
-	<th style="text-align: center; width: 7.5%">문의종류</th>
+	<th style="text-align: center; width: 7.5%">문의 종류</th>
 	<th style="text-align: center; width: 12.5%">작성일</th>
-	<th style="text-align: center; width: 7.5%">답변여부</th>
+	<th style="text-align: center; width: 7.5%">답변 여부</th>
 </tr>
 </thead>
 
