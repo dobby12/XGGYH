@@ -355,7 +355,11 @@ button.btnSubmit:hover:before, button.btnSubmit:hover:after {
 <div class="container">
 	<div class="input-form-backgroud row">
 	<div class="input-form col-md-6 mx-auto">
+
+		<h2 style="font-size: 30px;">회원정보 수정</h2>
+		<hr>
 		<p></p>
+		<br>
 		<form id="update-form">
 			<div class="mb-3">
 				<label class="mem" for="memid">아이디</label><span class="text-muted">&nbsp;(4~12자리의 영문 소문자, 숫자, 특수문자 [_,-]만 입력 가능합니다.)</span>
