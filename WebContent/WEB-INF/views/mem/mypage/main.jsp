@@ -60,10 +60,10 @@ td {
 	padding-bottom: 10px;
 }
 
-button {
-	width: 150px;
-	height: 75px;
-}
+button.mybtn { 
+ 	width: 150px; 
+ 	height: 75px; 
+ } 
 
 </style>
 
@@ -84,21 +84,21 @@ button {
 	</tr>
 	
 	<tr>
-		<td><button type="button" id="myinfo">계정 관리</button></td>
-		<td><button type="button" id="myrev">내가 작성한 리뷰</button></td>
-		<td><button type="button" id="notice">공지사항</button></td>
+		<td><button class="mybtn" type="button" id="myinfo">계정 관리</button></td>
+		<td><button class="mybtn" type="button" id="myrev">내가 작성한 리뷰</button></td>
+		<td><button class="mybtn" type="button" id="notice">공지사항</button></td>
 	</tr>
 
 	<tr>
-		<td><button type="button" id="userdel">회원 탈퇴</button></td>
-		<td><button type="button" id="myjim">내가 찜한 공연</button></td>
-		<td><button type="button" id="askwrite">1:1문의</button></td>
+		<td><button class="mybtn" type="button" id="userdel">회원 탈퇴</button></td>
+		<td><button class="mybtn" type="button" id="myjim">내가 찜한 공연</button></td>
+		<td><button class="mybtn" type="button" id="askwrite">1:1문의</button></td>
 	</tr>
 
 	<tr>
 		<td></td>
-		<td><button type="button" id="mycal">마이 캘린더</button></td>
-		<td><button type="button" id="asklist">문의내역</button></td>
+		<td><button class="mybtn" type="button" id="mycal">마이 캘린더</button></td>
+		<td><button class="mybtn" type="button" id="asklist">문의내역</button></td>
 	</tr>
 
 </table>
