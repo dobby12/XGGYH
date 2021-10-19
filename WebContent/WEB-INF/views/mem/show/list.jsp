@@ -222,12 +222,9 @@ $(document).ready(function(){
 
 <div style="text-align: center; margin: 25px 0 0 0;" >
 <form action="<%=request.getContextPath() %>/show/search" method="get">
-	<select class="searchtype" name="searchtype">
-		<option value="showTitle">제목</option>
-	</select>
 	<input type="text" id="keyword" name="keyword" placeholder="공연 제목을 입력하세요."/>
-	<input type="hidden" id="kindNo" name="kindNo" value="${kindNo}"/>
-	<button>검색</button>
+	<input type="hidden" id="kindNo" name="kindNo" value="${kindNoToSearch}"/>
+	<input type="submit" value="검색">
 </form>
 </div>
 

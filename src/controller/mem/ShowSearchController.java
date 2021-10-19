@@ -25,10 +25,12 @@ public class ShowSearchController extends HttpServlet {
 	
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    	System.out.println("/show/search [GET]");
     	
     	String showTitle = req.getParameter("keyword").trim();
     	int showKind = Integer.parseInt(req.getParameter("kindNo").trim());
     	
+    	System.out.println(Integer.parseInt(req.getParameter("kindNo").trim()));
     	System.out.println("showKind : " + showKind);
     	System.out.println("showTitle : " + showTitle);
     	
@@ -54,10 +56,9 @@ public class ShowSearchController extends HttpServlet {
     		System.out.println("x");
     	
 		req.setCharacterEncoding("UTF-8");
-		req.setAttribute("linkUrl", "/show/search?kind=" + req.getParameter("kind") + "&keyword=" + req.getParameter("keyword"));
+		req.setAttribute("linkUrl", "/show/search?kindNo=" + showKind + "&keyword=" + req.getParameter("keyword"));
 		
 		req.getRequestDispatcher("/WEB-INF/views/mem/show/search.jsp").forward(req, resp);
 
     }
-
 }

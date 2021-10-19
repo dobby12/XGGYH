@@ -122,7 +122,7 @@ public class ShowListController extends HttpServlet {
 		req.setAttribute("paging", paging);
 		
 		//종류 정보 MODEL값 전달
-		req.setAttribute("kindNo", kindNo);
+		req.setAttribute("kindNoToSearch", kindNo);
 		
 		req.setAttribute("userNick", req.getSession().getAttribute("memnick"));
 		
