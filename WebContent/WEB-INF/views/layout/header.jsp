@@ -392,7 +392,7 @@ input[type=button]:hover:before, input[type=button]:hover:after {
 	text-align: center;
 }
 
-input[type=text] {
+input[type=text], input[type=password] {
 	border: solid 1px #d96459; 
     border-radius: 5px;
     height: 30px;
