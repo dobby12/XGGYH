@@ -224,7 +224,7 @@ $(document).ready(function(){
 <form action="<%=request.getContextPath() %>/show/search" method="get">
 	<input type="text" id="keyword" name="keyword" placeholder="공연 제목을 입력하세요."/>
 	<input type="hidden" id="kindNo" name="kindNo" value="${kindNoToSearch}"/>
-	<input type="submit" value="검색">
+	<button>검색</button>
 </form>
 </div>
 
