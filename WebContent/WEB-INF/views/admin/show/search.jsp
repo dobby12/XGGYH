@@ -25,7 +25,8 @@ table {
 <hr>
 <c:if test="${empty searchShowList }">
 	<h3>검색 결과가 없습니다.</h3>
-	<hr>
+	<br>
+
 </c:if>
 
 <c:if test="${not empty searchShowList }">

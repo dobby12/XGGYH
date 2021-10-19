@@ -10,7 +10,7 @@ $(document).ready(function(){
 	
 	$('.btnDelete').click(function() {
 		
-		var answer = confirm("회원정보를 삭제하시겠습니까?")
+		var answer = confirm("회원정보를 삭제하시겠습니까? 삭제하면 되돌릴 수 없습니다.")
 		
 		if( answer == true ){
 			

@@ -60,7 +60,7 @@ table {
 
 <c:if test="${empty searchMemList }">
 	<h3>검색 결과가 없습니다.</h3>
-	<hr>
+	<br>
 </c:if>
 
 
