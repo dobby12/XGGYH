@@ -84,7 +84,7 @@
 </div>
 
 <br>
-<button onclick="history.back()">공연목록</button>
+<button onclick="location.href='<%=request.getContextPath()%>/main'">공연목록</button>
 </div>
 
 
