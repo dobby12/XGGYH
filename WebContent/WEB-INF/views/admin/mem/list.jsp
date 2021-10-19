@@ -9,7 +9,7 @@
 $(document).ready(function(){
 	$("#btnDelete").click(function(){
 		
-		var answer = confirm("회원을 정말 삭제하시겠습니까?")
+		var answer = confirm("회원을 정말 삭제하시겠습니까?");
 		
 		if( answer == true ){
 			location.href = "<%=request.getContextPath() %>/admin/mem/delete?memid=${mem.memId }";
@@ -58,7 +58,7 @@ table {
 	<td>${mem.mailState }</td>
 	<td>${mem.memDate }</td>
 	<td><a href="<%=request.getContextPath() %>/admin/mem/review?memid=${mem.memId }"><button class="btnBack" id="btnList">작성한 리뷰 보기</button></a></td>	
-	<td><a href="<%=request.getContextPath() %>/admin/mem/delete?memid=${mem.memId }"><button class="btnDelete" id="btnDelete">삭제</button></a></td>	
+	<td><button class="btnDelete" id="btnDelete">삭제</button></td>	
 </tr>
 </c:forEach>
 </tbody>
