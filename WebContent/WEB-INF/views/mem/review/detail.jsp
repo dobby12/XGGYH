@@ -61,7 +61,7 @@
 		<tr>
 			<td class="item">첨부파일</td>
 			<td colspan="6">${reviewFile.fileOriginName }</td>
-			<td><a href="/upload/${reviewFile.fileStoredName }" ><button>다운로드</button></a></td>
+			<td><a href="/upload/${reviewFile.fileStoredName }" ><button>확인</button></a></td>
 		</tr>
 	</c:if>
 

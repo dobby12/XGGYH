@@ -2,7 +2,26 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:import url="/WEB-INF/views/layout/adminheader.jsp" />
 <!------------------------------------------------------>
-
+<script type="text/javascript">
+$(document).ready(function(){
+	
+	$("#btnDelete").click(function(){
+		
+		var answer = confirm("공지사항을 삭제하시겠습니까?")
+		
+		if(answer == true) {
+			submitContents($("#btnSubmit"))
+		
+			$("form").submit();
+		} else {
+			return false;
+		}
+	});
+	$("#btnCancel").click(function(){
+		history.go(-1);
+	});
+});
+</script>
 <style>
 
 #content {
@@ -44,8 +63,8 @@
 
 <br>
 <a href="<%=request.getContextPath() %>/admin/notice/list"><button class="btnBack">목록</button></a>
-<a href="<%=request.getContextPath() %>/admin/notice/update?noticeno=${notice.noticeNo }"><button class="btnUpdate">수정</button></a>
-<a href="<%=request.getContextPath() %>/admin/notice/delete?noticeno=${notice.noticeNo }"><button class="btnDelete">삭제</button></a>
+<a href="<%=request.getContextPath() %>/admin/notice/update?noticeno=${notice.noticeNo }"><button class="btnUpdate" id="btnUpdate">수정</button></a>
+<a href="<%=request.getContextPath() %>/admin/notice/delete?noticeno=${notice.noticeNo }"><button class="btnDelete" id="btnDelete">삭제</button></a>
 
 <!------------------------------------------------------>
 </div>

@@ -46,7 +46,7 @@ $(document).ready(function() {
 	</c:if>
 </c:if>
 <br><br><br>
-<a href="<%=request.getContextPath() %>/member/find"><button id="btnBack">이전으로 돌아가기</button></a>
+<a href="<%=request.getContextPath() %>/login"><button id="btnBack">로그인 화면으로 돌아가기</button></a>
 </div>
 
 <c:import url="/WEB-INF/views/layout/footer.jsp" />
