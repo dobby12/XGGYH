@@ -11,6 +11,10 @@ table {
 	text-align: center;
 }
 
+#btnFloat {
+	float: left;
+	
+}
 #searchtype {
 	border: solid 1px #d96459; 
     border-radius: 5px;
@@ -29,10 +33,28 @@ table {
 
 </style>
 
+<script>       
+
+//java로 check한 대상의 메일 주소 jsonText로 담아 보내기
+var result = new Array();
+function getCheckboxValue(event)  {
+	  if(event.target.checked)  {
+	    result.push(event.target.value);
+	  } else {
+		for(let i=0; i<result.length; i++){
+			if(result[i]===event.target.value){
+				result.splice(i,1);	
+			}
+		}
+	  }
+		var marshalResult = JSON.stringify(result);
+		document.getElementById('marshalResult').value=marshalResult;
+	}
+
+</script>
+
 <div class="container">
 
-<h2>메일 보내기 - 검색 결과</h2>
-<hr>
 
 <table class="table table-hover table-condensed">
 
@@ -42,14 +64,16 @@ table {
 </c:if>
 
 <c:if test="${not empty searchMemList }">
+<h2>검색 결과</h2>
+<hr>
 <thead>
 <tr>	
-	<th style="text-align: center; width: 15%">회원 아이디</th>
-	<th style="text-align: center; width: 15%">회원 닉네임</th>
-	<th style="text-align: center; width: 20%">회원 메일 주소</th>
+	<th style="text-align: center; width: 6%">선택</th>
+	<th style="text-align: center; width: 13%">회원 아이디</th>
+	<th style="text-align: center; width: 13%">회원 닉네임</th>
+	<th style="text-align: center; width: 18%">회원 메일 주소</th>
 	<th style="text-align: center; width: 10%">메일 수신 여부</th>
 	<th style="text-align: center; width: 15%">가입 날짜</th>
-	<th style="text-align: center; width: 15%">　　　</th>
 
 </tr>
 </thead>
@@ -57,7 +81,13 @@ table {
 <tbody>
 <c:forEach items="${searchMemList }" var="mem">
 <tr>
-	<td>${mem.memId }</td>
+	<c:if test="${mem.mailState == 'y' }">
+	<td><input id="${mem.memId }" type='checkbox' name='memmem' value='${mem.memMail }' onclick='getCheckboxValue(event)'/></td>
+	</c:if>
+	
+	<c:if test="${mem.mailState =='n' }">
+	<td></td>
+	</c:if>
 	<td>${mem.memNick }</td>
 	<td>${mem.memMail }</td>
 	<td>${mem.mailState }</td>
@@ -77,8 +107,13 @@ table {
 
 
 
-</table>
+</table><div class="btnZone">
+<form action="<%=request.getContextPath() %>/admin/mail/mem/search" method="post">
+<input type="hidden" id="marshalResult" name="marshalResult" value="${marshalResult }"/>
+<button id="btnFloat" class="btnDelete">메일 보내기</button>
+</form>
 
+</div>
 </div>
 
 <c:if test="${not empty searchMemList }">
