@@ -65,6 +65,14 @@ $(document).ready(function() {
 	})
 	
 });
+//특수문자(<, >, \) 입력 방지 네이버SE2에는 적용 안 되므로 글 내용 작성에는 영향 없음
+function characterCheck(obj){
+ 	var regExp = /[<>\\]/gi; 
+	if( regExp.test(obj.value) ){
+		alert("일부 특수문자는 입력하실수 없습니다.");
+		obj.value = obj.value.substring( 0 , obj.value.length - 1 );
+		}
+}
 </script>
 
 <script type="text/javascript">
@@ -123,7 +131,7 @@ input[type=text] {
 <table class="table table-striped table-condensed table-striped">
 
 <tr>
-	<td colspan="10"><h4><input type="text" id="showTitle" name="showTitle" autocomplete="off" style="width: 100%; padding: 5px; height: 50px;"value="${xshow.showTitle }"/></h4></td>
+	<td colspan="10"><h4><input type="text" id="showTitle" name="showTitle" autocomplete="off" style="width: 100%; padding: 5px; height: 50px;"value="${xshow.showTitle }" onkeyup="characterCheck(this)" onkeydown="characterCheck(this)"/></h4></td>
 </tr>
 <tr>
 	<td>관리자 아이디</td>

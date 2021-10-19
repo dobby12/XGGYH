@@ -12,14 +12,13 @@ function submitContents(elClickedObj){
 $(document).ready(function(){
 	$("#btnSubmit").click(function(){
 		
-		var answer = confirm("공지사항을 수정하시겠습니까?"); 
+		var answer = confirm("공지사항을 수정하시겠습니까?")
 		
-		if( answer == true ){
-			
+		if(answer == true) {
 			submitContents($("#btnSubmit"))
+		
 			$("form").submit();
 		} else {
-			
 			return false;
 		}
 	});
@@ -49,6 +48,14 @@ $(document).ready(function(){
 
 	
 });
+//특수문자(<, >, \) 입력 방지 네이버SE2에는 적용 안 되므로 글 내용 작성에는 영향 없음
+function characterCheck(obj){
+ 	var regExp = /[<>\\]/gi; 
+	if( regExp.test(obj.value) ){
+		alert("일부 특수문자는 입력하실수 없습니다.");
+		obj.value = obj.value.substring( 0 , obj.value.length - 1 );
+		}
+}
 </script>
 
 <!------------------------------------------------------>
@@ -65,7 +72,7 @@ $(document).ready(function(){
 <thead>
 
 <tr>
-	<td colspan="6" style="width: 100%; padding: 5px; height: 30px;"><input type="text" id="title" name="title" style="width: 100%; padding: 5px;" value="${notice.noticeTitle }"/></td>
+	<td colspan="6" style="width: 100%; padding: 5px; height: 30px;"><input type="text" id="title" name="title" style="width: 100%; padding: 5px;" value="${notice.noticeTitle }" onkeyup="characterCheck(this)" onkeydown="characterCheck(this)"/></td>
 </tr>
 <tr>
 	<td class="item" style="width:25%;">관리자 아이디</td>
