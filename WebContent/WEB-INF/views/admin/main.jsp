@@ -33,7 +33,7 @@
 
 	
 	<div id="loginzone">
-	<div style="margin: auto; padding: 20px;">
+	<div style="margin: auto; padding: 15px;">
 		<h3>공공연히 관리자 페이지</h3>
 		<br>
 		
@@ -62,11 +62,10 @@
 	
 	<div id="loggedin">	
 		<c:if test="${adminlogin }">
-		관리자 아이디 : ${adminid }<br>
-		관리자 이름 : ${adminname }<br> 
-		관리자 상태? : ${adminauthority }<br>
-		<hr>
-			<a href="<%=request.getContextPath() %>/admin/logout"><button>로그아웃</button></a>
+		<h5><strong>${adminname }님, 안녕하세요!</strong></h5><br>
+		아이디&nbsp;&nbsp;|&nbsp;&nbsp;${adminid }<br>
+		관리자 권한&nbsp;&nbsp;|&nbsp;&nbsp;<c:if test="${adminauthority == 'y' }">관리자</c:if><c:if test="${adminauthority == 'n' }">권한 없음</c:if>
+			<br><a href="<%=request.getContextPath() %>/admin/logout"><button style="margin: 25px 0 0 0;">로그아웃</button></a>
 		<hr>
 		</c:if>
 	</div><!-- #loggedin end -->

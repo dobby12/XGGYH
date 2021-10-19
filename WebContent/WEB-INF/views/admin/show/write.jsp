@@ -48,16 +48,36 @@ $(document).ready(function() {
 		if( answer == true ){
 			
 			var fileCheck = document.getElementById("input-file").value;
+			var showTitleCheck = document.getElementById("showTitle").value;
+			var showContentCheck = document.getElementById("showContent").value;
+			var showDirectorCheck = document.getElementById("showDirector").value;
+			var showActorCheck = document.getElementById("showActor").value;
+			var showStartCheck = document.getElementById("startDate").value;
+			var showEndCheck = document.getElementById("endDate").value;
 			
 			if( !fileCheck ){
 				
 				alert("공연 파일을 업로드해주세요!");
 				return false;
+			} else if( !showTitleCheck ){
+				alert("공연 제목은 필수 입력 항목입니다.");
+				return false;
+			} else if( !showDirectorCheck ){
+				alert("감독은 필수 입력 항목입니다.");
+				return false;
+			} else if( !showActorCheck ){
+				alert("배우는 필수 입력 항목입니다.");
+				return false;
+			} else if ( !showStartCheck ){
+				alert("공연 시작일을 입력해주세요!");
+				return false;
+			} else if (! showEndCheck ){
+				alert("공연 종료일을 입력해주세요!");
+				return false;
 			} else {
+				submitContents( $("#btnWrite") )
 				
-			submitContents( $("#btnWrite") )
-			
-			$("form").submit();					
+				$("form").submit();					
 			}
 		} else {
 			return false;

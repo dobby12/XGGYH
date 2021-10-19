@@ -89,7 +89,7 @@ input[type=text] {
 <tr>
 		<td class="item">첨부파일</td>
 		<td colspan="8">${showFile.fileOriginName }</td>
-		<td><a href="/upload/${showFile.fileStoredName }" ><button>다운로드</button></a></td>
+		<td><a href="/upload/${showFile.fileStoredName }" ><button>확인</button></a></td>
 	</tr>
 </c:if>
 <tr>

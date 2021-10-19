@@ -5,6 +5,21 @@
 
 <c:import url="/WEB-INF/views/layout/adminheader.jsp" />
 
+<script type="text/javascript">
+
+$(document).ready(function(){
+	
+	$("#btnBack").click(function(){
+		
+		history.go(-1);
+		
+	})
+	
+})
+
+
+</script>
+
 <style type="text/css">
 
 table {
@@ -52,7 +67,9 @@ table {
 
 </table>
 
-</div>
+<button id="btnBack" class="btnBack">뒤로 가기</button>
+
+</div><!-- .container end -->
 
 <c:if test="${not empty reviewMemList }">
 <c:import url="/WEB-INF/views/layout/paging.jsp" />

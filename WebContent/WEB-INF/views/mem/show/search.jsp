@@ -66,7 +66,7 @@
 
 <h3><strong>${keyword }</strong> 에 대한 검색 결과</h3>
 <hr>
-
+<c:if test="${not empty showList }">
 <div class="main_list">
 		<div class="list_start">
 			<c:forEach items="${showList }" var="showList">
@@ -82,9 +82,16 @@
 			</c:forEach>
 		</div>
 </div>
+</c:if>
+
+<c:if test="${empty showList }">
+
+<h4>검색 결과가 없습니다.</h4>
+</c:if>
+
 
 <br>
-<button onclick="history.back()">공연목록</button>
+<button onclick="location.href='<%=request.getContextPath()%>/main'">공연목록</button>
 </div>
 
 
