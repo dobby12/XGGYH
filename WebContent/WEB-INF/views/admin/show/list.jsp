@@ -58,7 +58,7 @@ table {
 
 <div style="text-align: center; margin: 0 0 25px 0;" >
 <form action="<%=request.getContextPath() %>/admin/show/search" method="get">
-	<input type="text" id="keyword" name="keyword" placeholder="검색어를 입력하세요"/>
+	<input type="text" id="keyword" name="keyword" placeholder="공연 제목을 입력하세요"/>
 	<button>검색</button>
 </form>
 </div>
