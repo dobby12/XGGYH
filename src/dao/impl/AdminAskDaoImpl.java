@@ -52,12 +52,7 @@ public class AdminAskDaoImpl implements AdminAskDao {
 	public List<XAsk> selectAskAll(Connection conn, Paging paging) {
 		
 		String sql = "";
-		sql += "SELECT * FROM (";
-		sql += "	 SELECT rownum rnum, A.* FROM (";
-		sql += "		 SELECT ask_no, mem_id, ask_title, ask_date, ask_kind, ask_state";
-		sql += "	 FROM xask ORDER BY ask_no DESC";
-		sql += "	 ) A ORDER BY ask_state ASC";
-		sql += " ) xask";
+		sql += "SELECT * FROM (SELECT rownum rnum, A.* FROM (SELECT ask_no, mem_id, ask_title, ask_date, ask_kind, ask_state FROM xask ORDER BY ask_state ASC, ask_no DESC) A) xask";
 		sql += " WHERE rnum BETWEEN ? AND ?";
 		
 		List<XAsk> askList = new ArrayList<>();
