@@ -1,6 +1,7 @@
 package controller.mem;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -38,24 +39,19 @@ public class MyCalendarController extends HttpServlet {
 		req.setAttribute("memid", memid);
 
 		req.setAttribute("showList", showList);
-		
 
 		//로그인 되어있지 않으면 리다이렉트 
 		if( req.getSession().getAttribute("login") == null
 				|| !(boolean)req.getSession().getAttribute("login") ) {
-			
-			resp.sendRedirect("/");
+			resp.setContentType("text/html; charset=UTF-8");
+			PrintWriter writer = resp.getWriter();
+			writer.println("<script>alert('로그인 후 이용 가능한 서비스입니다. 로그인 해주세요.');"
+							+ "location.href='/login';</script>");
+			writer.close();
 			
 			return;
-		}		
-
+		}
 		req.getRequestDispatcher("/WEB-INF/views/mem/mycalendar/mycalendar.jsp").forward(req, resp);
-		
-		
-		
-		
-		
-	}
-	
-	
+
+	}	
 }
