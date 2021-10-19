@@ -20,8 +20,15 @@ table {
 </style>
 
 <div class="container" style="text-align: center;">
-
 <h3><strong>${keyword }</strong> 에 대한 공연 제목 검색 결과</h3>
+
+<hr>
+<c:if test="${empty searchShowList }">
+	<h3>검색 결과가 없습니다.</h3>
+	<hr>
+</c:if>
+
+<c:if test="${not empty searchShowList }">
 <button id="btnWrite" onclick="location.href='/admin/show/write';"style="margin: -25px 0 15px 0; float: right;">
 	작성하기
 </button>
@@ -54,7 +61,15 @@ table {
 </tr>
 <%} %>
 </tbody>
+
 </table>
+</c:if>
+<div style="text-align: center; margin: 0 0 25px 0;" >
+<form action="<%=request.getContextPath() %>/admin/show/search" method="get">
+	<input type="text" id="keyword" name="keyword" placeholder="공연 제목을 입력하세요"/>
+	<button>검색</button>
+</form>
+</div>
 
 
 </div>

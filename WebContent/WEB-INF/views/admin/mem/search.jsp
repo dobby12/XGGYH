@@ -58,16 +58,17 @@ table {
 
 <hr>
 
-
-<table class="table table-hover table-condensed">
-
-
 <c:if test="${empty searchMemList }">
 	<h3>검색 결과가 없습니다.</h3>
+	<hr>
 </c:if>
 
 
+
+
+
 <c:if test="${not empty searchMemList }">
+<table class="table table-hover table-condensed">
 <thead>
 <tr>
 	<th style="text-align: center; width: 15%">회원 아이디</th>
@@ -92,10 +93,10 @@ table {
 </tr>
 </c:forEach>
 </tbody>
-</c:if>
 
 
 </table>
+</c:if>
 
 </div>
 
