@@ -48,9 +48,14 @@ document.addEventListener('DOMContentLoaded', function() {
 	border: 0px;
 }
 
+button:before, button:after {
+	background: inherit;
+	transition: none;
+}
+
 .first {
     float: left;
-    margin: 90px 0 0 0;
+    margin: 50px 0 0 0;
     
 }
 
@@ -58,7 +63,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	float: right;
 	height: 700px;
 	overflow: auto;
-	margin: 90px 0 0 0;
+	margin: 50px 0 0 0;
     
   
 }

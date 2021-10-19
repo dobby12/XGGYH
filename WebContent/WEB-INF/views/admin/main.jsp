@@ -50,7 +50,7 @@
 		
 		<c:if test="${not empty loginfail }">
 		<br>
-		<strong>로그인에 실패하였습니다.<br> ID와 PW를 확인하세요.</strong>
+		<strong>로그인에 실패하였습니다.<br>ID와 PW를 확인하세요.</strong>
 		<br>
 		</c:if>
 		<button style="margin: 25px 0 0 0;">로그인</button>

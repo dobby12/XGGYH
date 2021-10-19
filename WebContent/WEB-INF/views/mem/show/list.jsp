@@ -1,4 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>        
 
 <c:import url="/WEB-INF/views/layout/header.jsp" />
@@ -98,7 +100,7 @@ $(document).ready(function(){
 .list_detail {
     display: inline-block;
     width: 300px;
-    height: 350px;
+    height: 400px;
     margin-bottom: 40px;
     margin-right: 20px;
     margin-left: 20px;
@@ -132,7 +134,7 @@ $(document).ready(function(){
 
 #sliderbox{
 	width: 340px;
-	height: 500px;
+	height: 400px;
 /* 	border: 1px solid red; */
 	
 	/* 외부 여백 */
@@ -142,6 +144,7 @@ $(document).ready(function(){
 	/* overflow: visible; /* 일단 보이게 해서 작업 후에 hidden으로 변경 */
 	overflow: hidden; 
 }
+
 #slider{
 	padding: 0;
 	margin: 0;
@@ -152,6 +155,7 @@ $(document).ready(function(){
 #slider li{
 	position: absolute;
 }
+
 
 </style>
 
@@ -164,34 +168,33 @@ $(document).ready(function(){
 <%-- 이 아래 있는 영역은 지태가 작성한 코드인데, 로그인한 사용자의 genreno에 해당하는 공연만 보여주는 곳입니다. 로그인 하지 않았을 땐 보여지지 않습니다. --%>
 <c:if test="${not empty loginIdGenreno }">
 
-<h3><strong>${memnick}</strong>님을 위한 추천 공연</h3>
+<h3><strong>${memnick}님을 위한 추천 공연</strong></h3><br>
 
 <div class="main_list">
 	<div class="list_start" id="sliderbox">
-	<ul id="slider">
+		<ul id="slider">
 		<c:forEach items="${fiveShowList }" var="showList" varStatus="status"><li>
 		<div class="list_detail">
 			<a href="<%=request.getContextPath() %>/show/detail?showNo=${showList.showNo }">
 			<c:set var="ran"><%= java.lang.Math.round(java.lang.Math.random() * 7+1) %></c:set>
 			<c:set var="ranAll"><%= java.lang.Math.round(java.lang.Math.random() * 31+1) %></c:set>
 			<c:if test="${not empty imgKind }">
-			<img class="posterSlider" id="posterSlider" src="/resources/file/show_poster/${imgKind }${ran }.jpg"/><br>
+			<img class="poster" id="poster" src="/resources/file/show_poster/${imgKind }${ran }.jpg"/><br>
 			</c:if>
 			<c:if test="${empty imgKind }">
-			<img class="posterSlider" id="posterSlider" src="/resources/file/show_poster/${ranAll }.jpg"/><br>
+			<img class="poster" id="poster" src="/resources/file/show_poster/${ranAll }.jpg"/><br>
 			</c:if>
-			<br><strong>${showList.showTitle}</strong><br><br>
+			<br><strong>${showList.showTitle}</strong><br>
 			</a>
 		</div>
 		</li></c:forEach>
-	</ul>
+		</ul>
 	</div>
 </div>
 <hr>
 </c:if>
 <%-- 이 위에 있는 영역은 지태가 작성한 코드인데, 로그인한 사용자의 genreno에 해당하는 공연만 보여주는 곳입니다. 로그인 하지 않았을 땐 보여지지 않습니다. --%>
 
-<h3>${kindName} 공연 정보</h3>
 <div class="main_list">
 		<div class="list_start">
 			<c:forEach items="${showList }" var="showList" varStatus="status">
@@ -206,7 +209,8 @@ $(document).ready(function(){
 			<c:if test="${empty imgKind }">
 			<img class="poster" id="poster" src="/resources/file/show_poster/${ranAll }.jpg"/><br>
 			</c:if>
-			<br><strong>${showList.showTitle}</strong><br><br>
+			<br><strong>${showList.showTitle}</strong><br>
+			${showList.showStart } ~ ${showList.showEnd }<br>
 			</a>
 			
 			</div>
