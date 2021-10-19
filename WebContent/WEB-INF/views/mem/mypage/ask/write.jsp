@@ -81,7 +81,7 @@ $(document).ready(function() {
 <tr>
 	<td class="item" style="width: 10%">제목</td>
 	<td colspan="3">
-		<input type="text" id="title" name="title" style="width: 100%; height: 30px;" placeholder="문의 제목을 입력해주세요."/>
+		<input type="text" id="title" name="title" style="width: 100%; height: 30px;" placeholder="문의 제목을 입력해주세요." onkeyup="characterCheck(this)" onkeydown="characterCheck(this)"/>
 	</td>
 </tr>
 <tr>

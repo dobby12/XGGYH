@@ -63,7 +63,7 @@ table {
 <!-- </tr> -->
 
 <tr>
-	<td colspan="6"><h4><input type="text" id="title" name="title" style="width: 100%; height: 30px; padding: 5px;" autocomplete="off" placeholder="공지사항 제목"onkeyup=" characterCheck(this)" onkeydown="characterCheck(this)"/></h4></td>
+	<td colspan="6"><h4><input type="text" id="title" name="title" style="width: 100%; height: 30px; padding: 5px;" autocomplete="off" placeholder="공지사항 제목" onkeyup="characterCheck(this)" onkeydown="characterCheck(this)"/></h4></td>
 </tr>
 <tr>
 	<td class="item">관리자 아이디</td>

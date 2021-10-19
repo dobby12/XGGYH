@@ -47,7 +47,6 @@
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    border:1px solid black;
 }
 
 .search {

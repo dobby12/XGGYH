@@ -77,8 +77,7 @@ table {
 <div id="map" style="width:500px; height:400px; float: left;"></div>
 
 <div style="width: 100%; height: 30px; background: #fff; clear: both;"></div>
-<button class="btnBack" id="btnBack">뒤로 가기</button>
-
+<button class="btnBack" id="btnBack" onclick="history.go(-1)">이전으로 돌아가기</button>
 </div><!-- .container end -->
 <%-- 카카오 지도 api --%>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8b6ff5cc45fa05d18d5d5a27810f38f8&libraries=services,clusterer,drawing"></script>

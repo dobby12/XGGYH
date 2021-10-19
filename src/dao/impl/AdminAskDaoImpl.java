@@ -56,7 +56,7 @@ public class AdminAskDaoImpl implements AdminAskDao {
 		sql += "	 SELECT rownum rnum, A.* FROM (";
 		sql += "		 SELECT ask_no, mem_id, ask_title, ask_date, ask_kind, ask_state";
 		sql += "	 FROM xask ORDER BY ask_no DESC";
-		sql += "	 ) A";
+		sql += "	 ) A ORDER BY ask_state ASC";
 		sql += " ) xask";
 		sql += " WHERE rnum BETWEEN ? AND ?";
 		

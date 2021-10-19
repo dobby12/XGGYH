@@ -71,7 +71,7 @@ $(document).ready(function() {
 </tr>
 
 <tr>
-	<td class="item" colspan="9"><input type="text" name="reviewTitle" style="width:100%" placeholder="제목" /></td>
+	<td class="item" colspan="9"><input type="text" name="reviewTitle" style="width:100%" placeholder="제목" onkeyup="characterCheck(this)" onkeydown="characterCheck(this)"/></td>
 </tr>
 
 <tr>

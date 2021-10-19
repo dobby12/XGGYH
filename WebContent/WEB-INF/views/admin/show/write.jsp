@@ -143,7 +143,7 @@ input[type=text] {
 <table class="table table-condensed table-striped table-bordered">
 
 <tr>
-	<td colspan="10"><h4><input type="text" id="showTitle" name="showTitle" style="width: 100%; padding: 5px; height: 50px;" autocomplete="off" placeholder="공연 제목"/></h4></td>
+	<td colspan="10"><h4><input type="text" id="showTitle" name="showTitle" style="width: 100%; padding: 5px; height: 50px;" autocomplete="off" placeholder="공연 제목" onkeyup="characterCheck(this)" onkeydown="characterCheck(this)"/></h4></td>
 </tr>
 <tr>
 	<td>관리자 아이디</td>

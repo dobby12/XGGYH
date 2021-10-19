@@ -46,18 +46,20 @@ table {
 
 <thead>
 <tr>
-	<th style="width: 10%">게시글 번호</th>
-	<th style="width: 60%">제목</th>
+	<th style="width: 10%">리뷰 번호</th>
+	<th style="width: 20%">공연 제목</th>
+	<th style="width: 40%">제목</th>
 	<th style="width: 10%">작성자</th>
 	<th style="width: 10%">조회수</th>
 	<th style="width: 10%">작성일</th>
 </tr>
 </thead>
 
-<c:forEach items="${searchReviewList }" var="review">
+<c:forEach items="${searchReviewList }" var="review" varStatus="status">
 </tbody>
 <tr>
 	<td>${review.reviewNo }</td>
+	<td>${showTitle[status.index] }</td>
 	<td>
 		<a href="<%=request.getContextPath() %>/review/detail?reviewno=${review.reviewNo }">${review.reviewTitle }</a>
 	</td>

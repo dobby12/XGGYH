@@ -61,7 +61,6 @@
 			</c:forEach>
 		</div>
 </div>
-
 </div>
 <c:import url="/WEB-INF/views/layout/paging.jsp" />
 
