@@ -96,7 +96,7 @@ public class ShowListController extends HttpServlet {
 			
 			req.setAttribute("loginIdGenreno", loginIdGenreno);
 			
-			List<XShow> fiveShowList = showService.getShowGenrenoList(loginIdGenreno);
+			List<XShow> fiveShowList = showService.getShowGenrenoList(loginIdGenreno, kindNo);
 			
 			Collections.shuffle(fiveShowList);
 

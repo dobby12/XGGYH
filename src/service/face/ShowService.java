@@ -117,5 +117,5 @@ public interface ShowService {
 	
 	public List<XShow> getShowMemGenreList(XMem memInfo, int kindNo, Paging paging);
 
-	public List<XShow> getShowGenrenoList(int loginIdGenreno);
+	public List<XShow> getShowGenrenoList(int loginIdGenreno, int kindNo);
 }

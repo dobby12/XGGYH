@@ -214,8 +214,8 @@ public class ShowServiceImpl implements ShowService {
 	}
 
 	@Override
-	public List<XShow> getShowGenrenoList(int loginIdGenreno) {
-		return showDao.selectShowByGenreno(JDBCTemplate.getConnection(), loginIdGenreno);
+	public List<XShow> getShowGenrenoList(int loginIdGenreno, int kindNo) {
+		return showDao.selectShowByGenreno(JDBCTemplate.getConnection(), loginIdGenreno, kindNo);
 	}
 
 }

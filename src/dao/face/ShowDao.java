@@ -108,7 +108,7 @@ public interface ShowDao {
 
 	public List<XShow> selectShowSearchByMemgenre(Connection conn, XMem memInfo, int kindNo, Paging paging);
 
-	public List<XShow> selectShowByGenreno(Connection connection, int loginIdGenreno);
+	public List<XShow> selectShowByGenreno(Connection connection, int loginIdGenreno, int kindNo);
 
 	
 

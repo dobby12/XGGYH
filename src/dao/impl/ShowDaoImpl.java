@@ -637,15 +637,16 @@ public class ShowDaoImpl implements ShowDao {
 	
 	
 	@Override
-	public List<XShow> selectShowByGenreno(Connection connection, int loginIdGenreno) {
+	public List<XShow> selectShowByGenreno(Connection connection, int loginIdGenreno, int kindNo) {
 
 		String sql = "SELECT show_no, file_no, admin_id, kind_no, genre_no, hall_no, show_title, show_content, show_date, show_age, show_director, show_actor, show_start, show_end FROM XShow"
-				+ " WHERE GENRE_NO=?";
+				+ " WHERE GENRE_NO=? AND KIND_NO = ?";
 		List<XShow> showList = new ArrayList<>();
 
 		try {
 			ps = connection.prepareStatement(sql);
 			ps.setInt(1, loginIdGenreno);
+			ps.setInt(2, kindNo);
 
 			rs = ps.executeQuery();
 
