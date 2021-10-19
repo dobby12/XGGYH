@@ -57,7 +57,7 @@ function getCheckboxValue(event)  {
 
 <div class="container">
 
-<h2>메일 보내기 화면</h2>
+<h2>메일 보내기</h2>
 <hr>
 
 <table class="table table-hover table-condensed">
