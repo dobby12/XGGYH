@@ -87,6 +87,15 @@ $(document).ready(function(){
 			}
 		}
 	}
+	
+	function reviewWrite() {
+		if (<%=session.getAttribute("login")%> == null) {
+			alert("로그인 후 이용 가능한 서비스입니다. 로그인 해주세요.");
+			location.href = '/login';
+		} else {
+			location.href = '/review/write?showNo=${showDetail.showNo}';
+		}
+	}
 </script>
 
 
@@ -268,9 +277,7 @@ table {
 
 <div class="detailButton">
 	<button class="btnBack" onclick="location.href='<%=request.getContextPath()%>/show?kindNo=${showDetail.kindNo}';">공연목록</button>
-	<button onclick="location.href='<%=request.getContextPath()%>/review/write?showNo=${showDetail.showNo}';">리뷰 작성</button>
-	
-	
+	<button onclick="reviewWrite();">리뷰 작성</button>
 	<button class="btnDelete" id="insertJjim" onclick="insertJjim();">공연 찜하기</button>
 	<button class="btnDelete" id="deleteJjim" onclick="deleteJjim();">찜 삭제하기</button>
 </div><!-- .detailButton end -->
