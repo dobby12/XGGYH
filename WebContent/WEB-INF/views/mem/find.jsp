@@ -32,8 +32,13 @@ function checkEmail() {
 </script>
 <script type="text/javascript">
 $(document).ready(function(){
-	$("#btnFindid").click(function(){$("form").submit()})
-	$("#btnFindpw").click(function(){$("form").submit()})
+	$("#btnFindid").click(function(){
+		document.getElementById("mempwmail").value='';
+		$("form").submit()})
+	$("#btnFindpw").click(function(){
+		document.getElementById("memidmail").value='';
+		$("form").submit()}
+	)
 })
 </script>
 
