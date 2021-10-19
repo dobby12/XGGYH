@@ -54,18 +54,25 @@ function getCheckboxValue(event)  {
 </script>
 
 <div class="container">
+<c:if test="${searchtype eq 'memid'}">
+<h3><strong>${keyword }</strong> 에 대한 회원 아이디 검색 결과</h3>
+<hr>
+</c:if>
+<c:if test="${searchtype eq 'memnick'}">
+<h3><strong>${keyword }</strong> 에 대한 회원 닉네임 검색 결과</h3>
+<hr>
+</c:if>
 
-
-<table class="table table-hover table-condensed">
 
 
 <c:if test="${empty searchMemList }">
-	<h3>검색 결과가 없습니다.</h3>
+	<h3>검색 결과가 없습니다.</h3><hr>
 </c:if>
 
 <c:if test="${not empty searchMemList }">
-<h2>검색 결과</h2>
-<hr>
+<table class="table table-hover table-condensed">
+
+
 <thead>
 <tr>	
 	<th style="text-align: center; width: 6%">선택</th>
@@ -88,30 +95,27 @@ function getCheckboxValue(event)  {
 	<c:if test="${mem.mailState =='n' }">
 	<td></td>
 	</c:if>
-	<td>${mem.memNick }</td>
-	<td>${mem.memMail }</td>
-	<td>${mem.mailState }</td>
-	<td>${mem.memDate }</td>
-	<c:if test="${mem.mailState == 'y' }">
-	<td><a href="<%=request.getContextPath() %>/admin/mail/mem/write?memmail=${mem.memMail }"><button>메일 보내기</button></a></td>	
-	</c:if>
-	
-	<c:if test="${mem.mailState =='n' }">
-	<td><input type="button" disabled value="메일 수신거부" /></td>
-	</c:if>	
+	<td><label for="${mem.memId }">${mem.memId }</label></td>
+	<td><label for="${mem.memId }">${mem.memNick }</label></td>
+	<td><label for="${mem.memId }">${mem.memMail }</label></td>
+	<td><label for="${mem.memId }">${mem.mailState }</label></td>
+	<td><label for="${mem.memId }">${mem.memDate }</label></td>
+
 
 </tr>
 </c:forEach>
 </tbody>
+</table>
 </c:if>
 
 
-
-</table><div class="btnZone">
+<div class="btnZone">
+<c:if test="${not empty searchMemList }">
 <form action="<%=request.getContextPath() %>/admin/mail/mem/search" method="post">
 <input type="hidden" id="marshalResult" name="marshalResult" value="${marshalResult }"/>
 <button id="btnFloat" class="btnDelete">메일 보내기</button>
 </form>
+</c:if>
 
 </div>
 </div>

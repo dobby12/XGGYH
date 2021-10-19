@@ -39,6 +39,9 @@ public class AdminMailMemSearchController extends HttpServlet {
 		
 		req.setCharacterEncoding("UTF-8");
 		
+		req.setAttribute("keyword", req.getParameter("keyword"));
+		req.setAttribute("searchtype", req.getParameter("searchtype"));
+		
 		req.setAttribute("linkUrl", "/admin/mail/mem/search?searchtype=" + req.getParameter("searchtype") + "&keyword=" + req.getParameter("keyword"));
 				
 		if(adminService.authorAdmin((String)req.getSession().getAttribute("adminid"))) {
@@ -53,6 +56,10 @@ public class AdminMailMemSearchController extends HttpServlet {
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		req.setAttribute("keyword", req.getParameter("keyword"));
+		req.setAttribute("searchtype", req.getParameter("searchtype"));
+		
 		req.setAttribute("adminMail", "gonggongyeonhee@gmail.com");
 		System.out.println("LIST#################"+req.getParameter("marshalResult"));
 		req.setAttribute("marshalResult", req.getParameter("marshalResult"));
