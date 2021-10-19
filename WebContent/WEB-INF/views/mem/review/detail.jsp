@@ -4,7 +4,19 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <c:import url="/WEB-INF/views/layout/header.jsp" />
-
+<script>
+$(document).ready(function() {
+	$("#btnDelete").click(function() {
+		var answer = confirm("삭제하시겠습니까?")
+		
+		if(answer == true) {
+			location.href="<%=request.getContextPath() %>/review/delete?reviewno=${viewReview.reviewNo }";
+		} else {
+			return false;
+		}
+	});
+});
+</script>
 <div class="container">
 
 <h3>리뷰 상세보기</h3>
@@ -78,7 +90,7 @@
 	<button onclick="history.back()" id="btnList" class="btnBack">목록</button>
 	<c:if test="${memid eq viewReview.memId }">
 		<a href="<%=request.getContextPath() %>/review/update?reviewno=${viewReview.reviewNo }"><button id="btnUpdate" class="btnUpdate">수정</button></a>
-		<a href="<%=request.getContextPath() %>/review/delete?reviewno=${viewReview.reviewNo }"><button id="btnDelete" class="btnDelete">삭제</button></a>
+		<a href="#"><button id="btnDelete" class="btnDelete" onclick="confirmAgain()">삭제</button></a>
 	</c:if>
 </div>
 
