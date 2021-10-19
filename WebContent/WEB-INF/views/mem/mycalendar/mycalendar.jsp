@@ -37,6 +37,26 @@ document.addEventListener('DOMContentLoaded', function() {
 
 </script>
 
+<script>
+$(document).ready(function(){
+
+	
+	$('.btnDelete').click(function() {
+		
+		var answer = confirm("찜한 공연을 해제하시겠습니까?")
+		
+		if( answer == true ){
+			
+			location.href="<%=request.getContextPath() %>/admin/mem/delete?memid=${mem.memId }";
+			
+		} else {
+			return false;
+		}
+	})
+	
+})
+</script>
+
 
 <style>
 .fc-event-title-container {
