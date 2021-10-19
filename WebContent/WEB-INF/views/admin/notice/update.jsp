@@ -11,8 +11,17 @@ function submitContents(elClickedObj){
 <script type="text/javascript">
 $(document).ready(function(){
 	$("#btnSubmit").click(function(){
-		submitContents($("#btnSubmit"))
-		$("form").submit();
+		
+		var answer = confirm("공지사항을 수정하시겠습니까?"); 
+		
+		if( answer == true ){
+			
+			submitContents($("#btnSubmit"))
+			$("form").submit();
+		} else {
+			
+			return false;
+		}
 	});
 	$("#btnBack").click(function(){
 		history.go(-1);
